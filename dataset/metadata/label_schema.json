@@ -1,0 +1,26 @@
+{
+  "id": "<unique sample identifier (e.g., CWE-89-java-001)>",
+  "language": "<programming language>",
+  "path": "<relative path to this sample>",
+
+  "source": {
+    "type": "<benchmark | manual | synthetic>",
+    "name": "<dataset or project name>"
+  },
+
+  "code": "<full vulnerable code snippet>",
+
+  "vulnerabilities": [
+    {
+      "id": "<unique vulnerability identifier within this sample>",
+      "cwe": "<CWE identifier>",
+      "severity": "<High | Medium | Low>",
+      "fixes": [
+        {
+          "origin": "<exact vulnerable code fragment>",
+          "replacement": "<secure replacement fragment>"
+        }
+      ]
+    }
+  ]
+}
