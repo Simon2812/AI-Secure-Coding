@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-02",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__connect_tcp_executeBatch",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package com.example.sync;\n\nimport java.io.BufferedReader;\nimport java.io.InputStreamReader;\nimport java.io.IOException;\nimport java.net.Socket;\nimport java.sql.Connection;\nimport java.sql.Statement;\nimport java.sql.PreparedStatement;\nimport java.sql.SQLException;\n\npublic class AccountSynchronizer {\n\n    public void processRemoteUpdates() {\n        String input = null;\n\n        try (Socket socket = new Socket(\"localhost\", 39544);\n             BufferedReader reader = new BufferedReader(\n                 new InputStreamReader(socket.getInputStream(), \"UTF-8\"))) {\n\n            input = reader.readLine();\n\n        } catch (IOException e) {\n            e.printStackTrace();\n            return;\n        }\n\n        if (input == null || input.isEmpty()) {\n            return;\n        }\n\n        String[] entries = input.split(\",\");\n\n        Connection connection = null;\n        Statement statement = null;\n\n        try {\n            connection = Database.getConnection();\n            statement = connection.createStatement();\n\n            // VULNERABLE_START\n            for (String entry : entries) {\n                statement.addBatch(\n                    \"UPDATE accounts SET status='active' WHERE username='\" + entry + \"'\"\n                );\n            }\n            int[] results = statement.executeBatch();\n            // VULNERABLE_END\n\n            int count = 0;\n            for (int r : results) {\n                if (r > 0) {\n                    count++;\n                }\n            }\n\n            System.out.println(\"Processed \" + count + \" updates.\");\n\n        } catch (SQLException e) {\n            e.printStackTrace();\n        } finally {\n            try {\n                if (statement != null) statement.close();\n            } catch (SQLException ignored) {}\n            try {\n                if (connection != null) connection.close();\n            } catch (SQLException ignored) {}\n        }\n    }\n}\n\nclass Database {\n    public static Connection getConnection() throws SQLException {\n        return java.sql.DriverManager.getConnection(\"jdbc:h2:mem:test\", \"sa\", \"\");\n    }\n}\n",
+  "vulnerabilities": [
+    {
+      "id": "V1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "for (String entry : entries) {\n                statement.addBatch(\n                    \"UPDATE accounts SET status='active' WHERE username='\" + entry + \"'\"\n                );\n            }\n            int[] results = statement.executeBatch();",
+          "replacement": "PreparedStatement prepared = connection.prepareStatement(\n                \"UPDATE accounts SET status='active' WHERE username=?\"\n            );\n            for (String entry : entries) {\n                prepared.setString(1, entry);\n                prepared.addBatch();\n            }\n            int[] results = prepared.executeBatch();"
+        }
+      ]
+    }
+  ]
+}
