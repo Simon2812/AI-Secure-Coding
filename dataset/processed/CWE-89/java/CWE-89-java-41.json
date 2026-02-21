@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-41",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__Property_executeBatch.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package net.trustline.batch;\n\nimport java.sql.*;\n\npublic class PropertyBatchService {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run() throws Exception {\n        String input = System.getProperty(\"q\");\n        if (input == null) {\n            input = \"\";\n        }\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"INSERT INTO imports(ref, category) VALUES ('\" + input + \"', 'import')\";\n            try (Statement st = conn.createStatement()) {\n                st.addBatch(sql);\n                int[] results = st.executeBatch();\n                return \"batch=\" + results.length;\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO imports(ref, category) VALUES ('\" + input + \"', 'import')\";\ntry (Statement st = conn.createStatement()) {\n    st.addBatch(sql);\n    int[] results = st.executeBatch();\n    return \"batch=\" + results.length;\n}",
+          "replacement": "String sql = \"INSERT INTO imports(ref, category) VALUES (?, 'import')\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    ps.addBatch();\n    int[] results = ps.executeBatch();\n    return \"batch=\" + results.length;\n}"
+        }
+      ]
+    }
+  ]
+}

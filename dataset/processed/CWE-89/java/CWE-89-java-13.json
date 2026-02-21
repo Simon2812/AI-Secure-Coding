@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-13",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__File_execute.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package io.lantern.gateway;\n\nimport java.io.*;\nimport java.sql.*;\n\npublic class GatewayKeyInspector {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run(String inputPath) throws Exception {\n        String input = \"\";\n        try (BufferedReader br = new BufferedReader(new FileReader(inputPath))) {\n            String line = br.readLine();\n            input = (line == null) ? \"\" : line;\n        }\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"DELETE FROM api_keys WHERE key_name = '\" + input + \"'\";\n            try (Statement st = conn.createStatement()) {\n                boolean ok = st.execute(sql);\n                return ok ? \"ok\" : \"no_result\";\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"DELETE FROM api_keys WHERE key_name = '\" + input + \"'\";\ntry (Statement st = conn.createStatement()) {\n    boolean ok = st.execute(sql);\n    return ok ? \"ok\" : \"no_result\";\n}",
+          "replacement": "String sql = \"DELETE FROM api_keys WHERE key_name = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    boolean ok = ps.execute();\n    return ok ? \"ok\" : \"no_result\";\n}"
+        }
+      ]
+    }
+  ]
+}

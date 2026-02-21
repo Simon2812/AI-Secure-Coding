@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-39",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__Property_executeUpdate.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package dev.stormfront.core;\n\nimport java.sql.*;\n\npublic class PropertyUpdateHandler {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run() throws Exception {\n        String input = System.getProperty(\"q\");\n        if (input == null) {\n            input = \"\";\n        }\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"UPDATE tasks SET priority = 'checked' WHERE task = '\" + input + \"'\";\n            try (Statement st = conn.createStatement()) {\n                int changed = st.executeUpdate(sql);\n                return changed > 0 ? \"updated\" : \"nochange\";\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"UPDATE tasks SET priority = 'checked' WHERE task = '\" + input + \"'\";\ntry (Statement st = conn.createStatement()) {\n    int changed = st.executeUpdate(sql);\n    return changed > 0 ? \"updated\" : \"nochange\";\n}",
+          "replacement": "String sql = \"UPDATE tasks SET priority = 'checked' WHERE task = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    int changed = ps.executeUpdate();\n    return changed > 0 ? \"updated\" : \"nochange\";\n}"
+        }
+      ]
+    }
+  ]
+}

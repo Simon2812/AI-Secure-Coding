@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-17",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__Environment_prepareStatement.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package net.willowgrove.ledger;\n\nimport java.sql.*;\n\npublic class LedgerEntrySearch {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run() throws Exception {\n        String input = System.getenv(\"QUERY_VALUE\");\n        if (input == null) {\n            input = \"\";\n        }\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"SELECT * FROM ledger_entries WHERE memo = '\" + input + \"'\";\n            try (PreparedStatement ps = conn.prepareStatement(sql);\n                 ResultSet rs = ps.executeQuery()) {\n                return rs.next() ? \"found\" : \"none\";\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM ledger_entries WHERE memo = '\" + input + \"'\";\ntry (PreparedStatement ps = conn.prepareStatement(sql);\n     ResultSet rs = ps.executeQuery()) {\n    return rs.next() ? \"found\" : \"none\";\n}",
+          "replacement": "String sql = \"SELECT * FROM ledger_entries WHERE memo = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    try (ResultSet rs = ps.executeQuery()) {\n        return rs.next() ? \"found\" : \"none\";\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

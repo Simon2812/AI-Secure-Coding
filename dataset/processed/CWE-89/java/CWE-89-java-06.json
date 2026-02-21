@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-06",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__getParameter_Servlet_executeBatch.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package org.brightpath.support;\n\nimport jakarta.servlet.http.Cookie;\nimport jakarta.servlet.http.HttpServletRequest;\nimport jakarta.servlet.http.HttpServletResponse;\nimport java.io.*;\nimport java.sql.*;\nimport java.util.*;\nimport java.net.URLDecoder;\nimport java.nio.charset.StandardCharsets;\n\npublic class TicketSearchEndpoint {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {\n        response.setCharacterEncoding(\"UTF-8\");\n        response.setContentType(\"text/plain\");\n        try (PrintWriter writer = response.getWriter()) {\n            String input = request.getParameter(\"q\");\n            if (input == null) {\n                input = \"\";\n            }\n\n            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n                String sql = \"INSERT INTO tickets(assignee, priority) VALUES ('\" + input + \"', 'import')\";\n                try (Statement st = conn.createStatement()) {\n                    st.addBatch(sql);\n                    int[] results = st.executeBatch();\n                    writer.println(\"batch=\" + results.length);\n                }\n            } catch (SQLException e) {\n                response.setStatus(500);\n                writer.println(\"db_error\");\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO tickets(assignee, priority) VALUES ('\" + input + \"', 'import')\";\ntry (Statement st = conn.createStatement()) {\n    st.addBatch(sql);\n    int[] results = st.executeBatch();\n    writer.println(\"batch=\" + results.length);\n}",
+          "replacement": "String sql = \"INSERT INTO tickets(assignee, priority) VALUES (?, 'import')\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    ps.addBatch();\n    int[] results = ps.executeBatch();\n    writer.println(\"batch=\" + results.length);\n}"
+        }
+      ]
+    }
+  ]
+}

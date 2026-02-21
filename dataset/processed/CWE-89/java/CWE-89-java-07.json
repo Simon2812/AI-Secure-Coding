@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-07",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__getCookies_Servlet_prepareStatement.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package app.emberlake.catalog;\n\nimport jakarta.servlet.http.Cookie;\nimport jakarta.servlet.http.HttpServletRequest;\nimport jakarta.servlet.http.HttpServletResponse;\nimport java.io.*;\nimport java.sql.*;\nimport java.util.*;\nimport java.net.URLDecoder;\nimport java.nio.charset.StandardCharsets;\n\npublic class CatalogQueryHandler {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {\n        response.setCharacterEncoding(\"UTF-8\");\n        response.setContentType(\"text/plain\");\n        try (PrintWriter writer = response.getWriter()) {\n            String input = \"\";\n            Cookie[] cookies = request.getCookies();\n            if (cookies != null) {\n                for (Cookie c : cookies) {\n                    if (\"q\".equals(c.getName())) {\n                        input = c.getValue();\n                        break;\n                    }\n                }\n            }\n\n            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n                String sql = \"SELECT * FROM products WHERE sku = '\" + input + \"'\";\n                try (PreparedStatement ps = conn.prepareStatement(sql);\n                     ResultSet rs = ps.executeQuery()) {\n                    writer.println(rs.next() ? \"found\" : \"none\");\n                }\n            } catch (SQLException e) {\n                response.setStatus(500);\n                writer.println(\"db_error\");\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM products WHERE sku = '\" + input + \"'\";\ntry (PreparedStatement ps = conn.prepareStatement(sql);\n     ResultSet rs = ps.executeQuery()) {\n    writer.println(rs.next() ? \"found\" : \"none\");\n}",
+          "replacement": "String sql = \"SELECT * FROM products WHERE sku = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    try (ResultSet rs = ps.executeQuery()) {\n        writer.println(rs.next() ? \"found\" : \"none\");\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

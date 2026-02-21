@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-25",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__listen_tcp_executeQuery.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package net.orchid.core;\n\nimport java.io.*;\nimport java.net.*;\nimport java.nio.charset.StandardCharsets;\nimport java.sql.*;\n\npublic class SocketQueryService {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run(int port) throws Exception {\n        String input = \"\";\n        try (ServerSocket server = new ServerSocket(port);\n             Socket s = server.accept();\n             BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8))) {\n            String line = br.readLine();\n            input = (line == null) ? \"\" : line;\n        }\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"SELECT * FROM records WHERE key = '\" + input + \"'\";\n            try (Statement st = conn.createStatement();\n                 ResultSet rs = st.executeQuery(sql)) {\n                return rs.next() ? \"found\" : \"none\";\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM records WHERE key = '\" + input + \"'\";\ntry (Statement st = conn.createStatement();\n     ResultSet rs = st.executeQuery(sql)) {\n    return rs.next() ? \"found\" : \"none\";\n}",
+          "replacement": "String sql = \"SELECT * FROM records WHERE key = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    try (ResultSet rs = ps.executeQuery()) {\n        return rs.next() ? \"found\" : \"none\";\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

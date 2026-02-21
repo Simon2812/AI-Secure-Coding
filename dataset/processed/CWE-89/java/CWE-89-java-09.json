@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-09",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__getCookies_Servlet_executeUpdate.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package dev.pinefield.crm;\n\nimport jakarta.servlet.http.Cookie;\nimport jakarta.servlet.http.HttpServletRequest;\nimport jakarta.servlet.http.HttpServletResponse;\nimport java.io.*;\nimport java.sql.*;\nimport java.util.*;\nimport java.net.URLDecoder;\nimport java.nio.charset.StandardCharsets;\n\npublic class CustomerLookupService {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {\n        response.setCharacterEncoding(\"UTF-8\");\n        response.setContentType(\"text/plain\");\n        try (PrintWriter writer = response.getWriter()) {\n            String input = \"\";\n            Cookie[] cookies = request.getCookies();\n            if (cookies != null) {\n                for (Cookie c : cookies) {\n                    if (\"q\".equals(c.getName())) {\n                        input = c.getValue();\n                        break;\n                    }\n                }\n            }\n\n            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n                String sql = \"UPDATE customers SET name = 'checked' WHERE email = '\" + input + \"'\";\n                try (Statement st = conn.createStatement()) {\n                    int changed = st.executeUpdate(sql);\n                    writer.println(changed > 0 ? \"updated\" : \"nochange\");\n                }\n            } catch (SQLException e) {\n                response.setStatus(500);\n                writer.println(\"db_error\");\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"UPDATE customers SET name = 'checked' WHERE email = '\" + input + \"'\";\ntry (Statement st = conn.createStatement()) {\n    int changed = st.executeUpdate(sql);\n    writer.println(changed > 0 ? \"updated\" : \"nochange\");\n}",
+          "replacement": "String sql = \"UPDATE customers SET name = 'checked' WHERE email = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    int changed = ps.executeUpdate();\n    writer.println(changed > 0 ? \"updated\" : \"nochange\");\n}"
+        }
+      ]
+    }
+  ]
+}

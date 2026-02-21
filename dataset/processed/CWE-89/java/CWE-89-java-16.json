@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-16",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__File_executeBatch.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package com.copperhill.backoffice;\n\nimport java.io.*;\nimport java.sql.*;\n\npublic class BackofficeReviewQuery {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run(String inputPath) throws Exception {\n        String input = \"\";\n        try (BufferedReader br = new BufferedReader(new FileReader(inputPath))) {\n            String line = br.readLine();\n            input = (line == null) ? \"\" : line;\n        }\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"INSERT INTO reviews(reviewer, result) VALUES ('\" + input + \"', 'import')\";\n            try (Statement st = conn.createStatement()) {\n                st.addBatch(sql);\n                int[] results = st.executeBatch();\n                return \"batch=\" + results.length;\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO reviews(reviewer, result) VALUES ('\" + input + \"', 'import')\";\ntry (Statement st = conn.createStatement()) {\n    st.addBatch(sql);\n    int[] results = st.executeBatch();\n    return \"batch=\" + results.length;\n}",
+          "replacement": "String sql = \"INSERT INTO reviews(reviewer, result) VALUES (?, 'import')\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    ps.addBatch();\n    int[] results = ps.executeBatch();\n    return \"batch=\" + results.length;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-42",
+  "language": "java",
+  "path": "/dataset/raw/CWE-89/java/CWE89_SQL_Injection__PropertiesFile_prepareStatement.java",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "code": "package org.frostbyte.loader;\n\nimport java.io.*;\nimport java.sql.*;\nimport java.util.Properties;\n\npublic class FilePropertyLookup {\n    private static final String DB_URL = \"jdbc:mysql://localhost:3306/appdb\";\n    private static final String DB_USER = \"appuser\";\n    private static final String DB_PASS = \"apppass\";\n\n    public String run(String configPath) throws Exception {\n        Properties p = new Properties();\n        try (InputStream in = new FileInputStream(configPath)) {\n            p.load(in);\n        }\n        String input = p.getProperty(\"q\", \"\");\n\n        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {\n            String sql = \"SELECT * FROM props WHERE prop_key = '\" + input + \"'\";\n            try (PreparedStatement ps = conn.prepareStatement(sql);\n                 ResultSet rs = ps.executeQuery()) {\n                return rs.next() ? \"found\" : \"none\";\n            }\n        }\n    }\n}",
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM props WHERE prop_key = '\" + input + \"'\";\ntry (PreparedStatement ps = conn.prepareStatement(sql);\n     ResultSet rs = ps.executeQuery()) {\n    return rs.next() ? \"found\" : \"none\";\n}",
+          "replacement": "String sql = \"SELECT * FROM props WHERE prop_key = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, input);\n    try (ResultSet rs = ps.executeQuery()) {\n        return rs.next() ? \"found\" : \"none\";\n    }\n}"
+        }
+      ]
+    }
+  ]
+}
