@@ -1,26 +1,40 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+let isTracking = false;
+
 export function activate(context: vscode.ExtensionContext) {
+  const output = vscode.window.createOutputChannel("Secure Assist");
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "secure-assist" is now active!');
+  // Command: Start Tracking
+  const startCmd = vscode.commands.registerCommand("secure-assist.startTracking", () => {
+    isTracking = true;
+    output.show(true);
+    output.appendLine("Tracking ON. Save any file to see events.");
+    vscode.window.showInformationMessage("Secure Assist: tracking ON (save a file).");
+  });
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('secure-assist.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Secure Assist!');
-	});
+  // Listener: On Save
+  const saveSub = vscode.workspace.onDidSaveTextDocument((doc) => {
+    if (!isTracking) return; // only track after command is executed
+    if (doc.isUntitled) return;
+    if (doc.uri.scheme !== "file") return;
 
-	context.subscriptions.push(disposable);
+    const relPath = vscode.workspace.asRelativePath(doc.uri, false).replace(/\\/g, "/");
+    const content = doc.getText();
+
+    // safety limit: skip very large text
+    const maxChars = 1_000_000;
+    if (content.length > maxChars) {
+      output.appendLine(`[SKIP] ${relPath} (too large: ${content.length} chars)`);
+      return;
+    }
+
+    output.appendLine(`[SAVE] ${relPath} | chars=${content.length}`);
+    // Later you’ll replace this with a real HTTP call
+    // sendChange({ path: relPath, content, ts: Date.now() });
+  });
+
+  context.subscriptions.push(startCmd, saveSub, output);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
