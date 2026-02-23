@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-49",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-49",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM orders LIMIT \" + limit;",
+          "replacement": "int safeLimit = Integer.parseInt(limit);\nString sql = \"SELECT * FROM orders LIMIT \" + safeLimit;"
+        }
+      ]
+    }
+  ]
+}

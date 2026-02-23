@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-40",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-40",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"{call \" + bar + \"}\";\ntry {\njava.sql.Connection connection = org.sentinelgrid.helpers.DatabaseHelper.getSqlConnection();\njava.sql.CallableStatement statement = connection.prepareCall(sql, java.sql.ResultSet.TYPE_FORWARD_ONLY, java.sql.ResultSet.CONCUR_READ_ONLY, java.sql.ResultSet.CLOSE_CURSORS_AT_COMMIT);",
+          "replacement": "String sql = \"{call ?}\";\ntry {\njava.sql.Connection connection = org.sentinelgrid.helpers.DatabaseHelper.getSqlConnection();\njava.sql.CallableStatement statement = connection.prepareCall(sql, java.sql.ResultSet.TYPE_FORWARD_ONLY, java.sql.ResultSet.CONCUR_READ_ONLY, java.sql.ResultSet.CLOSE_CURSORS_AT_COMMIT);\nstatement.setString(1, bar);"
+        }
+      ]
+    }
+  ]
+}

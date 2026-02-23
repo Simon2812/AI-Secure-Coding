@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-59",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-59",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT id, subject, status FROM tickets WHERE team='\" + team + \"'\";\nif (status != null && !status.isBlank()) {\n    sql += \" AND status='\" + status + \"'\";\n}\nsql += \" ORDER BY created_at DESC LIMIT \" + limit;\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement();\n     java.sql.ResultSet rs = st.executeQuery(sql)) {",
+          "replacement": "String sql = \"SELECT id, subject, status FROM tickets WHERE team=?\";\nif (status != null && !status.isBlank()) {\n    sql += \" AND status=?\";\n}\nsql += \" ORDER BY created_at DESC LIMIT \" + limit;\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n\n    st.setString(1, team);\n    if (status != null && !status.isBlank()) {\n        st.setString(2, status);\n    }\n    try (java.sql.ResultSet rs = st.executeQuery()) {"
+        }
+      ]
+    }
+  ]
+}

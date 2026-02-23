@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-27",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-27",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD='\" + extractedValue + \"'\";\ntry {\njava.sql.Connection connection = org.defenselab.testbed.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql, java.sql.ResultSet.TYPE_FORWARD_ONLY, java.sql.ResultSet.CONCUR_READ_ONLY, java.sql.ResultSet.CLOSE_CURSORS_AT_COMMIT);\nstatement.setString(1, \"foo\");",
+          "replacement": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD=?\";\ntry {\njava.sql.Connection connection = org.defenselab.testbed.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql, java.sql.ResultSet.TYPE_FORWARD_ONLY, java.sql.ResultSet.CONCUR_READ_ONLY, java.sql.ResultSet.CLOSE_CURSORS_AT_COMMIT);\nstatement.setString(1, \"foo\");\nstatement.setString(2, extractedValue);"
+        }
+      ]
+    }
+  ]
+}

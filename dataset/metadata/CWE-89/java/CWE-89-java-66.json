@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-66",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-66",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": []
+}

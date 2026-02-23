@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-04",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-04",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"select * from profiles where username='\" + input + \"'\";",
+          "replacement": "String query = \"select * from profiles where username=?\";\nstatement = connection.prepareStatement(query);\nstatement.setString(1, input);"
+        }
+      ]
+    }
+  ]
+}

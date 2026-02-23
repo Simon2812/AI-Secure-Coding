@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-10",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-10",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "sqlStatement = dbConnection.createStatement();\n\n    results = sqlStatement.executeQuery(\"select * from products where code='\" + rawQuery + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = dbConnection.prepareStatement(\"select * from products where code=?\");\nps.setString(1, rawQuery);\nresults = ps.executeQuery();"
+        }
+      ]
+    }
+  ]
+}

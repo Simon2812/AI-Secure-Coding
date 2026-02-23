@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-09",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-09",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt.executeUpdate(\"update accounts set status='closed' where id='\" + accountId + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"update accounts set status='closed' where id=?\");\nps.setString(1, accountId);\nps.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}

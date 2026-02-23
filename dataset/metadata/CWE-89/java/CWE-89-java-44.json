@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-44",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-44",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM posts WHERE title LIKE '%\" + term + \"%'\";\njava.sql.Statement st = conn.createStatement();\nst.executeQuery(sql);",
+          "replacement": "String sql = \"SELECT * FROM posts WHERE title LIKE ?\";\njava.sql.PreparedStatement st = conn.prepareStatement(sql);\nst.setString(1, \"%\" + term + \"%\");\nst.executeQuery();"
+        }
+      ]
+    }
+  ]
+}

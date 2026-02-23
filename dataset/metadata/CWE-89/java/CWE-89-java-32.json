@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-32",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-32",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT userid from USERS where USERNAME='foo' and PASSWORD='\" + transformed + \"'\";\ntry {\nInteger results = org.steelgate.reviewcode.helpers.DatabaseHelper.JDBCtemplate.queryForObject(sql, Integer.class);",
+          "replacement": "String sql = \"SELECT userid from USERS where USERNAME=? and PASSWORD=?\";\ntry {\nInteger results = org.steelgate.reviewcode.helpers.DatabaseHelper.JDBCtemplate.queryForObject(sql, new Object[]{\"foo\", transformed}, Integer.class);"
+        }
+      ]
+    }
+  ]
+}

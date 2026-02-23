@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-08",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-08",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = connection.createStatement();\n\n    result = statement.executeQuery(\"select * from orders where id='\" + queryParam + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = connection.prepareStatement(\"select * from orders where id=?\");\nps.setString(1, queryParam);\nresult = ps.executeQuery();"
+        }
+      ]
+    }
+  ]
+}

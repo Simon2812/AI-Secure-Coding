@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-05",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-05",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement.execute(\"delete from logs where category='\" + content + \"'\");",
+          "replacement": "PreparedStatement ps = connection.prepareStatement(\"delete from logs where category=?\");\nps.setString(1, content);\nps.execute();"
+        }
+      ]
+    }
+  ]
+}

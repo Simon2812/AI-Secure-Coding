@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-13",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-13",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "st = conn.createStatement();\n\n    int rowCount = st.executeUpdate(\"insert into users (status) values ('updated') where name='\" + requestLine + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"insert into users (status) values ('updated') where name=?\");\nps.setString(1, requestLine);\nint rowCount = ps.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}

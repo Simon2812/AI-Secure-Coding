@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-03",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-03",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement.executeUpdate(\"update accounts set status='active' where username='\" + data + \"'\");",
+          "replacement": "PreparedStatement ps = connection.prepareStatement(\"update accounts set status='active' where username=?\");\nps.setString(1, data);\nps.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}

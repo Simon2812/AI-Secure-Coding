@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-18",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-18",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "ps = session.prepareStatement(\"update feature_flags set enabled=1 where owner='\" + identity + \"'\");",
+          "replacement": "String sql = \"update feature_flags set enabled=1 where owner=?\";\nps = session.prepareStatement(sql);\nps.setString(1, identity);"
+        }
+      ]
+    }
+  ]
+}

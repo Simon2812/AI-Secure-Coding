@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-38",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-38",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD='\" + bar + \"'\";\ntry {\njava.sql.Connection connection = org.safeworks.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql);\nstatement.setString(1, \"foo\");",
+          "replacement": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD=?\";\ntry {\njava.sql.Connection connection = org.safeworks.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql);\nstatement.setString(1, \"foo\");\nstatement.setString(2, bar);"
+        }
+      ]
+    }
+  ]
+}

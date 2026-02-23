@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-60",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-60",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id='\" + accountId + \"' AND bill_month='\" + month + \"' ORDER BY invoice_id\";\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement();\n     java.sql.ResultSet rs = st.executeQuery(sql)) {",
+          "replacement": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id=? AND bill_month=? ORDER BY invoice_id\";\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n\n    st.setString(1, accountId);\n    st.setString(2, month);\n    try (java.sql.ResultSet rs = st.executeQuery()) {"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-53",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-53",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String joined = String.join(\",\", parts);\n\nString sql = \"UPDATE users SET active=0 WHERE id IN (\" + joined + \")\";\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement()) {\n    return st.executeUpdate(sql);\n}",
+          "replacement": "StringBuilder ph = new StringBuilder();\nfor (int i = 0; i < parts.length; i++) {\n    if (i > 0) ph.append(',');\n    ph.append('?');\n}\n\nString sql = \"UPDATE users SET active=0 WHERE id IN (\" + ph + \")\";\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n    for (int i = 0; i < parts.length; i++) {\n        st.setString(i + 1, parts[i]);\n    }\n    return st.executeUpdate();\n}"
+        }
+      ]
+    }
+  ]
+}

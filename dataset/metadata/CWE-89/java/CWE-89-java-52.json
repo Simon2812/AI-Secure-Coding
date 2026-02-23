@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-52",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-52",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT id, amount FROM invoices WHERE customer_id='\" + customerId + \"'\";\nif (status != null && !status.isBlank()) {\n    sql += \" AND status='\" + status + \"'\";\n}\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement();\n     java.sql.ResultSet rs = st.executeQuery(sql)) {",
+          "replacement": "String sql = \"SELECT id, amount FROM invoices WHERE customer_id=?\";\nif (status != null && !status.isBlank()) {\n    sql += \" AND status=?\";\n}\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n\n    st.setString(1, customerId);\n    if (status != null && !status.isBlank()) {\n        st.setString(2, status);\n    }\n    try (java.sql.ResultSet rs = st.executeQuery()) {"
+        }
+      ]
+    }
+  ]
+}

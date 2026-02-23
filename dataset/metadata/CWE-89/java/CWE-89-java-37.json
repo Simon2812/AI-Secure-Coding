@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-37",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-37",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT  * from USERS where USERNAME='foo' and PASSWORD='\" + bar + \"'\";\ntry {\norg.springframework.jdbc.support.rowset.SqlRowSet results = org.bluegate.helpers.DatabaseHelper.JDBCtemplate.queryForRowSet(sql);",
+          "replacement": "String sql = \"SELECT  * from USERS where USERNAME=? and PASSWORD=?\";\ntry {\norg.springframework.jdbc.support.rowset.SqlRowSet results = org.bluegate.helpers.DatabaseHelper.JDBCtemplate.queryForRowSet(sql, new Object[]{\"foo\", bar});"
+        }
+      ]
+    }
+  ]
+}

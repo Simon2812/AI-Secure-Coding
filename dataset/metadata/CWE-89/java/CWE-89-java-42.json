@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-42",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"DELETE FROM accounts WHERE role='\" + role + \"'\";\njava.sql.Statement st = conn.createStatement();\nst.executeUpdate(sql);",
+          "replacement": "String sql = \"DELETE FROM accounts WHERE role=?\";\njava.sql.PreparedStatement st = conn.prepareStatement(sql);\nst.setString(1, role);\nst.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}
