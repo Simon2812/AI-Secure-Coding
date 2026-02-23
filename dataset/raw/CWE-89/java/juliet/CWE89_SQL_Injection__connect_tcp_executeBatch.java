@@ -378,4 +378,3 @@ public class CWE89_SQL_Injection__connect_tcp_executeBatch_01 extends AbstractTe
         mainFromParent(args);
     }
 }
-
