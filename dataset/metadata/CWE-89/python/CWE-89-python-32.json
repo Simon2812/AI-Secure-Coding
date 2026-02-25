@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-32",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-32.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT emp_id, full_name, title \"\n    \"FROM employees \"\n    \"WHERE title = '\" + title + \"'\"\n)\n\ncur.execute(query)",
+          "replacement": "query = (\n    \"SELECT emp_id, full_name, title \"\n    \"FROM employees \"\n    \"WHERE title = ?\"\n)\n\ncur.execute(query, (title,))"
+        }
+      ]
+    }
+  ]
+}

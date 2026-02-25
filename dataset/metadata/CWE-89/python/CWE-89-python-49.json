@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-49",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-49.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "base = (\n    \"SELECT id, subject, status, created_at \"\n    \"FROM tickets \"\n    \"WHERE subject ILIKE '%\" + q + \"%' \"\n)\n\nif status:\n    base += \"AND status = '\" + status + \"' \"\n\nbase += \"ORDER BY created_at DESC LIMIT $1\"\n\nrows = await conn.fetch(base, limit)",
+          "replacement": "base = (\n    \"SELECT id, subject, status, created_at \"\n    \"FROM tickets \"\n    \"WHERE subject ILIKE $1 \"\n)\n\nargs = [f\"%{q}%\"]\n\nif status:\n    base += \"AND status = $2 \"\n    args.append(status)\n\nbase += \"ORDER BY created_at DESC LIMIT $\" + str(len(args) + 1)\nargs.append(limit)\n\nrows = await conn.fetch(base, *args)"
+        }
+      ]
+    }
+  ]
+}

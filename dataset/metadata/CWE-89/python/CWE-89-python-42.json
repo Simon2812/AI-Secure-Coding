@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-42",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-42.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "if min_total:\n    base_query += \"HAVING SUM(amount) >= \" + min_total\n\ncur.execute(base_query, (year,))",
+          "replacement": "if min_total:\n    base_query += \"HAVING SUM(amount) >= %s\"\n    cur.execute(base_query, (year, int(min_total)))\nelse:\n    cur.execute(base_query, (year,))"
+        }
+      ]
+    }
+  ]
+}

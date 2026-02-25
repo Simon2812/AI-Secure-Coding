@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-17.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "paging = f\"ORDER BY created_at DESC LIMIT {limit} OFFSET {offset}\"\nstatement = base + paging\n\ncur.execute(statement, tuple(params))",
+          "replacement": "paging = \"ORDER BY created_at DESC LIMIT ? OFFSET ?\"\nstatement = base + paging\n\ncur.execute(statement, tuple(params) + (int(limit), int(offset)))"
+        }
+      ]
+    }
+  ]
+}

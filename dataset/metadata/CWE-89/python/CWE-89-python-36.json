@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-36",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-36.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = (\n    \"SELECT id, customer_email, total, status \"\n    \"FROM orders \"\n    \"WHERE id = \" + order_id\n)\n\ncur.execute(stmt)",
+          "replacement": "stmt = (\n    \"SELECT id, customer_email, total, status \"\n    \"FROM orders \"\n    \"WHERE id = %s\"\n)\n\ncur.execute(stmt, (order_id,))"
+        }
+      ]
+    }
+  ]
+}

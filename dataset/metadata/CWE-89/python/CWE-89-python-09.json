@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-09",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-89/python/CWE-89-python-09.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "clause = \"ORDER BY \" + sort_field + \" DESC\"\ncommand = \"SELECT id, subject, status FROM tickets \" + clause\ncur.execute(command)",
+          "replacement": "if sort_field not in _ALLOWED_FIELDS:\n    sort_field = \"created_at\"\nclause = \"ORDER BY \" + sort_field + \" DESC\"\ncommand = \"SELECT id, subject, status FROM tickets \" + clause\ncur.execute(command)"
+        }
+      ]
+    }
+  ]
+}
