@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-55",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-55",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"head -n 5 {path}\"\nreturn _run(cmd)",
+          "replacement": "lines = []\nwith open(path, \"r\", encoding=\"utf-8\") as f:\nfor _ in range(5):\nline = f.readline()\nif not line:\nbreak\nlines.append(line)\nreturn \"\".join(lines)"
+        }
+      ]
+    }
+  ]
+}

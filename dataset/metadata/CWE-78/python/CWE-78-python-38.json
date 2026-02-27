@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-38",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-38",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"sh -c 'echo {value}'\"\nproc = subprocess.run(cmd,\n    shell=True,\n    capture_output=True,\n    encoding=\"utf-8\")",
+          "replacement": "proc = subprocess.run([\"echo\", value],\n    shell=False,\n    capture_output=True,\n    encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

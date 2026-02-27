@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-57",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "os.environ[\"SHOW\"] = x.strip()\n\nchain = [\"cmd.exe\", \"/c\", \"echo ^%SHOW^%\"]\nproc = subprocess.run(chain, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "value = x.strip()\nproc = subprocess.CompletedProcess(args=[\"echo\"], returncode=0, stdout=(value + \"\\r\\n\"), stderr=\"\")"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-05",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-05",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command_parts = []\nif \"Windows\" in os.name:\n    command_parts.append(\"cmd.exe\")\n    command_parts.append(\"-c\")\nelse:\n    command_parts.append(\"sh\")\n    command_parts.append(\"-c\")\n\ncommand_parts.append(f\"whoami {bar}\")\n\nproc = subprocess.run(command_parts, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "proc = subprocess.run([\"whoami\", bar], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-52",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-52",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"tar -czf {base}.tar.gz {base}\"\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not re.fullmatch(r\"[A-Za-z0-9_-]{1,64}\", base):\n    raise ValueError(\"Invalid archive name\")\nout_name = f\"{base}.tar.gz\"\nproc = subprocess.run([\"tar\", \"-czf\", out_name, base], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

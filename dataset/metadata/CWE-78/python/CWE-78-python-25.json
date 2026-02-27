@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-25",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-25",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "chain = [\"cmd.exe\", \"/c\", f\"dir {p}\"]\nproc = subprocess.run(chain, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not os.path.isdir(p):\n    raise ValueError(\"Invalid directory\")\nentries = os.listdir(p)\noutput = \"\\n\".join(entries)\nreturn output"
+        }
+      ]
+    }
+  ]
+}

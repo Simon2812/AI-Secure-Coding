@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-09",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-09",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "execution_args = []\nif \"Windows\" in os_module.name:\n    execution_args.append(\"cmd.exe\")\n    execution_args.append(\"-c\")\nelse:\n    execution_args.append(\"sh\")\n    execution_args.append(\"-c\")\n\nexecution_args.append(f\"uptime {computed}\")\n\ncompleted_process = sp.run(\n    execution_args,\n    capture_output=True,\n    encoding=\"utf-8\"\n)",
+          "replacement": "completed_process = sp.run([\"uptime\", computed], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

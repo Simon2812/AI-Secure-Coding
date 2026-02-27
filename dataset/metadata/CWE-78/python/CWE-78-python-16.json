@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-16",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-16",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"systemctl {act} {svc}\"\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "allowed_actions = {\"start\", \"stop\", \"restart\", \"status\"}\nif act not in allowed_actions:\n    raise ValueError(\"Invalid action\")\nproc = subprocess.run([\"systemctl\", act, svc], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

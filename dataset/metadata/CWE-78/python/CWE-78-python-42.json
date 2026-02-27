@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-42",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-42",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "os.environ[\"TASK_VALUE\"] = token\n\ncmd = \"sh -c 'printf %s \\\"$TASK_VALUE\\\"; echo; id'\"\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "env = dict(os.environ)\nenv[\"TASK_VALUE\"] = token\nout1 = token + \"\\n\"\np2 = subprocess.run([\"id\"], shell=False, env=env, capture_output=True, encoding=\"utf-8\")\nproc = subprocess.CompletedProcess(args=[\"env_tool\"], returncode=0, stdout=(out1 + p2.stdout), stderr=p2.stderr)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-31",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-31",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = \"du -sh {}\".format(target)\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not target:\n    raise ValueError(\"Invalid path\")\nproc = subprocess.run([\"du\", \"-sh\", target], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

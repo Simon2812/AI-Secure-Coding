@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-44",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-44",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "args = [\"powershell\", \"-NoProfile\", \"-Command\", f\"Invoke-Expression \\\"{text}\\\"\"]\nproc = subprocess.run(args, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "allowed = {\"list\": \"Get-ChildItem -Force\", \"who\": \"whoami\", \"time\": \"Get-Date\"}\nkey = text.lower()\nscript = allowed.get(key)\nif script is None:\n    raise ValueError(\"Unsupported expression\")\nargs = [\"powershell\", \"-NoProfile\", \"-Command\", script]\nproc = subprocess.run(args, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

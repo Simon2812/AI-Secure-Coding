@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-17",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = \"ping -c 1 \" + target\nout = subprocess.check_output(cmd, shell=True, encoding=\"utf-8\", stderr=subprocess.STDOUT)",
+          "replacement": "if not re.fullmatch(r\"[A-Za-z0-9.-]{1,253}\", target):\n    raise ValueError(\"Invalid host\")\nout = subprocess.check_output([\"ping\", \"-c\", \"1\", target], shell=False, encoding=\"utf-8\", stderr=subprocess.STDOUT)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-59",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-59",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = _build_archive_command(directory.strip(), compression)\n\nproc = subprocess.run(\ncmd,\nshell=True,\ncapture_output=True,\nencoding=\"utf-8\"\n)",
+          "replacement": "safe_dir = os.path.abspath(directory.strip())\nif not os.path.isdir(safe_dir):\nreturn jsonify({\"error\": \"Directory not found\"}), 404\ntimestamp = datetime.utcnow().strftime(\"%Y%m%d\")\noutput_name = f\"/tmp/archive_{timestamp}.tar.gz\"\nproc = subprocess.run(\n[\"tar\", \"-czf\", output_name, \"-C\", safe_dir, \".\", \"--gzip\", f\"-{compression}\"],\nshell=False,\ncapture_output=True,\nencoding=\"utf-8\"\n)"
+        }
+      ]
+    }
+  ]
+}
