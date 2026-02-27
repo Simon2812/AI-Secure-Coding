@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-56",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-56.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "id_blob = \",\".join(ids)\nstmt = text(\"SELECT id, total FROM orders WHERE id IN (\" + id_blob + \")\")\nwith engine.connect() as conn:\n    return conn.execute(stmt).fetchall()",
+          "replacement": "stmt = text(\"SELECT id, total FROM orders WHERE id IN :ids\").bindparams(bindparam(\"ids\", expanding=True))\nwith engine.connect() as conn:\n    return conn.execute(stmt, {\"ids\": ids}).fetchall()"
+        }
+      ]
+    }
+  ]
+}

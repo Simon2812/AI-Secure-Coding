@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-50",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-50.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT id, name, price \"\n    \"FROM products \"\n    \"ORDER BY \" + order_by + \" ASC\"\n)\n\ncur.execute(query)",
+          "replacement": "allowed = {\"id\", \"name\", \"price\"}\nif order_by not in allowed:\n    order_by = \"id\"\n\nquery = (\n    \"SELECT id, name, price \"\n    \"FROM products \"\n    \"ORDER BY \" + order_by + \" ASC\"\n)\n\ncur.execute(query)"
+        }
+      ]
+    }
+  ]
+}

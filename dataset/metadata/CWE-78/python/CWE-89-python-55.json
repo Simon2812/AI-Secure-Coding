@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-55",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-55.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT id, created_at, value, \"\n    \"SUM(value) OVER (ORDER BY created_at ROWS BETWEEN \" + days + \" PRECEDING AND CURRENT ROW) AS s \"\n    \"FROM metric_points\"\n)\n\ncur.execute(query)",
+          "replacement": "n = int(days)\nquery = (\n    \"SELECT id, created_at, value, \"\n    f\"SUM(value) OVER (ORDER BY created_at ROWS BETWEEN {n} PRECEDING AND CURRENT ROW) AS s \"\n    \"FROM metric_points\"\n)\n\ncur.execute(query)"
+        }
+      ]
+    }
+  ]
+}

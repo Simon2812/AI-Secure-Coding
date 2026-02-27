@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-48",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-48.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "for actor, action in rows:\n    stmt = \"INSERT INTO audit(actor, action) VALUES ('\" + actor + \"', '\" + action + \"')\"\n    cur.execute(stmt)",
+          "replacement": "stmt = \"INSERT INTO audit(actor, action) VALUES (?, ?)\"\nfor actor, action in rows:\n    cur.execute(stmt, (actor, action))"
+        }
+      ]
+    }
+  ]
+}
