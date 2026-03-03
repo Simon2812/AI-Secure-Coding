@@ -1,0 +1,48 @@
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#ifdef _WIN32
+#include <process.h>
+#define EXECVP _execvp
+#define COMMAND_INT "cmd.exe"
+#define COMMAND_INT_PATH "%WINDIR%\\system32\\cmd.exe"
+#define COMMAND_ARG1 "/c"
+#define COMMAND_ARG2 "where "
+#define COMMAND_ARG3 data
+#define FILENAME "C:\\temp\\file.txt"
+#else
+#include <unistd.h>
+#define EXECVP execvp
+#define COMMAND_INT "sh"
+#define COMMAND_INT_PATH "/bin/sh"
+#define COMMAND_ARG1 "-c"
+#define COMMAND_ARG2 "stat "
+#define COMMAND_ARG3 data
+#define FILENAME "/tmp/file.txt"
+#endif
+
+void file_lookup(void)
+{
+    char dataBuffer[100] = COMMAND_ARG2;
+    char *data = dataBuffer;
+
+    size_t dataLen = strlen(data);
+    FILE *pFile;
+
+    if (100 - dataLen > 1)
+    {
+        pFile = fopen(FILENAME, "r");
+        if (pFile != NULL)
+        {
+            if (fgets(data + dataLen, (int)(100 - dataLen), pFile) == NULL)
+                data[dataLen] = '\0';
+            fclose(pFile);
+        }
+    }
+
+    {
+        char *args[] = { COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL };
+        EXECVP(COMMAND_INT, args);
+    }
+}
