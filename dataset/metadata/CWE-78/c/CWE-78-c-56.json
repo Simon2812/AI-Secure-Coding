@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-56",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-56",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "execl(\"/bin/sh\", \"sh\", \"-c\", cmd, (char *)NULL);",
+          "replacement": "char *args[] = {\"touch\", (char *)target, NULL};\nexecvp(\"touch\", args);"
+        }
+      ]
+    }
+  ]
+}

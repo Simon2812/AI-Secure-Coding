@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-53",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-53",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *fp = popen(cmd, \"r\");",
+          "replacement": "for (const unsigned char *p = (const unsigned char *)argv[1]; *p; ++p) {\n    if (!((*p >= 'a' && *p <= 'z') ||\n          (*p >= 'A' && *p <= 'Z') ||\n          (*p >= '0' && *p <= '9') ||\n          *p == '_' || *p == '-'))\n        return 1;\n}\nFILE *fp = popen(cmd, \"r\");"
+        }
+      ]
+    }
+  ]
+}

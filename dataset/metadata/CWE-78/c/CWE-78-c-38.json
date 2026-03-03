@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-38",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-38",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "static int default_runner(const char *arg) {\n    char buffer[256];\n    snprintf(buffer, sizeof(buffer), \"echo Processing %s\", arg);\n\n    pid_t pid = fork();\n    if (pid < 0) {\n        perror(\"fork\");\n        return 1;\n    }\n\n    if (pid == 0) {\n        execl(\"/bin/sh\", \"sh\", \"-c\", buffer, (char *)NULL);\n        perror(\"execl\");\n        _exit(127);\n    }\n\n    int status = 0;\n    if (waitpid(pid, &status, 0) < 0) {\n        perror(\"waitpid\");\n        return 1;\n    }\n\n    return (WIFEXITED(status) && WEXITSTATUS(status) == 0) ? 0 : 1;\n}",
+          "replacement": "static int default_runner(const char *arg) {\n    pid_t pid = fork();\n    if (pid < 0) {\n        perror(\"fork\");\n        return 1;\n    }\n\n    if (pid == 0) {\n        char *args[] = {\"echo\", \"Processing\", (char *)arg, NULL};\n        execvp(\"echo\", args);\n        perror(\"execvp\");\n        _exit(127);\n    }\n\n    int status = 0;\n    if (waitpid(pid, &status, 0) < 0) {\n        perror(\"waitpid\");\n        return 1;\n    }\n\n    return (WIFEXITED(status) && WEXITSTATUS(status) == 0) ? 0 : 1;\n}"
+        }
+      ]
+    }
+  ]
+}

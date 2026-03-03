@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-32",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-32",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char cmd[256];\n\nsnprintf(cmd, sizeof(cmd), \"grep '%s' /var/log/syslog\", q->filter);\n\nFILE *fp = popen(cmd, \"r\");\nif (!fp) {\n    perror(\"popen\");\n    return -1;\n}\n\nchar line[256];\nint count = 0;\nwhile (count < q->limit && fgets(line, sizeof(line), fp)) {\n    fputs(line, stdout);\n    count++;\n}\n\npclose(fp);\nreturn 0;",
+          "replacement": "int pipefd[2];\nif (pipe(pipefd) < 0) {\n    perror(\"pipe\");\n    return -1;\n}\n\npid_t pid = fork();\nif (pid < 0) {\n    perror(\"fork\");\n    close(pipefd[0]);\n    close(pipefd[1]);\n    return -1;\n}\n\nif (pid == 0) {\n    close(pipefd[0]);\n    if (dup2(pipefd[1], STDOUT_FILENO) < 0) {\n        perror(\"dup2\");\n        _exit(127);\n    }\n    close(pipefd[1]);\n\n    execlp(\"grep\", \"grep\", q->filter, \"/var/log/syslog\", (char *)NULL);\n    perror(\"execlp\");\n    _exit(127);\n}\n\nclose(pipefd[1]);\n\nFILE *fp = fdopen(pipefd[0], \"r\");\nif (!fp) {\n    perror(\"fdopen\");\n    close(pipefd[0]);\n    (void)waitpid(pid, NULL, 0);\n    return -1;\n}\n\nchar line[256];\nint count = 0;\nwhile (count < q->limit && fgets(line, sizeof(line), fp)) {\n    fputs(line, stdout);\n    count++;\n}\n\nfclose(fp);\n(void)waitpid(pid, NULL, 0);\nreturn 0;"
+        }
+      ]
+    }
+  ]
+}

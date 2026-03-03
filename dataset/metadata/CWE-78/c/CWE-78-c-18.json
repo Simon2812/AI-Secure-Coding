@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-18",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-18",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "{\nwchar_t *args[] = { COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL };\n_wspawnv(_P_WAIT, COMMAND_INT_PATH, args);\n}",
+          "replacement": "const wchar_t *arg = data + wcslen(COMMAND_ARG2);\n{\n    wchar_t *safeArgs[] = { L\"where\", (wchar_t *)arg, NULL };\n    _wspawnv(_P_WAIT, L\"C:\\\\Windows\\\\System32\\\\where.exe\", safeArgs);\n}"
+        }
+      ]
+    }
+  ]
+}

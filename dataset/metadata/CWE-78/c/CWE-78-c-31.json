@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-31",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-31",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char command[512];\n\n/* Build tar command */\nsnprintf(command, sizeof(command), \"tar -czf backup.tgz %s\", directory);\n\n/* Execute system command */\nint result = system(command);\n\nif (result != 0) {\n    fprintf(stderr, \"Archive creation failed\\n\");\n    return -1;\n}\n\nreturn 0;",
+          "replacement": "char *args[] = { \"tar\", \"-czf\", \"backup.tgz\", (char *)directory, NULL };\nexecvp(\"tar\", args);\nperror(\"execvp\");\nreturn -1;"
+        }
+      ]
+    }
+  ]
+}

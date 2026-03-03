@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-33",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-33",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "static int run_probe_vulnerable(const AgentConfig *cfg, const ProbeRequest *req) {\n    char cmd[512];\n\n    snprintf(cmd, sizeof(cmd), \"%s %s %s %s\", cfg->tool, cfg->arg1, cfg->arg2, req->target);\n\n    pid_t pid = fork();\n    if (pid < 0) {\n        perror(\"fork\");\n        return -1;\n    }\n    if (pid == 0) {\n        execl(\"/bin/sh\", \"sh\", \"-c\", cmd, (char *)NULL);\n        perror(\"execl\");\n        _exit(127);\n    }\n\n    int status = 0;\n    if (waitpid(pid, &status, 0) < 0) {\n        perror(\"waitpid\");\n        return -1;\n    }\n    if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {\n        log_msg(\"ERROR\", \"probe command failed\");\n        return -1;\n    }\n    return 0;\n}",
+          "replacement": "static int run_probe_vulnerable(const AgentConfig *cfg, const ProbeRequest *req) {\n    if (req->target[0] == '-') {\n        log_msg(\"ERROR\", \"invalid target\");\n        return -1;\n    }\n    for (const unsigned char *p = (const unsigned char *)req->target; *p; ++p) {\n        if (!(isalnum(*p) || *p == '.' || *p == '-' || *p == ':')) {\n            log_msg(\"ERROR\", \"invalid target\");\n            return -1;\n        }\n    }\n\n    pid_t pid = fork();\n    if (pid < 0) {\n        perror(\"fork\");\n        return -1;\n    }\n    if (pid == 0) {\n        char *argv_exec[] = {\n            (char *)cfg->tool,\n            (char *)cfg->arg1,\n            (char *)cfg->arg2,\n            (char *)req->target,\n            NULL\n        };\n        execvp(cfg->tool, argv_exec);\n        perror(\"execvp\");\n        _exit(127);\n    }\n\n    int status = 0;\n    if (waitpid(pid, &status, 0) < 0) {\n        perror(\"waitpid\");\n        return -1;\n    }\n    if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {\n        log_msg(\"ERROR\", \"probe command failed\");\n        return -1;\n    }\n    return 0;\n}"
+        }
+      ]
+    }
+  ]
+}

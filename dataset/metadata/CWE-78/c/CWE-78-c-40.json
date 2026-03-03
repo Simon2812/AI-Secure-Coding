@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-40",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-40",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "static char *build_command(const char *user) {\n    char *cmd = NULL;\n    size_t len = strlen(user) + 32;\n\n    cmd = malloc(len);\n    if (!cmd) {\n        return NULL;\n    }\n\n    strcpy(cmd, \"id \");\n    strcat(cmd, user);\n\n    return cmd;\n}",
+          "replacement": "static char *build_command(const char *user) {\n    for (const unsigned char *p = (const unsigned char *)user; *p; ++p) {\n        if (!((*p >= 'a' && *p <= 'z') ||\n              (*p >= 'A' && *p <= 'Z') ||\n              (*p >= '0' && *p <= '9') ||\n              *p == '_' || *p == '-')) {\n            return NULL;\n        }\n    }\n\n    char *cmd = NULL;\n    size_t len = strlen(user) + 32;\n\n    cmd = malloc(len);\n    if (!cmd) {\n        return NULL;\n    }\n\n    strcpy(cmd, \"id \");\n    strcat(cmd, user);\n\n    return cmd;\n}"
+        }
+      ]
+    }
+  ]
+}

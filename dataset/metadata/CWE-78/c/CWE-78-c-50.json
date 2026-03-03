@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-50",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-50",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "snprintf(cmd, sizeof(cmd),\n             \"systemctl restart %s && systemctl --no-pager --full status %s\",\n             svc, svc);\n\nint rc = system(cmd);\nreturn (rc == 0) ? 0 : 1;",
+          "replacement": "if (!ok_service_name(svc)) {\n    fprintf(stderr, \"invalid service\\n\");\n    return 1;\n}\n\nsnprintf(cmd, sizeof(cmd),\n         \"systemctl restart %s && systemctl --no-pager --full status %s\",\n         svc, svc);\n\nint rc = system(cmd);\nreturn (rc == 0) ? 0 : 1;"
+        }
+      ]
+    }
+  ]
+}

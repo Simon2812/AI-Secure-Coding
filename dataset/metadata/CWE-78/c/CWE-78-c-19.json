@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-19",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-19",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "EXECLP(COMMAND_INT, COMMAND_INT, COMMAND_ARG1, COMMAND_ARG3, NULL);",
+          "replacement": "const wchar_t *arg = data + wcslen(COMMAND_ARG2);\n\n#ifdef _WIN32\nEXECLP(L\"where\", L\"where\", arg, NULL);\n#else\nEXECLP(\"uname\", \"uname\", arg, NULL);\n#endif"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-37",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-37",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char cmd[512];\nsnprintf(cmd, sizeof(cmd), \"tar -cf backup.tar %s\", backup_dir);\n\nint rc = system(cmd);\nif (rc != 0) {\n    fprintf(stderr, \"Backup failed\\n\");\n    return 1;\n}\n\nprintf(\"Backup completed\\n\");\nreturn 0;",
+          "replacement": "for (const unsigned char *p = (const unsigned char *)backup_dir; *p; ++p) {\n    if (!((*p >= 'a' && *p <= 'z') ||\n          (*p >= 'A' && *p <= 'Z') ||\n          (*p >= '0' && *p <= '9') ||\n          *p == '/' || *p == '.' || *p == '_' || *p == '-')) {\n        fprintf(stderr, \"Invalid BACKUP_DIR\\n\");\n        return 1;\n    }\n}\n\nchar cmd[512];\nsnprintf(cmd, sizeof(cmd), \"tar -cf backup.tar %s\", backup_dir);\n\nint rc = system(cmd);\nif (rc != 0) {\n    fprintf(stderr, \"Backup failed\\n\");\n    return 1;\n}\n\nprintf(\"Backup completed\\n\");\nreturn 0;"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-57",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *fp = popen(cmd, \"r\");",
+          "replacement": "if (!(strcmp(agent, \"nslookup\") == 0 || strcmp(agent, \"whois\") == 0))\n    return 1;\nfor (const unsigned char *p = (const unsigned char *)query; *p; ++p) {\n    if (!((*p >= 'a' && *p <= 'z') ||\n          (*p >= 'A' && *p <= 'Z') ||\n          (*p >= '0' && *p <= '9') ||\n          *p == '.' || *p == '-'))\n        return 1;\n}\nFILE *fp = popen(cmd, \"r\");"
+        }
+      ]
+    }
+  ]
+}

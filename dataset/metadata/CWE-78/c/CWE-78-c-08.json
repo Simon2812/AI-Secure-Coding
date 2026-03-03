@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-08",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-08",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char *args[] = { COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL };\nEXECVP(COMMAND_INT, args);",
+          "replacement": "const char *arg = data + strlen(COMMAND_ARG2);\n#ifdef _WIN32\n{\n    char *safeArgs[] = { \"tree\", (char *)arg, NULL };\n    EXECVP(\"tree\", safeArgs);\n}\n#else\n{\n    char *safeArgs[] = { \"find\", \".\", \"-maxdepth\", \"1\", \"-name\", (char *)arg, NULL };\n    EXECVP(\"find\", safeArgs);\n}\n#endif"
+        }
+      ]
+    }
+  ]
+}
