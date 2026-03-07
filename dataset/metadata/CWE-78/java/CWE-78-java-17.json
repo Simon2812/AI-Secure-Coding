@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-17",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-17",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String osCommand;\n\nif (System.getProperty(\"os.name\").toLowerCase().contains(\"win\")) {\n    osCommand = \"c:\\\\WINDOWS\\\\SYSTEM32\\\\cmd.exe /c dir \";\n} else {\n    osCommand = \"/bin/ls \";\n}\n\nProcess process = Runtime.getRuntime().exec(osCommand + input);\nprocess.waitFor();",
+          "replacement": "Process process;\n\nif (System.getProperty(\"os.name\").toLowerCase().contains(\"win\")) {\n    process = new ProcessBuilder(\"cmd.exe\", \"/c\", \"dir\", input).start();\n} else {\n    process = new ProcessBuilder(\"/bin/ls\", input).start();\n}\n\nprocess.waitFor();"
+        }
+      ]
+    }
+  ]
+}

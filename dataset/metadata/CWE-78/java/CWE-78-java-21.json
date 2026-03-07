@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-21",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-21",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd.add(\"echo \" + value);",
+          "replacement": "if (!value.matches(\"[A-Za-z0-9 _.,:-]{0,80}\")) {\n    throw new ServletException(\"invalid input\");\n}\ncmd.add(\"echo \" + value);"
+        }
+      ]
+    }
+  ]
+}

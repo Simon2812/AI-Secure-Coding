@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-37",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-37",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process p = runtime.exec(args, env);",
+          "replacement": "ProcessBuilder pb = new ProcessBuilder(baseCommand, value);\nProcess p = pb.start();"
+        }
+      ]
+    }
+  ]
+}

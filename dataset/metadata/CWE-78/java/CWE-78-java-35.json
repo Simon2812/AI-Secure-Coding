@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-35",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-35",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Runtime r = Runtime.getRuntime();\n\ntry {\n    Process p = r.exec(args, argsEnv);\n    org.owasp.benchmark.helpers.Utils.printOSCommandResults(p, response);\n} catch (IOException e) {\n    System.out.println(\n            \"Problem executing cmdi - TestCase\");\n    response.getWriter()\n            .println(org.owasp.esapi.ESAPI.encoder().encodeForHTML(e.getMessage()));\n    return;\n}",
+          "replacement": "java.util.List<String> cmdList = new java.util.ArrayList<>();\nString os = System.getProperty(\"os.name\");\nif (os != null && os.contains(\"Windows\")) {\n    cmdList.add(\"cmd.exe\");\n    cmdList.add(\"/c\");\n    cmdList.add(\"echo\");\n    cmdList.add(bar);\n} else {\n    cmdList.add(\"ls\");\n    cmdList.add(bar);\n}\nProcessBuilder pb = new ProcessBuilder(cmdList);\npb.environment().put(\"foo\", \"bar\");\nProcess p = pb.start();\nresponse.getWriter().println(\"ok\");"
+        }
+      ]
+    }
+  ]
+}

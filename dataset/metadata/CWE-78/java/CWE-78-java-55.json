@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-55",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-55",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"sh \" + scriptName;\n\n        Process process = Runtime.getRuntime().exec(command);",
+          "replacement": "java.util.Set<String> allowedScripts = java.util.Set.of(\"backup.sh\", \"cleanup.sh\", \"status.sh\");\n\n        if (!allowedScripts.contains(scriptName)) {\n            throw new IllegalArgumentException(\"Script not allowed\");\n        }\n\n        String command = \"sh \" + scriptName;\n\n        Process process = Runtime.getRuntime().exec(command);"
+        }
+      ]
+    }
+  ]
+}

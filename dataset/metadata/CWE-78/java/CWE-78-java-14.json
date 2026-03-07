@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-14",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-14",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process p = Runtime.getRuntime().exec(commandBase + folderName);\np.waitFor();",
+          "replacement": "if (!(\"logs\".equals(folderName) || \"tmp\".equals(folderName) || \"data\".equals(folderName))) {\n    throw new IllegalArgumentException(\"Unexpected directory\");\n}\nProcess p = Runtime.getRuntime().exec(commandBase + folderName);\np.waitFor();"
+        }
+      ]
+    }
+  ]
+}

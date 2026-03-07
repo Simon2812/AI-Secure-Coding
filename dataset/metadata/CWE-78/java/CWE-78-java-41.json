@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-41",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-41",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"ping -c 3 \" + targetHost;\n\n        Process proc = Runtime.getRuntime().exec(command);",
+          "replacement": "ProcessBuilder pb = new ProcessBuilder(\"ping\", \"-c\", \"3\", targetHost);\n        Process proc = pb.start();"
+        }
+      ]
+    }
+  ]
+}

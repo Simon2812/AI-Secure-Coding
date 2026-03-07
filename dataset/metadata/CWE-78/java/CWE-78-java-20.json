@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-20",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-20",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process process = Runtime.getRuntime().exec(command + target);\nprocess.waitFor();",
+          "replacement": "String safe = target == null ? \"\" : target.replace(\"\\\"\", \"\");\nProcess process = Runtime.getRuntime().exec(command + \"\\\"\" + safe + \"\\\"\");\nprocess.waitFor();"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-43",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-43",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String execution = String.format(\"sh %s\", scriptName);\n\n        Process proc = Runtime.getRuntime().exec(execution);",
+          "replacement": "ProcessBuilder pb = new ProcessBuilder(\"sh\", scriptName);\n        Process proc = pb.start();"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-50",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-50",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process process = Runtime.getRuntime().exec(commandInput);",
+          "replacement": "java.util.Set<String> allowed = java.util.Set.of(\"status\", \"uptime\", \"df\");\n\n        if (!allowed.contains(commandInput)) {\n            throw new IllegalArgumentException(\"Command not permitted\");\n        }\n\n        Process process = Runtime.getRuntime().exec(commandInput);"
+        }
+      ]
+    }
+  ]
+}
