@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-26",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-26",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File dataRoot = new File(\"/srv/storage/\");\n        File resolvedFile = new File(dataRoot, name);",
+          "replacement": "if (!name.matches(\"[a-zA-Z0-9._-]+\")) {\n    throw new IOException();\n}\nFile dataRoot = new File(\"/srv/storage/\");\nFile resolvedFile = new File(dataRoot, name);"
+        }
+      ]
+    }
+  ]
+}

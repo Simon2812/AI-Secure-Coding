@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-54",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-54",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveMetadataFile(String id) {\n        return ROOT.resolve(id + \".meta\");\n    }",
+          "replacement": "private Path resolveMetadataFile(String id) throws IOException {\n        if (!id.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid image identifier\");\n        }\n        return ROOT.resolve(id + \".meta\");\n    }"
+        }
+      ]
+    }
+  ]
+}

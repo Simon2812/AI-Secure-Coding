@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-50",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-50",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveAssetLocation(String collection, String name) {\n\n        Path collectionDir = BASE.resolve(collection);\n\n        return collectionDir.resolve(name);\n    }",
+          "replacement": "private Path resolveAssetLocation(String collection, String name) throws IOException {\n\n        Path base = BASE.toAbsolutePath().normalize();\n        Path target = base.resolve(collection).resolve(name).normalize();\n\n        if (!target.startsWith(base)) {\n            throw new IOException(\"Invalid asset path\");\n        }\n\n        return target;\n    }"
+        }
+      ]
+    }
+  ]
+}

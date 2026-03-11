@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-48",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-48",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path locateTemplate(String name) {\n        String filename = name + \".tpl\";\n        return baseDirectory.resolve(filename);\n    }",
+          "replacement": "private Path locateTemplate(String name) {\n        String safeName = Path.of(name).getFileName().toString();\n        String filename = safeName + \".tpl\";\n        return baseDirectory.resolve(filename);\n    }"
+        }
+      ]
+    }
+  ]
+}

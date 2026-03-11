@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-46",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-46",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path manifestPath = buildManifestPath(pluginId);",
+          "replacement": "if (!pluginId.matches(\"[A-Za-z0-9_-]+\")) {\n    throw new IOException(\"Invalid plugin id\");\n}\nPath manifestPath = buildManifestPath(pluginId);"
+        }
+      ]
+    }
+  ]
+}

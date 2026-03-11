@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-33",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-33",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "String folder = root + \"/\" + reportGroup;\nPath reportFile = Path.of(folder + \"/summary.dat\");",
+          "replacement": "if (!reportGroup.matches(\"[A-Za-z0-9_-]+\")) {\n    throw new IOException(\"Invalid report group\");\n}\nString folder = root + \"/\" + reportGroup;\nPath reportFile = Path.of(folder + \"/summary.dat\");"
+        }
+      ]
+    }
+  ]
+}

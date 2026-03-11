@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-38",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-38",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveProfile(String name) {\n        return dataRoot.resolve(name + \".conf\");\n    }",
+          "replacement": "private Path resolveProfile(String name) {\n        String token = Path.of(name).getFileName().toString();\n        return dataRoot.resolve(token + \".conf\");\n    }"
+        }
+      ]
+    }
+  ]
+}

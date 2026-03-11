@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-13",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-13",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "filePath = \"/srv/content/\" + entry;\n            stream = new FileInputStream(filePath);",
+          "replacement": "java.io.File base = new java.io.File(\"/srv/content/\").getCanonicalFile();\n            java.io.File target = new java.io.File(base, entry).getCanonicalFile();\n            if (!target.getPath().startsWith(base.getPath())) {\n                throw new IOException();\n            }\n            stream = new FileInputStream(target);"
+        }
+      ]
+    }
+  ]
+}

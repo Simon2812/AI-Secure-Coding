@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-37",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-37",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private String buildLocation(String key) {\n\n        return repositoryPath + \"/\" + key + \"/entry.txt\";\n    }",
+          "replacement": "private String buildLocation(String key) throws IOException {\n\n        if (!key.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid entry identifier\");\n        }\n\n        return repositoryPath + \"/\" + key + \"/entry.txt\";\n    }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-53",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-53",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveConfigFile(String profile) {\n        return ROOT.resolve(profile).resolve(\"backup.conf\");\n    }",
+          "replacement": "private Path resolveConfigFile(String profile) throws IOException {\n        if (profile.contains(\"..\") || profile.contains(\"/\") || profile.contains(\"\\\\\")) {\n            throw new IOException(\"Invalid profile name\");\n        }\n        return ROOT.resolve(profile).resolve(\"backup.conf\");\n    }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-09",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-09",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File root = new File(\"/var/service/archive/\");\n        File resource = new File(root, name);",
+          "replacement": "name = new File(name).getName();\n        File root = new File(\"/var/service/archive/\");\n        File resource = new File(root, name);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-35",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-35",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path snapshotFile = resolveSnapshot(snapshotKey);\n\nInputStream in = Files.newInputStream(snapshotFile);",
+          "replacement": "Path base = ROOT.toAbsolutePath().normalize();\nPath snapshotFile = base.resolve(snapshotKey).resolve(\"state.bin\").normalize();\nif (!snapshotFile.startsWith(base)) {\n    throw new IOException(\"Invalid snapshot path\");\n}\n\nInputStream in = Files.newInputStream(snapshotFile);"
+        }
+      ]
+    }
+  ]
+}

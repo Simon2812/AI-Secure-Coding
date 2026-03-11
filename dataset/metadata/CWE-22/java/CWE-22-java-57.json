@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-57",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveTemplateFile(String key) {\n        return ROOT.resolve(key).resolve(\"template.txt\");\n    }",
+          "replacement": "private Path resolveTemplateFile(String key) throws IOException {\n        if (!key.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid template key\");\n        }\n        return ROOT.resolve(key).resolve(\"template.txt\");\n    }"
+        }
+      ]
+    }
+  ]
+}

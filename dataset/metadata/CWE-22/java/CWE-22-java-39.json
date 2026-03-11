@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-39",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-39",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path locateReport(String key) {\n        return catalogRoot.resolve(key).resolve(\"report.txt\");\n    }",
+          "replacement": "private Path locateReport(String key) throws IOException {\n        if (!key.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid report key\");\n        }\n        return catalogRoot.resolve(key).resolve(\"report.txt\");\n    }"
+        }
+      ]
+    }
+  ]
+}

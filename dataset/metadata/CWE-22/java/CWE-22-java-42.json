@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-42",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path target = exportBase.resolve(label + \".txt\");",
+          "replacement": "String id = Path.of(label).getFileName().toString();\nPath target = exportBase.resolve(id + \".txt\");"
+        }
+      ]
+    }
+  ]
+}
