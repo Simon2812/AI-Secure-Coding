@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-37",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-37",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path = self.store_root + \"/\" + record_name\n\nwith open(path, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()",
+          "replacement": "if \"..\" in record_name or \"/\" in record_name or \"\\\\\" in record_name:\n    raise ValueError(\"invalid record name\")\n\npath = self.store_root + \"/\" + record_name\n\nwith open(path, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()"
+        }
+      ]
+    }
+  ]
+}

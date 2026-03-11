@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-54",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-54",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target = os.path.join(bucket, picked)",
+          "replacement": "target = os.path.abspath(os.path.join(bucket, picked))\nif os.path.commonpath([os.path.abspath(bucket), target]) != os.path.abspath(bucket):\n    raise ValueError(\"invalid document path\")"
+        }
+      ]
+    }
+  ]
+}

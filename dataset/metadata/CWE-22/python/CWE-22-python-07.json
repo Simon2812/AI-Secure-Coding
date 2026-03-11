@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-07",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-07",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "handle = codecs.open(\n                f\"{helpers.utils.TESTFILES_DIR}/{file_name}\",\n                \"r\",\n                \"utf-8\"\n            )",
+          "replacement": "safe_name = file_name.split(\"/\")[-1].split(\"\\\\\")[-1]\n            handle = codecs.open(\n                f\"{helpers.utils.TESTFILES_DIR}/{safe_name}\",\n                \"r\",\n                \"utf-8\"\n            )"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-57",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "out_path = os.path.join(self.destination, member_name)",
+          "replacement": "out_path = os.path.abspath(os.path.join(self.destination, member_name))\nif os.path.commonpath([os.path.abspath(self.destination), out_path]) != os.path.abspath(self.destination):\n    raise ValueError(\"invalid archive member path\")"
+        }
+      ]
+    }
+  ]
+}

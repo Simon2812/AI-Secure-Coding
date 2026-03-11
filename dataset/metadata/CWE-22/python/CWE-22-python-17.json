@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-17",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-17",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target_path = base_path / item_name",
+          "replacement": "target_path = (base_path / item_name).resolve()\n            if base_path.resolve() not in target_path.parents:\n                raise ValueError(\"invalid path\")"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-20",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-20",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path_value = f\"{helpers.utils.TESTFILES_DIR}/{entry_name}\"",
+          "replacement": "base = helpers.utils.TESTFILES_DIR\n            candidate = f\"{base}/{entry_name}\"\n            normalized = candidate.replace('\\\\', '/').replace('//', '/')\n            if not normalized.startswith(base):\n                raise ValueError(\"invalid path\")\n            path_value = normalized"
+        }
+      ]
+    }
+  ]
+}

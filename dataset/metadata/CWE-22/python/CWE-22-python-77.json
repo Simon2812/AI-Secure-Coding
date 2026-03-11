@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-77",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-77",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": []
+}

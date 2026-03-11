@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-26",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-26",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "file_path = f\"{helpers.utils.TESTFILES_DIR}/{package_name}\"",
+          "replacement": "import re\n            safe = re.fullmatch(r\"[A-Za-z0-9_.-]+\", package_name)\n            if not safe:\n                raise ValueError(\"invalid filename\")\n            file_path = f\"{helpers.utils.TESTFILES_DIR}/{package_name}\""
+        }
+      ]
+    }
+  ]
+}

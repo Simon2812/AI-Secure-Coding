@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-45",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-45",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "file_ref = ref + \".mp3\"\npath = os.path.join(media_root, file_ref)\n\nwith open(path, \"rb\") as src:\n    return src.read()",
+          "replacement": "catalog = {\"intro\": \"intro.mp3\", \"theme\": \"theme.mp3\", \"outro\": \"outro.mp3\"}\nif ref not in catalog:\n    raise ValueError(\"unknown media id\")\npath = os.path.join(media_root, catalog[ref])\n\nwith open(path, \"rb\") as src:\n    return src.read()"
+        }
+      ]
+    }
+  ]
+}

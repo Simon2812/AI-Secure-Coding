@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-60",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-60",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "output_file = os.path.join(folder, name)",
+          "replacement": "if not name.endswith(\".csv\") or \"..\" in name or \"/\" in name or \"\\\\\" in name:\n    raise ValueError(\"invalid export name\")\noutput_file = os.path.join(folder, name)"
+        }
+      ]
+    }
+  ]
+}

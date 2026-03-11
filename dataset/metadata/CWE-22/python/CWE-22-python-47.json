@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-47",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-47",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "entry = row[\"file\"]\npath = os.path.join(base_dir, entry)\n\nwith open(path, \"r\", encoding=\"utf-8\") as src:\n    results.append(src.read())",
+          "replacement": "entry = row[\"file\"]\ncandidate = os.path.abspath(os.path.join(base_dir, entry))\nroot = os.path.abspath(base_dir)\nif os.path.commonpath([root, candidate]) != root:\n    raise ValueError(\"invalid dataset path\")\n\nwith open(candidate, \"r\", encoding=\"utf-8\") as src:\n    results.append(src.read())"
+        }
+      ]
+    }
+  ]
+}

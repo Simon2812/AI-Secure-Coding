@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-42",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-42",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "file_path = self.root + \"/\" + name\nwith open(file_path, \"r\", encoding=\"utf-8\") as reader:\n    return reader.read()",
+          "replacement": "candidate = os.path.abspath(os.path.join(self.root, name))\nbase = os.path.abspath(self.root)\nif os.path.commonpath([base, candidate]) != base:\n    raise ValueError(\"invalid template path\")\nwith open(candidate, \"r\", encoding=\"utf-8\") as reader:\n    return reader.read()"
+        }
+      ]
+    }
+  ]
+}

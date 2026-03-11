@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-32",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-32",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "candidate = os.path.join(archive_root, item)\nreturn send_file(candidate, as_attachment=True)",
+          "replacement": "candidate = os.path.abspath(os.path.join(archive_root, item))\nroot_abs = os.path.abspath(archive_root)\nif os.path.commonpath([root_abs, candidate]) != root_abs:\n    abort(400)\nreturn send_file(candidate, as_attachment=True)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-25",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-25",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target_file = f\"{helpers.utils.TESTFILES_DIR}/{export_name}\"",
+          "replacement": "clean = ''.join(ch for ch in export_name if ch.isalnum() or ch in ('-', '_', '.'))\n            target_file = f\"{helpers.utils.TESTFILES_DIR}/{clean}\""
+        }
+      ]
+    }
+  ]
+}

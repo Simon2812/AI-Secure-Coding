@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-52",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-52",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "src = os.path.join(source_root, item)\ndst = os.path.join(dest_root, item)\n\nshutil.copyfile(src, dst)",
+          "replacement": "p = Path(item)\nif p.suffix not in {\".txt\", \".log\"} or p.name != item:\n    raise ValueError(\"invalid sync entry\")\n\nsrc = os.path.join(source_root, item)\ndst = os.path.join(dest_root, item)\n\nshutil.copyfile(src, dst)"
+        }
+      ]
+    }
+  ]
+}
