@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-35",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-35",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(dst, src, count * sizeof(int));",
+          "replacement": "if (count > (int)(sizeof(target) / sizeof(target[0])))\n{\ncount = (int)(sizeof(target) / sizeof(target[0]));\n}\nmemcpy(dst, src, count * sizeof(int));"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-45",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-45",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "while (p < amount)\n{\ndst[p] = p + 1;\np++;\n}",
+          "replacement": "while (p < amount && p < size)\n{\ndst[p] = p + 1;\np++;\n}"
+        }
+      ]
+    }
+  ]
+}

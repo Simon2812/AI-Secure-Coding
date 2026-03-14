@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-52",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-52",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "int pos = base + step * 7;\nm->payload[pos] = (unsigned char)(pos & 0xFF);",
+          "replacement": "int pos = base + step * 7;\nif (pos >= 0 && pos < 40)\n{\nm->payload[pos] = (unsigned char)(pos & 0xFF);\n}"
+        }
+      ]
+    }
+  ]
+}

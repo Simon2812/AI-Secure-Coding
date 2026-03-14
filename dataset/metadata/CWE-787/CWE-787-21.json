@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-21",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-21",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "if (pos < 20)",
+          "replacement": "if (pos >= 0 && pos < 20)"
+        }
+      ]
+    }
+  ]
+}

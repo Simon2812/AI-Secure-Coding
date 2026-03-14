@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-34",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < amount; i++)\n{\nif (fgets(buffer, sizeof(buffer), source) == NULL)\n{\nbreak;\n}\n\nsscanf(buffer, \"%d %15s\", &records[i].id, records[i].label);\n}",
+          "replacement": "if (amount > (int)(sizeof(records) / sizeof(records[0])))\n{\nreturn;\n}\n\nfor (i = 0; i < amount; i++)\n{\nif (fgets(buffer, sizeof(buffer), source) == NULL)\n{\nbreak;\n}\n\nsscanf(buffer, \"%d %15s\", &records[i].id, records[i].label);\n}"
+        }
+      ]
+    }
+  ]
+}

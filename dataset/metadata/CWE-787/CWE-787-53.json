@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-53",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-53",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < 6; i++)\n{\nt->values[start + i] = window[i];\n}",
+          "replacement": "for (i = 0; i < 6 && start + i < 20 && start + i >= 0; i++)\n{\nt->values[start + i] = window[i];\n}"
+        }
+      ]
+    }
+  ]
+}

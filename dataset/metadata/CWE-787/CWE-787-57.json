@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-57",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < count; i++)\n{\n*cursor = i * 11;\ncursor++;\n}",
+          "replacement": "for (i = 0; i < count && i < log->capacity; i++)\n{\n*cursor = i * 11;\ncursor++;\n}"
+        }
+      ]
+    }
+  ]
+}

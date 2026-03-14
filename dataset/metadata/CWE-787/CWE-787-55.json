@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-55",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-55",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(b->packet + cursor, b->body, body_len);",
+          "replacement": "if (body_len >= 0 && cursor >= 0 && cursor + body_len <= 28)\n{\nmemcpy(b->packet + cursor, b->body, body_len);\n}"
+        }
+      ]
+    }
+  ]
+}

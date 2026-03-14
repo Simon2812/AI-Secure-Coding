@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-58",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-58",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(a->region + offset, pattern, sizeof(pattern));",
+          "replacement": "if (offset >= 0 && offset + sizeof(pattern) <= 30)\n{\nmemcpy(a->region + offset, pattern, sizeof(pattern));\n}"
+        }
+      ]
+    }
+  ]
+}

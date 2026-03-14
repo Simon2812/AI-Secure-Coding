@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-50",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-50",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "int index = row * 3 + col;\ng->cells[index] = row + col;",
+          "replacement": "int index = row * 3 + col;\nif (index >= 0 && index < 6)\n{\ng->cells[index] = row + col;\n}"
+        }
+      ]
+    }
+  ]
+}

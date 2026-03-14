@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-40",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-40",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "int *cursor = logbuf + index;\n*cursor = 77;",
+          "replacement": "if (index >= 0 && index < 6)\n{\nint *cursor = logbuf + index;\n*cursor = 77;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-54",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-54",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "s->buffer[write_pos] = temp[i];\nwrite_pos++;",
+          "replacement": "if (write_pos >= 0 && write_pos < 32)\n{\ns->buffer[write_pos] = temp[i];\nwrite_pos++;\n}"
+        }
+      ]
+    }
+  ]
+}
