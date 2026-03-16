@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-21",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-21",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "int *cursor = &values[4];\n\n    free(values);\n\n    int result = sum_three(cursor);",
+          "replacement": "int tmp[3];\n    tmp[0] = values[4];\n    tmp[1] = values[5];\n    tmp[2] = values[6];\n\n    free(values);\n\n    int result = sum_three(tmp);"
+        }
+      ]
+    }
+  ]
+}
