@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-30",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-30",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "Resource *shared = res;\n\n    module_cleanup(res);\n\n    int result = module_use(shared);",
+          "replacement": "Resource copy;\n    copy.data = (char *)malloc(strlen(res->data) + 1);\n    strcpy(copy.data, res->data);\n\n    module_cleanup(res);\n\n    int result = module_use(&copy);"
+        }
+      ]
+    }
+  ]
+}

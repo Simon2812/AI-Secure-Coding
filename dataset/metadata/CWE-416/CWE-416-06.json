@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-06",
+  "language": "cpp",
+  "path": "/dataset/normalized/CWE-416/CWE-416-06",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "delete [] entries;\n\n    int64_t first = entries[0];",
+          "replacement": "int64_t first = entries[0];\n\n    delete [] entries;"
+        }
+      ]
+    }
+  ]
+}

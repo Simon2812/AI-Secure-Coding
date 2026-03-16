@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-03",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-416/CWE-416-03",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "free(values);\n\n    printf(\"%ld\\n\", values[0]);",
+          "replacement": "printf(\"%ld\\n\", values[0]);\n\n    free(values);"
+        }
+      ]
+    }
+  ]
+}
