@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-c-13",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-327/c/CWE-327-c-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "CALG_DES",
+          "replacement": "CALG_AES_256"
+        },
+        {
+          "origin": "CALG_RC4",
+          "replacement": "CALG_AES_256"
+        }
+      ]
+    }
+  ]
+}
