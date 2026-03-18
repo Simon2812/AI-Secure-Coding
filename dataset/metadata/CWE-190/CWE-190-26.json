@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-26",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-26",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "printf(\"%d\\n\", price - discount);",
+          "replacement": "if (price < INT_MIN + discount)\n{\n    puts(\"value out of range\");\n}\nelse\n{\n    printf(\"%d\\n\", price - discount);\n}"
+        }
+      ]
+    }
+  ]
+}

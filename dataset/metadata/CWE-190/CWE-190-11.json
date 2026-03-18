@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-11",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-11",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int squared = value * value;",
+          "replacement": "int squared = 0;\nif (value != 0 && (value > 0 ? value <= INT_MAX / value : value >= INT_MIN / value)) {\n    squared = value * value;\n}"
+        }
+      ]
+    }
+  ]
+}

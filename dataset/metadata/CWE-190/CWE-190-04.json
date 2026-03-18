@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-04",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-04",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "char doubled = symbol * 10;",
+          "replacement": "if (symbol > CHAR_MAX / 10) {\n    puts(\"overflow\");\n    return;\n}\nchar doubled = symbol * 10;"
+        }
+      ]
+    }
+  ]
+}
