@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-13",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "ALG_ID alg = (strlen(text) < 8) ? CALG_MD5 : CALG_SHA1;",
+          "replacement": "ALG_ID alg = CALG_SHA_256;"
+        }
+      ]
+    }
+  ]
+}
