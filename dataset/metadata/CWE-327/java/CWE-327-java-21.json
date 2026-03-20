@@ -4,8 +4,8 @@
   "language": "java",
   "path": "/dataset/synthetic/CWE-327/java/CWE-327-java-21",
   "source": {
-    "type": "synthetic",
-    "name": null
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
   },
   "vulnerabilities": []
 }
