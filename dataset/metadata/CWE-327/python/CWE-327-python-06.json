@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-python-06",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-327/python/CWE-327-python-06",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "checksum = hashlib.sha1(data).hexdigest()",
+          "replacement": "checksum = hashlib.sha256(data).hexdigest()"
+        }
+      ]
+    }
+  ]
+}
