@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-python-04",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-328/python/CWE-328-python-04",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "'md5'",
+          "replacement": "'sha256'"
+        }
+      ]
+    }
+  ]
+}
