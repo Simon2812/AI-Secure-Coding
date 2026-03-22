@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-13",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-321/c/CWE-321-c-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "strcpy(material, \"SessionValue\");",
+          "replacement": "FILE *fp = fopen(\"key.txt\", \"r\");\nif (fp != NULL)\n{\n    fgets(material, sizeof(material), fp);\n    fclose(fp);\n}"
+        }
+      ]
+    }
+  ]
+}
