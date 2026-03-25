@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-12",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-12",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "String keyValue = \"5f2d9c7a1b3e8d44\";",
+          "replacement": "String keyValue = new String(Files.readAllBytes(Paths.get(\"/etc/app/key\")), \"UTF-8\");"
+        }
+      ]
+    }
+  ]
+}

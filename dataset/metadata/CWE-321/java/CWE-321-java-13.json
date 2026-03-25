@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-13",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "String material = \"c1a9e7d45b2f8a63\";",
+          "replacement": "String material = System.getProperty(\"report.key\");"
+        }
+      ]
+    }
+  ]
+}

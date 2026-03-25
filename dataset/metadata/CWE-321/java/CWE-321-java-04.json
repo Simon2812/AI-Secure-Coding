@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-04",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-321/java/CWE-321-java-04",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "material = \"k9D31pLm2Qa7sX0r\";",
+          "replacement": "material = System.console() != null ? System.console().readLine() : null;"
+        }
+      ]
+    }
+  ]
+}

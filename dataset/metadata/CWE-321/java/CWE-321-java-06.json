@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-06",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-321/java/CWE-321-java-06",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "selectedValue = \"zX7pL2mQ9vT4sR8w\";",
+          "replacement": "selectedValue = System.getProperty(\"runtime.key\");"
+        }
+      ]
+    }
+  ]
+}

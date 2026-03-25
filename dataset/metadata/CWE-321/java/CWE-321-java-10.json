@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-10",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-10",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = \"d3c4b5a697887766\";",
+          "replacement": "secret = System.getenv(\"HEADER_KEY\");"
+        }
+      ]
+    }
+  ]
+}

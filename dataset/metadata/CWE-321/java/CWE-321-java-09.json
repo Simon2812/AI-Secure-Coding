@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-09",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-09",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "material = \"a94f3c2b7d6e1f08\";",
+          "replacement": "material = System.getenv(\"RUNTIME_KEY\");"
+        }
+      ]
+    }
+  ]
+}
