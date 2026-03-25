@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-15",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "internal_key = \"ExportGate!91\"",
+          "replacement": "import os\ninternal_key = os.environ[\"EXPORT_GATE_KEY\"]"
+        }
+      ]
+    }
+  ]
+}
