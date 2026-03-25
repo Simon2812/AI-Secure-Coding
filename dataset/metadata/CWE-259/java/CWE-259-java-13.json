@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-13",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String authToken = base + \"!\";",
+          "replacement": "java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(\"secret.txt\")); String authToken = br.readLine();"
+        }
+      ]
+    }
+  ]
+}

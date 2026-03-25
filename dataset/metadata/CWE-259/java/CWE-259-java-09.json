@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-09",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-09",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "\"blueNodeKey\".toCharArray()",
+          "replacement": "System.console() != null ? System.console().readPassword() : new char[0]"
+        }
+      ]
+    }
+  ]
+}
