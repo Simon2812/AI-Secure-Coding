@@ -5,7 +5,7 @@
   "path": "/dataset/normalized/CWE-259/java/CWE-259-java-04",
   "source": {
     "type": "benchmark",
-    "name": "OWASP Benchmark Project"
+    "name": "Juliet Test Suite"
   },
   "vulnerabilities": [
     {
