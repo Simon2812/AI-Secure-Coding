@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-03",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-03",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"key_material\": b\"c2VydmljZS1hcmNoaXZlLWtleS0yMQ==\"",
+          "replacement": "\"key_material\": os.environ[\"ARCHIVE_KEY\"]"
+        }
+      ]
+    }
+  ]
+}

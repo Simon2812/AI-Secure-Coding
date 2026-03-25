@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-09",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-09",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "DEFAULT_KEY = b\"store-default-key-9922\"",
+          "replacement": "import os\nDEFAULT_KEY = os.environ[\"STORE_KEY\"].encode(\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

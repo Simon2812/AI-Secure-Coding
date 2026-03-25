@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-13",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = \"k9!2#vPq7Lm$4sTz\"",
+          "replacement": "import getpass\nsecret = getpass.getpass(\"Sealer key: \")"
+        }
+      ]
+    }
+  ]
+}

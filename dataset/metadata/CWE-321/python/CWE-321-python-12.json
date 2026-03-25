@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-12",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-12",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "def _resolve_key(k=b\"\\x8a\\x91\\x02\\xfe\\x77\\x44\\x10\\xaa\\xbb\\xcc\\xdd\\xee\\x01\\x02\\x03\\x04\"):",
+          "replacement": "import os\ndef _resolve_key(k=None):\n    return os.environ[\"DISPATCH_KEY\"].encode(\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}
