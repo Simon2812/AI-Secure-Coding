@@ -14,7 +14,7 @@
       "fixes": [
         {
           "origin": "char storage[15];",
-          "replacement": "char storage[15];"
+          "replacement": "char storage[16];"
         }
       ]
     }
