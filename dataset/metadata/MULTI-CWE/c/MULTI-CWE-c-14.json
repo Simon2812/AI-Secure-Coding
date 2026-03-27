@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-14",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return n * 100;",
+          "replacement": "if (n <= 0 || n > INT_MAX / 100)\n{\n    return 0;\n}\nreturn n * 8;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcpy(buf, name);",
+          "replacement": "strncpy(buf, name, size - 1);\nbuf[size - 1] = '\\0';"
+        }
+      ]
+    }
+  ]
+}

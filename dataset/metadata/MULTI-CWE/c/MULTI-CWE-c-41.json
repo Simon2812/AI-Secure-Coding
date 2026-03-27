@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-41",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-41",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

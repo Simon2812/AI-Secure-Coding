@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-30",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-30",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "buf[strlen(buf)] = '0' + (i % 10);",
+          "replacement": "if (strlen(buf) < n * 16 - 1)\n{\n    buf[strlen(buf)] = '0' + (i % 10);\n}"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "free(ptr);\n\n    printf(\"%s\\n\", alias);",
+          "replacement": "printf(\"%s\\n\", alias);\n\n    free(ptr);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "strcat(cmd, path);\n    system(cmd);",
+          "replacement": "execl(\"/bin/cat\", \"cat\", path, (char *)NULL);"
+        }
+      ]
+    }
+  ]
+}

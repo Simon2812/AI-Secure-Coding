@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-21",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-21",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return count * (int)sizeof(long);",
+          "replacement": "if (count <= 0 || count > INT_MAX / (int)sizeof(long))\n{\n    return 0;\n}\nreturn count * (int)sizeof(long);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strncat(buf, suffix, strlen(suffix));",
+          "replacement": "strncat(buf, suffix, bytes > 0 ? (size_t)(bytes - strlen(buf) - 1) : 0);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "snprintf(command, sizeof(command), \"ls -l %s\", path);\nsystem(command);",
+          "replacement": "execl(\"/bin/ls\", \"ls\", \"-l\", path, (char *)NULL);"
+        }
+      ]
+    }
+  ]
+}

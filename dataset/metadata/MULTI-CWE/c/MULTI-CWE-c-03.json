@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-03",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-03",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return item_count * (int)sizeof(int);",
+          "replacement": "if (item_count <= 0 || item_count > (int)(SIZE_MAX / sizeof(int)))\n{\n    return 0;\n}\nreturn item_count * (int)sizeof(int);"
+        }
+      ]
+    }
+  ]
+}

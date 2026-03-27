@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-24",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-24",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"k9f3L2x8Qw7Zp4Mn\"",
+          "replacement": "fgets(p->key, sizeof(p->key), stdin)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "\"RC4\"",
+          "replacement": "\"AES-256\""
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "\"SHA1\"",
+          "replacement": "\"SHA-256\""
+        }
+      ]
+    }
+  ]
+}

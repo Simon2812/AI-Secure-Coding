@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-25",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-25",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-256",
+      "fixes": [
+        {
+          "origin": "\"A9xT7v2Q\"",
+          "replacement": "fgets((char *)s->password, sizeof(s->password), stdin)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "s->buffer[offset + i] = argv[2][i];",
+          "replacement": "if (offset + i < (int)sizeof(s->buffer) - 1)\n{\n    s->buffer[offset + i] = argv[2][i];\n}"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "strcat(cmd, file);\nsystem(cmd);",
+          "replacement": "execl(\"/bin/cat\", \"cat\", file, (char *)NULL);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-27",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-27",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return index + 1000000000;",
+          "replacement": "if (index > INT_MAX - 1000000000)\n{\n    return 0;\n}\nreturn index + 1000000000;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "text[len + i] = extra[i];",
+          "replacement": "if (len + i < 63)\n{\n    text[len + i] = extra[i];\n}"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "free(text);\n\n    process_text(alias);",
+          "replacement": "process_text(alias);\n\n    free(text);"
+        }
+      ]
+    }
+  ]
+}

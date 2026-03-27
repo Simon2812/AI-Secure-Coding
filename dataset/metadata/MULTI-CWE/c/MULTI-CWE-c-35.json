@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-35",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-35",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int total = count * 4;",
+          "replacement": "if (count <= 0 || count > INT_MAX / 4)\n{\n    return 0;\n}\nint total = count * 4;"
+        },
+        {
+          "origin": "buf = allocate(size);",
+          "replacement": "if (size <= 0)\n{\n    return 0;\n}\nbuf = allocate(size);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcat(buf, src);",
+          "replacement": "strncat(buf, src, size - strlen(buf) - 1);"
+        }
+      ]
+    }
+  ]
+}
