@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-15",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-15",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String adminPassword = \"superSecret930@\";",
+          "replacement": "String adminPassword = config.getProperty(\"admin.password\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"bash -c \" + op;",
+          "replacement": "if (!op.equals(\"status\") && !op.equals(\"restart\")) throw new IllegalArgumentException();\nString command = \"bash -c \" + op;"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-22",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-22",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-512"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"globalKey123456\"",
+          "replacement": "System.getenv(\"SESSION_KEY\")"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "Cipher.getInstance(\"AES\")",
+          "replacement": "Cipher.getInstance(\"AES/GCM/NoPadding\")"
+        }
+      ]
+    }
+  ]
+}

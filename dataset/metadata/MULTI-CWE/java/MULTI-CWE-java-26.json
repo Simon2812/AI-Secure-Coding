@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-26",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-26",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String expectedPassword = \"rootPass!\";",
+          "replacement": "String expectedPassword = config.getProperty(\"password\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"sh -c \" + op;",
+          "replacement": "String command = op.equals(\"status\") ? \"sh -c systemctl status\" : \"sh -c systemctl restart\";"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"fixedGlobalKey\"",
+          "replacement": "System.getenv(\"GLOBAL_KEY\")"
+        }
+      ]
+    }
+  ]
+}

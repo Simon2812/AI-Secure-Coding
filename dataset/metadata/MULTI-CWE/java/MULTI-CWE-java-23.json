@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-23",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-23",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String expectedPassword = \"admin123\";",
+          "replacement": "String expectedPassword = System.getenv(\"ADMIN_PASSWORD\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT info FROM users WHERE name = '\" + user + \"'\";",
+          "replacement": "String query = user.equals(\"admin\") ? \"SELECT info FROM users WHERE name='admin'\" : \"SELECT info FROM users WHERE name='guest'\";"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + action;",
+          "replacement": "if (!action.equals(\"status\") && !action.equals(\"restart\")) throw new IllegalArgumentException();\nString cmd = \"sh -c \" + action;"
+        }
+      ]
+    }
+  ]
+}

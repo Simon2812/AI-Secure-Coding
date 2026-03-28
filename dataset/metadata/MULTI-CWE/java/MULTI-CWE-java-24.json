@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-24",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-24",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT content FROM export_data WHERE category = '\" + category + \"'\";",
+          "replacement": "String safe = category.matches(\"[a-zA-Z0-9_]+\") ? category : \"default\";\nString query = \"SELECT content FROM export_data WHERE category = '\" + safe + \"'\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(exportRoot + \"/\" + name);",
+          "replacement": "java.util.Map<String,String> allowed = java.util.Map.of(\"daily\",\"daily.txt\",\"full\",\"full.txt\");\nFile f = new File(exportRoot + \"/\" + allowed.getOrDefault(name, \"daily.txt\"));"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-256"
+        }
+      ]
+    }
+  ]
+}

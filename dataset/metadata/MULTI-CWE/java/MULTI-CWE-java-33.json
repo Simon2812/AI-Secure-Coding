@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-33",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-33",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "private String primaryKey = \"A1B2C3D4E5F60718293A4B5C6D7E8F90\";",
+          "replacement": "private String primaryKey = System.getenv(\"PRIMARY_KEY\");"
+        },
+        {
+          "origin": "String backupKey = \"9F8E7D6C5B4A39281716151413121110\";",
+          "replacement": "String backupKey = System.getenv(\"BACKUP_KEY\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "Cipher cipher = Cipher.getInstance(\"AES\");",
+          "replacement": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");"
+        }
+      ]
+    }
+  ]
+}

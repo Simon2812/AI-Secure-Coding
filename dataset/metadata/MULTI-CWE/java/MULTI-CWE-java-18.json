@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-18",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-18",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String expectedPassword = \"configPass99\";",
+          "replacement": "String expectedPassword = System.getenv(\"CONFIG_PASS\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "String key = \"fixedKeyValue\";",
+          "replacement": "String key = value;"
+        }
+      ]
+    }
+  ]
+}

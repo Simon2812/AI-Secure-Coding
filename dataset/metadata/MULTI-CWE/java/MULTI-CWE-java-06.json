@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-06",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-06",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "SecretKeySpec key = new SecretKeySpec(keyBytes, \"DES\");\n\nCipher cipher = Cipher.getInstance(\"DES\");",
+          "replacement": "SecretKeySpec key = new SecretKeySpec(keyBytes, \"AES\");\n\nCipher cipher = Cipher.getInstance(\"AES\");"
+        }
+      ]
+    }
+  ]
+}

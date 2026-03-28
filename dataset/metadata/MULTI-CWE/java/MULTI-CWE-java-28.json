@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-28",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-28",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(baseDir + \"/\" + relativePath);",
+          "replacement": "File f = new File(baseDir, relativePath).getCanonicalFile();"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"0123456789ABCDEF0123456789ABCDEF\"",
+          "replacement": "System.getenv(\"TEMPLATE_KEY\")"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "SHA-1",
+          "replacement": "SHA-512"
+        }
+      ]
+    }
+  ]
+}

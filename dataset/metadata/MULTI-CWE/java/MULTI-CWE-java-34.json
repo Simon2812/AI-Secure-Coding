@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-34",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path p = Paths.get(root + \"/\" + name);",
+          "replacement": "Path p = Paths.get(root, name).normalize();"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + action;",
+          "replacement": "if (!action.matches(\"[a-zA-Z0-9_ -]+\")) throw new IllegalArgumentException();\nString cmd = \"sh -c \" + action;"
+        }
+      ]
+    }
+  ]
+}

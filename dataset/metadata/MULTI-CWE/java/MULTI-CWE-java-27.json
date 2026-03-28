@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-27",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-27",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"type=\" + type;",
+          "replacement": "String query = type.equals(\"finance\") ? \"type=finance\" : \"type=ops\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "SHA-1",
+          "replacement": "SHA-256"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"4F9A1C3E7B2D8A6C5E4F1A2B3C4D5E6F\"",
+          "replacement": "System.getenv(\"REPORT_KEY\")"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "Cipher.getInstance(\"AES\")",
+          "replacement": "Cipher.getInstance(\"AES/GCM/NoPadding\")"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-08",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n        \"SELECT entry FROM audit_log WHERE type = '\" + t + \"' AND owner = '\" + o + \"'\";",
+          "replacement": "String query = \"SELECT entry FROM audit_log WHERE type = ? AND owner = ?\";"
+        }
+      ]
+    }
+  ]
+}
