@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "SAFE-NONCWE-java-20",
+  "language": "java",
+  "path": "/dataset/synthetic/SAFE-NONCWE/java/SAFE-NONCWE-java-20",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}
