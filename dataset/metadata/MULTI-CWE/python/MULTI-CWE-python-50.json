@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-50",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-50",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}
