@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-25",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-25",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "key = secret.encode(\"utf-8\")[:8]\ncipher = DES.new(key, DES.MODE_ECB)",
+          "replacement": "key = secret.encode(\"utf-8\")[:16]\ncipher = AES.new(key, AES.MODE_CBC)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{tool_name} {export_file} {remote_target}\"\ncompleted = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "tool_name = {\"scp\": \"scp\", \"rsync\": \"rsync\"}.get(tool_name, \"scp\")\ncompleted = subprocess.run(\n    [tool_name, str(export_file), remote_target],\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, partner, external_id, amount, currency, status \"\n    \"FROM payout_ledger \"\n    \"WHERE partner = '\" + partner + \"' \"\n    \"AND status = '\" + status + \"' \"\n    \"ORDER BY created_at ASC \"\n    f\"LIMIT {limit}\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, partner, external_id, amount, currency, status \"\n    \"FROM payout_ledger \"\n    \"WHERE partner = ? \"\n    \"AND status = ? \"\n    \"ORDER BY created_at ASC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(statement, (partner, status, limit))"
+        }
+      ]
+    }
+  ]
+}

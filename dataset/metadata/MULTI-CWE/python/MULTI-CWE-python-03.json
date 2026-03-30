@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-03",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-03",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"ping -c 1 {hostname} && echo MODE={mode}\"\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "result = subprocess.run(\n    [\"ping\", \"-c\", \"1\", hostname],\n    capture_output=True,\n    text=True,\n)\nresult.stdout += f\"\\nMODE={mode}\""
+        }
+      ]
+    }
+  ]
+}

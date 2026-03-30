@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-35",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-35",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "self.algorithm = \"DES\"",
+          "replacement": "self.algorithm = \"AES\""
+        },
+        {
+          "origin": "cipher = DES.new(key, DES.MODE_ECB)",
+          "replacement": "from Crypto.Cipher import AES\ncipher = AES.new(key[:16], AES.MODE_CBC)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "return b\"weakkey!\"",
+          "replacement": "return os.environ.get(\"CRYPTO_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-30",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-30",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"media-review-signing-key\"",
+          "replacement": "secret = os.environ.get(\"MEDIA_REVIEW_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{preview_tool} {staged_file}\"\ncompleted = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "preview_tool = {\"file\": \"file\", \"identify\": \"identify\"}.get(preview_tool, \"file\")\ncompleted = subprocess.run(\n    [preview_tool, str(staged_file)],\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "script = (\n    \"UPDATE moderation_batches SET reviewer = '\"\n    + reviewer\n    + \"', notes = '\"\n    + notes\n    + \"', updated_at = '\"\n    + datetime.utcnow().isoformat()\n    + \"' WHERE batch_id = '\"\n    + batch_id\n    + \"';\"\n)\ncursor.executescript(script)\nconnection.commit()",
+          "replacement": "cursor.execute(\n    \"UPDATE moderation_batches SET reviewer = ?, notes = ?, updated_at = ? WHERE batch_id = ?\",\n    (reviewer, notes, datetime.utcnow().isoformat(), batch_id),\n)\nconnection.commit()"
+        }
+      ]
+    }
+  ]
+}

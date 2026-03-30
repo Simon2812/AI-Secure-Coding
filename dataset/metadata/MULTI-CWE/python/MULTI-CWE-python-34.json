@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-34",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "return f\"{tool_name} {target}\"",
+          "replacement": "tool_name = {\"file\": \"file\", \"identify\": \"identify\"}.get(tool_name, \"file\")\nreturn [tool_name, str(target)]"
+        },
+        {
+          "origin": "proc = subprocess.run(\n    command,\n    shell=True,\n    cwd=str(self.workspace),\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "proc = subprocess.run(\n    command,\n    cwd=str(self.workspace),\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    }
+  ]
+}

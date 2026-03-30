@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-02",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-02",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "return (base_dir / user_path).resolve()",
+          "replacement": "candidate = (base_dir / os.path.basename(user_path)).resolve()\nif base_dir not in candidate.parents and candidate != base_dir:\n    raise RuntimeError(\"invalid path\")\nreturn candidate"
+        }
+      ]
+    }
+  ]
+}

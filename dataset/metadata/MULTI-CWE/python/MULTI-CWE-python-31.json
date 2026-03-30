@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-31",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-31",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{tool} --json {target}\"\ncompleted = subprocess.run(\n    command,\n    shell=True,\n    cwd=str(workspace),\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "tool = {\"netprobe\": \"netprobe\", \"traceprobe\": \"traceprobe\"}.get(tool, \"netprobe\")\ncompleted = subprocess.run(\n    [tool, \"--json\", target],\n    cwd=str(workspace),\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"gzip -f {trace_file} && {post_rotate}\"\nexit_code = os.system(command)",
+          "replacement": "completed = subprocess.run([\"gzip\", \"-f\", str(trace_file)])\nexit_code = completed.returncode"
+        }
+      ]
+    }
+  ]
+}

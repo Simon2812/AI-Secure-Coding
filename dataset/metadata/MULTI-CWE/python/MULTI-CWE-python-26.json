@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-26",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-26",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT id, username, role \"\n    \"FROM users \"\n    \"WHERE username = '\" + username + \"'\"\n)\n\ncur.execute(query)",
+          "replacement": "query = (\n    \"SELECT id, username, role \"\n    \"FROM users \"\n    \"WHERE username = ?\"\n)\n\ncur.execute(query, (username,))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target = self.root / name",
+          "replacement": "part = Path(name).name\ntarget = (self.root / part).resolve()\nif self.root not in target.parents and target != self.root:\n    return {}"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"{action} {resource}\"\n\nproc = subprocess.run(\n    cmd,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "allowed = {\"ls\": [\"ls\"], \"stat\": [\"stat\"]}\nbase = allowed.get(action, [\"ls\"])\ncmd = base + [resource]\n\nproc = subprocess.run(\n    cmd,\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "return b\"internal-default-key\"",
+          "replacement": "return os.environ.get(\"SERVICE_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

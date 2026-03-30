@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-09",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-09",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "sig = hashlib.sha1(raw).hexdigest()",
+          "replacement": "sig = hmac.new(self.secret, raw, hashlib.sha256).hexdigest()"
+        }
+      ]
+    }
+  ]
+}

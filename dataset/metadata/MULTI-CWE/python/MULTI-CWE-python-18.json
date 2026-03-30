@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-18",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-18",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "cipher = DES.new(secret.encode(\"utf-8\")[:8], DES.MODE_ECB)",
+          "replacement": "cipher = AES.new(secret.encode(\"utf-8\")[:16], AES.MODE_ECB)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, agent_name, region, status, content_json \"\n    \"FROM sync_jobs \"\n    \"WHERE tenant = '\" + tenant + \"' \"\n    \"AND region = '\" + region + \"' \"\n    \"AND status = '\" + status + \"' \"\n    \"ORDER BY created_at ASC \"\n    f\"LIMIT {limit}\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, agent_name, region, status, content_json \"\n    \"FROM sync_jobs \"\n    \"WHERE tenant = ? \"\n    \"AND region = ? \"\n    \"AND status = ? \"\n    \"ORDER BY created_at ASC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(statement, (tenant, region, status, limit))"
+        }
+      ]
+    }
+  ]
+}

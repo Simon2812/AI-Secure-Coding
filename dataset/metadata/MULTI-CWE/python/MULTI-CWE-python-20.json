@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-20",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-20",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"session-signing-key\"",
+          "replacement": "secret = os.environ.get(\"SESSION_SIGNING_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "sig = hashlib.sha1(raw).hexdigest()",
+          "replacement": "sig = hmac.new(secret, raw, hashlib.sha256).hexdigest()"
+        }
+      ]
+    }
+  ]
+}
