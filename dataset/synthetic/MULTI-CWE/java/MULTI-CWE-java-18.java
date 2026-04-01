@@ -1,5 +1,3 @@
-package dataset.synthetic.multi;
-
 import java.sql.*;
 import java.util.*;
 
