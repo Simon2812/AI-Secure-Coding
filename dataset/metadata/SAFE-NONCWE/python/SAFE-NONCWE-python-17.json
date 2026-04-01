@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "SAFE-NONCWE-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-17",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [] 
+}
