@@ -10,21 +10,21 @@
   "vulnerabilities": [
     {
       "id": "v1",
-      "cwe": "CWE-328",
+      "cwe": "CWE-78",
       "fixes": [
         {
-          "origin": "MD5",
-          "replacement": "SHA-256"
+          "origin": "String execCmd = \"sh -c \" + command;",
+          "replacement": "if (!(command.equals(\"uptime\") || command.equals(\"whoami\"))) throw new IllegalArgumentException();\nString execCmd = \"sh -c \" + command;"
         }
       ]
     },
     {
       "id": "v2",
-      "cwe": "CWE-327",
+      "cwe": "CWE-78",
       "fixes": [
         {
-          "origin": "DES",
-          "replacement": "AES"
+          "origin": "String postCmd = \"sh -c \" + script;",
+          "replacement": "if (!(script.equals(\"uptime\") || script.equals(\"whoami\"))) throw new IllegalArgumentException();\nString postCmd = \"sh -c \" + script;"
         }
       ]
     }
