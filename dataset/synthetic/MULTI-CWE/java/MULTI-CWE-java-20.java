@@ -1,59 +1,64 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.security.MessageDigest;
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
 
-public class SearchEngine {
+public class DeploymentService {
 
-    private List<String> records = new ArrayList<>();
+    private final Path baseDir;
 
-    public SearchEngine() {
-        records.add("alpha:user1");
-        records.add("beta:user2");
-        records.add("gamma:user3");
+    public DeploymentService(String baseDir) {
+        this.baseDir = Paths.get(baseDir);
     }
 
-    public List<String> search(String type) {
-        List<String> result = new ArrayList<>();
+    public void deploy(String command, String configFile) throws Exception {
 
-        String query = "type=" + type;
+        String execCmd = "sh -c " + command;
 
-        for (String r : records) {
-            if (r.startsWith(type + ":")) {
-                result.add(r);
-            }
+        Process p = Runtime.getRuntime().exec(execCmd);
+        p.waitFor();
+
+        List<String> steps = new ArrayList<>();
+        steps.add("validate");
+        steps.add("prepare");
+        steps.add("deploy");
+
+        if (steps.size() > 2) {
+            steps.add("done");
         }
 
-        return result;
+        loadConfig(configFile);
     }
 
-    public String fingerprint(String input) throws Exception {
-        MessageDigest d = MessageDigest.getInstance("MD5");
-        byte[] h = d.digest(input.getBytes());
-        return hex(h);
-    }
+    private void loadConfig(String configFile) throws Exception {
 
-    public String encrypt(String value) throws Exception {
-        javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("DES");
-        javax.crypto.SecretKey key =
-                new javax.crypto.spec.SecretKeySpec("k1234567".getBytes(), "DES");
+        Path config = resolve(configFile);
 
-        cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, key);
+        String content = Files.exists(config)
+                ? Files.readString(config)
+                : "";
 
-        byte[] out = cipher.doFinal(value.getBytes());
-        return java.util.Base64.getEncoder().encodeToString(out);
-    }
-
-    public String label(String input) throws Exception {
-        MessageDigest d = MessageDigest.getInstance("SHA-256");
-        byte[] h = d.digest(input.getBytes());
-        return hex(h);
-    }
-
-    private String hex(byte[] arr) {
-        StringBuilder sb = new StringBuilder();
-        for (byte b : arr) {
-            sb.append(Integer.toHexString((b & 0xff) | 0x100).substring(1));
+        int len = content.length();
+        if (len > 50) {
+            content = content.substring(0, 50);
         }
-        return sb.toString();
+
+        runPostStep(configFile);
+    }
+
+    private void runPostStep(String script) throws Exception {
+
+        String postCmd = "sh -c " + script;
+
+        Process p = Runtime.getRuntime().exec(postCmd);
+        p.waitFor();
+    }
+
+    private Path resolve(String file) {
+        String selected;
+        if ("prod".equals(file)) selected = "prod.conf";
+        else if ("dev".equals(file)) selected = "dev.conf";
+        else selected = "default.conf";
+
+        return baseDir.resolve(selected).normalize();
     }
 }
