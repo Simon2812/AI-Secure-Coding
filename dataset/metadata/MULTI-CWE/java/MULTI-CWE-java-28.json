@@ -10,31 +10,31 @@
   "vulnerabilities": [
     {
       "id": "v1",
-      "cwe": "CWE-22",
+      "cwe": "CWE-259",
       "fixes": [
         {
-          "origin": "File f = new File(baseDir + \"/\" + relativePath);",
-          "replacement": "File f = new File(baseDir, relativePath).getCanonicalFile();"
+          "origin": "String storedPassword = \"admin123\";",
+          "replacement": "String storedPassword = System.getenv(\"ADMIN_PASS\");"
         }
       ]
     },
     {
       "id": "v2",
-      "cwe": "CWE-321",
+      "cwe": "CWE-78",
       "fixes": [
         {
-          "origin": "\"0123456789ABCDEF0123456789ABCDEF\"",
-          "replacement": "System.getenv(\"TEMPLATE_KEY\")"
+          "origin": "String cmd = \"sh -c \" + command;",
+          "replacement": "if (!(command.equals(\"uptime\") || command.equals(\"whoami\"))) throw new IllegalArgumentException();\nString cmd = \"sh -c \" + command;"
         }
       ]
     },
     {
       "id": "v3",
-      "cwe": "CWE-328",
+      "cwe": "CWE-259",
       "fixes": [
         {
-          "origin": "SHA-1",
-          "replacement": "SHA-512"
+          "origin": "String internalKey = \"key-987654\";",
+          "replacement": "String internalKey = System.getenv(\"API_KEY\");"
         }
       ]
     }
