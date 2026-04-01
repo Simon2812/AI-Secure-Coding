@@ -10,21 +10,21 @@
   "vulnerabilities": [
     {
       "id": "v1",
-      "cwe": "CWE-259",
+      "cwe": "CWE-89",
       "fixes": [
         {
-          "origin": "String expectedPassword = \"configPass99\";",
-          "replacement": "String expectedPassword = System.getenv(\"CONFIG_PASS\");"
+          "origin": "String query =\n                \"SELECT id FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\";",
+          "replacement": "String query = \"SELECT id FROM users WHERE username = ? AND password = ?\";"
         }
       ]
     },
     {
       "id": "v2",
-      "cwe": "CWE-321",
+      "cwe": "CWE-89",
       "fixes": [
         {
-          "origin": "String key = \"fixedKeyValue\";",
-          "replacement": "String key = value;"
+          "origin": "String query =\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\";",
+          "replacement": "String query = \"SELECT name FROM employees WHERE department = ?\";"
         }
       ]
     }
