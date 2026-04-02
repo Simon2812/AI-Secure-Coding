@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-21",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-21",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT id, owner, task, status FROM jobs \"\n    \"WHERE owner = '\" + owner + \"' \"\n    \"AND status = '\" + status + \"'\"\n)\n\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT id, owner, task, status FROM jobs \"\n    \"WHERE owner = ? AND status = ?\"\n)\n\ncursor.execute(query, (owner, status))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"bash -c '{task}'\"\n\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True\n)",
+          "replacement": "result = subprocess.run(\n    [\"bash\", \"-c\", task],\n    capture_output=True,\n    text=True\n)"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "self.api_key = \"internal-api-key-123\"",
+          "replacement": "self.api_key = os.environ.get(\"API_KEY\", \"\")"
+        }
+      ]
+    }
+  ]
+}

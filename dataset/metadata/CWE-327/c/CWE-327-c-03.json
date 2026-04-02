@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-c-03",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-327/c/CWE-327-c-03",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "CALG_RC5",
+          "replacement": "CALG_AES_256"
+        }
+      ]
+    }
+  ]
+}

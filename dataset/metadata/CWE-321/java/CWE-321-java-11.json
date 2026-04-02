@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-11",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-11",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "String candidate = \"7a9c1e4d6b2f3a88\";",
+          "replacement": "String candidate = System.getProperty(\"batch.key\");"
+        }
+      ]
+    }
+  ]
+}

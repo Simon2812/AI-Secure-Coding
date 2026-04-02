@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-56",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-56",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveExportLocation(String key) {\n\n        Path folder = resourceBase.resolve(key);\n\n        return folder.resolve(\"report.txt\");\n    }",
+          "replacement": "private Path resolveExportLocation(String key) throws IOException {\n\n        Path base = resourceBase.toAbsolutePath().normalize();\n        Path target = base.resolve(key).resolve(\"report.txt\").normalize();\n\n        if (!target.startsWith(base)) {\n            throw new IOException(\"Invalid report path\");\n        }\n\n        return target;\n    }"
+        }
+      ]
+    }
+  ]
+}

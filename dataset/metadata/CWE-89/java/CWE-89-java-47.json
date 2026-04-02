@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-47",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-47",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"UPDATE users SET email=? WHERE id=\" + id;",
+          "replacement": "String sql = \"UPDATE users SET email=? WHERE id=?\";\njava.sql.PreparedStatement ps = conn.prepareStatement(sql);\nps.setString(1, email);\nps.setString(2, id);\nps.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}

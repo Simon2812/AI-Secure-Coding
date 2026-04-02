@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-27",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-27",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int remaining = stock - shipped;\nreturn remaining;",
+          "replacement": "if (stock < INT_MIN + shipped)\n{\n    puts(\"value out of range\");\n    return stock;\n}\nint remaining = stock - shipped;\nreturn remaining;"
+        }
+      ]
+    }
+  ]
+}

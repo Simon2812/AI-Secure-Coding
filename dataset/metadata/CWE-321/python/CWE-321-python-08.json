@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-08",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "prefix = \"ZXZlbnQt\"\n    middle = \"c2VjcmV0\"\n    suffix = \"-a2V5LTA4\"\n\n    combined = prefix + middle + suffix\n    key_bytes = base64.b64decode(combined.encode(\"utf-8\"))",
+          "replacement": "import os\nkey_bytes = base64.b64decode(os.environ[\"ENCODE_KEY\"].encode(\"utf-8\"))"
+        }
+      ]
+    }
+  ]
+}

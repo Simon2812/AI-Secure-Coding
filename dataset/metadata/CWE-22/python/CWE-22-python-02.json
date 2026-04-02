@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-02",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-02",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "handle = codecs.open(\n                f\"{helpers.utils.TESTFILES_DIR}/{candidate}\",\n                \"r\",\n                \"utf-8\"\n            )",
+          "replacement": "target_path = os.path.normpath(os.path.join(helpers.utils.TESTFILES_DIR, candidate))\n            base_path = os.path.abspath(helpers.utils.TESTFILES_DIR)\n            if not os.path.abspath(target_path).startswith(base_path + os.sep):\n                raise ValueError(\"invalid path\")\n            handle = codecs.open(target_path, \"r\", \"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

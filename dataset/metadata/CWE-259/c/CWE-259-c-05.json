@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-05",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-259/c/CWE-259-c-05",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "#define PASSWORD L\"managerToken88\"",
+          "replacement": "#define PASSWORD _wgetenv(L\"LOGIN_PASSWORD\")"
+        }
+      ]
+    }
+  ]
+}

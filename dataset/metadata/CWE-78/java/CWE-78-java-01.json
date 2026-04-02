@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-01",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process p = Runtime.getRuntime().exec(commandBase + pathPart);\np.waitFor();",
+          "replacement": "if (pathPart == null || !pathPart.matches(\"[A-Za-z0-9._/-]*\")) {\n    throw new IllegalArgumentException(\"Invalid path\");\n}\nProcess p = Runtime.getRuntime().exec(commandBase + pathPart);\np.waitFor();"
+        }
+      ]
+    }
+  ]
+}

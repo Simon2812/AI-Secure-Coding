@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-33",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-33",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO users (username, password) VALUES ('foo','\" + computedValue + \"')\";\ntry {\njava.sql.Statement statement = org.silverline.auditcase.helpers.DatabaseHelper.getSqlStatement();\nint count = statement.executeUpdate(sql, new String[] {\"USERNAME\", \"PASSWORD\"});",
+          "replacement": "String sql = \"INSERT INTO users (username, password) VALUES ('foo', ?)\";\ntry {\njava.sql.Connection connection = org.silverline.auditcase.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql, new String[] {\"USERNAME\", \"PASSWORD\"});\nstatement.setString(1, computedValue);\nint count = statement.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}

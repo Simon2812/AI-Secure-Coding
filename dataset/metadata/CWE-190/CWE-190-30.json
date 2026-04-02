@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-30",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-30",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "if (current - baseline > threshold)\n    return 1;",
+          "replacement": "long long diff = (long long)current - baseline;\nif (diff > threshold)\n    return 1;"
+        }
+      ]
+    }
+  ]
+}

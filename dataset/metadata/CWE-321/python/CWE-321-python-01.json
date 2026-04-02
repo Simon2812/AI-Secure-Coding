@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-01",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-01",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"Zmlyc3QtdnVsbmVyYWJsZS1rZXktMDE=\"",
+          "replacement": "import os\nsecret = os.environ[\"LOCKER_KEY\"].encode(\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

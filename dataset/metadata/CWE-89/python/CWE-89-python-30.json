@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-30",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-30.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "sql = (\"UPDATE job_queue \"\"SET status = 'DONE', completed_by = %s \"\"WHERE id = \" + job_id)\ncur.execute(sql, (worker,))",
+          "replacement": "sql = (\"UPDATE job_queue \"\"SET status = 'DONE', completed_by = %s \"\"WHERE id = %s\")\ncur.execute(sql, (worker, job_id))"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-36",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-36",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "source_file = os.path.join(workspace, requested)\n\nwith open(source_file, \"r\", encoding=\"utf-8\") as fp:\n    content = fp.read()",
+          "replacement": "source_file = os.path.join(workspace, requested)\nbase_path = os.path.abspath(workspace)\nresolved = os.path.abspath(source_file)\nif os.path.commonpath([base_path, resolved]) != base_path:\n    abort(400)\n\nwith open(resolved, \"r\", encoding=\"utf-8\") as fp:\n    content = fp.read()"
+        }
+      ]
+    }
+  ]
+}

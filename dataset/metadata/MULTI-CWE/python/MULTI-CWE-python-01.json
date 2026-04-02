@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-01",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-01",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT invoice_id, customer_name, total_amount, pdf_name \"\n    \"FROM invoices WHERE customer_name = '\" + customer + \"' \"\n    \"ORDER BY invoice_id DESC\"\n)\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT invoice_id, customer_name, total_amount, pdf_name \"\n    \"FROM invoices WHERE customer_name = ? \"\n    \"ORDER BY invoice_id DESC\"\n)\ncursor.execute(query, (customer,))"
+        }
+      ]
+    }
+  ]
+}

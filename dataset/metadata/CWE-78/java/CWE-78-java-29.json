@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-29",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-29",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "if (os != null && os.contains(\"Windows\")) {\n    shell = \"cmd.exe\";\n    flag = \"/c\";\n    cmdArgs = new String[] { shell, flag, \"ver\", item };\n} else {\n    shell = \"sh\";\n    flag = \"-c\";\n    cmdArgs = new String[] { shell, flag, \"uname -a \" + item };\n}",
+          "replacement": "if (!item.matches(\"[A-Za-z0-9._-]{0,64}\")) {\n    throw new ServletException(\"invalid input\");\n}\nif (os != null && os.contains(\"Windows\")) {\n    shell = \"cmd.exe\";\n    flag = \"/c\";\n    cmdArgs = new String[] { shell, flag, \"ver\" };\n} else {\n    shell = \"sh\";\n    flag = \"-c\";\n    cmdArgs = new String[] { shell, flag, \"uname -a \" + item };\n}"
+        }
+      ]
+    }
+  ]
+}

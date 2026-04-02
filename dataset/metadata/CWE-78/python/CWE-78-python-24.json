@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-24",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-24",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "args = [\"powershell\", \"-NoProfile\", \"-Command\", f\"Get-Process | Select-Object -First 5 | Where-Object {{$_.Name -like '*{term}*'}}\"]\nproc = subprocess.run(args, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "allowed = {\"chrome\": \"chrome\", \"python\": \"python\", \"explorer\": \"explorer\"}\nkey = term.lower()\nname = allowed.get(key)\nif name is None:\n    raise ValueError(\"Unsupported process filter\")\nargs = [\"powershell\", \"-NoProfile\", \"-Command\", \"Get-Process -Name \" + name + \" | Select-Object -First 5\"]\nproc = subprocess.run(args, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

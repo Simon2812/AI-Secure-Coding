@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-34",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "proc = subprocess.run([\"ping\", \"-c\", \"1\", target],\n    shell=False,\n    capture_output=True,\n    encoding=\"utf-8\")",
+          "replacement": "if not re.fullmatch(r\"[A-Za-z0-9.-]+\", target):\n    raise ValueError(\"Invalid host\")\nproc = subprocess.run([\"ping\", \"-c\", \"1\", target],\n    shell=False,\n    capture_output=True,\n    encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

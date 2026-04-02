@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-21",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-21",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "_wspawnv(_P_WAIT, COMMAND_INT_PATH, args);",
+          "replacement": "const wchar_t *arg = data + wcslen(COMMAND_ARG2);\nsize_t i = 0;\n\nwhile (arg[i] != L'\\0') {\n    wchar_t c = arg[i];\n    if (!(c == L' ' ||\n          c == L'.' ||\n          c == L'-' ||\n          c == L'_' ||\n          (c >= L'0' && c <= L'9') ||\n          (c >= L'A' && c <= L'Z') ||\n          (c >= L'a' && c <= L'z'))) {\n        return;\n    }\n    i++;\n}\n\n_wspawnv(_P_WAIT, COMMAND_INT_PATH, args);"
+        }
+      ]
+    }
+  ]
+}

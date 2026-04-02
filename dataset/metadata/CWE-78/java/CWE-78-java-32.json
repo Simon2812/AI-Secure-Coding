@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-32",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-32",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String[] env = { value };",
+          "replacement": "value = value.replaceAll(\"[;&|$`\\\\()<>]\", \"\");\nString[] env = { value };"
+        }
+      ]
+    }
+  ]
+}

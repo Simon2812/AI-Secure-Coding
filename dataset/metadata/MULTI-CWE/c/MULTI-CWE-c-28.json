@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-28",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-28",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "\"3DES\"",
+          "replacement": "\"ChaCha20\""
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "\"SHA224\"",
+          "replacement": "\"SHA-512\""
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"p8M2x4Qn7Lz1Rw5T\"",
+          "replacement": "settings->secret"
+        }
+      ]
+    }
+  ]
+}

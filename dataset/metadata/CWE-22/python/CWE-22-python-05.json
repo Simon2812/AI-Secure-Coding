@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-05",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-05",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "location = root / chosen",
+          "replacement": "import re\n        if not re.fullmatch(r\"[A-Za-z0-9._-]+\", chosen):\n            raise ValueError(\"invalid path\")\n        location = root / chosen"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-02",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-89/python/CWE-89-python-02.py",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = f'SELECT username from USERS where password = \\'{bar}\\''\ncon = helpers.db_sqlite.get_connection()\ncur = con.cursor()\ncur.execute(query)",
+          "replacement": "query = \"SELECT username from USERS where password = ?\"\ncon = helpers.db_sqlite.get_connection()\ncur = con.cursor()\ncur.execute(query, (bar,))"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-49",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-49",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String scanCmd = \"nmap \" + targetHost;\n\n        Process process = Runtime.getRuntime().exec(scanCmd);",
+          "replacement": "ProcessBuilder pb = new ProcessBuilder(\"nmap\", targetHost);\n        Process process = pb.start();"
+        }
+      ]
+    }
+  ]
+}

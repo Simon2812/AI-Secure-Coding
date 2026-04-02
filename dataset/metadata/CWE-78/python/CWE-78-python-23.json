@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-23",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-23",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"echo {text} >> audit.log\"\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "with open(\"audit.log\", \"a\", encoding=\"utf-8\") as f:\n    f.write(text + \"\\n\")\nproc = subprocess.CompletedProcess(args=[\"audit\"], returncode=0, stdout=\"\", stderr=\"\")"
+        }
+      ]
+    }
+  ]
+}

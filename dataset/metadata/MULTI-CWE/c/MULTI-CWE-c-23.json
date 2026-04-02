@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-23",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-23",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "sscanf(argv[2], \"%s\", cfg->label);",
+          "replacement": "sscanf(argv[2], \"%23s\", cfg->label);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "release_entry(entry);\n    print_entry(entry);",
+          "replacement": "print_entry(entry);\n    release_entry(entry);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *stream = popen(command_line, \"r\");",
+          "replacement": "if (strcmp(command_line, \"ls .\") != 0 && strcmp(command_line, \"pwd\") != 0)\n    {\n        return;\n    }\n    FILE *stream = popen(command_line, \"r\");"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-47",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-47",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String archiveCommand = \"tar -cf backup.tar \" + archiveSource;\n\n        ProcessBuilder builder = new ProcessBuilder(\"sh\", \"-c\", archiveCommand);\n        Process process = builder.start();",
+          "replacement": "ProcessBuilder builder = new ProcessBuilder(\"tar\", \"-cf\", \"backup.tar\", archiveSource);\n        Process process = builder.start();"
+        }
+      ]
+    }
+  ]
+}

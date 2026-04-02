@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-36",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-36",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "String path = repositoryRoot + \"/\" + descriptorName + \".desc\";",
+          "replacement": "if (!descriptorName.matches(\"[A-Za-z0-9_-]+\")) {\n    throw new IOException(\"Invalid descriptor name\");\n}\nString path = repositoryRoot + \"/\" + descriptorName + \".desc\";"
+        }
+      ]
+    }
+  ]
+}

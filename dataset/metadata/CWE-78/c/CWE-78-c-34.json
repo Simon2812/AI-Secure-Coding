@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-34",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char command[256];\n\nsprintf(command, \"cat %s\", argv[1]);\n\nint ret = system(command);\nif (ret != 0) {\n    printf(\"Command failed\\n\");\n    return 1;\n}\n\nreturn 0;",
+          "replacement": "if (argv[1][0] == '-') {\n    printf(\"Invalid filename\\n\");\n    return 1;\n}\nfor (const unsigned char *p = (const unsigned char *)argv[1]; *p; ++p) {\n    if (!(isalnum(*p) || *p == '.' || *p == '/' || *p == '_' || *p == '-')) {\n        printf(\"Invalid filename\\n\");\n        return 1;\n    }\n}\n\nchar *args[] = { \"cat\", argv[1], NULL };\nexecvp(\"cat\", args);\nperror(\"execvp\");\nreturn 1;"
+        }
+      ]
+    }
+  ]
+}

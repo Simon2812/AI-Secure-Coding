@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-328/python/CWE-328-python-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "hashlib.sha1(data)",
+          "replacement": "hashlib.sha256(data)"
+        }
+      ]
+    }
+  ]
+}

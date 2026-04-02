@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected_token = \"FlushMetrics#2024\"",
+          "replacement": "import os\nexpected_token = os.environ[\"METRICS_FLUSH_TOKEN\"]"
+        }
+      ]
+    }
+  ]
+}

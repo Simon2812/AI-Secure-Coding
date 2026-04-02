@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-22",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-22",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO users (username, password) VALUES ('foo','\" + secret + \"')\";\ntry {\njava.sql.Statement st = com.acme.db.DbUtil.getStatement();\nint count = st.executeUpdate(sql);",
+          "replacement": "String sql = \"INSERT INTO users (username, password) VALUES ('foo', ?)\";\ntry {\njava.sql.Connection conn = com.acme.db.DbUtil.getConnection();\njava.sql.PreparedStatement ps = conn.prepareStatement(sql);\nps.setString(1, secret);\nint count = ps.executeUpdate();"
+        }
+      ]
+    }
+  ]
+}

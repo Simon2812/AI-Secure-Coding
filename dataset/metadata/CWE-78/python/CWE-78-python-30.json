@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-30",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-30",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "parts = cmdline.split(\" \")\nproc = subprocess.run(parts, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "parts = [p for p in cmdline.split(\" \") if p]\ncmd = parts[0].lower() if parts else \"\"\nallowed = {\"whoami\": [\"whoami\"], \"date\": [\"date\"]}\nbase = allowed.get(cmd)\nif base is None:\n    raise ValueError(\"Unsupported command\")\nproc = subprocess.run(base, shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

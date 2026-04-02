@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-49",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-49",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveProjectDirectory(String key) {\n        return ROOT.resolve(key);\n    }",
+          "replacement": "private Path resolveProjectDirectory(String key) throws IOException {\n        if (key.contains(\"..\") || key.contains(\"/\") || key.contains(\"\\\\\")) {\n            throw new IOException(\"Invalid project key\");\n        }\n        return ROOT.resolve(key);\n    }"
+        }
+      ]
+    }
+  ]
+}

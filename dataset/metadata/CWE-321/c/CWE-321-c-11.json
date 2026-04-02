@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-11",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-321/c/CWE-321-c-11",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "const char *value = \"LocalSeed\";",
+          "replacement": "const char *value = read_key_from_file();"
+        }
+      ]
+    }
+  ]
+}

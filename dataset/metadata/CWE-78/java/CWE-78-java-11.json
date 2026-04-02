@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-11",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-11",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process execProcess = Runtime.getRuntime().exec(baseCmd + clientValue);\nexecProcess.waitFor();",
+          "replacement": "Process execProcess = Runtime.getRuntime().exec(new String[]{baseCmd.trim(), clientValue});\nexecProcess.waitFor();"
+        }
+      ]
+    }
+  ]
+}

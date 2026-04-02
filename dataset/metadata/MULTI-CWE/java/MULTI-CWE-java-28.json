@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-28",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-28",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String storedPassword = \"admin123\";",
+          "replacement": "String storedPassword = System.getenv(\"ADMIN_PASS\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + command;",
+          "replacement": "if (!(command.equals(\"uptime\") || command.equals(\"whoami\"))) throw new IllegalArgumentException();\nString cmd = \"sh -c \" + command;"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String internalKey = \"key-987654\";",
+          "replacement": "String internalKey = System.getenv(\"API_KEY\");"
+        }
+      ]
+    }
+  ]
+}

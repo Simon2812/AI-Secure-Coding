@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-34",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-34",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"{call \" + bar + \"}\";\ntry {\njava.sql.Connection connection = org.securelab.helpers.DatabaseHelper.getSqlConnection();\njava.sql.CallableStatement statement = connection.prepareCall(sql);",
+          "replacement": "String sql = \"{call ?}\";\ntry {\njava.sql.Connection connection = org.securelab.helpers.DatabaseHelper.getSqlConnection();\njava.sql.CallableStatement statement = connection.prepareCall(sql);\nstatement.setString(1, bar);"
+        }
+      ]
+    }
+  ]
+}

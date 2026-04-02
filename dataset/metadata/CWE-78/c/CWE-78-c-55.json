@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-55",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-55",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char buf[300];\nsnprintf(buf, sizeof(buf), \"%s %s\", tool, arg);\n\nif (pid == 0) {\n    char *av[] = { \"sh\", \"-c\", buf, NULL };\n    execvp(\"sh\", av);\n    _exit(127);\n}",
+          "replacement": "if (pid == 0) {\n    char *av[] = { (char *)tool, (char *)arg, NULL };\n    execvp(tool, av);\n    _exit(127);\n}"
+        }
+      ]
+    }
+  ]
+}

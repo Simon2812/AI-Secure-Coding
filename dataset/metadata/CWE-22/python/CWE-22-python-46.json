@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-46",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-46",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "base = self.cfg[\"artifact_home\"]\nlocation = os.path.join(base, token)\n\nwith open(location, \"rb\") as fp:\n    return fp.read()",
+          "replacement": "base = self.cfg[\"artifact_home\"]\ntoken = os.path.basename(token)\nlocation = os.path.join(base, token)\n\nwith open(location, \"rb\") as fp:\n    return fp.read()"
+        }
+      ]
+    }
+  ]
+}

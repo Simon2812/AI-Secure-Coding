@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-19",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-19",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "\"DES\"",
+          "replacement": "\"AES-256\""
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "\"MD5\"",
+          "replacement": "\"SHA-256\""
+        }
+      ]
+    }
+  ]
+}

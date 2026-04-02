@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-43",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-43",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "rc = system(tmp);",
+          "replacement": "pid_t pid = fork();\nif (pid < 0) {\n    rc = 1;\n} else if (pid == 0) {\n    char *args[] = {\"date\", av[1], NULL};\n    execvp(\"date\", args);\n    _exit(127);\n} else {\n    int st = 0;\n    if (waitpid(pid, &st, 0) < 0) {\n        rc = 1;\n    } else if (WIFEXITED(st)) {\n        rc = (WEXITSTATUS(st) == 0) ? 0 : 1;\n    } else {\n        rc = 1;\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

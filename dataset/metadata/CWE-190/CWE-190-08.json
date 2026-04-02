@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-08",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-08",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "char squared = score * score;",
+          "replacement": "char squared = 0;\nif (score != 0 && score <= CHAR_MAX / score) {\n    squared = score * score;\n}"
+        }
+      ]
+    }
+  ]
+}

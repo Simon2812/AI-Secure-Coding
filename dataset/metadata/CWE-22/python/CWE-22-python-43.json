@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-43",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-43",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target = os.path.join(reports_area, item)\n\nwith open(target, \"r\", encoding=\"utf-8\") as stream:\n    data = stream.read()",
+          "replacement": "if not item.endswith(\".txt\") or \"/\" in item or \"\\\\\" in item or \"..\" in item:\n    raise ValueError(\"invalid report name\")\n\ntarget = os.path.join(reports_area, item)\n\nwith open(target, \"r\", encoding=\"utf-8\") as stream:\n    data = stream.read()"
+        }
+      ]
+    }
+  ]
+}

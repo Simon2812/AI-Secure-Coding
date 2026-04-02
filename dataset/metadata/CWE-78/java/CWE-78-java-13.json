@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-13",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-13",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process proc = Runtime.getRuntime().exec(command + remoteValue);\nproc.waitFor();",
+          "replacement": "Process proc = Runtime.getRuntime().exec(new String[]{command.trim(), remoteValue});\nproc.waitFor();"
+        }
+      ]
+    }
+  ]
+}

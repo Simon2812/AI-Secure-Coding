@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-python-08",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-327/python/CWE-327-python-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "options = [\"sha256\", \"sha1\", \"sha512\"]",
+          "replacement": "options = [\"sha256\", \"sha512\"]"
+        }
+      ]
+    }
+  ]
+}

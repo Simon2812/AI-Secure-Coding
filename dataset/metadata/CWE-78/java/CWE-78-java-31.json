@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-31",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-31",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process p = r.exec(cmd);",
+          "replacement": "if (data.length() > 32 || !data.matches(\"[A-Za-z0-9._-]*\")) {\n    throw new ServletException(\"invalid input\");\n}\nProcess p = r.exec(cmd);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-83",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-83",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-66",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-89/python/CWE-89-python-66.py",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": []
+}

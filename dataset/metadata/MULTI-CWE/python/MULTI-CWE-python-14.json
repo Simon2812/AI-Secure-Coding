@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"uname -a && {extra}\"\n\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True\n)",
+          "replacement": "result = subprocess.run(\n    [\"uname\", \"-a\"],\n    capture_output=True,\n    text=True\n)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT metric, value, created_at \"\n    \"FROM host_metrics \"\n    \"WHERE host = '\" + host + \"' \"\n    \"ORDER BY created_at DESC LIMIT 50\"\n)\n\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT metric, value, created_at \"\n    \"FROM host_metrics \"\n    \"WHERE host = ? \"\n    \"ORDER BY created_at DESC LIMIT 50\"\n)\n\ncursor.execute(query, (host,))"
+        }
+      ]
+    }
+  ]
+}

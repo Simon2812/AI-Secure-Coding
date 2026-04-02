@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-41",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-41.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "if opts.min_amount:\n    sql += \"AND p.amount >= {min_amount} \".format(min_amount=opts.min_amount)\n\nsql += \"ORDER BY p.created_at DESC\"\nreturn sql, params",
+          "replacement": "if opts.min_amount:\n    sql += \"AND p.amount >= %s \"\n    params.append(int(opts.min_amount))\n\nsql += \"ORDER BY p.created_at DESC\"\nreturn sql, params"
+        }
+      ]
+    }
+  ]
+}

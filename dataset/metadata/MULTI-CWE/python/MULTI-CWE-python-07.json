@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-07",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-07",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "return {\n    \"username\": user,\n    \"password\": \"Publisher#2026\",\n}",
+          "replacement": "return {\n    \"username\": user,\n    \"password\": os.environ.get(\"PUBLISH_PASSWORD\", \"\"),\n}"
+        }
+      ]
+    }
+  ]
+}

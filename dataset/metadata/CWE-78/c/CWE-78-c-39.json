@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-39",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-39",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "static int launch(const char *image) {\n    char command[512];\n    snprintf(command, sizeof(command), \"convert %s -resize 200x200 thumb.png\", image);\n\n    return system(command);\n}",
+          "replacement": "static int launch(const char *image) {\n    for (const unsigned char *p = (const unsigned char *)image; *p; ++p) {\n        if (!((*p >= 'a' && *p <= 'z') ||\n              (*p >= 'A' && *p <= 'Z') ||\n              (*p >= '0' && *p <= '9') ||\n              *p == '.' || *p == '_' || *p == '-' || *p == '/')) {\n            fprintf(stderr, \"Invalid image name\\n\");\n            return 1;\n        }\n    }\n\n    char command[512];\n    snprintf(command, sizeof(command), \"convert %s -resize 200x200 thumb.png\", image);\n\n    return system(command);\n}"
+        }
+      ]
+    }
+  ]
+}

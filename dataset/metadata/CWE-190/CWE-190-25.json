@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-25",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-25",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "totalBytes = packets * size;\nprintf(\"%d\\n\", totalBytes);",
+          "replacement": "if (packets == 0 || packets <= INT_MAX / size)\n{\n    totalBytes = packets * size;\n    printf(\"%d\\n\", totalBytes);\n}\nelse\n{\n    puts(\"value out of range\");\n}"
+        }
+      ]
+    }
+  ]
+}

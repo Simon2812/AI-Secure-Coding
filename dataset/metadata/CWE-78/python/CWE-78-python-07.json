@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-07",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-07",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command_line = \"\"\nif system_platform.system() == \"Windows\":\n    command_line = \"cmd.exe /c \"\nelse:\n    command_line = \"sh -c \"\n\ncommand_line += f\"date {argument_data}\"\n\ntry:\n    completed = sp.run(command_line, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "completed = sp.run([\"date\", argument_data], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

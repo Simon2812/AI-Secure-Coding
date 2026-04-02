@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-04",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-04",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "private static final String KEY = \"HardcodedSecret!\";",
+          "replacement": "private final String key;\n\npublic TokenEncryptionService(DataSource dataSource, String key) {\n    this.dataSource = dataSource;\n    this.key = key;\n}"
+        }
+      ]
+    }
+  ]
+}

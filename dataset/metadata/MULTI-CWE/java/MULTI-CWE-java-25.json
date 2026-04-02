@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-25",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-25",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(workspace + \"/\" + name);",
+          "replacement": "if (!name.matches(\"[a-zA-Z0-9._-]+\")) return \"\";\nFile f = new File(workspace + \"/\" + name);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + input;",
+          "replacement": "Process p = new ProcessBuilder(\"sh\", \"-c\", \"echo\").start();"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "RC4",
+          "replacement": "AES/GCM/NoPadding"
+        }
+      ]
+    }
+  ]
+}

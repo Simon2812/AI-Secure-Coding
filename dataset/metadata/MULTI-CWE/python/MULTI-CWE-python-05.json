@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-05",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-05",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "output_path = (destination_root / member_name).resolve()",
+          "replacement": "safe_name = Path(member_name).name\noutput_path = (destination_root / safe_name).resolve()"
+        }
+      ]
+    }
+  ]
+}

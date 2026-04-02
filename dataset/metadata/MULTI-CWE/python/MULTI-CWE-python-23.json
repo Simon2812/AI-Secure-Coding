@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-23",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-23",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"review-package-signing-key\"",
+          "replacement": "secret = os.environ.get(\"REVIEW_SIGNING_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "source = (ATTACHMENT_ROOT / attachment_name).resolve()",
+          "replacement": "source = (ATTACHMENT_ROOT / Path(attachment_name).name).resolve()"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{tool_name} {file_path}\"\ncompleted = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "tool_name = {\"file\": \"file\", \"identify\": \"identify\"}.get(tool_name, \"file\")\ncompleted = subprocess.run(\n    [tool_name, str(file_path)],\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "smtp_password = \"Notify#2026\"",
+          "replacement": "smtp_password = os.environ.get(\"NOTIFY_PASSWORD\", \"\")"
+        }
+      ]
+    }
+  ]
+}

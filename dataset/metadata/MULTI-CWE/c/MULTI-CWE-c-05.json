@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-05",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-05",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "memcpy(ctx->key, default_key, sizeof(default_key));\nctx->key_len = sizeof(default_key);",
+          "replacement": "const char *env = getenv(\"APP_KEY\");\nif (env != NULL)\n{\n    size_t len = strlen(env);\n    if (len > sizeof(ctx->key))\n    {\n        len = sizeof(ctx->key);\n    }\n    memcpy(ctx->key, env, len);\n    ctx->key_len = len;\n}"
+        }
+      ]
+    }
+  ]
+}

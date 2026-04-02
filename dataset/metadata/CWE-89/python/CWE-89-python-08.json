@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-08",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-89/python/CWE-89-python-08.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "id_blob = \",\".join(job_ids)\nfetch_stmt = \"SELECT id, state FROM jobs WHERE id IN (\" + id_blob + \")\"\ncur.execute(fetch_stmt)",
+          "replacement": "placeholders = \",\".join([\"%s\"] * len(job_ids))\nfetch_stmt = f\"SELECT id, state FROM jobs WHERE id IN ({placeholders})\"\ncur.execute(fetch_stmt, tuple(job_ids))"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-32",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-32",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "String path = buildTemplatePath(templateKey);\nFileInputStream in = new FileInputStream(path);",
+          "replacement": "if (!templateKey.matches(\"[A-Za-z0-9_-]+\")) {\n    throw new IOException(\"Invalid template key\");\n}\nString path = buildTemplatePath(templateKey);\nFileInputStream in = new FileInputStream(path);"
+        }
+      ]
+    }
+  ]
+}

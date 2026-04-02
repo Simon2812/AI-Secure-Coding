@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-21",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-21",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT data FROM reports WHERE user = '\" + user + \"'\";",
+          "replacement": "String query = user.equals(\"admin\") ? \"SELECT data FROM reports WHERE user='admin'\" : \"SELECT data FROM reports WHERE user='guest'\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(storageRoot + \"/\" + name);",
+          "replacement": "File f = new File(storageRoot, name).getCanonicalFile();"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + op;",
+          "replacement": "if (!op.equals(\"status\") && !op.equals(\"restart\")) throw new IllegalArgumentException();\nString cmd = \"sh -c \" + op;"
+        }
+      ]
+    }
+  ]
+}

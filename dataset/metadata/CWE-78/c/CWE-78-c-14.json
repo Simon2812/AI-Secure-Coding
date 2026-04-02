@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-14",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-14",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "{\nFILE *pipe = POPEN(data, \"r\");\nif (pipe != NULL)\n    PCLOSE(pipe);\n}",
+          "replacement": "{\nconst char *arg = data + strlen(FULL_COMMAND);\nsize_t i = 0;\nwhile (arg[i] != '\\0') {\n    unsigned char c = (unsigned char)arg[i];\n    if (!(c == ' ' || c == '.' || c == '-' || c == '_' || c == '/' || (c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))) {\n        return;\n    }\n    i++;\n}\n{\n    FILE *pipe = POPEN(data, \"r\");\n    if (pipe != NULL)\n        PCLOSE(pipe);\n}\n}"
+        }
+      ]
+    }
+  ]
+}

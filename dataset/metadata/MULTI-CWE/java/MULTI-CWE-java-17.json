@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-17",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-17",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File target = new File(base + \"/\" + name);",
+          "replacement": "java.util.Map<String,String> allowed = java.util.Map.of(\"home\",\"home.html\",\"report\",\"report.html\");\nFile target = new File(base + \"/\" + allowed.getOrDefault(name, \"home.html\"));"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-256"
+        }
+      ]
+    }
+  ]
+}

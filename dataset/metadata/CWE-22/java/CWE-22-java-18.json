@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-18",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-18",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File base = new File(\"/srv/archive/items/\");\n        File target = new File(base, entry);",
+          "replacement": "entry = java.nio.file.Paths.get(entry).getFileName().toString();\n        File base = new File(\"/srv/archive/items/\");\n        File target = new File(base, entry);"
+        }
+      ]
+    }
+  ]
+}

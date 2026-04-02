@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-14",
+  "language": "cpp",
+  "path": "/dataset/normalized/CWE-416/CWE-416-14",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "delete [] text;\n\n        int flag = 1;\n\n        text = new char[std::strlen(other.text) + 1];\n        std::strcpy(text, other.text);",
+          "replacement": "if (this == &other) return *this;\n\n        delete [] text;\n\n        int flag = 1;\n\n        text = new char[std::strlen(other.text) + 1];\n        std::strcpy(text, other.text);"
+        }
+      ]
+    }
+  ]
+}

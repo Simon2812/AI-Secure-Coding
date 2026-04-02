@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-22",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-22",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, tenant, title, body, local_name \"\n    \"FROM content_items \"\n    \"WHERE tenant = '\" + tenant + \"' \"\n    \"AND category = '\" + category + \"' \"\n    \"ORDER BY created_at DESC \"\n    f\"LIMIT {limit}\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, tenant, title, body, local_name \"\n    \"FROM content_items \"\n    \"WHERE tenant = ? \"\n    \"AND category = ? \"\n    \"ORDER BY created_at DESC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(statement, (tenant, category, limit))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "return (ATTACHMENT_ROOT / local_name).resolve()",
+          "replacement": "return (ATTACHMENT_ROOT / Path(local_name).name).resolve()"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "cipher = ARC4.new(secret)",
+          "replacement": "cipher = AES.new(secret[:16], AES.MODE_CBC)"
+        }
+      ]
+    }
+  ]
+}

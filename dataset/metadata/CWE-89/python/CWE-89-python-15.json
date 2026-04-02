@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-15.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query_text = (\n    \"SELECT id, subject, status, created_at \"\n    \"FROM tickets \"\n    \"WHERE subject LIKE '%\" + keyword + \"%' \"\n)\n\nif status:\n    query_text += \"AND status = '\" + status + \"' \"\n\ncur.execute(query_text)",
+          "replacement": "query_text = (\n    \"SELECT id, subject, status, created_at \"\n    \"FROM tickets \"\n    \"WHERE subject LIKE ? \"\n)\n\nparams = [f\"%{keyword}%\"]\n\nif status:\n    query_text += \"AND status = ? \"\n    params.append(status)\n\nquery_text += \"ORDER BY created_at DESC LIMIT 50\"\n\ncur.execute(query_text, tuple(params))"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-19",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-19",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File target = new File(directory, \"Test.txt\");",
+          "replacement": "if (directory.contains(\"..\") || directory.contains(\"/\") || directory.contains(\"\\\\\")) {\n    throw new IOException();\n}\nFile target = new File(directory, \"Test.txt\");"
+        }
+      ]
+    }
+  ]
+}

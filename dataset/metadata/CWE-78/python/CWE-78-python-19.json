@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-19",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-19",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"rm -rf {folder}/old_logs\"\nstatus = os.system(cmd)",
+          "replacement": "target_path = f\"{folder}/old_logs\"\nshutil.rmtree(target_path, ignore_errors=True)\nstatus = 0"
+        }
+      ]
+    }
+  ]
+}

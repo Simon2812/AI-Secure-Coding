@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-56",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-56",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "os.environ[\"Q\"] = needle\n\ncmd = \"sh -c 'grep \\\"$Q\\\" /etc/hosts | head -n 3'\"\np = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)",
+          "replacement": "env = dict(os.environ)\nenv[\"Q\"] = needle\np1 = subprocess.run([\"grep\", needle, \"/etc/hosts\"], shell=False, env=env, capture_output=True, encoding=\"utf-8\")\nout_lines = (p1.stdout or \"\").splitlines()[:3]\nout = \"\\n\".join(out_lines) + (\"\\n\" if out_lines else \"\")\np = subprocess.CompletedProcess(args=[\"grep\"], returncode=p1.returncode, stdout=out, stderr=(p1.stderr or \"\"))"
+        }
+      ]
+    }
+  ]
+}

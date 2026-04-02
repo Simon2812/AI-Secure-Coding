@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-47",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-47",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = _fmt(template, path)\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "allowed = {\"default\": [\"convert\"], \"resize\": [\"convert\", \"-resize\", \"50%\"]}\nbase = allowed.get(op, allowed[\"default\"])\nproc = subprocess.run(base + [path, \"out.png\"], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

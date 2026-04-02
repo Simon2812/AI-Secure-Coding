@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-32",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-32",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcpy(dst, src);",
+          "replacement": "strncpy(dst, src, strlen(src));\ndst[strlen(src)] = '\\0';"
+        }
+      ]
+    }
+  ]
+}

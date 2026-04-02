@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-02",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-02",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "secret = \"daily-report-pass\"",
+          "replacement": "secret = getpass.getpass(\"Database password: \")"
+        },
+        {
+          "origin": "if conn is not None and entered == \"daily-report-pass\":",
+          "replacement": "if conn is not None and entered == secret:"
+        }
+      ]
+    }
+  ]
+}

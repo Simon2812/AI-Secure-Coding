@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-08",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, requester, subject, priority, status \"\n    \"FROM tickets WHERE requester = '\" + requester + \"' \"\n    \"ORDER BY created_at DESC LIMIT 25\"\n)\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, requester, subject, priority, status \"\n    \"FROM tickets WHERE requester = ? \"\n    \"ORDER BY created_at DESC LIMIT 25\"\n)\ncursor.execute(statement, (requester,))"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-10",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-10",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int doubled = base * 2;",
+          "replacement": "int doubled = base;\nif (base <= INT_MAX / 2) {\n    doubled = base * 2;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-52",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-52",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveLogFile(String name) {\n        return BASE.resolve(name);\n    }",
+          "replacement": "private Path resolveLogFile(String name) {\n        String safeName = Path.of(name).getFileName().toString();\n        return BASE.resolve(safeName);\n    }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-16",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-16",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": []
+}

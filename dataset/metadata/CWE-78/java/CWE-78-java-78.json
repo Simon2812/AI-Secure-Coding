@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-78",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-78",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": []
+  }

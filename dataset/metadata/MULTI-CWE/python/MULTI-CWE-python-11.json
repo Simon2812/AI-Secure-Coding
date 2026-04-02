@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-11",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-11",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "clauses = [f\"author = '{author}'\"]\ndate_clause = window.as_sql_clause()\nif date_clause:\n    clauses.append(date_clause)\n\nstatement = (\n    \"SELECT id, author, title, body \"\n    \"FROM review_notes \"\n    \"WHERE \" + \" AND \".join(clauses) + \" \"\n    \"ORDER BY created_at DESC \"\n    f\"LIMIT {limit}\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, author, title, body \"\n    \"FROM review_notes \"\n    \"WHERE author = ? \"\n    \"ORDER BY created_at DESC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(statement, (author, limit))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "return (self.reports / relative_name).resolve()",
+          "replacement": "return (self.reports / Path(relative_name).name).resolve()"
+        }
+      ]
+    }
+  ]
+}

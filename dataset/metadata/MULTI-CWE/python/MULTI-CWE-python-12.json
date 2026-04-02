@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-12",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-12",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"tar -tzf {bundle_path} >/dev/null && {post_action}\"\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "result = subprocess.run(\n    [\"tar\", \"-tzf\", str(bundle_path)],\n    stdout=subprocess.DEVNULL,\n    stderr=subprocess.PIPE,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "\"X-Delivery-Password\": \"CaseSync!2026\",",
+          "replacement": "\"X-Delivery-Password\": os.environ.get(\"DELIVERY_PASSWORD\", \"\"),"
+        }
+      ]
+    }
+  ]
+}

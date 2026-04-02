@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-09",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-09",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-256",
+      "fixes": [
+        {
+          "origin": "\"mypass4567\"",
+          "replacement": "getenv(\"APP_PASSWORD\")"
+        }
+      ]
+    }
+  ]
+}

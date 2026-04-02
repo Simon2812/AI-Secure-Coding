@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-47",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-47",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "while (part != NULL && i < need)\n{\nframe->pixels[i] = (unsigned char)atoi(part);\ni++;\npart = strtok(NULL, \",\");\n}",
+          "replacement": "while (part != NULL && i < need && i < (int)(sizeof(frame->pixels) / sizeof(frame->pixels[0])))\n{\nframe->pixels[i] = (unsigned char)atoi(part);\ni++;\npart = strtok(NULL, \",\");\n}"
+        }
+      ]
+    }
+  ]
+}

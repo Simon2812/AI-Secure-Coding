@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-27",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-27",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "reader = codecs.open(\n                f\"{helpers.utils.TESTFILES_DIR}/{selected}\",\n                \"r\",\n                \"utf-8\"\n            )",
+          "replacement": "from pathlib import Path\n            base = Path(helpers.utils.TESTFILES_DIR).resolve()\n            candidate = (base / selected).resolve()\n            if base not in candidate.parents and candidate != base:\n                raise ValueError(\"invalid path\")\n            reader = codecs.open(candidate, \"r\", \"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

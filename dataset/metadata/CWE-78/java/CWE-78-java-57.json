@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-57",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"curl http://\" + serviceHost + \"/health\";\n\n        Process process = Runtime.getRuntime().exec(cmd);",
+          "replacement": "if (!serviceHost.matches(\"[a-zA-Z0-9.-]+\")) {\n            throw new IllegalArgumentException(\"Invalid service host\");\n        }\n\n        String cmd = \"curl http://\" + serviceHost + \"/health\";\n\n        Process process = Runtime.getRuntime().exec(cmd);"
+        }
+      ]
+    }
+  ]
+}

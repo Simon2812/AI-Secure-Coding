@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-18",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-18",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n                \"SELECT id FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\";",
+          "replacement": "String query = \"SELECT id FROM users WHERE username = ? AND password = ?\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\";",
+          "replacement": "String query = \"SELECT name FROM employees WHERE department = ?\";"
+        }
+      ]
+    }
+  ]
+}

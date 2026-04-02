@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-13",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-13",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "execution_chain = []\nif \"Windows\" in os_module.name:\n    execution_chain.append(\"cmd.exe\")\n    execution_chain.append(\"-c\")\nelse:\n    execution_chain.append(\"sh\")\n    execution_chain.append(\"-c\")\n\nexecution_chain.append(f\"groups {input_value}\")\n\ncompleted_process = sp_module.run(\n    execution_chain,\n    capture_output=True,\n    encoding=\"utf-8\"\n)",
+          "replacement": "completed_process = sp_module.run([\"groups\", input_value], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

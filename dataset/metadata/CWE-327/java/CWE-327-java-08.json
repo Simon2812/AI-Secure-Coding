@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-java-08",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-08",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "DES",
+          "replacement": "AES"
+        }
+      ]
+    }
+  ]
+}

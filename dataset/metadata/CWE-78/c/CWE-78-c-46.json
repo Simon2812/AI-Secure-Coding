@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-46",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-46",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char cmd[300];\nsnprintf(cmd, sizeof(cmd), \"ping -c 1 %s\", line);\n\nreturn system(cmd);",
+          "replacement": "pid_t pid = fork();\nif (pid < 0)\n    return 1;\nif (pid == 0) {\n    char *args[] = {\"ping\", \"-c\", \"1\", line, NULL};\n    execvp(\"ping\", args);\n    _exit(127);\n}\nint st = 0;\nif (waitpid(pid, &st, 0) < 0)\n    return 1;\nreturn (WIFEXITED(st) && WEXITSTATUS(st) == 0) ? 0 : 1;"
+        }
+      ]
+    }
+  ]
+}

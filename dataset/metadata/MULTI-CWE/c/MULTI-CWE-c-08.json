@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-08",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "buf[strlen(buf)] = 'a' + (i % 26);",
+          "replacement": "if (strlen(buf) < sizeof(buf) - 1)\n{\n    buf[strlen(buf)] = 'a' + (i % 26);\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-01",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "fullPath = \"/var/app/docs/\" + selectedName;\ninput = new FileInputStream(new File(fullPath));",
+          "replacement": "if (selectedName.contains(\"..\")) {\n    throw new IOException(\"Invalid file name\");\n}\nfullPath = \"/var/app/docs/\" + selectedName;\ninput = new FileInputStream(new File(fullPath));"
+        }
+      ]
+    }
+  ]
+}

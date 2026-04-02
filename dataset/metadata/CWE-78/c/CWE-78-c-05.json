@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-05",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-05",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *pipe = POPEN(data, \"r\");\nif (pipe != NULL)\n    PCLOSE(pipe);",
+          "replacement": "const char *arg = data + strlen(FULL_COMMAND);\n#ifdef _WIN32\nif (_spawnlp(_P_WAIT, \"tasklist.exe\", \"tasklist.exe\", arg, NULL) != 0)\n    exit(1);\n#else\nif (execl(\"/bin/ps\", \"ps\", arg, NULL) == -1)\n    exit(1);\n#endif"
+        }
+      ]
+    }
+  ]
+}

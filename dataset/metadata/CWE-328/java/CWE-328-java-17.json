@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-java-17",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-328/java/CWE-328-java-17",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": []
+}

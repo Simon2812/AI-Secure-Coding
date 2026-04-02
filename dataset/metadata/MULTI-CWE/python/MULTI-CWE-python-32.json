@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-32",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-32",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = \"SELECT metric_name FROM metrics WHERE namespace = '\" + namespace + \"'\"",
+          "replacement": "query = \"SELECT metric_name FROM metrics WHERE namespace = ?\"\ncur.execute(query, (namespace,))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "script = (\n    \"INSERT INTO audit_log(actor, message) VALUES ('\"\n    + actor\n    + \"', '\"\n    + message\n    + \"')\"\n)\n\ncur.executescript(script)",
+          "replacement": "cur.execute(\n    \"INSERT INTO audit_log(actor, message) VALUES (?, ?)\",\n    (actor, message),\n)"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{binary} --scan {target}\"\n\nproc = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "binary = {\"net-scan\": \"net-scan\", \"deep-scan\": \"deep-scan\"}.get(binary, \"net-scan\")\n\nproc = subprocess.run(\n    [binary, \"--scan\", target],\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    }
+  ]
+}

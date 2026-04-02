@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-41",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-41",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (written = 0; written < total; written++)\n{\nmatrix[r][c] = written * 2;\n\nc++;\nif (c == 4)\n{\nc = 0;\nr++;\n}\n}",
+          "replacement": "for (written = 0; written < total && written < 12; written++)\n{\nmatrix[r][c] = written * 2;\n\nc++;\nif (c == 4)\n{\nc = 0;\nr++;\n}\n}"
+        }
+      ]
+    }
+  ]
+}

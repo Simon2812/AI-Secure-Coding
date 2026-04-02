@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-12",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-12.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "if role:\n    sql += \"AND role = '\" + role + \"' \"\n\nif email:\n    sql += \"AND email LIKE '%\" + email + \"%' \"\n\ncursor.execute(sql)",
+          "replacement": "params = []\nsql = \"SELECT id, email, role FROM users WHERE 1=1 \"\n\nif role:\n    sql += \"AND role = %s \"\n    params.append(role)\n\nif email:\n    sql += \"AND email LIKE %s \"\n    params.append(f\"%{email}%\")\n\ncursor.execute(sql, tuple(params))"
+        }
+      ]
+    }
+  ]
+}

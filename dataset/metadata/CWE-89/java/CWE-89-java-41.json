@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-41",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-41",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT id FROM users WHERE email = '\" + email + \"'\";\njava.sql.Statement st = conn.createStatement();\nst.executeQuery(sql);",
+          "replacement": "String sql = \"SELECT id FROM users WHERE email = ?\";\njava.sql.PreparedStatement st = conn.prepareStatement(sql);\nst.setString(1, email);\nst.executeQuery();"
+        }
+      ]
+    }
+  ]
+}

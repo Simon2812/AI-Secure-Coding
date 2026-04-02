@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-21",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-321/c/CWE-321-c-21",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

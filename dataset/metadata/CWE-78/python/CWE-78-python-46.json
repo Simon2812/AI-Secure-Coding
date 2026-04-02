@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-46",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-46",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = \"git status --porcelain\"\nproc = subprocess.run(cmd, shell=True, cwd=base, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not os.path.isdir(base):\n    raise ValueError(\"Invalid repo path\")\nproc = subprocess.run([\"git\", \"status\", \"--porcelain\"], shell=False, cwd=base, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

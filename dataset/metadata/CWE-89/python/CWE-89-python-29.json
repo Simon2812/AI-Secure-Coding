@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-29",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-29.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "sql += \"ORDER BY \" + order_by + \" ASC\"",
+          "replacement": "allowed = {\"sku\", \"qty\", \"updated_at\"}\nif order_by not in allowed:\n    order_by = \"qty\"\n\nsql += \"ORDER BY \" + order_by + \" ASC\""
+        }
+      ]
+    }
+  ]
+}

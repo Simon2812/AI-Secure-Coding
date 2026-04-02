@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-06",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-06",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target = base_dir / name",
+          "replacement": "target = (base_dir / name).resolve()\n            if not str(target).startswith(str(base_dir.resolve()) + \"/\"):\n                raise ValueError(\"invalid path\")"
+        }
+      ]
+    }
+  ]
+}

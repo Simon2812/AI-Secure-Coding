@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-27",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-27",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "numbers = (int *)malloc(count * sizeof(int));",
+          "replacement": "if (count <= 0 || count > SIZE_MAX / sizeof(int)) return; numbers = (int *)malloc(count * sizeof(int));"
+        }
+      ]
+    }
+  ]
+}

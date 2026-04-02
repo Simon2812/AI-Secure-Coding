@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-25",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-25",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String value = token;",
+          "replacement": "if (!token.matches(\"[A-Za-z0-9.-]{1,64}\")) {\n    throw new ServletException(\"invalid host\");\n}\nString value = token;"
+        }
+      ]
+    }
+  ]
+}

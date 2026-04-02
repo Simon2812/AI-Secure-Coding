@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-02",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-02",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement.addBatch(\"update users set role='member' where username='\" + users[i] + \"'\");",
+          "replacement": "PreparedStatement ps = connection.prepareStatement(\"update users set role='member' where username=?\");\nps.setString(1, users[i]);\nps.addBatch();"
+        }
+      ]
+    }
+  ]
+}

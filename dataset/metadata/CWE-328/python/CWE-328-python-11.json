@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-python-11",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-328/python/CWE-328-python-11",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "'md5'",
+          "replacement": "'sha256'"
+        },
+        {
+          "origin": "'sha1'",
+          "replacement": "'sha256'"
+        }
+      ]
+    }
+  ]
+}

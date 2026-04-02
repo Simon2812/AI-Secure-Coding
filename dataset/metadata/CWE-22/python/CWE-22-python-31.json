@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-31",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-31",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "file_path = DATA_HOME + \"/\" + note_name\nwith open(file_path, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()",
+          "replacement": "if \"..\" in note_name or \"/\" in note_name or \"\\\\\" in note_name:\n    abort(400)\n\nfile_path = DATA_HOME + \"/\" + note_name\nwith open(file_path, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()"
+        }
+      ]
+    }
+  ]
+}

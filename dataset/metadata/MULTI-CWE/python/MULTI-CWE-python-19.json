@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-19",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-19",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "key = secret.encode(\"utf-8\")[:8]\ncipher = DES.new(key, DES.MODE_ECB)",
+          "replacement": "key = secret.encode(\"utf-8\")[:16]\ncipher = AES.new(key, AES.MODE_CBC)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT rule_name FROM routing_rules \"\n    \"WHERE source = '\" + source + \"' \"\n    \"ORDER BY rule_name\"\n)\n\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT rule_name FROM routing_rules \"\n    \"WHERE source = ? \"\n    \"ORDER BY rule_name\"\n)\n\ncursor.execute(query, (source,))"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-17",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)",
+          "replacement": "context = ssl.create_default_context()"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"file {asset_path} >/dev/null && {post_hook}\"\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "result = subprocess.run(\n    [\"file\", str(asset_path)],\n    stdout=subprocess.DEVNULL,\n    stderr=subprocess.PIPE,\n    text=True,\n)"
+        }
+      ]
+    }
+  ]
+}

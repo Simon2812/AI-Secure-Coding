@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-python-04",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-327/python/CWE-327-python-04",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "\"algorithm\": \"md5\",",
+          "replacement": "\"algorithm\": \"sha256\","
+        }
+      ]
+    }
+  ]
+}

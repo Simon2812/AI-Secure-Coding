@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-24",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-24",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{program} {target}\"\ncompleted = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "program = {\"file\": \"file\", \"identify\": \"identify\"}.get(program, \"file\")\ncompleted = subprocess.run(\n    [program, str(target)],\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"incident-package-signing-key\"",
+          "replacement": "secret = os.environ.get(\"INCIDENT_PACKAGE_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, reporter, title, status, attachment_name \"\n    \"FROM incidents \"\n    \"WHERE reporter = '\" + reporter + \"' \"\n    \"AND status = '\" + status + \"' \"\n    \"ORDER BY created_at DESC \"\n    f\"LIMIT {limit}\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, reporter, title, status, attachment_name \"\n    \"FROM incidents \"\n    \"WHERE reporter = ? \"\n    \"AND status = ? \"\n    \"ORDER BY created_at DESC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(statement, (reporter, status, limit))"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "source = (attachment_root / attachment_name).resolve()",
+          "replacement": "source = (attachment_root / Path(attachment_name).name).resolve()"
+        }
+      ]
+    }
+  ]
+}

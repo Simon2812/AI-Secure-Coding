@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-22",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-22.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "order_sql = \" ORDER BY \" + sort_field + \" \" + direction\n\nstmt = text(\n    \"SELECT path, views, uniques \"\n    \"FROM page_metrics \"\n    \"WHERE day = :day\" + order_sql +\n    \" LIMIT 100\"\n)",
+          "replacement": "allowed = {\"views\", \"uniques\", \"path\"}\nif sort_field not in allowed:\n    sort_field = \"views\"\n\norder_sql = \" ORDER BY \" + sort_field + \" \" + direction\n\nstmt = text(\n    \"SELECT path, views, uniques \"\n    \"FROM page_metrics \"\n    \"WHERE day = :day\" + order_sql +\n    \" LIMIT 100\"\n)"
+        }
+      ]
+    }
+  ]
+}

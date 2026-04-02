@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-34",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target_path = os.path.join(records_home, selection)\n\nwith open(target_path, \"r\", encoding=\"utf-8\") as stream:\n    return stream.read()",
+          "replacement": "allowed = {\"daily\": \"daily.txt\", \"weekly\": \"weekly.txt\", \"monthly\": \"monthly.txt\"}\nif selection not in allowed:\n    abort(400)\n\ntarget_path = os.path.join(records_home, allowed[selection])\n\nwith open(target_path, \"r\", encoding=\"utf-8\") as stream:\n    return stream.read()"
+        }
+      ]
+    }
+  ]
+}

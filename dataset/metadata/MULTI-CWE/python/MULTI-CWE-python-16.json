@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-16",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-16",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"default-sign-key\"",
+          "replacement": "secret = os.environ.get(\"SIGNING_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target = (self.root / file_name).resolve()",
+          "replacement": "target = (self.root / Path(file_name).name).resolve()"
+        }
+      ]
+    }
+  ]
+}

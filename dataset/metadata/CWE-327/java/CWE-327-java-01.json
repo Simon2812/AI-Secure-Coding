@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-01",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "DESede",
+          "replacement": "AES"
+        }
+      ]
+    }
+  ]
+}

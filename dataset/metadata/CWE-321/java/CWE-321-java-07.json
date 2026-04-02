@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-07",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-07",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "values.put(\"crypto\", \"b7e3c9f1a2d44e8f\");",
+          "replacement": "values.put(\"crypto\", System.getenv(\"SESSION_KEY\"));"
+        }
+      ]
+    }
+  ]
+}

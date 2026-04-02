@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-50",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-50",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"ffprobe -v error \\\"{src}\\\"\"\np = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)",
+          "replacement": "p = subprocess.Popen([\"ffprobe\", \"-v\", \"error\", src], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)"
+        }
+      ]
+    }
+  ]
+}

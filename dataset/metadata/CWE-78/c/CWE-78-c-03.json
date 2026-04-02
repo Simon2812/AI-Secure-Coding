@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-03",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-03",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char *args[] = { CMD_PATH, CMD_FLAG, buffer, NULL };\n_spawnv(_P_WAIT, CMD_PATH, args);",
+          "replacement": "const char *arg = buffer + strlen(BASE_CMD);\nchar *args[] = { CMD_PATH, CMD_FLAG, \"type\", (char *)arg, NULL };\n_spawnv(_P_WAIT, CMD_PATH, args);"
+        }
+      ]
+    }
+  ]
+}

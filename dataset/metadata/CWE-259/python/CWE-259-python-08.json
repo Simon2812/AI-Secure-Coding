@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-08",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected_value = \"DbAccess!92\"",
+          "replacement": "expected_value = open(\"/etc/service_secret\").read().strip()"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-java-13",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-327/java/CWE-327-java-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "AES/ECB/PKCS5Padding",
+          "replacement": "AES/CBC/PKCS5Padding"
+        }
+      ]
+    }
+  ]
+}

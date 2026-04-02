@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-12",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-12",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"sh -c \" + a;",
+          "replacement": "String command = a.equals(\"status\") ? \"sh -c systemctl status\" : \"sh -c systemctl restart\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT message FROM logs WHERE level = '\" + l + \"'\";",
+          "replacement": "String safeLevel = l.matches(\"INFO|WARN|ERROR\") ? l : \"INFO\";\nString query = \"SELECT message FROM logs WHERE level = '\" + safeLevel + \"'\";"
+        }
+      ]
+    }
+  ]
+}

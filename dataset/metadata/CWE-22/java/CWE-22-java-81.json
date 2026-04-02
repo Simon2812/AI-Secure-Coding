@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-81",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-81",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

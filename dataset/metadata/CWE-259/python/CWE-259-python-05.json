@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-05",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-05",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "self.unlock_phrase = \"archive-open-993\"",
+          "replacement": "self.unlock_phrase = input(\"Unlock phrase (init): \")"
+        }
+      ]
+    }
+  ]
+}

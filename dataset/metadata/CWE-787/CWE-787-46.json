@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-46",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-46",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "table[pos] = value;\ntable[pos + 1] = value + 1;",
+          "replacement": "if (pos >= 0 && pos + 1 < 10)\n{\ntable[pos] = value;\ntable[pos + 1] = value + 1;\n}"
+        }
+      ]
+    }
+  ]
+}

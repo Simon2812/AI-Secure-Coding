@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-29",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-29",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "result = base - penalty;",
+          "replacement": "if (base < INT_MIN + penalty)\n{\n    puts(\"value out of range\");\n    return base;\n}\nresult = base - penalty;"
+        }
+      ]
+    }
+  ]
+}

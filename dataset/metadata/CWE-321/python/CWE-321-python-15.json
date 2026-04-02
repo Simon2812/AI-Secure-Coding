@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-15",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "if data.get(\"user\") == \"admin\":\n        key_material = derived\n    else:\n        key_material = b\"\\x01\\x23\\x45\\x67\\x89\\xab\\xcd\\xef\\x10\\x32\\x54\\x76\\x98\\xba\\xdc\\xfe\"",
+          "replacement": "key_material = derived"
+        }
+      ]
+    }
+  ]
+}

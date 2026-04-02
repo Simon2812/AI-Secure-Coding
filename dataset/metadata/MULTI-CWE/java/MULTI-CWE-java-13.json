@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-13",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File file = new File(rootDirectory + f);",
+          "replacement": "if (!f.matches(\"[a-zA-Z0-9._-]+\")) throw new IOException(\"Invalid name\");\nFile file = new File(rootDirectory + f);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "DES",
+          "replacement": "AES"
+        }
+      ]
+    }
+  ]
+}

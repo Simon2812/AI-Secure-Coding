@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-14",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "String material = \"6e3b9d2c4a1f7e80\";",
+          "replacement": "String material = new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(\"/opt/app/key\")), \"UTF-8\");"
+        }
+      ]
+    }
+  ]
+}

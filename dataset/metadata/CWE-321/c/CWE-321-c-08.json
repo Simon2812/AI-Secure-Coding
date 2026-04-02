@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-08",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-321/c/CWE-321-c-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "return L\"DefaultVaultPhrase\";",
+          "replacement": "return _wgetenv(L\"APP_SECRET\");"
+        }
+      ]
+    }
+  ]
+}

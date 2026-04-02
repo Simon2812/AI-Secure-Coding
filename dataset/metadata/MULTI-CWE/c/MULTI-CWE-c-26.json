@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-26",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-26",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char command[256] = \"find \";\nstrncat(command, target, sizeof(command) - strlen(command) - 1);\nstrncat(command, \" -maxdepth 1\", sizeof(command) - strlen(command) - 1);\nsystem(command);",
+          "replacement": "execl(\"/usr/bin/find\", \"find\", target, \"-maxdepth\", \"1\", (char *)NULL);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "execlp(command_name, command_name, target, (char *)NULL);",
+          "replacement": "execlp(\"ls\", \"ls\", target, (char *)NULL);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "job->label[base + i] = argv[4][i];",
+          "replacement": "if (base + i < sizeof(job->label) - 1)\n{\n    job->label[base + i] = argv[4][i];\n}"
+        }
+      ]
+    }
+  ]
+}

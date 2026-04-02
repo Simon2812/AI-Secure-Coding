@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-31",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-31",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path ledgerPath = Path.of(ROOT + \"/\" + ledgerId + \"/index.txt\");\n\nBufferedReader reader = Files.newBufferedReader(ledgerPath);",
+          "replacement": "Path base = Path.of(ROOT).toAbsolutePath().normalize();\nPath ledgerPath = base.resolve(ledgerId).resolve(\"index.txt\").normalize();\nif (!ledgerPath.startsWith(base)) {\n    throw new IOException(\"Invalid path\");\n}\n\nBufferedReader reader = Files.newBufferedReader(ledgerPath);"
+        }
+      ]
+    }
+  ]
+}

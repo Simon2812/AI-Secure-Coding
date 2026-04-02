@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-26",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-26",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "EXECVP(L\"cmd.exe\", args);",
+          "replacement": "const wchar_t *arg = data + wcslen(COMMAND_ARG2);\nwchar_t *safe_args[] = { L\"where\", (wchar_t *)arg, NULL };\nEXECVP(L\"where\", safe_args);"
+        }
+      ]
+    }
+  ]
+}

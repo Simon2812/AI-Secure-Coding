@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-96",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-96",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

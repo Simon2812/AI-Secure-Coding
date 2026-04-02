@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-07",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-07",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = conn.createStatement();\n\n    rs = stmt.executeQuery(\"select * from users where name='\" + userKey + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"select * from users where name=?\");\nps.setString(1, userKey);\nrs = ps.executeQuery();"
+        }
+      ]
+    }
+  ]
+}

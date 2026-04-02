@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-01",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-01",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected_secret = \"console-9241\"",
+          "replacement": "expected_secret = os.environ[\"ADMIN_CONSOLE_SECRET\"]"
+        }
+      ]
+    }
+  ]
+}

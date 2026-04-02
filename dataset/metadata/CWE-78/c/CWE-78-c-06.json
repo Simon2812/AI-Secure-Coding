@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-06",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-06",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char *args[] = { CMD_PATH, CMD_FLAG, data, NULL };\nEXECV(CMD_PATH, args);",
+          "replacement": "const char *arg = data + strlen(PREFIX);\nif (*arg != '\\0') {\n    if (strpbrk(arg, \"&|<>^%!\\\"'`\\r\\n\\t\") != NULL)\n        return;\n}\nchar *args[] = { CMD_PATH, CMD_FLAG, data, NULL };\nEXECV(CMD_PATH, args);"
+        }
+      ]
+    }
+  ]
+}

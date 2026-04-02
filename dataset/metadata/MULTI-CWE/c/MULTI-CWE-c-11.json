@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-11",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-11",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcpy(options->report_name, argv[2]);",
+          "replacement": "strncpy(options->report_name, argv[2], sizeof(options->report_name) - 1);\noptions->report_name[sizeof(options->report_name) - 1] = '\\0';"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "snprintf(command, sizeof(command), \"ls %s\", options->workspace);\nsystem(command);",
+          "replacement": "if (strpbrk(options->workspace, \";&|`$><\") != NULL)\n{\n    return;\n}\nsnprintf(command, sizeof(command), \"ls %s\", options->workspace);\nsystem(command);"
+        }
+      ]
+    }
+  ]
+}

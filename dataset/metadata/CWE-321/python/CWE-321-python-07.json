@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-07",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-07",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "key_material = b\"batch-static-key-7788\"",
+          "replacement": "import os\nkey_material = os.environ[\"BATCH_KEY\"]"
+        }
+      ]
+    }
+  ]
+}

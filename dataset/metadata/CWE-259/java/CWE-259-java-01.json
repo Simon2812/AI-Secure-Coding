@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-01",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String authValue = \"SunsetKey#84\";",
+          "replacement": "String authValue = System.getenv(\"DB_PASSWORD\");"
+        }
+      ]
+    }
+  ]
+}

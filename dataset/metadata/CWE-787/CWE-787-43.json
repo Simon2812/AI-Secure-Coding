@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-43",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-43",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (idx = 0; idx < len; idx++)\n{\n*(buf + offset) = idx * 5;\noffset++;\n}",
+          "replacement": "for (idx = 0; idx < len && offset < 7; idx++)\n{\n*(buf + offset) = idx * 5;\noffset++;\n}"
+        }
+      ]
+    }
+  ]
+}

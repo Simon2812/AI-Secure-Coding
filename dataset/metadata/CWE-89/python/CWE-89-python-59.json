@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-59",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-59.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT u.id, u.email \"\n    \"FROM users u \"\n    \"WHERE EXISTS(\"\n    \"  SELECT 1 FROM user_flags f \"\n    \"  WHERE f.user_id = u.id AND f.flag = '\" + flag + \"'\"\n    \")\"\n)\n\ncur.execute(query)",
+          "replacement": "query = (\n    \"SELECT u.id, u.email \"\n    \"FROM users u \"\n    \"WHERE EXISTS(\"\n    \"  SELECT 1 FROM user_flags f \"\n    \"  WHERE f.user_id = u.id AND f.flag = ?\"\n    \")\"\n)\n\ncur.execute(query, (flag,))"
+        }
+      ]
+    }
+  ]
+}

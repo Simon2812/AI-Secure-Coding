@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-10",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-10",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process process = Runtime.getRuntime().exec(osCommand + data);\n        process.waitFor();",
+          "replacement": "String[] command = osCommand.trim().split(\"\\\\s+\");\nString[] full = new String[command.length + 1];\nSystem.arraycopy(command, 0, full, 0, command.length);\nfull[command.length] = data;\nProcess process = Runtime.getRuntime().exec(full);\nprocess.waitFor();"
+        }
+      ]
+    }
+  ]
+}

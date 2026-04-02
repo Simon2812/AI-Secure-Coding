@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-05",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-05",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "key_value = b\"bWVzc2FnZS13cmFwLWtleS01NQ==\"",
+          "replacement": "raise ValueError(\"Missing MSG_KEY\")"
+        }
+      ]
+    }
+  ]
+}

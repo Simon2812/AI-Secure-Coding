@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-13",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-13",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "buffer = (int *)malloc(10000);",
+          "replacement": "buffer = (int *)malloc(10000*sizeof(int));"
+        }
+      ]
+    }
+  ]
+}

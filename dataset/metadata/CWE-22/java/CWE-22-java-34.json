@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-34",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-34",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path composeThemePath(String key) {\n\n        Path folder = storagePath.resolve(key);\n\n        return folder.resolve(\"theme.txt\");\n    }",
+          "replacement": "private Path composeThemePath(String key) throws IOException {\n\n        if (!key.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid theme identifier\");\n        }\n\n        Path folder = storagePath.resolve(key);\n\n        return folder.resolve(\"theme.txt\");\n    }"
+        }
+      ]
+    }
+  ]
+}

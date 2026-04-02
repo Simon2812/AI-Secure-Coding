@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-53",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-53",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "allowed = {\"nslookup\": [\"nslookup\"], \"ping\": [\"ping\", \"-c\", \"1\"]}\nbase = allowed.get(kind)\nif base is None:\n    return \"bad tool\"\n\nproc = subprocess.run(base + [value], shell=False, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if value.startswith(\"-\"):\n    raise ValueError(\"Invalid query\")\nif not re.fullmatch(r\"[A-Za-z0-9.-]{1,253}\", value):\n    raise ValueError(\"Invalid query\")\nproc = subprocess.run(base + [value], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

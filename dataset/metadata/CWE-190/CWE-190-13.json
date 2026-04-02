@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-13",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-13",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int updated = limit + 5;",
+          "replacement": "int updated = limit;\nif (limit <= INT_MAX - 5) {\n    updated = limit + 5;\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-04",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-04",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path = \"/var/app/archive/\" + entry;\n            stream = new FileInputStream(path);",
+          "replacement": "if (entry.contains(\"..\") || entry.contains(\"/\") || entry.contains(\"\\\\\")) {\n                throw new IOException();\n            }\n            path = \"/var/app/archive/\" + entry;\n            stream = new FileInputStream(path);"
+        }
+      ]
+    }
+  ]
+}

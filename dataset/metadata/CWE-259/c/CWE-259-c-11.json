@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-11",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-11",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "const char *hard = \"masterKey_01\";",
+          "replacement": "char fileBuf[80] = \"\"; FILE *f = fopen(\"config.txt\", \"r\"); if (f) { fgets(fileBuf, 80, f); fclose(f); size_t len = strlen(fileBuf); if (len > 0 && fileBuf[len-1] == '\\n') fileBuf[len-1] = '\\0'; } const char *hard = fileBuf;"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-56",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-56",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT country, COUNT(*) \"\n        + \"FROM orders \"\n        + \"WHERE tenant='\" + tenant + \"' AND created_at>='\" + from + \"' AND created_at<='\" + to + \"' AND segment='\" + normalized + \"' \"\n        + \"GROUP BY country ORDER BY COUNT(*) DESC\";\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement();\n     java.sql.ResultSet rs = st.executeQuery(sql)) {",
+          "replacement": "String sql = \"SELECT country, COUNT(*) \"\n        + \"FROM orders \"\n        + \"WHERE tenant=? AND created_at>=? AND created_at<=? AND segment=? \"\n        + \"GROUP BY country ORDER BY COUNT(*) DESC\";\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n\n    st.setString(1, tenant);\n    st.setDate(2, from);\n    st.setDate(3, to);\n    st.setString(4, normalized);\n    try (java.sql.ResultSet rs = st.executeQuery()) {"
+        }
+      ]
+    }
+  ]
+}

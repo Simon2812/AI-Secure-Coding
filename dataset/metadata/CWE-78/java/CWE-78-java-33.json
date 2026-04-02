@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-33",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-33",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String[] env = { data };",
+          "replacement": "if (data.length() > 64) {\n    throw new ServletException(\"invalid input\");\n}\nString bad = \";&|`$<>\";\nfor (int i = 0; i < bad.length(); i++) {\n    if (data.indexOf(bad.charAt(i)) >= 0) {\n        throw new ServletException(\"invalid input\");\n    }\n}\nString[] env = { data };"
+        }
+      ]
+    }
+  ]
+}

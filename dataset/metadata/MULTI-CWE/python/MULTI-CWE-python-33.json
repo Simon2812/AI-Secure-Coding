@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-33",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-33",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "profile_path = (self.base / profile_name).resolve()",
+          "replacement": "profile_path = (self.base / Path(profile_name).name).resolve()"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "output_path = (self.root / name).resolve()",
+          "replacement": "output_path = (self.root / Path(name).name).resolve()"
+        }
+      ]
+    }
+  ]
+}

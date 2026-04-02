@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-60",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-60",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "f->data[pos] = pattern[i % 6];\npos += stride;",
+          "replacement": "if (pos >= 0 && pos < 36)\n{\nf->data[pos] = pattern[i % 6];\n}\npos += stride;"
+        }
+      ]
+    }
+  ]
+}

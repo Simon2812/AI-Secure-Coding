@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-07",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-07",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process proc = Runtime.getRuntime().exec(tool + input);\nproc.waitFor();",
+          "replacement": "if (input != null) {\n    input = input.replaceAll(\"[;&|`$<>]\", \"\");\n}\nProcess proc = Runtime.getRuntime().exec(tool + input);\nproc.waitFor();"
+        }
+      ]
+    }
+  ]
+}

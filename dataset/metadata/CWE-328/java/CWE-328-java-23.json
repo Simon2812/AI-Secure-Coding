@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-java-23",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-328/java/CWE-328-java-23",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

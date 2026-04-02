@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-17",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-17",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int total = charge + extra;\nprintf(\"%d\\n\", total);",
+          "replacement": "if (charge <= INT_MAX - extra)\n{\n    int total = charge + extra;\n    printf(\"%d\\n\", total);\n}\nelse\n{\n    puts(\"value out of range\");\n}"
+        }
+      ]
+    }
+  ]
+}

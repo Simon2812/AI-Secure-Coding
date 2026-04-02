@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-08",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-08",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "config.setConnectionSecret(\"vaultEntry77\");",
+          "replacement": "config.setConnectionSecret(System.getProperty(\"client.secret\"));"
+        }
+      ]
+    }
+  ]
+}

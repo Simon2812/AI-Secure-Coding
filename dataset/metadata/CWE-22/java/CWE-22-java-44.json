@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-44",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-44",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path path = Path.of(repository.toString(), resource);",
+          "replacement": "String element = Path.of(resource).getFileName().toString();\nPath path = Path.of(repository.toString(), element);"
+        }
+      ]
+    }
+  ]
+}

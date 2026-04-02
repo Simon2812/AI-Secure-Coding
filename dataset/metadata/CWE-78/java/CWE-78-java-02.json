@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-02",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-02",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process proc = Runtime.getRuntime().exec(base + entry);\n        proc.waitFor();",
+          "replacement": "java.util.List<String> cmd = new java.util.ArrayList<>(java.util.Arrays.asList(base.trim().split(\"\\\\s+\")));\ncmd.add(entry);\nProcess proc = new ProcessBuilder(cmd).start();\nproc.waitFor();"
+        }
+      ]
+    }
+  ]
+}

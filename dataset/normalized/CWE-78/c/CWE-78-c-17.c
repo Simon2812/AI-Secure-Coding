@@ -1,0 +1,81 @@
+#include <winsock2.h>
+#include <windows.h>
+#include <process.h>
+#include <wchar.h>
+#include <string.h>
+#include <stdlib.h>
+
+#pragma comment(lib, "ws2_32")
+
+#define CLOSE_SOCKET closesocket
+#define EXECVP _wexecvp
+
+#define COMMAND_INT_PATH L"%WINDIR%\\system32\\cmd.exe"
+#define COMMAND_INT L"cmd.exe"
+#define COMMAND_ARG1 L"/c"
+#define COMMAND_ARG2 L"where "
+#define COMMAND_ARG3 data
+
+#define TCP_PORT 27015
+#define IP_ADDRESS "127.0.0.1"
+
+void wide_connect_socket_exec(void)
+{
+    WSADATA wsaData;
+    int wsaReady = 0;
+
+    int recvResult;
+    struct sockaddr_in service;
+    wchar_t *replace;
+    SOCKET connectSocket = INVALID_SOCKET;
+
+    wchar_t dataBuffer[100] = COMMAND_ARG2;
+    wchar_t *data = dataBuffer;
+    size_t dataLen = wcslen(data);
+
+    do
+    {
+        if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0)
+            break;
+        wsaReady = 1;
+
+        connectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        if (connectSocket == INVALID_SOCKET)
+            break;
+
+        memset(&service, 0, sizeof(service));
+        service.sin_family = AF_INET;
+        service.sin_addr.s_addr = inet_addr(IP_ADDRESS);
+        service.sin_port = htons(TCP_PORT);
+
+        if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == SOCKET_ERROR)
+            break;
+
+        recvResult = recv(connectSocket,
+                          (char *)(data + dataLen),
+                          (int)(sizeof(wchar_t) * (100 - dataLen - 1)),
+                          0);
+
+        if (recvResult == SOCKET_ERROR || recvResult == 0)
+            break;
+
+        data[dataLen + recvResult / sizeof(wchar_t)] = L'\0';
+
+        replace = wcschr(data, L'\r');
+        if (replace) *replace = L'\0';
+        replace = wcschr(data, L'\n');
+        if (replace) *replace = L'\0';
+
+    } while (0);
+
+    if (connectSocket != INVALID_SOCKET)
+        CLOSE_SOCKET(connectSocket);
+
+    if (wsaReady)
+        WSACleanup();
+
+    {
+        wchar_t *args[] = { COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL };
+        EXECVP(COMMAND_INT, args);
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-04",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-04",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "argStr = \"\"\nif platform.system() == \"Windows\":\n    argStr = \"cmd.exe /c \"\nelse:\n    argStr = \"sh -c \"\nargStr += f\"echo {bar}\"\n\ntry:\n    proc = subprocess.run(argStr, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "proc = subprocess.run([\"echo\", bar], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

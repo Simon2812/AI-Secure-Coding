@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-57",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-57",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"UPDATE users SET locked=1, lock_reason='\" + reason + \"' WHERE id='\" + userId + \"'\";\n\ntry (java.sql.Statement st = c.createStatement()) {\n    return st.executeUpdate(sql);\n}",
+          "replacement": "String sql = \"UPDATE users SET locked=1, lock_reason=? WHERE id=?\";\n\ntry (java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n    st.setString(1, reason);\n    st.setString(2, userId);\n    return st.executeUpdate();\n}"
+        }
+      ]
+    }
+  ]
+}

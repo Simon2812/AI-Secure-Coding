@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-22",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-22",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "safe_arg = arg.replace(\";\", \"\")\nchosen = task.strip().lower()\n\ncmdline = f\"{chosen} {safe_arg}\"\nreturn _run_task(cmdline)",
+          "replacement": "allowed = {\n    \"whoami\": [\"whoami\"],\n    \"date\": [\"date\"],\n    \"uptime\": [\"uptime\"]\n}\ntool = allowed.get(chosen)\nif tool is None:\n    raise ValueError(\"Unsupported task\")\nproc = subprocess.run(tool + [safe_arg], shell=False, capture_output=True, encoding=\"utf-8\")\nreturn (proc.stdout or \"\") + (proc.stderr or \"\")"
+        }
+      ]
+    }
+  ]
+}

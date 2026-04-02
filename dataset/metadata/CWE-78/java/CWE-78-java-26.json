@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-26",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-26",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String[] cmd = {shell, flag, \"date \" + task};",
+          "replacement": "String safe;\nif (\"now\".equals(task)) {\n    safe = \"date\";\n} else if (\"utc\".equals(task)) {\n    safe = \"date -u\";\n} else {\n    throw new ServletException(\"invalid command\");\n}\nString[] cmd = {shell, flag, safe};"
+        }
+      ]
+    }
+  ]
+}

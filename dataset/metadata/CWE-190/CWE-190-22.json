@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-22",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-22",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "remaining = balance - deduction;\nprintf(\"%d\\n\", remaining);",
+          "replacement": "long long temp = (long long)balance - deduction;\nif (temp >= INT_MIN)\n{\n    remaining = (int)temp;\n    printf(\"%d\\n\", remaining);\n}\nelse\n{\n    puts(\"value out of range\");\n}"
+        }
+      ]
+    }
+  ]
+}

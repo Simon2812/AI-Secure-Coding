@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-14",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "state.current = \"dbGate#55\";",
+          "replacement": "state.current = getenv(\"DB_PASSWORD\");"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-55",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-55",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT COUNT(*) FROM events WHERE tenant='\" + tenant + \"' AND event_day>=? AND event_day<=?\";",
+          "replacement": "String sql = \"SELECT COUNT(*) FROM events WHERE tenant=? AND event_day>=? AND event_day<=?\";\nps.setString(1, tenant);"
+        }
+      ]
+    }
+  ]
+}

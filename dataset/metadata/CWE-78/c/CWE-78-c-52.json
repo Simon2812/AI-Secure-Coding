@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-52",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-52",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *fp = popen(cmd, \"r\");",
+          "replacement": "int pipefd[2];\nif (pipe(pipefd) < 0)\n    return 1;\npid_t pid = fork();\nif (pid < 0)\n    return 1;\nif (pid == 0) {\n    close(pipefd[0]);\n    dup2(pipefd[1], STDOUT_FILENO);\n    close(pipefd[1]);\n    char *args[] = {\"id\", argv[1], NULL};\n    execvp(\"id\", args);\n    _exit(127);\n}\nclose(pipefd[1]);\nFILE *fp = fdopen(pipefd[0], \"r\");"
+        }
+      ]
+    }
+  ]
+}

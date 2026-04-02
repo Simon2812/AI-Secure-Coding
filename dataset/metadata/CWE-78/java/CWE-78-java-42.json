@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-42",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String scanCommand = \"clamscan \" + artifactName;\n\n        ProcessBuilder builder = new ProcessBuilder(\"sh\", \"-c\", scanCommand);\n        Process process = builder.start();",
+          "replacement": "ProcessBuilder builder = new ProcessBuilder(\"clamscan\", artifactName);\n        Process process = builder.start();"
+        }
+      ]
+    }
+  ]
+}

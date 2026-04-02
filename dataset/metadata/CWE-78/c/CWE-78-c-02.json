@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-02",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-02",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "if (system(buffer) != 0)\n    exit(1);",
+          "replacement": "const char *arg = buffer + strlen(FULL_COMMAND);\n#ifdef _WIN32\nif (_spawnlp(_P_WAIT, \"whoami.exe\", \"whoami.exe\", arg, NULL) != 0)\n    exit(1);\n#else\nif (execl(\"/usr/bin/id\", \"id\", arg, NULL) == -1)\n    exit(1);\n#endif"
+        }
+      ]
+    }
+  ]
+}

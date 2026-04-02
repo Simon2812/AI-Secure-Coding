@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-33",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-33",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "proc = subprocess.run([program, value], shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "allowed = {\"whoami\": [\"whoami\"], \"date\": [\"date\"], \"id\": [\"id\"]}\nbase = allowed.get(program)\nif base is None:\n    raise ValueError(\"Unsupported executable\")\nproc = subprocess.run(base + [value], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ]
+}

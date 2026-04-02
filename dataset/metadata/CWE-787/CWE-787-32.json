@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-32",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-32",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "table[target] = value;",
+          "replacement": "if (target >= 0 && target < (int)(sizeof(table) / sizeof(table[0])))\n{\ntable[target] = value;\n}"
+        }
+      ]
+    }
+  ]
+}

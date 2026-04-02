@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-29",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-29",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "source = (article_dir / attachment_name).resolve()",
+          "replacement": "source = (article_dir / Path(attachment_name).name).resolve()"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "script = (\n    \"INSERT INTO publish_notes(reporter, summary, article_count, created_at) VALUES ('\"\n    + reporter\n    + \"', '\"\n    + summary\n    + \"', \"\n    + str(article_count)\n    + \", datetime('now'));\"\n)\ncursor.executescript(script)\nconnection.commit()",
+          "replacement": "cursor.execute(\n    \"INSERT INTO publish_notes(reporter, summary, article_count, created_at) VALUES (?, ?, ?, datetime('now'))\",\n    (reporter, summary, article_count),\n)\nconnection.commit()"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "\"password\": \"PublishRelay#2026\",",
+          "replacement": "\"password\": os.environ.get(\"PUBLISH_SMTP_PASSWORD\", \"\"),"
+        }
+      ]
+    }
+  ]
+}

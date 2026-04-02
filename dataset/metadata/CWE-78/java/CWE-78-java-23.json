@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-23",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-23",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process process = runtime.exec(command + value);",
+          "replacement": "Process process = runtime.exec(new String[]{\"echo\", value});"
+        }
+      ]
+    }
+  ]
+}

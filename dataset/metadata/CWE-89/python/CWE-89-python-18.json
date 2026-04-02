@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-18",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-18.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "update_stmt = (\n    \"UPDATE invoices SET status = 'PAID', processor_ref = %s \"\n    \"WHERE id = \" + invoice_id\n)\n\ncur.execute(update_stmt, (processor_ref,))",
+          "replacement": "update_stmt = (\n    \"UPDATE invoices SET status = 'PAID', processor_ref = %s \"\n    \"WHERE id = %s\"\n)\n\ncur.execute(update_stmt, (processor_ref, invoice_id))"
+        }
+      ]
+    }
+  ]
+}

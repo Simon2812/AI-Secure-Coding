@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "cipher = AES.new(bytes.fromhex(\"00112233445566778899aabbccddeeff\"), AES.MODE_CBC, iv)",
+          "replacement": "import os\ncipher = AES.new(bytes.fromhex(os.environ[\"EVENT_KEY_HEX\"]), AES.MODE_CBC, iv)"
+        }
+      ]
+    }
+  ]
+}

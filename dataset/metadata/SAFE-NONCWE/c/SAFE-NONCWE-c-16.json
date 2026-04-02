@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "SAFE-NONCWE-c-16",
+  "language": "c",
+  "path": "/dataset/synthetic/SAFE-NONCWE/c/SAFE-NONCWE-c-16",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

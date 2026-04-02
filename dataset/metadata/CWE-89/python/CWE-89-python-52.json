@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-52",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-52.py",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = (\n    \"INSERT INTO users(email, display_name, role) VALUES ('\" + cfg.admin_email + \"', '\" + cfg.admin_name + \"', 'ADMIN')\"\n)\nop.execute(stmt)",
+          "replacement": "bind = op.get_bind()\nstmt = text(\"INSERT INTO users(email, display_name, role) VALUES (:email, :name, 'ADMIN')\")\nbind.execute(stmt, {\"email\": cfg.admin_email, \"name\": cfg.admin_name})"
+        }
+      ]
+    }
+  ]
+}

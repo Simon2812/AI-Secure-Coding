@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-12",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-12",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "sprintf(msg->header, \"%s\", argv[1]);",
+          "replacement": "snprintf(msg->header, sizeof(msg->header), \"%s\", argv[1]);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(msg->payload, argv[2], strlen(argv[2]));",
+          "replacement": "size_t len = strlen(argv[2]);\nif (len >= sizeof(msg->payload))\n{\n    len = sizeof(msg->payload) - 1;\n}\nmemcpy(msg->payload, argv[2], len);"
+        }
+      ]
+    }
+  ]
+}

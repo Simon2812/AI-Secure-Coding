@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-03",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-03",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String tokenValue = \"OfficePass!9\";",
+          "replacement": "String tokenValue = System.console() != null ? new String(System.console().readPassword()) : null;"
+        }
+      ]
+    }
+  ]
+}

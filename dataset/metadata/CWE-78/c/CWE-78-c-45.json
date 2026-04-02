@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-45",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-45",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "snprintf(cmd, sizeof(cmd), \"stat %s\", s);\n    return system(cmd);",
+          "replacement": "pid_t pid = fork();\nif (pid < 0)\n    return 1;\nif (pid == 0) {\n    char *args[] = {\"stat\", (char *)s, NULL};\n    execvp(\"stat\", args);\n    _exit(127);\n}\nint st = 0;\nif (waitpid(pid, &st, 0) < 0)\n    return 1;\nreturn (WIFEXITED(st) && WEXITSTATUS(st) == 0) ? 0 : 1;"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-51",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-51",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT id, customer FROM orders ORDER BY \" + sort + \" \" + dir;",
+          "replacement": "String safeSort = \"id\";\nif (\"customer\".equals(sort)) safeSort = \"customer\";\n\nString safeDir = \"asc\".equalsIgnoreCase(dir) ? \"ASC\" : \"DESC\";\n\nString sql = \"SELECT id, customer FROM orders ORDER BY \" + safeSort + \" \" + safeDir;"
+        }
+      ]
+    }
+  ]
+}

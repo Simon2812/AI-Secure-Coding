@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-60",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-60",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveReportFile(String name) {\n        return storagePath.resolve(name + \".report\");\n    }",
+          "replacement": "private Path resolveReportFile(String name) throws IOException {\n        if (!name.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid report identifier\");\n        }\n        return storagePath.resolve(name + \".report\");\n    }"
+        }
+      ]
+    }
+  ]
+}

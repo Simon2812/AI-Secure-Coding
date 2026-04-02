@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-35",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-35",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "static int run_lookup(const char *name) {\n    char cmd[256];\n    snprintf(cmd, sizeof(cmd), \"nslookup %s\", name);\n\n    FILE *fp = popen(cmd, \"r\");\n    if (!fp) {\n        perror(\"popen\");\n        return 1;\n    }\n\n    char buf[256];\n    while (fgets(buf, sizeof(buf), fp)) {\n        fputs(buf, stdout);\n    }\n\n    int rc = pclose(fp);\n    return (rc == 0) ? 0 : 1;\n}",
+          "replacement": "static int run_lookup(const char *name) {\n    if (name[0] == '-') {\n        fprintf(stderr, \"Invalid host\\n\");\n        return 1;\n    }\n    for (const unsigned char *p = (const unsigned char *)name; *p; ++p) {\n        if (!(isalnum(*p) || *p == '.' || *p == '-')) {\n            fprintf(stderr, \"Invalid host\\n\");\n            return 1;\n        }\n    }\n\n    int pipefd[2];\n    if (pipe(pipefd) < 0) {\n        perror(\"pipe\");\n        return 1;\n    }\n\n    pid_t pid = fork();\n    if (pid < 0) {\n        perror(\"fork\");\n        close(pipefd[0]);\n        close(pipefd[1]);\n        return 1;\n    }\n\n    if (pid == 0) {\n        close(pipefd[0]);\n        if (dup2(pipefd[1], STDOUT_FILENO) < 0) {\n            perror(\"dup2\");\n            _exit(127);\n        }\n        close(pipefd[1]);\n\n        execlp(\"nslookup\", \"nslookup\", name, (char *)NULL);\n        perror(\"execlp\");\n        _exit(127);\n    }\n\n    close(pipefd[1]);\n\n    FILE *fp = fdopen(pipefd[0], \"r\");\n    if (!fp) {\n        perror(\"fdopen\");\n        close(pipefd[0]);\n        (void)waitpid(pid, NULL, 0);\n        return 1;\n    }\n\n    char buf[256];\n    while (fgets(buf, sizeof(buf), fp)) {\n        fputs(buf, stdout);\n    }\n\n    fclose(fp);\n    int status = 0;\n    (void)waitpid(pid, &status, 0);\n    return (WIFEXITED(status) && WEXITSTATUS(status) == 0) ? 0 : 1;\n}"
+        }
+      ]
+    }
+  ]
+}

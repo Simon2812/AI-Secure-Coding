@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-51",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-51",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "meta_file = os.path.join(root_dir, backup_name, \"meta.json\")\n\nwith open(meta_file, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()",
+          "replacement": "candidate = os.path.realpath(os.path.join(root_dir, backup_name, \"meta.json\"))\nbase = os.path.realpath(root_dir)\nif not candidate.startswith(base + os.sep):\n    raise ValueError(\"invalid backup path\")\n\nwith open(candidate, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()"
+        }
+      ]
+    }
+  ]
+}

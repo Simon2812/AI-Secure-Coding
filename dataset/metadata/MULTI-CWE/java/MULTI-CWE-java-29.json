@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-29",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-29",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT value FROM metrics WHERE name = '\" + metric + \"'\";",
+          "replacement": "String safe = metric.matches(\"[a-zA-Z0-9_]+\") ? metric : \"cpu\";\nString query = \"SELECT value FROM metrics WHERE name = '\" + safe + \"'\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(logDir + \"/\" + name);",
+          "replacement": "if (!name.matches(\"[a-zA-Z0-9._-]+\")) throw new IOException(\"invalid\");\nFile f = new File(logDir + \"/\" + name);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + script;\n\nProcess p = Runtime.getRuntime().exec(cmd);",
+          "replacement": "Process p = new ProcessBuilder(\"sh\", \"-c\", \"uptime\").start();"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-512"
+        }
+      ]
+    }
+  ]
+}

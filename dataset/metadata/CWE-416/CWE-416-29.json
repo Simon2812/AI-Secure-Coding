@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-29",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-29",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "static void destroy_record(Record *r)\n{\n    if (!r)\n        return;\n\n    if (r->name)\n        free(r->name);\n\n    free(r);\n}",
+          "replacement": "static void destroy_record(Record *r)\n{\n    if (!r)\n        return;\n\n    for (int i = 0; i < 4; i++)\n        if (table[i] == r)\n            table[i] = NULL;\n\n    if (r->name)\n        free(r->name);\n\n    free(r);\n}"
+        }
+      ]
+    }
+  ]
+}

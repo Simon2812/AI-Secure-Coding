@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-14",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-14",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "private static final String SECRET = \"globalStaticKey\";",
+          "replacement": "private final String secret;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-512"
+        }
+      ]
+    }
+  ]
+}

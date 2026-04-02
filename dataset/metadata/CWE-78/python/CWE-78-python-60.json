@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-60",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-60",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = _build_ping_command(host, count, timeout)\n\nproc = subprocess.run(\ncmd,\nshell=True,\ncapture_output=True,\nencoding=\"utf-8\"\n)",
+          "replacement": "proc = subprocess.run(\n[\"ping\", \"-c\", count, \"-W\", timeout, host],\nshell=False,\ncapture_output=True,\nencoding=\"utf-8\"\n)"
+        }
+      ]
+    }
+  ]
+}

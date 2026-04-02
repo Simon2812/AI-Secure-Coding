@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-17",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": []
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-10",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-10",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "CALG_RIPEMD160",
+          "replacement": "CALG_SHA_256"
+        }
+      ]
+    }
+  ]
+}

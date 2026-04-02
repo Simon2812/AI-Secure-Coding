@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-11",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-11",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "if (SYSTEM(data) != 0)\n    exit(1);",
+          "replacement": "const char *arg = data + strlen(FULL_COMMAND);\nif (*arg != '\\0') {\n    if (strpbrk(arg, \"&|;<>^$(){}[]!*?`\\\"'\\\\\\r\\n\\t\") != NULL)\n        exit(1);\n}\nif (SYSTEM(data) != 0)\n    exit(1);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-13",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-13",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return count * (int)sizeof(int);",
+          "replacement": "if (count <= 0 || count > INT_MAX / (int)sizeof(int))\n{\n    return 0;\n}\nreturn count * (int)sizeof(int);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(dst, src, strlen(src) + 1);",
+          "replacement": "snprintf(dst, 64, \"%s\", src);"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-59",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-59",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveBundleDirectory(String name) {\n        return ROOT.resolve(name);\n    }",
+          "replacement": "private Path resolveBundleDirectory(String name) throws IOException {\n        if (name.contains(\"..\") || name.contains(\"/\") || name.contains(\"\\\\\")) {\n            throw new IOException(\"Invalid bundle name\");\n        }\n        return ROOT.resolve(name);\n    }"
+        }
+      ]
+    }
+  ]
+}

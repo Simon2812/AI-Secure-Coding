@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-29",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-29",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int base = count * 4;\n    return base + count;",
+          "replacement": "if (count <= 0 || count > INT_MAX / 4)\n    {\n        return 0;\n    }\n    int base = count * 4;\n    return base + count;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "dst[strlen(dst) + i] = src[i];",
+          "replacement": "if (strlen(dst) + i < 63)\n    {\n        dst[strlen(dst) + i] = src[i];\n    }"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "free(buf);",
+          "replacement": ""
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "strcat(cmd, j->input);\n    system(cmd);",
+          "replacement": "execl(\"/usr/bin/head\", \"head\", \"-n\", \"1\", j->input, (char *)NULL);"
+        }
+      ]
+    }
+  ]
+}
