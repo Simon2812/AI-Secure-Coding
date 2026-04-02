@@ -3,6 +3,7 @@
   "id": "CWE-787-08",
   "language": "c",
   "path": "/dataset/normalized/CWE-787/CWE-787-08",
+  "split": "val",
   "source": {
     "type": "benchmark",
     "name": "Juliet Test Suite"

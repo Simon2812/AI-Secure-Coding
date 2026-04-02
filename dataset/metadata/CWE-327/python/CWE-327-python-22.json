@@ -3,6 +3,7 @@
   "id": "CWE-327-python-22",
   "language": "python",
   "path": "/dataset/synthetic/CWE-327/python/CWE-327-python-22",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

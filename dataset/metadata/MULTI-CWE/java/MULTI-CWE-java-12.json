@@ -3,6 +3,7 @@
   "id": "MULTI-CWE-java-12",
   "language": "java",
   "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-12",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

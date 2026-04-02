@@ -3,6 +3,7 @@
   "id": "SAFE-NONCWE-java-20",
   "language": "java",
   "path": "/dataset/synthetic/SAFE-NONCWE/java/SAFE-NONCWE-java-20",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

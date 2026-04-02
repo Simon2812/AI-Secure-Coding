@@ -3,6 +3,7 @@
   "id": "CWE-89-python-70",
   "language": "python",
   "path": "/dataset/normalized/CWE-89/python/CWE-89-python-70.py",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "OWASP Benchmark Project"

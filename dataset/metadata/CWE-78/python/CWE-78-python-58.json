@@ -3,6 +3,7 @@
   "id": "CWE-78-python-58",
   "language": "python",
   "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-58",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

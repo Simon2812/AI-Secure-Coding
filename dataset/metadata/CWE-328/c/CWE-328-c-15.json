@@ -3,6 +3,7 @@
   "id": "CWE-328-c-15",
   "language": "c",
   "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-15",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

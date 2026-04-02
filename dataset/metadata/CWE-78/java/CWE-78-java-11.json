@@ -3,6 +3,7 @@
   "id": "CWE-78-java-11",
   "language": "java",
   "path": "/dataset/normalized/CWE-78/java/CWE-78-java-11",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "Juliet Test Suite"

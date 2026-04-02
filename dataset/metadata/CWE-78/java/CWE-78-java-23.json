@@ -3,6 +3,7 @@
   "id": "CWE-78-java-23",
   "language": "java",
   "path": "/dataset/normalized/CWE-78/java/CWE-78-java-23",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "OWASP Benchmark Project"

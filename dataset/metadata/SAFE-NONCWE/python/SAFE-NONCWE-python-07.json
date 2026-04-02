@@ -3,9 +3,10 @@
   "id": "SAFE-NONCWE-python-07",
   "language": "python",
   "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-07",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null
   },
-  "vulnerabilities": [] 
+  "vulnerabilities": []
 }

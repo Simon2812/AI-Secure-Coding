@@ -3,6 +3,7 @@
   "id": "CWE-89-python-99",
   "language": "python",
   "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-99.py",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

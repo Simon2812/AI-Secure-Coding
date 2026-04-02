@@ -3,6 +3,7 @@
   "id": "CWE-787-56",
   "language": "c",
   "path": "/dataset/synthetic/CWE-787/CWE-787-56",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

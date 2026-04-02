@@ -3,6 +3,7 @@
   "id": "CWE-416-42",
   "language": "c",
   "path": "/dataset/synthetic/CWE-416/CWE-416-42",
+  "split": "val",
   "source": {
     "type": "synthetic",
     "name": null

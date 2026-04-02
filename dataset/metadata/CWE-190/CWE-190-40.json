@@ -3,6 +3,7 @@
   "id": "CWE-190-40",
   "language": "c",
   "path": "/dataset/normalized/CWE-190/CWE-190-40",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "Juliet Test Suite"

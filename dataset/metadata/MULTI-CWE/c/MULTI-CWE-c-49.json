@@ -3,6 +3,7 @@
   "id": "MULTI-CWE-c-49",
   "language": "c",
   "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-49",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

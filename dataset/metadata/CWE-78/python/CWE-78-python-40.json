@@ -3,6 +3,7 @@
   "id": "CWE-78-python-40",
   "language": "python",
   "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-40",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

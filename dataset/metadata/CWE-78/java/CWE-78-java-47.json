@@ -3,6 +3,7 @@
   "id": "CWE-78-java-47",
   "language": "java",
   "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-47",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null
