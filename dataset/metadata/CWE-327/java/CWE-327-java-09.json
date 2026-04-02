@@ -3,6 +3,7 @@
   "id": "CWE-327-java-09",
   "language": "java",
   "path": "/dataset/normalized/CWE-327/java/CWE-327-java-09",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "OWASP Benchmark Project"

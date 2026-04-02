@@ -3,6 +3,7 @@
   "id": "CWE-78-c-39",
   "language": "c",
   "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-39",
+  "split": "val",
   "source": {
     "type": "synthetic",
     "name": null

@@ -3,6 +3,7 @@
   "id": "CWE-89-java-29",
   "language": "java",
   "path": "/dataset/normalized/CWE-89/java/CWE-89-java-29",
+  "split": "val",
   "source": {
     "type": "benchmark",
     "name": "OWASP Benchmark Project"

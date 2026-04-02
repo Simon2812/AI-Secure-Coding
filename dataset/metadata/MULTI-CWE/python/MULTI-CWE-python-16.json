@@ -3,6 +3,7 @@
   "id": "MULTI-CWE-python-16",
   "language": "python",
   "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-16",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

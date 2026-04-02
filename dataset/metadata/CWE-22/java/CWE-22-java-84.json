@@ -3,6 +3,7 @@
   "id": "CWE-22-java-84",
   "language": "java",
   "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-84",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

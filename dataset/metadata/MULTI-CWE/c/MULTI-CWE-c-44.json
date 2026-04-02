@@ -3,6 +3,7 @@
   "id": "MULTI-CWE-c-44",
   "language": "c",
   "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-44",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

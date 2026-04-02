@@ -3,6 +3,7 @@
   "id": "CWE-89-java-45",
   "language": "java",
   "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-45",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

@@ -3,6 +3,7 @@
   "id": "CWE-328-python-04",
   "language": "python",
   "path": "/dataset/normalized/CWE-328/python/CWE-328-python-04",
+  "split": "val",
   "source": {
     "type": "benchmark",
     "name": "OWASP Benchmark Project"

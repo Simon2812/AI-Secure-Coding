@@ -3,6 +3,7 @@
   "id": "CWE-22-python-23",
   "language": "python",
   "path": "/dataset/normalized/CWE-22/python/CWE-22-python-23",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "OWASP Benchmark Project"

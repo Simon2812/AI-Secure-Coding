@@ -3,6 +3,7 @@
   "id": "CWE-89-python-39",
   "language": "python",
   "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-39.py",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

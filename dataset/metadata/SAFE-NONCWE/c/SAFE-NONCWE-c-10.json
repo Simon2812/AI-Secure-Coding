@@ -3,6 +3,7 @@
   "id": "SAFE-NONCWE-c-10",
   "language": "c",
   "path": "/dataset/synthetic/SAFE-NONCWE/c/SAFE-NONCWE-c-10",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

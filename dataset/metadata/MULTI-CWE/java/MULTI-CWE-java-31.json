@@ -3,6 +3,7 @@
   "id": "MULTI-CWE-java-31",
   "language": "java",
   "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-31",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

@@ -3,6 +3,7 @@
   "id": "CWE-787-30",
   "language": "cpp",
   "path": "/dataset/normalized/CWE-787/CWE-787-30",
+  "split": "train",
   "source": {
     "type": "benchmark",
     "name": "Juliet Test Suite"

@@ -3,6 +3,7 @@
   "id": "CWE-327-java-03",
   "language": "java",
   "path": "/dataset/normalized/CWE-327/java/CWE-327-java-03",
+  "split": "test",
   "source": {
     "type": "benchmark",
     "name": "Juliet Test Suite"

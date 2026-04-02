@@ -3,6 +3,7 @@
   "id": "CWE-787-37",
   "language": "c",
   "path": "/dataset/synthetic/CWE-787/CWE-787-37",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

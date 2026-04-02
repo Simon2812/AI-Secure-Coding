@@ -3,6 +3,7 @@
   "id": "CWE-22-python-97",
   "language": "python",
   "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-97",
+  "split": "test",
   "source": {
     "type": "synthetic",
     "name": null

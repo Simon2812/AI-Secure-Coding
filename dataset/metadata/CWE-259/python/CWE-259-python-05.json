@@ -3,6 +3,7 @@
   "id": "CWE-259-python-05",
   "language": "python",
   "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-05",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

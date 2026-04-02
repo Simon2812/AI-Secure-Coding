@@ -3,6 +3,7 @@
   "id": "CWE-321-java-10",
   "language": "java",
   "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-10",
+  "split": "train",
   "source": {
     "type": "synthetic",
     "name": null

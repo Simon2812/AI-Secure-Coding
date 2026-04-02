@@ -3,6 +3,7 @@
   "id": "MULTI-CWE-python-40",
   "language": "python",
   "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-40",
+  "split": "val",
   "source": {
     "type": "synthetic",
     "name": null
