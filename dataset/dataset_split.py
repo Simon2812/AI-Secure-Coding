@@ -2,7 +2,7 @@ import json
 import random
 from pathlib import Path
 
-BASE_PATH = Path(r"C:\Users\semen\AI-Secure-Coding\dataset\metadata")
+BASE_PATH = Path(r"[LOCATION]\AI-Secure-Coding\dataset\metadata")
 
 REGULAR_RATIOS = (0.8, 0.1, 0.1)
 SPECIAL_RATIOS = (0.6, 0.2, 0.2)
