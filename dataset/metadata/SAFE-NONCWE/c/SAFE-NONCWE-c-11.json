@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "SAFE-NONCWE-c-11",
   "language": "c",
-  "path": "/dataset/synthetic/SAFE-NONCWE/c/SAFE-NONCWE-c-11",
+  "path": "/dataset/synthetic/SAFE-NONCWE/c/SAFE-NONCWE-c-11.c",
   "split": "train",
   "source": {
     "type": "synthetic",

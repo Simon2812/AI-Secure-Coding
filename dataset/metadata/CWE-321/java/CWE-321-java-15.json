@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-321-java-15",
   "language": "java",
-  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-15",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-15.java",
   "split": "test",
   "source": {
     "type": "synthetic",

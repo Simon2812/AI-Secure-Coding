@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-89-java-38",
   "language": "java",
-  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-38",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-38.java",
   "split": "val",
   "source": {
     "type": "benchmark",

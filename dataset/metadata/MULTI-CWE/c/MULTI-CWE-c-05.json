@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "MULTI-CWE-c-05",
   "language": "c",
-  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-05",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-05.c",
   "split": "val",
   "source": {
     "type": "synthetic",

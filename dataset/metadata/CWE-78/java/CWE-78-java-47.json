@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-78-java-47",
   "language": "java",
-  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-47",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-47.java",
   "split": "test",
   "source": {
     "type": "synthetic",

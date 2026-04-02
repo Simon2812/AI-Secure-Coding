@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "SAFE-NONCWE-java-19",
   "language": "java",
-  "path": "/dataset/synthetic/SAFE-NONCWE/java/SAFE-NONCWE-java-19",
+  "path": "/dataset/synthetic/SAFE-NONCWE/java/SAFE-NONCWE-java-19.java",
   "split": "train",
   "source": {
     "type": "synthetic",

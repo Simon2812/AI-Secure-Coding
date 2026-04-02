@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-787-17",
   "language": "c",
-  "path": "/dataset/normalized/CWE-787/CWE-787-17",
+  "path": "/dataset/normalized/CWE-787/CWE-787-17.c",
   "split": "train",
   "source": {
     "type": "benchmark",

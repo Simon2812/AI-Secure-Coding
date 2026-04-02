@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-78-python-51",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-51",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-51.py",
   "split": "train",
   "source": {
     "type": "synthetic",

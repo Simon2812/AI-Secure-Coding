@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-190-43",
   "language": "c",
-  "path": "/dataset/synthetic/CWE-190/CWE-190-43",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-43.c",
   "split": "train",
   "source": {
     "type": "synthetic",

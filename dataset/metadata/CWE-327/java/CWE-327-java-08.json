@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-327-java-08",
   "language": "java",
-  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-08",
+  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-08.java",
   "split": "val",
   "source": {
     "type": "benchmark",

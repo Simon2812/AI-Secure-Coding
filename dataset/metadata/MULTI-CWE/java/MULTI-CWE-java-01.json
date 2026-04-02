@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "MULTI-CWE-java-01",
   "language": "java",
-  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-01",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-01.java",
   "split": "train",
   "source": {
     "type": "synthetic",

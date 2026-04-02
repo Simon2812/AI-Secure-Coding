@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "MULTI-CWE-c-28",
   "language": "c",
-  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-28",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-28.c",
   "split": "train",
   "source": {
     "type": "synthetic",

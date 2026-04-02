@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-259-c-10",
   "language": "c",
-  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-10",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-10.c",
   "split": "train",
   "source": {
     "type": "synthetic",

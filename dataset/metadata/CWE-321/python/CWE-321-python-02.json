@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-321-python-02",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-02",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-02.py",
   "split": "val",
   "source": {
     "type": "synthetic",

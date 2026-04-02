@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-78-python-34",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-34",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-34.py",
   "split": "val",
   "source": {
     "type": "synthetic",
