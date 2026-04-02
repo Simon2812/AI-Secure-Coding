@@ -1,0 +1,173 @@
+{
+  "dataset_name": "AI Secure Coding Dataset",
+  "schema_version": "1.0",
+
+  "description": "This file contains detailed statistics of the dataset, including counts of vulnerable and safe samples per CWE and language, as well as distribution across data sources (Juliet, OWASP, synthetic).",
+
+  "statistics": {
+    "CWE-22": {
+      "java": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "owasp": 50, "synthetic": 50 }
+      },
+      "python": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "owasp": 50, "synthetic": 50 }
+      }
+    },
+
+    "CWE-78": {
+      "c": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "juliet": 50, "synthetic": 50 }
+      },
+      "java": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "juliet": 35, "owasp": 35, "synthetic": 30 }
+      },
+      "python": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "owasp": 20, "synthetic": 80 }
+      }
+    },
+
+    "CWE-89": {
+      "java": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "juliet": 35, "owasp": 35, "synthetic": 30 }
+      },
+      "python": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "owasp": 15, "synthetic": 85 }
+      }
+    },
+
+    "CWE-190": {
+      "c": {
+        "vulnerable": 30,
+        "safe": 20,
+        "sources": { "juliet": 25, "synthetic": 25 }
+      }
+    },
+
+    "CWE-259": {
+      "c": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "juliet": 10, "synthetic": 15 }
+      },
+      "java": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "juliet": 10, "synthetic": 15 }
+      },
+      "python": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "synthetic": 25 }
+      }
+    },
+
+    "CWE-321": {
+      "c": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "juliet": 10, "synthetic": 15 }
+      },
+      "java": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "juliet": 10, "synthetic": 15 }
+      },
+      "python": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "synthetic": 25 }
+      }
+    },
+
+    "CWE-327": {
+      "c": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "juliet": 15, "synthetic": 10 }
+      },
+      "java": {
+        "vulnerable": 10,
+        "safe": 5,
+        "sources": { "juliet": 8, "owasp": 8, "synthetic": 9 }
+      },
+      "python": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "synthetic": 25 }
+      }
+    },
+
+    "CWE-328": {
+      "c": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "juliet": 15, "synthetic": 10 }
+      },
+      "java": {
+        "vulnerable": 10,
+        "safe": 5,
+        "sources": { "juliet": 8, "owasp": 8, "synthetic": 9 }
+      },
+      "python": {
+        "vulnerable": 15,
+        "safe": 10,
+        "sources": { "owasp": 13, "synthetic": 12 }
+      }
+    },
+
+    "CWE-416": {
+      "c": {
+        "vulnerable": 30,
+        "safe": 20,
+        "sources": { "juliet": 25, "synthetic": 25 }
+      }
+    },
+
+    "CWE-787": {
+      "c": {
+        "vulnerable": 60,
+        "safe": 40,
+        "sources": { "juliet": 50, "synthetic": 50 },
+        "includes": ["CWE-121", "CWE-122", "CWE-124", "CWE-680"]
+      }
+    },
+
+    "MULTI-CWE": {
+      "c": {
+        "vulnerable": 35,
+        "safe": 15,
+        "sources": { "synthetic": 50 }
+      },
+      "java": {
+        "vulnerable": 35,
+        "safe": 15,
+        "sources": { "synthetic": 50 }
+      },
+      "python": {
+        "vulnerable": 35,
+        "safe": 15,
+        "sources": { "synthetic": 50 }
+      }
+    },
+
+    "SAFE-NONCWE": {
+      "c": { "safe": 25, "sources": { "synthetic": 25 } },
+      "java": { "safe": 25, "sources": { "synthetic": 25 } },
+      "python": { "safe": 25, "sources": { "synthetic": 25 } }
+    }
+  }
+}
