@@ -1,0 +1,30 @@
+{
+  "dataset_name": "AI Secure Coding Dataset",
+  "schema_version": "1.0",
+
+  "description": "This file defines how the dataset is partitioned into training, validation, and test sets. Splitting is applied per (CWE, language) group while preserving the vulnerable/safe distribution.",
+
+  "split_strategy": {
+    "regular": {
+      "train": 0.8,
+      "validation": 0.1,
+      "test": 0.1
+    },
+    "special": {
+      "train": 0.6,
+      "validation": 0.2,
+      "test": 0.2
+    }
+  },
+
+  "rules": {
+    "apply_per": ["CWE", "language"],
+    "vulnerable_safe_ratio": "60/40 (where applicable)",
+    "special_categories": ["MULTI-CWE", "SAFE-NONCWE"],
+    "splitting_method": "random shuffle with fixed seed"
+  },
+
+  "reproducibility": {
+    "seed": 42
+  }
+}
