@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-328-python-24",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-328/python/CWE-328-python-24",
+  "path": "/dataset/synthetic/CWE-328/python/CWE-328-python-24.py",
   "split": "val",
   "source": {
     "type": "synthetic",

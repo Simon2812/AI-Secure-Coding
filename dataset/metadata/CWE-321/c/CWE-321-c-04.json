@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-321-c-04",
   "language": "c",
-  "path": "/dataset/normalized/CWE-321/c/CWE-321-c-04",
+  "path": "/dataset/normalized/CWE-321/c/CWE-321-c-04.c",
   "split": "train",
   "source": {
     "type": "benchmark",

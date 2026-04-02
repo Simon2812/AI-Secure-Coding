@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "SAFE-NONCWE-python-23",
   "language": "python",
-  "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-23",
+  "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-23.py",
   "split": "train",
   "source": {
     "type": "synthetic",

@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-259-python-15",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-15",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-15.py",
   "split": "train",
   "source": {
     "type": "synthetic",

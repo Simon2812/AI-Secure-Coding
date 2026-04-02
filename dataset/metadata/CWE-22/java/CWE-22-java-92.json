@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-22-java-92",
   "language": "java",
-  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-92",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-92.java",
   "split": "train",
   "source": {
     "type": "synthetic",

@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "SAFE-NONCWE-python-09",
   "language": "python",
-  "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-09",
+  "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-09.py",
   "split": "train",
   "source": {
     "type": "synthetic",

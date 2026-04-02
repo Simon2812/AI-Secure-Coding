@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-321-python-15",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-15",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-15.py",
   "split": "test",
   "source": {
     "type": "synthetic",

@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-416-49",
   "language": "c",
-  "path": "/dataset/synthetic/CWE-416/CWE-416-49",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-49.c",
   "split": "test",
   "source": {
     "type": "synthetic",

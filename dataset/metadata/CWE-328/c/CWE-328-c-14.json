@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-328-c-14",
   "language": "c",
-  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-14",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-14.c",
   "split": "train",
   "source": {
     "type": "synthetic",

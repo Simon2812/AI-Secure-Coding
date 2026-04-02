@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-190-12",
   "language": "c",
-  "path": "/dataset/normalized/CWE-190/CWE-190-12",
+  "path": "/dataset/normalized/CWE-190/CWE-190-12.c",
   "split": "train",
   "source": {
     "type": "benchmark",

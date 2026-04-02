@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-22-python-21",
   "language": "python",
-  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-21",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-21.py",
   "split": "train",
   "source": {
     "type": "benchmark",

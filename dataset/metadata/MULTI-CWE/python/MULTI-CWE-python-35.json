@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "MULTI-CWE-python-35",
   "language": "python",
-  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-35",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-35.py",
   "split": "test",
   "source": {
     "type": "synthetic",

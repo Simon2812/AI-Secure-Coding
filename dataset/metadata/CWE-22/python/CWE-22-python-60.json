@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-22-python-60",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-60",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-60.py",
   "split": "train",
   "source": {
     "type": "synthetic",

@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-416-20",
   "language": "c",
-  "path": "/dataset/synthetic/CWE-416/CWE-416-20",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-20.c",
   "split": "train",
   "source": {
     "type": "synthetic",

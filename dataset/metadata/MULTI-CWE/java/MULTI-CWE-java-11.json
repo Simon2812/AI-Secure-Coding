@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "MULTI-CWE-java-11",
   "language": "java",
-  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-11",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-11.java",
   "split": "test",
   "source": {
     "type": "synthetic",

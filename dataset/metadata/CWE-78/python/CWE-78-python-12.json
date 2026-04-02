@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-78-python-12",
   "language": "python",
-  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-12",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-12.py",
   "split": "val",
   "source": {
     "type": "benchmark",

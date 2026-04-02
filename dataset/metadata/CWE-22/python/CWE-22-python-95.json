@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-22-python-95",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-95",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-95.py",
   "split": "val",
   "source": {
     "type": "synthetic",

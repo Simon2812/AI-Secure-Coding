@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-22-python-86",
   "language": "python",
-  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-81",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-81.py",
   "split": "test",
   "source": {
     "type": "synthetic",

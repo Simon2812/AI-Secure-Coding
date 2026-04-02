@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "CWE-327-java-23",
   "language": "java",
-  "path": "/dataset/synthetic/CWE-327/java/CWE-327-java-23",
+  "path": "/dataset/synthetic/CWE-327/java/CWE-327-java-23.java",
   "split": "train",
   "source": {
     "type": "synthetic",
