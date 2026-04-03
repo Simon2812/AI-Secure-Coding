@@ -27,7 +27,7 @@ It combines:
 - Large Language Models (LLMs)
 - Real-world datasets
 
-As defined in the project abstract, the system provides context-aware security insights and targets vulnerabilities such as injections, hardcoded secrets, and weak cryptography.
+The system provides context-aware security insights and targets vulnerabilities such as injections, hardcoded secrets, and weak cryptography.
 
 ---
 
@@ -160,7 +160,7 @@ This makes real threats difficult to identify and fix efficiently.
 - Simon Pakhtusov
 - Denis Rozhansky
 
-Computer Science Students
+Computer Science Students (Bar-Ilan University)
 
 ---
 
