@@ -1,7 +1,7 @@
 import { Finding, RuleContext } from "./types";
 import { detectLanguage } from "./utils";
 import { findHardcodedCredentials } from "./rules/hardcodedCredentials";
-// import { findWeakCrypto } from "./rules/weakCrypto";
+import { findWeakCrypto } from "./rules/weakCrypto";
 import { findCommandInjection } from "./rules/commandInjection";
 
 export function analyzeCode(code: string, filePath: string): Finding[] {
@@ -14,7 +14,7 @@ export function analyzeCode(code: string, filePath: string): Finding[] {
   const findings: Finding[] = [];
 
   findings.push(...findHardcodedCredentials(context));
-  // findings.push(...findWeakCrypto(context));
+  findings.push(...findWeakCrypto(context));
   findings.push(...findCommandInjection(context));
 
   return sortFindings(findings);

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.analyzeCode = analyzeCode;
 const utils_1 = require("./utils");
 const hardcodedCredentials_1 = require("./rules/hardcodedCredentials");
-// import { findWeakCrypto } from "./rules/weakCrypto";
+const weakCrypto_1 = require("./rules/weakCrypto");
 const commandInjection_1 = require("./rules/commandInjection");
 function analyzeCode(code, filePath) {
     const context = {
@@ -13,7 +13,7 @@ function analyzeCode(code, filePath) {
     };
     const findings = [];
     findings.push(...(0, hardcodedCredentials_1.findHardcodedCredentials)(context));
-    // findings.push(...findWeakCrypto(context));
+    findings.push(...(0, weakCrypto_1.findWeakCrypto)(context));
     findings.push(...(0, commandInjection_1.findCommandInjection)(context));
     return sortFindings(findings);
 }
