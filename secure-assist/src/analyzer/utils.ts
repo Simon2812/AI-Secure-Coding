@@ -35,3 +35,21 @@ export function createFinding(args: {
     evidence: args.evidence,
   };
 }
+
+export function detectLanguage(filePath: string): string {
+  const lower = filePath.toLowerCase();
+
+  if (lower.endsWith(".c") || lower.endsWith(".cpp") || lower.endsWith(".cc") || lower.endsWith(".cxx") || lower.endsWith(".h") || lower.endsWith(".hpp")) {
+    return "cpp";
+  }
+
+  if (lower.endsWith(".java")) {
+    return "java";
+  }
+
+  if (lower.endsWith(".py")) {
+    return "python";
+  }
+
+  return "unknown";
+}

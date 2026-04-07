@@ -1,14 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.analyzeCode = analyzeCode;
+const utils_1 = require("./utils");
 const hardcodedCredentials_1 = require("./rules/hardcodedCredentials");
 // import { findWeakCrypto } from "./rules/weakCrypto";
-// import { findCommandInjection } from "./rules/commandInjection";
+const commandInjection_1 = require("./rules/commandInjection");
 function analyzeCode(code, filePath) {
+    const context = {
+        code,
+        filePath,
+        language: (0, utils_1.detectLanguage)(filePath),
+    };
     const findings = [];
-    findings.push(...(0, hardcodedCredentials_1.findHardcodedCredentials)({ code, filePath }));
-    //   findings.push(...findWeakCrypto({ code, filePath }));
-    //   findings.push(...findCommandInjection({ code, filePath }));
+    findings.push(...(0, hardcodedCredentials_1.findHardcodedCredentials)(context));
+    // findings.push(...findWeakCrypto(context));
+    findings.push(...(0, commandInjection_1.findCommandInjection)(context));
     return sortFindings(findings);
 }
 function sortFindings(findings) {

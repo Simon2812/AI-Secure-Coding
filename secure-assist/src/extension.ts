@@ -1,13 +1,14 @@
 import * as vscode from "vscode";
 import { analyzeCode } from "./analyzer/analyze";
 import { Finding } from "./analyzer/types";
+import { createDiagnosticCollection, updateDiagnostics } from "./diagnostics";
 
 let isTracking = false;
 const fileStore = new Map<string, string>();
 
 export function activate(context: vscode.ExtensionContext) {
   const output = vscode.window.createOutputChannel("Secure Assist");
-
+  const diagnostics = createDiagnosticCollection();
   const startCmd = vscode.commands.registerCommand("secure-assist.startTracking", () => {
     isTracking = true;
     output.show(true);
@@ -56,6 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
     output.appendLine(`=== Analyzing ${relPath} ===`);
 
     const findings = analyzeCode(content, relPath);
+    updateDiagnostics(diagnostics, doc, findings);
 
     if (findings.length === 0) {
       output.appendLine(`No findings.`);
@@ -65,7 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
     printFindings(output, findings);
   });
 
-  context.subscriptions.push(startCmd, showStoredCmd, saveSub, output);
+  context.subscriptions.push(startCmd, showStoredCmd, saveSub, output, diagnostics);
 }
 
 export function deactivate() {}

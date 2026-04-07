@@ -15,6 +15,7 @@ export type Finding = {
 export type RuleContext = {
   code: string;
   filePath: string;
+  language: string;
 };
 
 export type Rule = (context: RuleContext) => Finding[];

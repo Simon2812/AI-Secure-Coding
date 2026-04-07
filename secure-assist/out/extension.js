@@ -37,10 +37,12 @@ exports.activate = activate;
 exports.deactivate = deactivate;
 const vscode = __importStar(require("vscode"));
 const analyze_1 = require("./analyzer/analyze");
+const diagnostics_1 = require("./diagnostics");
 let isTracking = false;
 const fileStore = new Map();
 function activate(context) {
     const output = vscode.window.createOutputChannel("Secure Assist");
+    const diagnostics = (0, diagnostics_1.createDiagnosticCollection)();
     const startCmd = vscode.commands.registerCommand("secure-assist.startTracking", () => {
         isTracking = true;
         output.show(true);
@@ -82,13 +84,14 @@ function activate(context) {
         output.appendLine(``);
         output.appendLine(`=== Analyzing ${relPath} ===`);
         const findings = (0, analyze_1.analyzeCode)(content, relPath);
+        (0, diagnostics_1.updateDiagnostics)(diagnostics, doc, findings);
         if (findings.length === 0) {
             output.appendLine(`No findings.`);
             return;
         }
         printFindings(output, findings);
     });
-    context.subscriptions.push(startCmd, showStoredCmd, saveSub, output);
+    context.subscriptions.push(startCmd, showStoredCmd, saveSub, output, diagnostics);
 }
 function deactivate() { }
 function printFindings(output, findings) {

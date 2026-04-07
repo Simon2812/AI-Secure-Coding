@@ -1,14 +1,21 @@
-import { Finding } from "./types";
+import { Finding, RuleContext } from "./types";
+import { detectLanguage } from "./utils";
 import { findHardcodedCredentials } from "./rules/hardcodedCredentials";
 // import { findWeakCrypto } from "./rules/weakCrypto";
-// import { findCommandInjection } from "./rules/commandInjection";
+import { findCommandInjection } from "./rules/commandInjection";
 
 export function analyzeCode(code: string, filePath: string): Finding[] {
+  const context: RuleContext = {
+    code,
+    filePath,
+    language: detectLanguage(filePath),
+  };
+
   const findings: Finding[] = [];
 
-  findings.push(...findHardcodedCredentials({ code, filePath }));
-//   findings.push(...findWeakCrypto({ code, filePath }));
-//   findings.push(...findCommandInjection({ code, filePath }));
+  findings.push(...findHardcodedCredentials(context));
+  // findings.push(...findWeakCrypto(context));
+  findings.push(...findCommandInjection(context));
 
   return sortFindings(findings);
 }
