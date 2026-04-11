@@ -6,6 +6,7 @@ const hardcodedCredentials_1 = require("./rules/hardcodedCredentials");
 const weakCrypto_1 = require("./rules/weakCrypto");
 const commandInjection_1 = require("./rules/commandInjection");
 const sqlInjection_1 = require("./rules/sqlInjection");
+const pathTraversal_1 = require("./rules/pathTraversal");
 function analyzeCode(code, filePath) {
     const context = {
         code,
@@ -17,6 +18,7 @@ function analyzeCode(code, filePath) {
     findings.push(...(0, weakCrypto_1.findWeakCrypto)(context));
     findings.push(...(0, commandInjection_1.findCommandInjection)(context));
     findings.push(...(0, sqlInjection_1.findSqlInjection)(context));
+    findings.push(...(0, pathTraversal_1.findPathTraversal)(context));
     return sortFindings(findings);
 }
 function sortFindings(findings) {

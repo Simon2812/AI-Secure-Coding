@@ -4,11 +4,15 @@ import { createFinding } from "../utils";
 export function findSqlInjection(context: RuleContext): Finding[] {
   const { language } = context;
 
-  if (language !== "python") {
-    return [];
+  if (language === "python") {
+    return findPythonSqlInjection(context);
   }
 
-  return findPythonSqlInjection(context);
+  if (language === "java") {
+    return findJavaSqlInjection(context);
+  }
+
+  return [];
 }
 
 function findPythonSqlInjection(context: RuleContext): Finding[] {
@@ -68,6 +72,64 @@ function findPythonSqlInjection(context: RuleContext): Finding[] {
   return findings;
 }
 
+function findJavaSqlInjection(context: RuleContext): Finding[] {
+  const findings: Finding[] = [];
+  const { code, filePath } = context;
+
+  const executeCallRegex =
+    /\b[a-zA-Z_][a-zA-Z0-9_]*\.(executeQuery|executeUpdate|execute)\s*\(([\s\S]*?)\)/g;
+
+  for (const match of code.matchAll(executeCallRegex)) {
+    if (match.index === undefined) continue;
+
+    const fullCall = match[0];
+    const argsText = match[2]?.trim() ?? "";
+
+    if (isLikelySafePreparedStatementUsage(code, match.index, argsText)) {
+      continue;
+    }
+
+    if (isDangerousInlineJavaSql(argsText)) {
+      findings.push(
+        createFinding({
+          cweId: "CWE-89",
+          ruleId: "java-sqli-inline",
+          vulnerability: "SQL Injection",
+          severity: "high",
+          message: "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+          file: filePath,
+          code,
+          index: match.index,
+          evidence: fullCall,
+        })
+      );
+      continue;
+    }
+
+    const variableName = extractSingleVariable(argsText);
+    if (variableName) {
+      const assignment = findPreviousJavaAssignment(code, variableName, match.index);
+      if (assignment && isDangerousInlineJavaSql(assignment.value)) {
+        findings.push(
+          createFinding({
+            cweId: "CWE-89",
+            ruleId: "java-sqli-variable",
+            vulnerability: "SQL Injection",
+            severity: "high",
+            message: `Possible SQL injection: SQL query variable "${variableName}" appears to be built unsafely before execution.`,
+            file: filePath,
+            code,
+            index: assignment.index,
+            evidence: assignment.fullMatch,
+          })
+        );
+      }
+    }
+  }
+
+  return findings;
+}
+
 function isLikelyParameterizedExecute(argsText: string): boolean {
   const hasSecondArgument = topLevelCommaExists(argsText);
   if (!hasSecondArgument) return false;
@@ -80,17 +142,30 @@ function isLikelyParameterizedExecute(argsText: string): boolean {
 function isDangerousInlineSql(text: string): boolean {
   const lower = text.toLowerCase();
 
-  const looksLikeSql =
-    /\b(select|insert|update|delete)\b/.test(lower);
+  const looksLikeSql = /\b(select|insert|update|delete)\b/.test(lower);
 
   if (!looksLikeSql) return false;
 
   const isFString = /\bf["']/.test(text) || /\bf`/.test(text);
   const hasFormat = /\.format\s*\(/.test(text);
   const hasPercentFormatting = /["'][^"']*%[sd][^"']*["']\s*%/.test(text);
-  const hasConcatenation = /["'][^"']*["']\s*\+/.test(text) || /\+\s*[a-zA-Z_][a-zA-Z0-9_]*/.test(text);
+  const hasConcatenation =
+    /["'][^"']*["']\s*\+/.test(text) || /\+\s*[a-zA-Z_][a-zA-Z0-9_]*/.test(text);
 
   return isFString || hasFormat || hasPercentFormatting || hasConcatenation;
+}
+
+function isDangerousInlineJavaSql(text: string): boolean {
+  const lower = text.toLowerCase();
+
+  const looksLikeSql = /\b(select|insert|update|delete)\b/.test(lower);
+  if (!looksLikeSql) return false;
+
+  const hasStringFormat = /\bString\s*\.\s*format\s*\(/.test(text);
+  const hasConcatenation =
+    /"[^"]*"\s*\+/.test(text) || /\+\s*[a-zA-Z_][a-zA-Z0-9_]*/.test(text);
+
+  return hasStringFormat || hasConcatenation;
 }
 
 function extractSingleVariable(argsText: string): string | null {
@@ -128,6 +203,71 @@ function findPreviousAssignment(code: string, variableName: string, beforeIndex:
     value: lastMatch[1],
     fullMatch: lastMatch[0],
   };
+}
+
+function findPreviousJavaAssignment(code: string, variableName: string, beforeIndex: number): {
+  index: number;
+  value: string;
+  fullMatch: string;
+} | null {
+  const codeBefore = code.slice(0, beforeIndex);
+
+  const escapedName = escapeRegex(variableName);
+  const regex = new RegExp(
+    `(?:String\\s+)?\\b${escapedName}\\b\\s*=\\s*([^;\\n]+)`,
+    "g"
+  );
+
+  let lastMatch: RegExpExecArray | null = null;
+
+  for (const match of codeBefore.matchAll(regex)) {
+    lastMatch = match;
+  }
+
+  if (!lastMatch || lastMatch.index === undefined) {
+    return null;
+  }
+
+  return {
+    index: lastMatch.index,
+    value: lastMatch[1],
+    fullMatch: lastMatch[0],
+  };
+}
+
+function isLikelySafePreparedStatementUsage(
+  code: string,
+  executeIndex: number,
+  argsText: string
+): boolean {
+  if (argsText.includes("?")) {
+    return true;
+  }
+
+  const variableName = extractSingleVariable(argsText);
+  if (!variableName) {
+    return false;
+  }
+
+  const before = code.slice(0, executeIndex);
+  const escapedName = escapeRegex(variableName);
+
+  const assignRegex = new RegExp(
+    `(?:String\\s+)?\\b${escapedName}\\b\\s*=\\s*([^;\\n]+)`,
+    "g"
+  );
+
+  let lastMatch: RegExpExecArray | null = null;
+
+  for (const match of before.matchAll(assignRegex)) {
+    lastMatch = match;
+  }
+
+  if (!lastMatch) {
+    return false;
+  }
+
+  return /\?/.test(lastMatch[1]);
 }
 
 function splitTopLevelArgs(text: string): string[] {
