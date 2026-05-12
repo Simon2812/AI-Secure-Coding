@@ -27,11 +27,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "Use of popen() may allow OS command injection if input is not controlled.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-32.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-32.c",
       "line": 27,
       "column": 16,
       "evidence": "popen("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.712Z"
+  "enriched_at": "2026-05-12T11:36:03.511Z"
 }

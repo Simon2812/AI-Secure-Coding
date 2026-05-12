@@ -27,7 +27,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 24,
       "column": 5,
       "evidence": "strcpy(f->payload, msg)"
@@ -38,7 +38,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 24,
       "column": 12,
       "evidence": "strcpy(f->payload, msg);"
@@ -49,7 +49,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 25,
       "column": 12,
       "evidence": "return f;"
@@ -60,7 +60,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 28,
       "column": 21,
       "evidence": "static void release_frame(Frame *f)"
@@ -71,7 +71,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 30,
       "column": 6,
       "evidence": "if (!f)"
@@ -82,7 +82,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 33,
       "column": 6,
       "evidence": "if (f->payload)"
@@ -93,7 +93,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 34,
       "column": 9,
       "evidence": "free(f->payload);"
@@ -104,11 +104,11 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 17,
       "column": 5,
       "evidence": "f->payload = (char *)malloc(f->length + 1);"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.669Z"
+  "enriched_at": "2026-05-12T11:36:03.467Z"
 }

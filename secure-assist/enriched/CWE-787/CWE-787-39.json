@@ -22,38 +22,49 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
-      "line": 35,
-      "column": 9,
-      "evidence": "series[i] = atoi(line);"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
-      "line": 40,
-      "column": 24,
-      "evidence": "printf(\"%d\\n\", series[i]);"
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 12,
+      "column": 28,
+      "evidence": "4 * sizeof(int)"
     },
     {
       "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
+      "ruleId": "ast-integer-overflow",
       "vulnerability": "Integer Overflow",
       "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
-      "line": 12,
-      "column": 5,
-      "evidence": "series = (int *)malloc(4 * sizeof(int));"
+      "message": "memset() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 18,
+      "column": 23,
+      "evidence": "4 * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'series' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 22,
+      "column": 14,
+      "evidence": "series"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'series' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 43,
+      "column": 10,
+      "evidence": "series"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.946Z"
+  "enriched_at": "2026-05-12T11:36:03.786Z"
 }

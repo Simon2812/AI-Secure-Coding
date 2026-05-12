@@ -27,11 +27,11 @@
       "vulnerability": "Use of Hard-coded Password",
       "severity": "high",
       "message": "Possible hard-coded password found in source code.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-14.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-14.py",
       "line": 16,
       "column": 13,
       "evidence": "password=\"analytics_pass\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.081Z"
+  "enriched_at": "2026-05-12T11:36:03.980Z"
 }

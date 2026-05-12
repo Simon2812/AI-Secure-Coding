@@ -27,11 +27,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-53.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-53.java",
       "line": 15,
       "column": 9,
       "evidence": "String sql = \"UPDATE users SET active=0 WHERE id IN (\" + joined + \")\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.031Z"
+  "enriched_at": "2026-05-12T11:36:03.931Z"
 }

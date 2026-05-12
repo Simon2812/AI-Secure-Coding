@@ -16,11 +16,11 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-63.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-63.py",
       "line": 35,
       "column": 27,
       "evidence": "file_handle = open(destination, \"wb\")"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.401Z"
+  "enriched_at": "2026-05-12T11:36:02.924Z"
 }

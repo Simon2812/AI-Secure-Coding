@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T10:46:43.929Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buf' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-17.c",
+      "line": 21,
+      "column": 10,
+      "evidence": "buf"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:36:03.745Z"
 }

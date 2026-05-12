@@ -27,7 +27,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
       "line": 19,
       "column": 33,
       "evidence": "static int evaluate(const char *buf)"
@@ -38,7 +38,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
       "line": 23,
       "column": 24,
       "evidence": "for (size_t i = 0; buf[i] != '\\0'; i++)"
@@ -49,7 +49,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
       "line": 24,
       "column": 18,
       "evidence": "score += buf[i];"
@@ -60,11 +60,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-20.c",
       "line": 35,
       "column": 5,
       "evidence": "strcpy(input, \"example\")"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.664Z"
+  "enriched_at": "2026-05-12T11:36:03.461Z"
 }

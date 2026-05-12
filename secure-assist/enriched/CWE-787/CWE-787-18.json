@@ -23,15 +23,37 @@
   "static_findings": [
     {
       "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
+      "ruleId": "ast-integer-overflow",
       "vulnerability": "Integer Overflow",
       "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-787\\CWE-787-18.c",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-18.c",
       "line": 10,
-      "column": 5,
-      "evidence": "buffer = (int64_t *)malloc(80 * sizeof(int64_t));"
+      "column": 32,
+      "evidence": "80 * sizeof(int64_t)"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memmove() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-18.c",
+      "line": 18,
+      "column": 29,
+      "evidence": "100 * sizeof(int64_t)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buffer' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-18.c",
+      "line": 22,
+      "column": 10,
+      "evidence": "buffer"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.930Z"
+  "enriched_at": "2026-05-12T11:36:03.747Z"
 }

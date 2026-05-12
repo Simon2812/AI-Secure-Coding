@@ -16,7 +16,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 15,
       "column": 5,
       "evidence": "strcpy(rows[0].key, \"mode\")"
@@ -27,7 +27,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 16,
       "column": 5,
       "evidence": "strcpy(rows[1].key, \"theme\")"
@@ -38,7 +38,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 17,
       "column": 5,
       "evidence": "strcpy(rows[2].key, \"lang\")"
@@ -49,7 +49,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 32,
       "column": 5,
       "evidence": "strcpy(rows[0].value, \"debug\")"
@@ -60,7 +60,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 33,
       "column": 5,
       "evidence": "strcpy(rows[1].value, \"light\")"
@@ -71,11 +71,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 34,
       "column": 5,
       "evidence": "strcpy(rows[2].value, \"en\")"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.687Z"
+  "enriched_at": "2026-05-12T11:36:03.486Z"
 }

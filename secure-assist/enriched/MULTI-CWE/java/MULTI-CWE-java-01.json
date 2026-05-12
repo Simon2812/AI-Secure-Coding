@@ -27,11 +27,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-01.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-01.java",
       "line": 29,
       "column": 13,
       "evidence": "String query =\r\n                    \"SELECT id, username, department, status, created_at \" +\r"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.188Z"
+  "enriched_at": "2026-05-12T11:36:04.083Z"
 }

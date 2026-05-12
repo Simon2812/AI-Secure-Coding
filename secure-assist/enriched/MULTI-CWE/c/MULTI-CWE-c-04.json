@@ -27,7 +27,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 28,
       "column": 13,
       "evidence": "strncpy(block->buffer, input, block->size - 1);"
@@ -38,7 +38,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 29,
       "column": 5,
       "evidence": "block->buffer[block->size - 1] = '\\0';"
@@ -49,7 +49,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 31,
       "column": 12,
       "evidence": "return block;"
@@ -60,7 +60,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 34,
       "column": 21,
       "evidence": "static void release_block(DataBlock *block)"
@@ -71,7 +71,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 49,
       "column": 19,
       "evidence": "static void print_block(const DataBlock *block)"
@@ -82,7 +82,7 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 51,
       "column": 9,
       "evidence": "if (block != NULL && block->buffer != NULL)"
@@ -93,11 +93,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
       "line": 53,
       "column": 33,
       "evidence": "printf(\"Content: %s\\n\", block->buffer);"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.153Z"
+  "enriched_at": "2026-05-12T11:36:04.048Z"
 }

@@ -27,7 +27,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-05.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-05.java",
       "line": 25,
       "column": 26,
       "evidence": "new FileInputStream(\"../common/config.properties\")"
@@ -38,11 +38,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-05.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-05.java",
       "line": 58,
       "column": 29,
       "evidence": "Runtime.getRuntime().exec("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.762Z"
+  "enriched_at": "2026-05-12T11:36:03.562Z"
 }

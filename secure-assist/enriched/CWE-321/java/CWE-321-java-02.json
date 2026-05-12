@@ -27,11 +27,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Possible hard-coded authentication token found in source code.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-321\\java\\CWE-321-java-02.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-321\\java\\CWE-321-java-02.java",
       "line": 18,
       "column": 13,
       "evidence": "token = \"23 ~j;asn!@#/>as\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.503Z"
+  "enriched_at": "2026-05-12T11:36:03.109Z"
 }

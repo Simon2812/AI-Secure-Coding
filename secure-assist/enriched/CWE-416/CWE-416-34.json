@@ -16,11 +16,11 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-416\\CWE-416-34.cpp",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-416\\CWE-416-34.cpp",
       "line": 39,
       "column": 5,
       "evidence": "int result = accumulator + tail;"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.677Z"
+  "enriched_at": "2026-05-12T11:36:03.475Z"
 }

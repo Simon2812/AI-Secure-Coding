@@ -27,11 +27,11 @@
       "vulnerability": "Use of Hard-coded Password",
       "severity": "high",
       "message": "Possible hard-coded password in dictionary or map literal.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-11.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-11.py",
       "line": 17,
       "column": 13,
       "evidence": "\"password\": \"finance_pass\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.079Z"
+  "enriched_at": "2026-05-12T11:36:03.977Z"
 }

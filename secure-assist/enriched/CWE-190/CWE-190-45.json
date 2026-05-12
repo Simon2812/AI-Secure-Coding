@@ -16,11 +16,11 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-190\\CWE-190-45.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-190\\CWE-190-45.c",
       "line": 16,
       "column": 5,
       "evidence": "int area = width * height;"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.256Z"
+  "enriched_at": "2026-05-12T11:36:02.770Z"
 }

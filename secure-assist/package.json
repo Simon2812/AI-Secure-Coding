@@ -3,16 +3,17 @@
   "displayName": "Secure Assist",
   "description": "secure assist",
   "version": "0.0.1",
-  "engines": { "vscode": "^1.109.0" },
-  "categories": ["Other"],
-
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onCommand:secure-assist.startTracking",
     "onCommand:secure-assist.showStoredFile"
   ],
-
   "main": "./out/extension.js",
-
   "contributes": {
     "commands": [
       {
@@ -20,12 +21,11 @@
         "title": "Secure Assist: Start Tracking"
       },
       {
-      "command": "secure-assist.showStoredFile",
-      "title": "Secure Assist: Show Stored File"
+        "command": "secure-assist.showStoredFile",
+        "title": "Secure Assist: Show Stored File"
       }
     ]
   },
-
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -35,15 +35,21 @@
     "test": "vscode-test",
     "enrich": "npm run compile && node ./out/scripts/enrichDataset.js"
   },
-
   "devDependencies": {
-    "@types/vscode": "^1.109.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "typescript-eslint": "^8.54.0",
+    "@types/vscode": "^1.109.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "typescript-eslint": "^8.54.0"
+  },
+  "dependencies": {
+    "tree-sitter": "^0.22.4",
+    "tree-sitter-c": "^0.24.1",
+    "tree-sitter-java": "^0.23.5",
+    "tree-sitter-python": "^0.25.0",
+    "web-tree-sitter": "^0.26.8"
   }
 }

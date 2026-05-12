@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
-      "vulnerability": "Integer Overflow",
-      "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-56.c",
-      "line": 40,
-      "column": 9,
-      "evidence": "int index = row * 4 + column;"
-    }
-  ],
-  "enriched_at": "2026-05-12T10:46:43.958Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-12T11:36:03.817Z"
 }

@@ -36,12 +36,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const analyze_1 = require("../analyzer/analyze");
+const astAnalyzer_1 = require("./ast/astAnalyzer");
 const REPO_ROOT = process.argv[2]
     ? path.resolve(process.argv[2])
     : path.resolve(__dirname, "..", "..", "..");
 const METADATA_DIR = path.join(REPO_ROOT, "dataset", "metadata");
 const SECURE_ASSIST_ROOT = path.resolve(__dirname, "..", "..");
 const ENRICHED_DIR = path.join(SECURE_ASSIST_ROOT, "enriched");
+// CWEs where AST outperforms regex
+const AST_STRONG = new Set(["CWE-259", "CWE-327", "CWE-328", "CWE-787"]);
+function pickAnalyzer(metaPath, code, codePath) {
+    const cweFolder = path.relative(METADATA_DIR, metaPath).split(path.sep)[0];
+    if (AST_STRONG.has(cweFolder)) {
+        return (0, astAnalyzer_1.astAnalyzeCode)(code, codePath);
+    }
+    return (0, analyze_1.analyzeCode)(code, codePath);
+}
 function walkJson(dir) {
     const results = [];
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -55,7 +65,8 @@ function walkJson(dir) {
     }
     return results;
 }
-function main() {
+async function main() {
+    await (0, astAnalyzer_1.initAstAnalyzer)();
     const metadataFiles = walkJson(METADATA_DIR);
     let processed = 0;
     let skipped = 0;
@@ -78,7 +89,7 @@ function main() {
             continue;
         }
         const code = fs.readFileSync(codePath, "utf-8");
-        const findings = (0, analyze_1.analyzeCode)(code, codePath);
+        const findings = pickAnalyzer(metaPath, code, codePath);
         const enriched = {
             ...meta,
             static_findings: findings,
@@ -93,5 +104,5 @@ function main() {
     }
     console.log(`\nDone. Processed: ${processed}, Skipped: ${skipped}, Errors: ${errors}`);
 }
-main();
+main().catch(err => { console.error(err); process.exit(1); });
 //# sourceMappingURL=enrichDataset.js.map

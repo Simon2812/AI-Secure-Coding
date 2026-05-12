@@ -1,7 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
-import { analyzeCode } from "../analyzer/analyze";
 import { Finding } from "../analyzer/types";
+import { analyzeCode } from "../analyzer/analyze";
+import { initAstAnalyzer, astAnalyzeCode } from "./ast/astAnalyzer";
 
 const REPO_ROOT = process.argv[2]
   ? path.resolve(process.argv[2])
@@ -31,6 +32,17 @@ interface EnrichedMetadata extends Metadata {
   enriched_at: string;
 }
 
+// CWEs where AST outperforms regex
+const AST_STRONG = new Set(["CWE-259", "CWE-327", "CWE-328", "CWE-787"]);
+
+function pickAnalyzer(metaPath: string, code: string, codePath: string): Finding[] {
+  const cweFolder = path.relative(METADATA_DIR, metaPath).split(path.sep)[0];
+  if (AST_STRONG.has(cweFolder)) {
+    return astAnalyzeCode(code, codePath);
+  }
+  return analyzeCode(code, codePath);
+}
+
 function walkJson(dir: string): string[] {
   const results: string[] = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -44,7 +56,8 @@ function walkJson(dir: string): string[] {
   return results;
 }
 
-function main() {
+async function main() {
+  await initAstAnalyzer();
   const metadataFiles = walkJson(METADATA_DIR);
 
   let processed = 0;
@@ -73,7 +86,7 @@ function main() {
     }
 
     const code = fs.readFileSync(codePath, "utf-8");
-    const findings = analyzeCode(code, codePath);
+    const findings = pickAnalyzer(metaPath, code, codePath);
 
     const enriched: EnrichedMetadata = {
       ...meta,
@@ -94,4 +107,4 @@ function main() {
   console.log(`\nDone. Processed: ${processed}, Skipped: ${skipped}, Errors: ${errors}`);
 }
 
-main();
+main().catch(err => { console.error(err); process.exit(1); });

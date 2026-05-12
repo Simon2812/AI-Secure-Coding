@@ -16,11 +16,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-42.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-42.c",
       "line": 20,
       "column": 5,
       "evidence": "strcpy(e.name, text)"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.684Z"
+  "enriched_at": "2026-05-12T11:36:03.481Z"
 }

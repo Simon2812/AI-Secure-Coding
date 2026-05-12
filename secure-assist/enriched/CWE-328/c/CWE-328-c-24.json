@@ -9,6 +9,18 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T10:46:43.609Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'out' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-24.c",
+      "line": 39,
+      "column": 10,
+      "evidence": "out"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:36:03.355Z"
 }

@@ -27,7 +27,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
       "line": 25,
       "column": 13,
       "evidence": "strcpy(material, \"Alpha\")"
@@ -38,11 +38,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
       "line": 28,
       "column": 13,
       "evidence": "strcpy(material, \"BetaValue\")"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.495Z"
+  "enriched_at": "2026-05-12T11:36:03.099Z"
 }

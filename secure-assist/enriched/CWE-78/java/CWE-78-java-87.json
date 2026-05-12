@@ -16,11 +16,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "ProcessBuilder may allow OS command injection if arguments include unsafe input.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-87.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-87.java",
       "line": 71,
       "column": 33,
       "evidence": "ProcessBuilder("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.829Z"
+  "enriched_at": "2026-05-12T11:36:03.630Z"
 }

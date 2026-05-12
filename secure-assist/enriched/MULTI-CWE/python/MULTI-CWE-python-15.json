@@ -37,11 +37,11 @@
       "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
       "severity": "medium",
       "message": "hashlib.sha1() uses SHA-1, which is considered cryptographically weak.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-15.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-15.py",
       "line": 74,
       "column": 16,
       "evidence": "hashlib.sha1("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.243Z"
+  "enriched_at": "2026-05-12T11:36:04.139Z"
 }

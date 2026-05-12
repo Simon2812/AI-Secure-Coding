@@ -47,7 +47,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
       "line": 46,
       "column": 13,
       "evidence": "String query = \"SELECT info FROM users WHERE name = '\" + user + \"'\""
@@ -58,11 +58,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
       "line": 61,
       "column": 21,
       "evidence": "Runtime.getRuntime().exec("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.204Z"
+  "enriched_at": "2026-05-12T11:36:04.099Z"
 }

@@ -27,7 +27,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"updateSql\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
       "line": 13,
       "column": 13,
       "evidence": "String updateSql = \"UPDATE tickets SET status='RESOLVED' WHERE id=\" + ticketId"
@@ -38,11 +38,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"insertSql\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
       "line": 18,
       "column": 13,
       "evidence": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (\" + ticketId + \", '\" + actor + \"', '\" + note + \"')\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.032Z"
+  "enriched_at": "2026-05-12T11:36:03.931Z"
 }

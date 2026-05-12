@@ -37,7 +37,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
       "line": 14,
       "column": 9,
       "evidence": "String query =\r\n                \"SELECT id FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\""
@@ -48,11 +48,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
       "line": 41,
       "column": 9,
       "evidence": "String query =\r\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.200Z"
+  "enriched_at": "2026-05-12T11:36:04.096Z"
 }

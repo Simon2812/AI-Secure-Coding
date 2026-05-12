@@ -16,7 +16,7 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\SAFE-NONCWE\\c\\SAFE-NONCWE-c-17.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\SAFE-NONCWE\\c\\SAFE-NONCWE-c-17.c",
       "line": 16,
       "column": 9,
       "evidence": "int borrow = (-*s + 59) / 60;"
@@ -27,11 +27,11 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\SAFE-NONCWE\\c\\SAFE-NONCWE-c-17.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\SAFE-NONCWE\\c\\SAFE-NONCWE-c-17.c",
       "line": 22,
       "column": 9,
       "evidence": "int borrow = (-*m + 59) / 60;"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.298Z"
+  "enriched_at": "2026-05-12T11:36:04.194Z"
 }

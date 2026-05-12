@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T10:46:43.579Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.new() uses a weak hashing algorithm.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-07.py",
+      "line": 12,
+      "column": 18,
+      "evidence": "hashlib.new(self.algorithm, encoded)"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:36:03.267Z"
 }

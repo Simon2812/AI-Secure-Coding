@@ -16,11 +16,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-78.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-78.java",
       "line": 59,
       "column": 9,
       "evidence": "String sql = \"INSERT INTO users (username, password) VALUES ('foo','\" + bar + \"')\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.052Z"
+  "enriched_at": "2026-05-12T11:36:03.952Z"
 }

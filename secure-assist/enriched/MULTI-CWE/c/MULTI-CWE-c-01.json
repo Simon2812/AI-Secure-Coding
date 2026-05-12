@@ -27,11 +27,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "Use of system() may allow OS command injection if input is not controlled.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-01.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-01.c",
       "line": 46,
       "column": 5,
       "evidence": "system("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.150Z"
+  "enriched_at": "2026-05-12T11:36:04.045Z"
 }

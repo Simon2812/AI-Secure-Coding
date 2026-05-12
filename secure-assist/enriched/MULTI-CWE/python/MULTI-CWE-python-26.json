@@ -57,11 +57,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-26.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-26.py",
       "line": 60,
       "column": 16,
       "evidence": "subprocess.run("
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.260Z"
+  "enriched_at": "2026-05-12T11:36:04.156Z"
 }

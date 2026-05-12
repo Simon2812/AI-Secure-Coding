@@ -9,6 +9,18 @@
     "name": "OWASP Benchmark Project"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T10:46:43.645Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.new() uses a weak hashing algorithm.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-328\\python\\CWE-328-python-18.py",
+      "line": 41,
+      "column": 16,
+      "evidence": "hashlib.new('sha256')"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:36:03.435Z"
 }

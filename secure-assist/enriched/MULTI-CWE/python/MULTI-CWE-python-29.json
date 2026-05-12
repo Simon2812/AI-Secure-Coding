@@ -47,11 +47,11 @@
       "vulnerability": "Use of Hard-coded Password",
       "severity": "high",
       "message": "Possible hard-coded password in dictionary or map literal.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-29.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-29.py",
       "line": 197,
       "column": 13,
       "evidence": "\"password\": \"PublishRelay#2026\""
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.264Z"
+  "enriched_at": "2026-05-12T11:36:04.160Z"
 }

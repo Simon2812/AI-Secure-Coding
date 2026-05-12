@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T10:46:43.935Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memmove() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-25.c",
+      "line": 20,
+      "column": 23,
+      "evidence": "100 * sizeof(wchar_t)"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:36:03.756Z"
 }

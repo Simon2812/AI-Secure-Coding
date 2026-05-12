@@ -27,7 +27,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-03.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-03.py",
       "line": 27,
       "column": 9,
       "evidence": "sql = f\"SELECT username FROM users WHERE password = '{bar}'\"\r"
@@ -38,11 +38,11 @@
       "vulnerability": "Use of Hard-coded Password",
       "severity": "high",
       "message": "Possible hard-coded password found in source code.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-03.py",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-03.py",
       "line": 27,
       "column": 50,
       "evidence": "password = '{bar}'"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:44.073Z"
+  "enriched_at": "2026-05-12T11:36:03.973Z"
 }

@@ -27,11 +27,11 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-20.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-20.java",
       "line": 39,
       "column": 23,
       "evidence": "new File(root, name)"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.280Z"
+  "enriched_at": "2026-05-12T11:36:02.799Z"
 }

@@ -27,11 +27,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-09.java",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-09.java",
       "line": 28,
       "column": 13,
       "evidence": "stmt.executeUpdate(\"update accounts set status='closed' where id='\" + accountId + \"'\")"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.995Z"
+  "enriched_at": "2026-05-12T11:36:03.896Z"
 }

@@ -27,26 +27,26 @@
   "static_findings": [
     {
       "cweId": "CWE-327",
-      "ruleId": "python-md5",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.md5() uses MD5, which is considered cryptographically weak.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-10.py",
+      "message": "hashlib.md5() uses a weak hashing algorithm.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-10.py",
       "line": 21,
       "column": 14,
-      "evidence": "hashlib.md5("
+      "evidence": "hashlib.md5(data)"
     },
     {
       "cweId": "CWE-327",
-      "ruleId": "python-sha1",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.sha1() uses SHA-1, which is considered cryptographically weak.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-10.py",
+      "message": "hashlib.sha1() uses a weak hashing algorithm.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-10.py",
       "line": 22,
       "column": 14,
-      "evidence": "hashlib.sha1("
+      "evidence": "hashlib.sha1(data)"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.638Z"
+  "enriched_at": "2026-05-12T11:36:03.422Z"
 }

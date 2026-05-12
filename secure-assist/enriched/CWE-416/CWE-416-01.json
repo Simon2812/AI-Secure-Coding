@@ -27,11 +27,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-416\\CWE-416-01.c",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-416\\CWE-416-01.c",
       "line": 20,
       "column": 20,
       "evidence": "printf(\"%s\\n\", buffer);"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.650Z"
+  "enriched_at": "2026-05-12T11:36:03.447Z"
 }

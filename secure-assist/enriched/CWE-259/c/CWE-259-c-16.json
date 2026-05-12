@@ -12,15 +12,15 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-259\\c\\CWE-259-c-16.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-259\\c\\CWE-259-c-16.c",
       "line": 19,
       "column": 9,
       "evidence": "strcpy(password, source)"
     }
   ],
-  "enriched_at": "2026-05-12T10:46:43.441Z"
+  "enriched_at": "2026-05-12T11:36:02.997Z"
 }
