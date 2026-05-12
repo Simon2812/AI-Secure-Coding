@@ -5,6 +5,9 @@ import { findWeakCrypto } from "./rules/weakCrypto";
 import { findCommandInjection } from "./rules/commandInjection";
 import { findSqlInjection } from "./rules/sqlInjection";
 import { findPathTraversal } from "./rules/pathTraversal";
+import { findOutOfBoundsWrite } from "./rules/outOfBoundsWrite";
+import { findUseAfterFree } from "./rules/useAfterFree";
+import { findIntegerOverflow } from "./rules/integerOverflow";
 
 export function analyzeCode(code: string, filePath: string): Finding[] {
   const context: RuleContext = {
@@ -20,6 +23,9 @@ export function analyzeCode(code: string, filePath: string): Finding[] {
   findings.push(...findCommandInjection(context));
   findings.push(...findSqlInjection(context));
   findings.push(...findPathTraversal(context));
+  findings.push(...findOutOfBoundsWrite(context));
+  findings.push(...findUseAfterFree(context));
+  findings.push(...findIntegerOverflow(context));
   
 
 

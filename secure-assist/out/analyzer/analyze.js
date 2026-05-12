@@ -7,6 +7,9 @@ const weakCrypto_1 = require("./rules/weakCrypto");
 const commandInjection_1 = require("./rules/commandInjection");
 const sqlInjection_1 = require("./rules/sqlInjection");
 const pathTraversal_1 = require("./rules/pathTraversal");
+const outOfBoundsWrite_1 = require("./rules/outOfBoundsWrite");
+const useAfterFree_1 = require("./rules/useAfterFree");
+const integerOverflow_1 = require("./rules/integerOverflow");
 function analyzeCode(code, filePath) {
     const context = {
         code,
@@ -19,6 +22,9 @@ function analyzeCode(code, filePath) {
     findings.push(...(0, commandInjection_1.findCommandInjection)(context));
     findings.push(...(0, sqlInjection_1.findSqlInjection)(context));
     findings.push(...(0, pathTraversal_1.findPathTraversal)(context));
+    findings.push(...(0, outOfBoundsWrite_1.findOutOfBoundsWrite)(context));
+    findings.push(...(0, useAfterFree_1.findUseAfterFree)(context));
+    findings.push(...(0, integerOverflow_1.findIntegerOverflow)(context));
     return sortFindings(findings);
 }
 function sortFindings(findings) {
