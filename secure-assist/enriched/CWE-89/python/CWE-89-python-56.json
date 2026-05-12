@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-56",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-56.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "id_blob = \",\".join(ids)\nstmt = text(\"SELECT id, total FROM orders WHERE id IN (\" + id_blob + \")\")\nwith engine.connect() as conn:\n    return conn.execute(stmt).fetchall()",
+          "replacement": "stmt = text(\"SELECT id, total FROM orders WHERE id IN :ids\").bindparams(bindparam(\"ids\", expanding=True))\nwith engine.connect() as conn:\n    return conn.execute(stmt, {\"ids\": ids}).fetchall()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "python-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"stmt\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-56.py",
+      "line": 7,
+      "column": 5,
+      "evidence": "stmt = text(\"SELECT id, total FROM orders WHERE id IN (\" + id_blob + \")\")\r"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.116Z"
+}

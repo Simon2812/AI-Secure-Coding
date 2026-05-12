@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-58",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-58.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "int rc = system(cmd);",
+          "replacement": "for (const unsigned char *p = (const unsigned char *)to; *p; ++p) {\n    if (!(isalnum(*p) || *p == '@' || *p == '.' || *p == '_' || *p == '-' || *p == '+'))\n        return 1;\n}\nint rc = system(cmd);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 43,
+      "column": 14,
+      "evidence": "system("
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 10,
+      "column": 9,
+      "evidence": "size_t r = fread(buf + used, 1, cap - 1 - used, in);"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.731Z"
+}

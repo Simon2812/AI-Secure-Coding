@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-22",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-22.c",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "static void cleanup(Node *n)\n{\n    if (n)\n    {\n        if (n->data)\n            free(n->data);\n        free(n);\n    }\n}",
+          "replacement": "static void cleanup(Node *n)\n{\n    if (n)\n    {\n        for (int i = 0; i < 4; i++)\n        {\n            if (cache[i] == n)\n                cache[i] = NULL;\n        }\n        if (n->data)\n            free(n->data);\n        free(n);\n    }\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 27,
+      "column": 9,
+      "evidence": "static int inspect(Node *n)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 29,
+      "column": 10,
+      "evidence": "if (!n || !n->data)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 32,
+      "column": 10,
+      "evidence": "return (int)strlen(n->data);"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 48,
+      "column": 5,
+      "evidence": "strcpy(entry->data, \"cached_value\")"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 48,
+      "column": 12,
+      "evidence": "strcpy(entry->data, \"cached_value\");"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 50,
+      "column": 14,
+      "evidence": "store(1, entry);"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-22.c",
+      "line": 52,
+      "column": 13,
+      "evidence": "cleanup(entry);"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.666Z"
+}

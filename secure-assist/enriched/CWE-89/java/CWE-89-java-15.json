@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-15",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-15.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "st = conn.createStatement();\n\n    rs = st.executeQuery(\"select * from users where name='\" + value + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"select * from users where name=?\");\nps.setString(1, value);\nrs = ps.executeQuery();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-15.java",
+      "line": 27,
+      "column": 19,
+      "evidence": "new FileInputStream(\"../common/config.properties\")"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-inline",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-15.java",
+      "line": 48,
+      "column": 18,
+      "evidence": "st.executeQuery(\"select * from users where name='\" + value + \"'\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.000Z"
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-96",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-96.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-22\\python\\CWE-22-python-96.py",
+      "line": 21,
+      "column": 10,
+      "evidence": "with open(path, \"r\", encoding=\"utf-8\") as fh:"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.428Z"
+}

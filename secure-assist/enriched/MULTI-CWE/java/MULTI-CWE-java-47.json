@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-47",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-47.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "java-runtime-exec",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-47.java",
+      "line": 31,
+      "column": 21,
+      "evidence": "Runtime.getRuntime().exec("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.223Z"
+}

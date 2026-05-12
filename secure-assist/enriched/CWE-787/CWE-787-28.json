@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-28",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-28.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "workspace = (int *)malloc(amount * sizeof(int));",
+          "replacement": "if (amount <= 0 || amount > SIZE_MAX / sizeof(int)) return; workspace = (int *)malloc(amount * sizeof(int));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-787\\CWE-787-28.c",
+      "line": 19,
+      "column": 5,
+      "evidence": "workspace = (int *)malloc(amount * sizeof(int));"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.937Z"
+}

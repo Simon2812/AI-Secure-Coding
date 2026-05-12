@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-48",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-48.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-48.c",
+      "line": 20,
+      "column": 5,
+      "evidence": "strcpy(t->title, name)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.688Z"
+}

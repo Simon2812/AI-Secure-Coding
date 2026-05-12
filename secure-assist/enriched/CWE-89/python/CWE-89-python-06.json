@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-06",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-06.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query_text = f\"SELECT sku, title FROM catalog_items ORDER BY created_at DESC LIMIT {limit} OFFSET {offset}\"\nrows = cur.execute(query_text).fetchall()",
+          "replacement": "query_text = \"SELECT sku, title FROM catalog_items ORDER BY created_at DESC LIMIT ? OFFSET ?\"\nrows = cur.execute(query_text, (int(limit), int(offset))).fetchall()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "python-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query_text\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-06.py",
+      "line": 15,
+      "column": 5,
+      "evidence": "query_text = f\"SELECT sku, title FROM catalog_items ORDER BY created_at DESC LIMIT {limit} OFFSET {offset}\"\r"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.076Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-04",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-04.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path = \"/var/app/archive/\" + entry;\n            stream = new FileInputStream(path);",
+          "replacement": "if (entry.contains(\"..\") || entry.contains(\"/\") || entry.contains(\"\\\\\")) {\n                throw new IOException();\n            }\n            path = \"/var/app/archive/\" + entry;\n            stream = new FileInputStream(path);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-04.java",
+      "line": 31,
+      "column": 22,
+      "evidence": "new FileInputStream(path)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.266Z"
+}

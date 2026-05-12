@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-93",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-93.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:44.064Z"
+}

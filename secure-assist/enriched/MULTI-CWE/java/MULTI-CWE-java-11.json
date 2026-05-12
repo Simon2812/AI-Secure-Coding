@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-11",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-11.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT report FROM user_reports WHERE username = '\" + u + \"'\";",
+          "replacement": "String query = \"SELECT report FROM user_reports WHERE username = ?\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File file = new File(BASE_DIR + f);",
+          "replacement": "File file = new File(BASE_DIR, f).getCanonicalFile();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
+      "line": 28,
+      "column": 13,
+      "evidence": "String query = \"SELECT report FROM user_reports WHERE username = '\" + u + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.195Z"
+}

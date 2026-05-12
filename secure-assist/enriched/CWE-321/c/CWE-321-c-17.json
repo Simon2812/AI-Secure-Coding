@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-17",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-321/c/CWE-321-c-17.c",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-17.c",
+      "line": 63,
+      "column": 9,
+      "evidence": "strcpy(inputBuffer, \"unused\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.497Z"
+}

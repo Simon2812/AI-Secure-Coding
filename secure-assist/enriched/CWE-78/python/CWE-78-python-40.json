@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-40",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-40.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "chain = [\"cmd.exe\", \"/c\", f\"dir {path}\"]\nproc = subprocess.run(chain, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not os.path.isdir(path):\n    raise ValueError(\"Invalid directory\")\nentries = os.listdir(path)\nreturn \"\\n\".join(entries)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-40.py",
+      "line": 15,
+      "column": 24,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.871Z"
+}

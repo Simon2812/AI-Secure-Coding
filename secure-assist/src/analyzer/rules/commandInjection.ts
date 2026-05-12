@@ -77,6 +77,9 @@ export function findCommandInjection(context: RuleContext): Finding[] {
     for (const match of code.matchAll(pattern.regex)) {
       if (match.index === undefined) continue;
 
+      const afterCall = code.slice(match.index + match[0].length).trimStart();
+      if (isSafeArgument(afterCall)) continue;
+
       findings.push(
         createFinding({
           cweId: pattern.cweId,
@@ -94,4 +97,13 @@ export function findCommandInjection(context: RuleContext): Finding[] {
   }
 
   return findings;
+}
+
+function isSafeArgument(textAfterOpenParen: string): boolean {
+  const trimmed = textAfterOpenParen.trimStart();
+  // List literal: subprocess.run(["cmd", "arg"])
+  if (trimmed.startsWith("[")) return true;
+  // Plain string literal with no format/concat: os.system("ls")
+  if (/^["'][^"']*["']/.test(trimmed)) return true;
+  return false;
 }

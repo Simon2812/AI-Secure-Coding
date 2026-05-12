@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-27",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-27.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"type=\" + type;",
+          "replacement": "String query = type.equals(\"finance\") ? \"type=finance\" : \"type=ops\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "SHA-1",
+          "replacement": "SHA-256"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"4F9A1C3E7B2D8A6C5E4F1A2B3C4D5E6F\"",
+          "replacement": "System.getenv(\"REPORT_KEY\")"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "Cipher.getInstance(\"AES\")",
+          "replacement": "Cipher.getInstance(\"AES/GCM/NoPadding\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "java-sha1",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "MessageDigest.getInstance(\"SHA-1\") uses SHA-1, which is considered cryptographically weak.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-27.java",
+      "line": 34,
+      "column": 27,
+      "evidence": "MessageDigest.getInstance(\"SHA-1\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.207Z"
+}

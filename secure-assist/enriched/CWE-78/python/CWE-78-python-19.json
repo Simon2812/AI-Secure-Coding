@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-19",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-19.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"rm -rf {folder}/old_logs\"\nstatus = os.system(cmd)",
+          "replacement": "target_path = f\"{folder}/old_logs\"\nshutil.rmtree(target_path, ignore_errors=True)\nstatus = 0"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-os-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "os.system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-19.py",
+      "line": 15,
+      "column": 26,
+      "evidence": "os.system("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.855Z"
+}

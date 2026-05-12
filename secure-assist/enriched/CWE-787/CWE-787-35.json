@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-35",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-35.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(dst, src, count * sizeof(int));",
+          "replacement": "if (count > (int)(sizeof(target) / sizeof(target[0])))\n{\ncount = (int)(sizeof(target) / sizeof(target[0]));\n}\nmemcpy(dst, src, count * sizeof(int));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-35.c",
+      "line": 16,
+      "column": 5,
+      "evidence": "memcpy(dst, src, count * sizeof(int));"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.942Z"
+}

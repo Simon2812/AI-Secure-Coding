@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-08",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-321/java/CWE-321-java-08.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "String fallback = \"9f1a2c7e4b8d6a0c\";",
+          "replacement": "String fallback = System.getenv(\"BACKUP_KEY\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-321\\java\\CWE-321-java-08.java",
+      "line": 13,
+      "column": 20,
+      "evidence": "Files.readAllBytes(Paths.get(\"config/token.txt\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.508Z"
+}

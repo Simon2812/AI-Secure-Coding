@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-20",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-20.java",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.461Z"
+}

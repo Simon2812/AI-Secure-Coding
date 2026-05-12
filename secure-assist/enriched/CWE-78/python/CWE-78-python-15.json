@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-15.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd_line = f\"tar -c{kind}f {base}.tar.{kind} {base}\"\nproc = subprocess.run(cmd_line, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "allowed = {\"gz\": [\"tar\", \"-czf\"], \"bz2\": [\"tar\", \"-cjf\"]}\ntool = allowed.get(kind)\nif tool is None:\n    raise ValueError(\"Unsupported archive format\")\nout_name = f\"{base}.tar.{kind}\"\nproc = subprocess.run(tool + [out_name, base], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-15.py",
+      "line": 24,
+      "column": 21,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.852Z"
+}

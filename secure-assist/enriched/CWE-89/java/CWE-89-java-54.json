@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-54",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-54.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (\" + ticketId + \", '\" + actor + \"', '\" + note + \"')\";\ntry (java.sql.Statement st = c.createStatement()) {\n    st.executeUpdate(insertSql);\n}",
+          "replacement": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (?, ?, ?)\";\ntry (java.sql.PreparedStatement st = c.prepareStatement(insertSql)) {\n    st.setLong(1, ticketId);\n    st.setString(2, actor);\n    st.setString(3, note);\n    st.executeUpdate();\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"updateSql\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
+      "line": 13,
+      "column": 13,
+      "evidence": "String updateSql = \"UPDATE tickets SET status='RESOLVED' WHERE id=\" + ticketId"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"insertSql\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
+      "line": 18,
+      "column": 13,
+      "evidence": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (\" + ticketId + \", '\" + actor + \"', '\" + note + \"')\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.032Z"
+}

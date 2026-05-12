@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-14.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"uname -a && {extra}\"\n\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True\n)",
+          "replacement": "result = subprocess.run(\n    [\"uname\", \"-a\"],\n    capture_output=True,\n    text=True\n)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT metric, value, created_at \"\n    \"FROM host_metrics \"\n    \"WHERE host = '\" + host + \"' \"\n    \"ORDER BY created_at DESC LIMIT 50\"\n)\n\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT metric, value, created_at \"\n    \"FROM host_metrics \"\n    \"WHERE host = ? \"\n    \"ORDER BY created_at DESC LIMIT 50\"\n)\n\ncursor.execute(query, (host,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-14.py",
+      "line": 60,
+      "column": 14,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.242Z"
+}

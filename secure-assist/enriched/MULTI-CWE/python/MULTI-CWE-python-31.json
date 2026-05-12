@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-31",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-31.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"{tool} --json {target}\"\ncompleted = subprocess.run(\n    command,\n    shell=True,\n    cwd=str(workspace),\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "tool = {\"netprobe\": \"netprobe\", \"traceprobe\": \"traceprobe\"}.get(tool, \"netprobe\")\ncompleted = subprocess.run(\n    [tool, \"--json\", target],\n    cwd=str(workspace),\n    capture_output=True,\n    text=True,\n)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"gzip -f {trace_file} && {post_rotate}\"\nexit_code = os.system(command)",
+          "replacement": "completed = subprocess.run([\"gzip\", \"-f\", str(trace_file)])\nexit_code = completed.returncode"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-31.py",
+      "line": 119,
+      "column": 21,
+      "evidence": "subprocess.run("
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-os-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "os.system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-31.py",
+      "line": 142,
+      "column": 21,
+      "evidence": "os.system("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.268Z"
+}

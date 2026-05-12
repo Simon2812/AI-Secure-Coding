@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-18",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-18.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return count * (int)sizeof(int);",
+          "replacement": "if (count <= 0 || count > INT_MAX / (int)sizeof(int))\n{\n    return 0;\n}\nreturn count * (int)sizeof(int);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "release_items(items);\n\n    print_items(items, task.count);",
+          "replacement": "print_items(items, task.count);\n\n    release_items(items);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-18.c",
+      "line": 72,
+      "column": 19,
+      "evidence": "static void print_items(int *items, int count)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.163Z"
+}

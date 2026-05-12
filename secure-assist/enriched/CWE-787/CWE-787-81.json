@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-81",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-81.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.975Z"
+}

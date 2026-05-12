@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-07",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-07.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = text(f\"SELECT id, full_name FROM people WHERE full_name ILIKE '%{term}%'\\\")\nwith engine.connect() as conn:\n    result = conn.execute(statement)",
+          "replacement": "statement = text(\"SELECT id, full_name FROM people WHERE full_name ILIKE :pattern\")\nwith engine.connect() as conn:\n    result = conn.execute(statement, {\"pattern\": f\"%{term}%\"})"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "python-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"statement\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-07.py",
+      "line": 8,
+      "column": 5,
+      "evidence": "statement = text(f\"SELECT id, full_name FROM people WHERE full_name ILIKE '%{term}%'\")\r"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.077Z"
+}

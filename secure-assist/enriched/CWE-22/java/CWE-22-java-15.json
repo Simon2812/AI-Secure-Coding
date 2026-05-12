@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-15",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-15.java",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File base = new File(\"/srv/data/files/\");\n        File target = new File(base, value);",
+          "replacement": "if (!value.matches(\"[a-zA-Z0-9._-]+\")) {\n            throw new IOException();\n        }\n        File base = new File(\"/srv/data/files/\");\n        File target = new File(base, value);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-15.java",
+      "line": 21,
+      "column": 23,
+      "evidence": "new File(base, value)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.275Z"
+}

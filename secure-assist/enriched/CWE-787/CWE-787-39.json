@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-39",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-39.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < limit; i++)\n{\nif (fgets(line, sizeof(line), stdin) == NULL)\n{\nbreak;\n}\n\nseries[i] = atoi(line);\n}",
+          "replacement": "for (i = 0; i < limit && i < 4; i++)\n{\nif (fgets(line, sizeof(line), stdin) == NULL)\n{\nbreak;\n}\n\nseries[i] = atoi(line);\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 35,
+      "column": 9,
+      "evidence": "series[i] = atoi(line);"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 40,
+      "column": 24,
+      "evidence": "printf(\"%d\\n\", series[i]);"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-787\\CWE-787-39.c",
+      "line": 12,
+      "column": 5,
+      "evidence": "series = (int *)malloc(4 * sizeof(int));"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.946Z"
+}

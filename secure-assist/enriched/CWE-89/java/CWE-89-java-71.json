@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-71",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-71.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:44.046Z"
+}

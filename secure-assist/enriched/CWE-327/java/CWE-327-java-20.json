@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-java-20",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-20.java",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.571Z"
+}

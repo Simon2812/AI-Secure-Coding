@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-81",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-81.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.331Z"
+}

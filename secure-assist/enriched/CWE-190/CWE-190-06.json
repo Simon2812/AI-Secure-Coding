@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-06",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-06.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "unsigned int expanded = capacity * 4;",
+          "replacement": "unsigned int expanded = capacity;\nif (capacity <= UINT_MAX / 4) {\n    expanded = capacity * 4;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-190\\CWE-190-06.c",
+      "line": 11,
+      "column": 9,
+      "evidence": "unsigned int expanded = capacity * 4;"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.227Z"
+}

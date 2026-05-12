@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-06",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-259/c/CWE-259-c-06.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "#define PASSWORD L\"rootAccess!\"",
+          "replacement": "#define PASSWORD _wgetenv(L\"SERVICE_PASSWORD\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "hardcoded-password-define",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Possible hard-coded password in preprocessor macro.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-259\\c\\CWE-259-c-06.c",
+      "line": 5,
+      "column": 1,
+      "evidence": "#define PASSWORD L\"rootAccess!\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.434Z"
+}

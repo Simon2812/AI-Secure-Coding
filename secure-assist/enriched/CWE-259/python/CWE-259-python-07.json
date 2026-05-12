@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-07",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-07.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected_key = \"BackupAccessNow!\"",
+          "replacement": "expected_key = __import__(\"os\").environ[\"BACKUP_ACCESS_KEY\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.470Z"
+}

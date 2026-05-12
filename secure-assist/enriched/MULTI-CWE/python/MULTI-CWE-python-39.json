@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-39",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-39.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-39.py",
+      "line": 85,
+      "column": 20,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.276Z"
+}

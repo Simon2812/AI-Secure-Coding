@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-06",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-06.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "SecretKeySpec key = new SecretKeySpec(keyBytes, \"DES\");\n\nCipher cipher = Cipher.getInstance(\"DES\");",
+          "replacement": "SecretKeySpec key = new SecretKeySpec(keyBytes, \"AES\");\n\nCipher cipher = Cipher.getInstance(\"AES\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "java-des",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "Cipher.getInstance(\"DES\") uses DES, which is an outdated and insecure encryption algorithm.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-06.java",
+      "line": 13,
+      "column": 25,
+      "evidence": "Cipher.getInstance(\"DES\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.191Z"
+}

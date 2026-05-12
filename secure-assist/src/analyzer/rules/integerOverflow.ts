@@ -53,12 +53,21 @@ export function findIntegerOverflow(context: RuleContext): Finding[] {
 }
 
 function isRiskyIntegerOverflowLine(line: string): boolean {
+  if (isConstantOnlyArithmetic(line)) return false;
+
   return (
     /\bmalloc\s*\([^)]*(\+|\*)[^)]*\)/.test(line) ||
     /\brealloc\s*\([^,]+,\s*[^)]*(\+|\*)[^)]*\)/.test(line) ||
     /\bmemcpy\s*\([^,]+,\s*[^,]+,\s*[^)]*(\+|\*)[^)]*\)/.test(line) ||
     /\b(?:int|short|long|size_t|unsigned|unsigned\s+int|unsigned\s+long)\s+[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*[^;]*(\+|\*)[^;]*;/.test(line)
   );
+}
+
+function isConstantOnlyArithmetic(line: string): boolean {
+  const match = line.match(/=\s*([^;]+);/);
+  if (!match) return false;
+  const expr = match[1].trim();
+  return /^[\d\s+\-*/()]+$/.test(expr);
 }
 
 function extractArithmeticVars(line: string): string[] {
@@ -131,12 +140,12 @@ function isProtectedByAnyNearbyIf(lines: string[], currentLine: number, vars: st
 
 function variableHasBoundsCheck(condition: string, varName: string): boolean {
   const escaped = escapeRegExp(varName);
+  const cmp = `(<=|<|>=|>)`;
+  const expr = `[\\w\\s/*+\\-]+`;
 
   return (
-    new RegExp(`\\b${escaped}\\b\\s*(<=|<|>=|>)\\s*\\d+`).test(condition) ||
-    new RegExp(`\\d+\\s*(<=|<|>=|>)\\s*\\b${escaped}\\b`).test(condition) ||
-    new RegExp(`\\b${escaped}\\b\\s*(<=|<|>=|>)\\s*[a-zA-Z_][a-zA-Z0-9_]*`).test(condition) ||
-    new RegExp(`[a-zA-Z_][a-zA-Z0-9_]*\\s*(<=|<|>=|>)\\s*\\b${escaped}\\b`).test(condition)
+    new RegExp(`\\b${escaped}\\b\\s*${cmp}\\s*${expr}`).test(condition) ||
+    new RegExp(`${expr}\\s*${cmp}\\s*\\b${escaped}\\b`).test(condition)
   );
 }
 

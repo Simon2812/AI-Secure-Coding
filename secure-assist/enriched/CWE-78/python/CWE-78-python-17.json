@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-17.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = \"ping -c 1 \" + target\nout = subprocess.check_output(cmd, shell=True, encoding=\"utf-8\", stderr=subprocess.STDOUT)",
+          "replacement": "if not re.fullmatch(r\"[A-Za-z0-9.-]{1,253}\", target):\n    raise ValueError(\"Invalid host\")\nout = subprocess.check_output([\"ping\", \"-c\", \"1\", target], shell=False, encoding=\"utf-8\", stderr=subprocess.STDOUT)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-17.py",
+      "line": 17,
+      "column": 23,
+      "evidence": "subprocess.check_output("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.854Z"
+}

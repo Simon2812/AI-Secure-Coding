@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-42",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-42.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < amount; i++)\n{\n*(dst + i) = 'A';\n}",
+          "replacement": "for (i = 0; i < amount && i < 10; i++)\n{\n*(dst + i) = 'A';\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.948Z"
+}

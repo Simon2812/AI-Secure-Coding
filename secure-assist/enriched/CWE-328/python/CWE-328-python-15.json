@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-328/python/CWE-328-python-15.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "hashlib.md5(file_data)",
+          "replacement": "hashlib.sha256(file_data)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "python-md5",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.md5() uses MD5, which is considered cryptographically weak.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-15.py",
+      "line": 21,
+      "column": 18,
+      "evidence": "hashlib.md5("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.642Z"
+}

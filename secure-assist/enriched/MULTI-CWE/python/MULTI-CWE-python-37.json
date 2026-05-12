@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-37",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-37.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-37.py",
+      "line": 58,
+      "column": 18,
+      "evidence": "with open(path, \"r\", encoding=\"utf-8\") as handle:"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-37.py",
+      "line": 132,
+      "column": 21,
+      "evidence": "subprocess.run("
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-37.py",
+      "line": 181,
+      "column": 14,
+      "evidence": "with open(path, \"w\", encoding=\"utf-8\") as handle:"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.274Z"
+}

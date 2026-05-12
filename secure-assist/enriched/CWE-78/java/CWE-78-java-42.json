@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-42.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String scanCommand = \"clamscan \" + artifactName;\n\n        ProcessBuilder builder = new ProcessBuilder(\"sh\", \"-c\", scanCommand);\n        Process process = builder.start();",
+          "replacement": "ProcessBuilder builder = new ProcessBuilder(\"clamscan\", artifactName);\n        Process process = builder.start();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\java\\CWE-78-java-42.java",
+      "line": 13,
+      "column": 25,
+      "evidence": "new File(args[0])"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.792Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-09",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-09.c",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "char *selected = useDefault ? \"internalKey99\" : \"unused\";\nstrcpy(cred, selected);",
+          "replacement": "FILE *f = fopen(\"secret.txt\", \"r\"); if (f && fgets(cred, 96, f)) { size_t len = strlen(cred); if (len > 0 && cred[len-1] == '\\n') cred[len-1] = '\\0'; } if (f) fclose(f);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-09.c",
+      "line": 13,
+      "column": 5,
+      "evidence": "strcpy(cred, selected)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.436Z"
+}

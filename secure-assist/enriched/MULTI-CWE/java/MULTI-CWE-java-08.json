@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-08",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-08.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n        \"SELECT entry FROM audit_log WHERE type = '\" + t + \"' AND owner = '\" + o + \"'\";",
+          "replacement": "String query = \"SELECT entry FROM audit_log WHERE type = ? AND owner = ?\";"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-08.java",
+      "line": 27,
+      "column": 13,
+      "evidence": "String query =\r\n                    \"SELECT entry FROM audit_log WHERE type = '\" + t + \"' AND owner = '\" + o + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.193Z"
+}

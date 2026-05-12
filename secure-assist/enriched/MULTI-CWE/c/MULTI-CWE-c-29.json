@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-29",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-29.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int base = count * 4;\n    return base + count;",
+          "replacement": "if (count <= 0 || count > INT_MAX / 4)\n    {\n        return 0;\n    }\n    int base = count * 4;\n    return base + count;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "dst[strlen(dst) + i] = src[i];",
+          "replacement": "if (strlen(dst) + i < 63)\n    {\n        dst[strlen(dst) + i] = src[i];\n    }"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "free(buf);",
+          "replacement": ""
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "strcat(cmd, j->input);\n    system(cmd);",
+          "replacement": "execl(\"/usr/bin/head\", \"head\", \"-n\", \"1\", j->input, (char *)NULL);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 73,
+      "column": 5,
+      "evidence": "strcat(cmd, j->input)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 74,
+      "column": 5,
+      "evidence": "system("
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 98,
+      "column": 9,
+      "evidence": "strcpy(buf, j.buffer)"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 50,
+      "column": 5,
+      "evidence": "int base = count * 4;"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.171Z"
+}

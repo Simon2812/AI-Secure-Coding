@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-35",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-35.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"sh -c \" + rawCommand;",
+          "replacement": "if (!rawCommand.matches(\"[a-zA-Z0-9_ -]+\")) throw new IllegalArgumentException();\nString command = \"sh -c \" + rawCommand;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "java-runtime-exec",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-35.java",
+      "line": 65,
+      "column": 27,
+      "evidence": "Runtime.getRuntime().exec("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.214Z"
+}

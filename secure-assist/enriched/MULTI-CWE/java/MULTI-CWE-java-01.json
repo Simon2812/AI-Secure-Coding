@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-01",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-01.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n        \"SELECT id, username, department, status, created_at \" +\n        \"FROM accounts \" +\n        \"WHERE department = '\" + normalizedDepartment + \"' \" +\n        \"AND status = '\" + normalizedStatus + \"' \" +\n        \"ORDER BY created_at DESC\";\n\ntry (ResultSet rs = statement.executeQuery(query)) {",
+          "replacement": "String query = \"SELECT id, username, department, status, created_at FROM accounts WHERE department = ? AND status = ? ORDER BY created_at DESC\";\njava.sql.PreparedStatement ps = connection.prepareStatement(query);\nps.setString(1, normalizedDepartment);\nps.setString(2, normalizedStatus);\ntry (ResultSet rs = ps.executeQuery()) {"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-01.java",
+      "line": 29,
+      "column": 13,
+      "evidence": "String query =\r\n                    \"SELECT id, username, department, status, created_at \" +\r"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.188Z"
+}

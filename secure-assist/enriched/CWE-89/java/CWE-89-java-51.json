@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-51",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-51.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT id, customer FROM orders ORDER BY \" + sort + \" \" + dir;",
+          "replacement": "String safeSort = \"id\";\nif (\"customer\".equals(sort)) safeSort = \"customer\";\n\nString safeDir = \"asc\".equalsIgnoreCase(dir) ? \"ASC\" : \"DESC\";\n\nString sql = \"SELECT id, customer FROM orders ORDER BY \" + safeSort + \" \" + safeDir;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-51.java",
+      "line": 10,
+      "column": 9,
+      "evidence": "String sql = \"SELECT id, customer FROM orders ORDER BY \" + sort + \" \" + dir"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.030Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-python-08",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-327/python/CWE-327-python-08.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "options = [\"sha256\", \"sha1\", \"sha512\"]",
+          "replacement": "options = [\"sha256\", \"sha512\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.580Z"
+}

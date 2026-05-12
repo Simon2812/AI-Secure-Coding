@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-11",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-11.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "\"material\": bytes.fromhex(\"9f3a1c7b5e8d44aa9c1f223344556677\")",
+          "replacement": "import os\n\"material\": bytes.fromhex(os.environ[\"SNAP_KEY_HEX\"])"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.528Z"
+}

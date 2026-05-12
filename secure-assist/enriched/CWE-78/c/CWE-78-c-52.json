@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-52",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-52.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *fp = popen(cmd, \"r\");",
+          "replacement": "int pipefd[2];\nif (pipe(pipefd) < 0)\n    return 1;\npid_t pid = fork();\nif (pid < 0)\n    return 1;\nif (pid == 0) {\n    close(pipefd[0]);\n    dup2(pipefd[1], STDOUT_FILENO);\n    close(pipefd[1]);\n    char *args[] = {\"id\", argv[1], NULL};\n    execvp(\"id\", args);\n    _exit(127);\n}\nclose(pipefd[1]);\nFILE *fp = fdopen(pipefd[0], \"r\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-popen",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of popen() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-52.c",
+      "line": 34,
+      "column": 16,
+      "evidence": "popen("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.726Z"
+}

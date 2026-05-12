@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-07",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-07.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "char *rawValue = \"admin123!\";",
+          "replacement": "char rawBuffer[128] = \"\"; FILE *f = fopen(\"config.txt\", \"r\"); if (f != NULL) { fgets(rawBuffer, 128, f); fclose(f); } char *rawValue = rawBuffer;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-07.c",
+      "line": 13,
+      "column": 5,
+      "evidence": "strcpy(credential, copySource)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.435Z"
+}

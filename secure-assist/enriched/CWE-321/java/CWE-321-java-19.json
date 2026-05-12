@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-19",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-321/java/CWE-321-java-19.java",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.516Z"
+}

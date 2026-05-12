@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-java-09",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-09.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "DES",
+          "replacement": "AES"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "java-des",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "Cipher.getInstance(\"DES\") uses DES, which is an outdated and insecure encryption algorithm.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-327\\java\\CWE-327-java-09.java",
+      "line": 49,
+      "column": 29,
+      "evidence": "Cipher.getInstance(\"DES/CBC/PKCS5Padding\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.564Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-58",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-58.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"DELETE FROM sessions WHERE env='\" + env + \"' AND last_seen<'\" + cutoff + \"'\";\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement()) {\n    return st.executeUpdate(sql);\n}",
+          "replacement": "String sql = \"DELETE FROM sessions WHERE env=? AND last_seen<?\";\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n    st.setString(1, env);\n    st.setTimestamp(2, cutoff);\n    return st.executeUpdate();\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-58.java",
+      "line": 31,
+      "column": 9,
+      "evidence": "String sql = \"DELETE FROM sessions WHERE env='\" + env + \"' AND last_seen<'\" + cutoff + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.036Z"
+}

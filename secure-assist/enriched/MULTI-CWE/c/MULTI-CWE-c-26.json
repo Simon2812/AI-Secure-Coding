@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-26",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-26.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char command[256] = \"find \";\nstrncat(command, target, sizeof(command) - strlen(command) - 1);\nstrncat(command, \" -maxdepth 1\", sizeof(command) - strlen(command) - 1);\nsystem(command);",
+          "replacement": "execl(\"/usr/bin/find\", \"find\", target, \"-maxdepth\", \"1\", (char *)NULL);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "execlp(command_name, command_name, target, (char *)NULL);",
+          "replacement": "execlp(\"ls\", \"ls\", target, (char *)NULL);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "job->label[base + i] = argv[4][i];",
+          "replacement": "if (base + i < sizeof(job->label) - 1)\n{\n    job->label[base + i] = argv[4][i];\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-26.c",
+      "line": 76,
+      "column": 5,
+      "evidence": "system("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.169Z"
+}

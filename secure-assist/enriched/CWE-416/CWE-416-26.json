@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-26",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-26.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "const char *view = frame->payload;\n\n    release_frame(frame);\n\n    int result = accumulate(view);",
+          "replacement": "char copy[64];\n    strcpy(copy, frame->payload);\n\n    release_frame(frame);\n\n    int result = accumulate(copy);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 24,
+      "column": 5,
+      "evidence": "strcpy(f->payload, msg)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 24,
+      "column": 12,
+      "evidence": "strcpy(f->payload, msg);"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 25,
+      "column": 12,
+      "evidence": "return f;"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 28,
+      "column": 21,
+      "evidence": "static void release_frame(Frame *f)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 30,
+      "column": 6,
+      "evidence": "if (!f)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 33,
+      "column": 6,
+      "evidence": "if (f->payload)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 34,
+      "column": 9,
+      "evidence": "free(f->payload);"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 17,
+      "column": 5,
+      "evidence": "f->payload = (char *)malloc(f->length + 1);"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.669Z"
+}

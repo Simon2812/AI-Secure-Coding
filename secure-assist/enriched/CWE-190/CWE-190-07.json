@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-07",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-07.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "state++;",
+          "replacement": "if (state < CHAR_MAX) {\n    state++;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.228Z"
+}

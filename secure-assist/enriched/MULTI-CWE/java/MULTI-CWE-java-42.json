@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-42.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:44.219Z"
+}

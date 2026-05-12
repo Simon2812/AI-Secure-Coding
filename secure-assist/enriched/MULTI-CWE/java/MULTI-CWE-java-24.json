@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-24",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-24.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT content FROM export_data WHERE category = '\" + category + \"'\";",
+          "replacement": "String safe = category.matches(\"[a-zA-Z0-9_]+\") ? category : \"default\";\nString query = \"SELECT content FROM export_data WHERE category = '\" + safe + \"'\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(exportRoot + \"/\" + name);",
+          "replacement": "java.util.Map<String,String> allowed = java.util.Map.of(\"daily\",\"daily.txt\",\"full\",\"full.txt\");\nFile f = new File(exportRoot + \"/\" + allowed.getOrDefault(name, \"daily.txt\"));"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-256"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 33,
+      "column": 13,
+      "evidence": "String query = \"SELECT content FROM export_data WHERE category = '\" + category + \"'\""
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "java-md5",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "MessageDigest.getInstance(\"MD5\") uses MD5, which is considered cryptographically weak.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 58,
+      "column": 27,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.205Z"
+}

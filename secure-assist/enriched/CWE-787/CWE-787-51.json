@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-51",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-51.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "acc->slots[acc->used] = value;\nacc->used++;",
+          "replacement": "if (acc->used >= 0 && acc->used < 10)\n{\nacc->slots[acc->used] = value;\nacc->used++;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.954Z"
+}

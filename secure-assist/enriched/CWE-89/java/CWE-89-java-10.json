@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-10",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-10.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "sqlStatement = dbConnection.createStatement();\n\n    results = sqlStatement.executeQuery(\"select * from products where code='\" + rawQuery + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = dbConnection.prepareStatement(\"select * from products where code=?\");\nps.setString(1, rawQuery);\nresults = ps.executeQuery();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-inline",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-10.java",
+      "line": 30,
+      "column": 23,
+      "evidence": "sqlStatement.executeQuery(\"select * from products where code='\" + rawQuery + \"'\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.996Z"
+}

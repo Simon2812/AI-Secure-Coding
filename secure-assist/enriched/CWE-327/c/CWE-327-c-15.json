@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-c-15",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-327/c/CWE-327-c-15.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "CALG_3DES",
+          "replacement": "CALG_AES_256"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-327\\c\\CWE-327-c-15.c",
+      "line": 14,
+      "column": 5,
+      "evidence": "size_t n = fread(buf, 1, *len, f);"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.551Z"
+}

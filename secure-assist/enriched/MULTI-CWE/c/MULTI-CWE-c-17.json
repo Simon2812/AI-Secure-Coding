@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-17",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-17.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "snprintf(command, sizeof(command), \"ls %s\", path);\nsystem(command);",
+          "replacement": "execl(\"/bin/ls\", \"ls\", path, (char *)NULL);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "snprintf(command, sizeof(command), \"ls -ld %s\", path);\nsystem(command);",
+          "replacement": "for (int i = 0; path[i] != '\\0'; i++)\n{\n    if ((path[i] < 'a' || path[i] > 'z') &&\n        (path[i] < 'A' || path[i] > 'Z') &&\n        (path[i] < '0' || path[i] > '9') &&\n        path[i] != '.' && path[i] != '_' && path[i] != '-')\n    {\n        return;\n    }\n}\nsnprintf(command, sizeof(command), \"ls -ld %s\", path);\nsystem(command);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-17.c",
+      "line": 40,
+      "column": 5,
+      "evidence": "system("
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-17.c",
+      "line": 48,
+      "column": 5,
+      "evidence": "system("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.163Z"
+}

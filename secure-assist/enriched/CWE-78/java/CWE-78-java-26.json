@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-26",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-26.java",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String[] cmd = {shell, flag, \"date \" + task};",
+          "replacement": "String safe;\nif (\"now\".equals(task)) {\n    safe = \"date\";\n} else if (\"utc\".equals(task)) {\n    safe = \"date -u\";\n} else {\n    throw new ServletException(\"invalid command\");\n}\nString[] cmd = {shell, flag, safe};"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "java-processbuilder",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "ProcessBuilder may allow OS command injection if arguments include unsafe input.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-26.java",
+      "line": 49,
+      "column": 38,
+      "evidence": "ProcessBuilder("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.778Z"
+}

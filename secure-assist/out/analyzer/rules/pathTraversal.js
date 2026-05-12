@@ -167,11 +167,13 @@ function extractJavaTaintedVars(code) {
     let changed = true;
     const directPatterns = [
         /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*getParameter\s*\(/g,
-        /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*getHeader\s*\(/g,
+        /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*getHeaders?\s*\(/g,
         /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*getQueryString\s*\(/g,
         /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*getPathInfo\s*\(/g,
         /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*nextLine\s*\(/g,
         /\bString\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*.*readLine\s*\(/g,
+        /\b([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*[^;]*\.getValue\s*\(/g,
+        /\b([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*[^;]*\.nextElement\s*\(/g,
     ];
     for (const pattern of directPatterns) {
         for (const match of code.matchAll(pattern)) {
@@ -307,7 +309,7 @@ function containsJavaDirectUserInput(text) {
         /\brequest\./,
         /\breq\./,
         /\bgetParameter\s*\(/,
-        /\bgetHeader\s*\(/,
+        /\bgetHeaders?\s*\(/,
         /\bgetQueryString\s*\(/,
         /\bgetPathInfo\s*\(/,
         /\bgetPart\s*\(/,
@@ -315,6 +317,8 @@ function containsJavaDirectUserInput(text) {
         /\bscanner\.next(Line)?\s*\(/i,
         /\breadLine\s*\(/,
         /\bargs\s*\[/,
+        /\.getValue\s*\(/,
+        /\.nextElement\s*\(/,
     ];
     return patterns.some((pattern) => pattern.test(text));
 }

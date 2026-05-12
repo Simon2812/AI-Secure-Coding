@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-40",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-40.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private String buildLocation(String name) {\n        return baseDirectory + \"/\" + name;\n    }",
+          "replacement": "private String buildLocation(String name) throws IOException {\n        if (name.contains(\"..\") || name.contains(\"/\") || name.contains(\"\\\\\")) {\n            throw new IOException(\"Invalid document name\");\n        }\n        return baseDirectory + \"/\" + name;\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.296Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-26",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-26.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "os.environ[\"RUN_TAG\"] = item\n\ncmd = \"sh -c 'echo $RUN_TAG && id'\"\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "env = dict(os.environ)\nenv[\"RUN_TAG\"] = item\nfirst = subprocess.run([\"sh\", \"-c\", \"echo $RUN_TAG\"], shell=False, env=env, capture_output=True, encoding=\"utf-8\")\nsecond = subprocess.run([\"id\"], shell=False, env=env, capture_output=True, encoding=\"utf-8\")\nproc = subprocess.CompletedProcess(args=[\"env_run\"], returncode=0, stdout=(first.stdout + second.stdout), stderr=(first.stderr + second.stderr))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-26.py",
+      "line": 17,
+      "column": 24,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.861Z"
+}

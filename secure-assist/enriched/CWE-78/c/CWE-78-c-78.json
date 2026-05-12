@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-78",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-78.c",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.743Z"
+}

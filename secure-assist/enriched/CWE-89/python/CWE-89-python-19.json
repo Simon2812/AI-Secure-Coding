@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-19",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-19.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = f\"SELECT id, balance FROM accounts WHERE name = '{account_name}'\"\nrecords = db_cursor.execute(stmt).fetchall()",
+          "replacement": "stmt = \"SELECT id, balance FROM accounts WHERE name = ?\"\nrecords = db_cursor.execute(stmt, (account_name,)).fetchall()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "python-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"stmt\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-19.py",
+      "line": 7,
+      "column": 5,
+      "evidence": "stmt = f\"SELECT id, balance FROM accounts WHERE name = '{account_name}'\"\r"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.085Z"
+}

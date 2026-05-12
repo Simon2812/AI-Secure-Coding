@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-12",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-12.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "accessCode = \"masterKey_01\";",
+          "replacement": "accessCode = getenv(\"ACCOUNT_PASSWORD\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.438Z"
+}

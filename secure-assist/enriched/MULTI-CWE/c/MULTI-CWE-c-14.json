@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-14",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-14.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return n * 100;",
+          "replacement": "if (n <= 0 || n > INT_MAX / 100)\n{\n    return 0;\n}\nreturn n * 8;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcpy(buf, name);",
+          "replacement": "strncpy(buf, name, size - 1);\nbuf[size - 1] = '\\0';"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-14.c",
+      "line": 20,
+      "column": 5,
+      "evidence": "strcat(cmd, path)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-14.c",
+      "line": 21,
+      "column": 5,
+      "evidence": "system("
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-14.c",
+      "line": 47,
+      "column": 9,
+      "evidence": "strcpy(ptr, base)"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-14.c",
+      "line": 42,
+      "column": 5,
+      "evidence": "ptr = (char *)malloc(n * 16);"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.161Z"
+}

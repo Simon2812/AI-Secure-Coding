@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-09",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-09.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "sig = hashlib.sha1(raw).hexdigest()",
+          "replacement": "sig = hmac.new(self.secret, raw, hashlib.sha256).hexdigest()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "python-sha1",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.sha1() uses SHA-1, which is considered cryptographically weak.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-09.py",
+      "line": 16,
+      "column": 15,
+      "evidence": "hashlib.sha1("
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "python-sha1",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.sha1() uses SHA-1, which is considered cryptographically weak.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-09.py",
+      "line": 27,
+      "column": 20,
+      "evidence": "hashlib.sha1("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.235Z"
+}

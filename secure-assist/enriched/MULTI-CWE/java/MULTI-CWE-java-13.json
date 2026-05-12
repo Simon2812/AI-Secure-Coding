@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-13",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-13.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File file = new File(rootDirectory + f);",
+          "replacement": "if (!f.matches(\"[a-zA-Z0-9._-]+\")) throw new IOException(\"Invalid name\");\nFile file = new File(rootDirectory + f);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "DES",
+          "replacement": "AES"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "java-des",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "Cipher.getInstance(\"DES\") uses DES, which is an outdated and insecure encryption algorithm.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
+      "line": 35,
+      "column": 25,
+      "evidence": "Cipher.getInstance(\"DES\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.197Z"
+}

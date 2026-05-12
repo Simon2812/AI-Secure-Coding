@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-29",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-29.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "source = (article_dir / attachment_name).resolve()",
+          "replacement": "source = (article_dir / Path(attachment_name).name).resolve()"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "script = (\n    \"INSERT INTO publish_notes(reporter, summary, article_count, created_at) VALUES ('\"\n    + reporter\n    + \"', '\"\n    + summary\n    + \"', \"\n    + str(article_count)\n    + \", datetime('now'));\"\n)\ncursor.executescript(script)\nconnection.commit()",
+          "replacement": "cursor.execute(\n    \"INSERT INTO publish_notes(reporter, summary, article_count, created_at) VALUES (?, ?, ?, datetime('now'))\",\n    (reporter, summary, article_count),\n)\nconnection.commit()"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "\"password\": \"PublishRelay#2026\",",
+          "replacement": "\"password\": os.environ.get(\"PUBLISH_SMTP_PASSWORD\", \"\"),"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "hardcoded-password-dict",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Possible hard-coded password in dictionary or map literal.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-29.py",
+      "line": 197,
+      "column": 13,
+      "evidence": "\"password\": \"PublishRelay#2026\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.264Z"
+}

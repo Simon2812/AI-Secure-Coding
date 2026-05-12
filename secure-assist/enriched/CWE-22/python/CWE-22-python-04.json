@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-04",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-04.py",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path_value = f\"{helpers.utils.TESTFILES_DIR}/{selected}\"",
+          "replacement": "import os\n            safe_name = os.path.basename(selected)\n            path_value = os.path.join(helpers.utils.TESTFILES_DIR, safe_name)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-04.py",
+      "line": 30,
+      "column": 18,
+      "evidence": "fd = open(path_value, \"wb\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.351Z"
+}

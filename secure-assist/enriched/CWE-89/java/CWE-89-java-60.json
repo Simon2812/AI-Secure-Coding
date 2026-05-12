@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-60",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-60.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id='\" + accountId + \"' AND bill_month='\" + month + \"' ORDER BY invoice_id\";\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.Statement st = c.createStatement();\n     java.sql.ResultSet rs = st.executeQuery(sql)) {",
+          "replacement": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id=? AND bill_month=? ORDER BY invoice_id\";\n\njava.util.ArrayList<String> out = new java.util.ArrayList<>();\n\ntry (java.sql.Connection c = ds.getConnection();\n     java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n\n    st.setString(1, accountId);\n    st.setString(2, month);\n    try (java.sql.ResultSet rs = st.executeQuery()) {"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-60.java",
+      "line": 18,
+      "column": 9,
+      "evidence": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id='\" + accountId + \"' AND bill_month='\" + month + \"' ORDER BY invoice_id\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.037Z"
+}

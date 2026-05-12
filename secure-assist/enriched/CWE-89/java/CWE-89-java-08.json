@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-08",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-08.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = connection.createStatement();\n\n    result = statement.executeQuery(\"select * from orders where id='\" + queryParam + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = connection.prepareStatement(\"select * from orders where id=?\");\nps.setString(1, queryParam);\nresult = ps.executeQuery();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-inline",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-08.java",
+      "line": 30,
+      "column": 22,
+      "evidence": "statement.executeQuery(\"select * from orders where id='\" + queryParam + \"'\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.994Z"
+}

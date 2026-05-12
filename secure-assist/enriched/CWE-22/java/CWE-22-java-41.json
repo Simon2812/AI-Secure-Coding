@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-41",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-41.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path dir = repositoryPath.resolve(folder);",
+          "replacement": "Path base = repositoryPath.toAbsolutePath().normalize();\nPath dir = base.resolve(folder).normalize();\nif (!dir.startsWith(base)) {\n    throw new IOException(\"Invalid directory\");\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.296Z"
+}

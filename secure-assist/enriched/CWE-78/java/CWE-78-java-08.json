@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-08",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-08.java",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process child = Runtime.getRuntime().exec(assembled);\nchild.waitFor();",
+          "replacement": "if (responseLine == null || responseLine.contains(\";\") || responseLine.contains(\"&\") || responseLine.contains(\"|\")) {\n    throw new IllegalArgumentException(\"Invalid input\");\n}\nProcess child = Runtime.getRuntime().exec(assembled);\nchild.waitFor();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "java-runtime-exec",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-08.java",
+      "line": 57,
+      "column": 25,
+      "evidence": "Runtime.getRuntime().exec("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.764Z"
+}

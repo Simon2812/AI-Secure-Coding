@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-03",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-321/c/CWE-321-c-03.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "#define BOOTSTRAP_SECRET \"LocalStageSeed\"",
+          "replacement": "#define BOOTSTRAP_SECRET getenv(\"APP_SECRET\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-03.c",
+      "line": 44,
+      "column": 9,
+      "evidence": "strcpy(keySource, BOOTSTRAP_SECRET)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.485Z"
+}

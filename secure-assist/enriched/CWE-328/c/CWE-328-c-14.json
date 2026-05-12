@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-14",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-14.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "if (!CryptCreateHash(ctx, CALG_MD5, 0, 0, &h))\n{\n    CryptReleaseContext(ctx, 0);\n    return 0;\n}",
+          "replacement": ""
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.602Z"
+}

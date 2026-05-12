@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-28",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-28.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String storedPassword = \"admin123\";",
+          "replacement": "String storedPassword = System.getenv(\"ADMIN_PASS\");"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"sh -c \" + command;",
+          "replacement": "if (!(command.equals(\"uptime\") || command.equals(\"whoami\"))) throw new IllegalArgumentException();\nString cmd = \"sh -c \" + command;"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String internalKey = \"key-987654\";",
+          "replacement": "String internalKey = System.getenv(\"API_KEY\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "java-runtime-exec",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-28.java",
+      "line": 67,
+      "column": 21,
+      "evidence": "Runtime.getRuntime().exec("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.208Z"
+}

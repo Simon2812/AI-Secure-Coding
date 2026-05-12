@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-22",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-22.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "safe_arg = arg.replace(\";\", \"\")\nchosen = task.strip().lower()\n\ncmdline = f\"{chosen} {safe_arg}\"\nreturn _run_task(cmdline)",
+          "replacement": "allowed = {\n    \"whoami\": [\"whoami\"],\n    \"date\": [\"date\"],\n    \"uptime\": [\"uptime\"]\n}\ntool = allowed.get(chosen)\nif tool is None:\n    raise ValueError(\"Unsupported task\")\nproc = subprocess.run(tool + [safe_arg], shell=False, capture_output=True, encoding=\"utf-8\")\nreturn (proc.stdout or \"\") + (proc.stderr or \"\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-22.py",
+      "line": 5,
+      "column": 16,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.858Z"
+}

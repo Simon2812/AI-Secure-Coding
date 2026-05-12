@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-03",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-03.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected = \"sync-7782\"",
+          "replacement": "expected = settings[\"service_secret\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.467Z"
+}

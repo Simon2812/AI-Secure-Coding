@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-13",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-13.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "sql = (\n    \"SELECT id, actor, action, resource, created_at \"\n    \"FROM audit_events \"\n    \"WHERE actor = '\" + actor + \"' \"\n    \"ORDER BY created_at DESC \"\n    f\"LIMIT {max_rows}\"\n)\n\ncursor.execute(sql)",
+          "replacement": "sql = (\n    \"SELECT id, actor, action, resource, created_at \"\n    \"FROM audit_events \"\n    \"WHERE actor = ? \"\n    \"ORDER BY created_at DESC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(sql, (actor, max_rows))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "self.secret = b\"tenant-sync-signing-key\"",
+          "replacement": "self.secret = os.environ.get(\"SYNC_SIGNING_KEY\", \"\").encode(\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-13.py",
+      "line": 28,
+      "column": 18,
+      "evidence": "with open(path, \"r\", encoding=\"utf-8\") as handle:"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-13.py",
+      "line": 122,
+      "column": 14,
+      "evidence": "with open(target, \"w\", encoding=\"utf-8\") as handle:"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.241Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-54",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-54.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = \"find /tmp -name \\\"{}*\\\" -delete\".format(tag)\nrc = os.system(cmd)",
+          "replacement": "if not re.fullmatch(r\"[A-Za-z0-9_-]{1,32}\", tag):\nrc = 1\nelse:\npattern = tag\nrc = 0\nfor root, dirs, files in os.walk(\"/tmp\"):\nfor name in files:\nif name.startswith(pattern):\ntry:\nos.remove(os.path.join(root, name))\nexcept OSError:\nrc = 1"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-os-system",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "os.system() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-54.py",
+      "line": 15,
+      "column": 22,
+      "evidence": "os.system("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.881Z"
+}

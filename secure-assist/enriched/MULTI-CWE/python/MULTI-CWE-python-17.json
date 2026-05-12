@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-17",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-17.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)",
+          "replacement": "context = ssl.create_default_context()"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"file {asset_path} >/dev/null && {post_hook}\"\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "result = subprocess.run(\n    [\"file\", str(asset_path)],\n    stdout=subprocess.DEVNULL,\n    stderr=subprocess.PIPE,\n    text=True,\n)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-17.py",
+      "line": 161,
+      "column": 14,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.246Z"
+}

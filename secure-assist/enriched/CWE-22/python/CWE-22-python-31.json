@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-31",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-31.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "file_path = DATA_HOME + \"/\" + note_name\nwith open(file_path, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()",
+          "replacement": "if \"..\" in note_name or \"/\" in note_name or \"\\\\\" in note_name:\n    abort(400)\n\nfile_path = DATA_HOME + \"/\" + note_name\nwith open(file_path, \"r\", encoding=\"utf-8\") as fh:\n    return fh.read()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-22\\python\\CWE-22-python-31.py",
+      "line": 15,
+      "column": 10,
+      "evidence": "with open(file_path, \"r\", encoding=\"utf-8\") as fh:"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.375Z"
+}

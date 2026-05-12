@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-58",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-58.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"sh -c 'printf %s {right}'\"\ngood = subprocess.run(cmd, shell=True,\n    capture_output=True,\n    encoding=\"utf-8\")",
+          "replacement": "good = subprocess.run([\"printf\", \"%s\", right],\n    shell=False,\n    capture_output=True,\n    encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-58.py",
+      "line": 24,
+      "column": 24,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.884Z"
+}

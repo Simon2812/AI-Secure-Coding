@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-32",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-32.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "with open(filename, \"r\", encoding=\"utf-8\") as f:\n    command = f.read().strip()\n\nproc = subprocess.run(command, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "with open(filename, \"r\", encoding=\"utf-8\") as f:\n    command = f.read().strip().lower()\nallowed = {\"whoami\": [\"whoami\"], \"date\": [\"date\"], \"id\": [\"id\"]}\nbase = allowed.get(command)\nif base is None:\n    raise ValueError(\"Unsupported command in file\")\nproc = subprocess.run(base, shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-32.py",
+      "line": 12,
+      "column": 22,
+      "evidence": "with open(filename, \"r\", encoding=\"utf-8\") as f:"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "python-subprocess",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-32.py",
+      "line": 15,
+      "column": 24,
+      "evidence": "subprocess.run("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.865Z"
+}

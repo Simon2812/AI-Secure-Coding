@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-28",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-28.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT name FROM flag_audit \"\n    \"WHERE actor = '\" + actor + \"' \"\n    \"AND name LIKE '\" + prefix + \"%' \"\n    \"ORDER BY created_at DESC\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT name FROM flag_audit \"\n    \"WHERE actor = ? \"\n    \"AND name LIKE ? \"\n    \"ORDER BY created_at DESC\"\n)\n\ncursor.execute(statement, (actor, prefix + \"%\"))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "cipher = ARC4.new(key.encode(\"utf-8\"))",
+          "replacement": "cipher = AES.new(key.encode(\"utf-8\")[:16], AES.MODE_CBC)"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "return hashlib.md5(encrypted).hexdigest()",
+          "replacement": "return hashlib.sha256(encrypted).hexdigest()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "python-md5",
+      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.md5() uses MD5, which is considered cryptographically weak.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
+      "line": 112,
+      "column": 12,
+      "evidence": "hashlib.md5("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.262Z"
+}

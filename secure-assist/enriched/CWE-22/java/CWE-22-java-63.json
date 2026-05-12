@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-63",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-63.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-63.java",
+      "line": 48,
+      "column": 22,
+      "evidence": "new FileInputStream(location)"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.314Z"
+}

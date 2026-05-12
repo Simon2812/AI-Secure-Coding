@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-59",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-59.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path = os.path.join(base_dir, rel)",
+          "replacement": "path = os.path.abspath(os.path.join(base_dir, rel))\nif os.path.commonpath([os.path.abspath(base_dir), path]) != os.path.abspath(base_dir):\n    raise ValueError(\"invalid dataset path\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.398Z"
+}

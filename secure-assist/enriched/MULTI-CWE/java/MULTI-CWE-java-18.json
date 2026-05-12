@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-18",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-18.java",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n                \"SELECT id FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\";",
+          "replacement": "String query = \"SELECT id FROM users WHERE username = ? AND password = ?\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query =\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\";",
+          "replacement": "String query = \"SELECT name FROM employees WHERE department = ?\";"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
+      "line": 14,
+      "column": 9,
+      "evidence": "String query =\r\n                \"SELECT id FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\""
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "java-sqli-variable",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
+      "line": 41,
+      "column": 9,
+      "evidence": "String query =\r\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.200Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-08",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-08.java",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File base = new File(\"/data/app/storage/\");\n        File file = new File(base, name);",
+          "replacement": "File base = new File(\"/data/app/storage/\").getCanonicalFile();\n        File file = new File(base, name).getCanonicalFile();\n        if (!file.getPath().startsWith(base.getPath())) {\n            throw new IOException();\n        }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-12T10:46:43.269Z"
+}

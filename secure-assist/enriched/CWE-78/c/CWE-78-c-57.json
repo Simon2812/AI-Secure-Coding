@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-57",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-57.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *fp = popen(cmd, \"r\");",
+          "replacement": "if (!(strcmp(agent, \"nslookup\") == 0 || strcmp(agent, \"whois\") == 0))\n    return 1;\nfor (const unsigned char *p = (const unsigned char *)query; *p; ++p) {\n    if (!((*p >= 'a' && *p <= 'z') ||\n          (*p >= 'A' && *p <= 'Z') ||\n          (*p >= '0' && *p <= '9') ||\n          *p == '.' || *p == '-'))\n        return 1;\n}\nFILE *fp = popen(cmd, \"r\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "cpp-popen",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Use of popen() may allow OS command injection if input is not controlled.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-57.c",
+      "line": 37,
+      "column": 16,
+      "evidence": "popen("
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.730Z"
+}

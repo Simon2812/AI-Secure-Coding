@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-34",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-34.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "encrypt_block(j.cipher, j.input);",
+          "replacement": "encrypt_block(\"AES-256\", j.input);"
+        },
+        {
+          "origin": "log_cipher(j.cipher);",
+          "replacement": "log_cipher(\"AES-256\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "out-of-bounds-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-34.c",
+      "line": 40,
+      "column": 9,
+      "evidence": "strcpy(tmp, \"ok\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:44.175Z"
+}

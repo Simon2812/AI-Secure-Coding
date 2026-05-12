@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-33",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-33.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "location = content_root / slug\nwith open(location, \"r\", encoding=\"utf-8\") as reader:\n    return reader.read()",
+          "replacement": "base = content_root.resolve()\nlocation = (content_root / slug).resolve()\nif base not in location.parents and location != base:\n    abort(400)\nwith open(location, \"r\", encoding=\"utf-8\") as reader:\n    return reader.read()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "file": "C:\\Users\\משתמש\\AI-Secure-Coding\\.claude\\worktrees\\laughing-hopper-ade9a9\\dataset\\synthetic\\CWE-22\\python\\CWE-22-python-33.py",
+      "line": 16,
+      "column": 10,
+      "evidence": "with open(location, \"r\", encoding=\"utf-8\") as reader:"
+    }
+  ],
+  "enriched_at": "2026-05-12T10:46:43.377Z"
+}
