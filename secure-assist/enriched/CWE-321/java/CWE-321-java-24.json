@@ -9,18 +9,6 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\java\\CWE-321-java-24.java",
-      "line": 10,
-      "column": 16,
-      "evidence": "Files.readAllBytes(Paths.get(\"config/secret.key\")"
-    }
-  ],
-  "enriched_at": "2026-05-12T11:36:03.125Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-12T11:52:51.008Z"
 }

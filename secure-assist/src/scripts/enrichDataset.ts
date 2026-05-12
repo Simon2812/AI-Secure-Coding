@@ -33,7 +33,7 @@ interface EnrichedMetadata extends Metadata {
 }
 
 // CWEs where AST outperforms regex
-const AST_STRONG = new Set(["CWE-259", "CWE-327", "CWE-328", "CWE-787"]);
+const AST_STRONG = new Set(["CWE-259", "CWE-321", "CWE-327", "CWE-328", "CWE-787"]);
 
 function pickAnalyzer(metaPath: string, code: string, codePath: string): Finding[] {
   const cweFolder = path.relative(METADATA_DIR, metaPath).split(path.sep)[0];

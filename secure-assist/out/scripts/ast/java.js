@@ -191,29 +191,112 @@ function hasUnsafeSqlConstruction(node, taint) {
         return true;
     return false;
 }
+// Sinks that indicate a string literal is used as a credential/key
+const CRED_SINK_METHODS = new Set(["getConnection", "connect", "login", "authenticate"]);
+const KEY_SINK_TYPES = new Set(["SecretKeySpec", "PBEKeySpec", "SecretKey"]);
+const KEY_SINK_METHODS = new Set(["doFinal", "init", "encrypt", "decrypt", "sign", "verify"]);
 function findHardcodedCredentialsJava(root, filePath, code) {
     const findings = [];
     const credVars = /^(password|passwd|pwd|secret|apiKey|api_key|token|authToken|accessToken|secretKey|clientSecret)$/i;
+    // Track string literals assigned to any variable, then check if used in credential sinks
+    const literalVars = new Map(); // varName → string literal node
     for (const node of (0, taint_1.walkAll)(root)) {
-        if (node.type !== "variable_declarator")
-            continue;
-        const nameNode = node.childForFieldName("name");
-        const valueNode = node.childForFieldName("value");
-        if (!nameNode || !valueNode)
-            continue;
-        if (!credVars.test(nameNode.text))
-            continue;
-        if (valueNode.type === "string_literal" && valueNode.text.length > 5) {
-            const cwe = /key|secret|token/i.test(nameNode.text) ? "CWE-321" : "CWE-259";
-            findings.push((0, utils_1.makeAstFinding)({
-                cweId: cwe, ruleId: "ast-hardcoded-cred",
-                vulnerability: cwe === "CWE-321" ? "Use of Hard-coded Cryptographic Key" : "Use of Hard-coded Password",
-                severity: "high",
-                message: `Hard-coded credential assigned to '${nameNode.text}'.`,
-                filePath, node: valueNode, code,
-            }));
+        // Collect all string-literal variable assignments
+        if (node.type === "variable_declarator") {
+            const nameNode = node.childForFieldName("name");
+            const valueNode = node.childForFieldName("value");
+            if (nameNode && valueNode && valueNode.type === "string_literal" && valueNode.text.length > 5) {
+                literalVars.set(nameNode.text, valueNode);
+            }
+        }
+        // Also catch assignment_expression: var = "literal"
+        if (node.type === "assignment_expression") {
+            const left = node.childForFieldName("left");
+            const right = node.childForFieldName("right");
+            if (left?.type === "identifier" && right?.type === "string_literal" && right.text.length > 5) {
+                literalVars.set(left.text, right);
+            }
+        }
+    }
+    for (const node of (0, taint_1.walkAll)(root)) {
+        // Pattern 1: variable name matches credential pattern → string literal value
+        if (node.type === "variable_declarator") {
+            const nameNode = node.childForFieldName("name");
+            const valueNode = node.childForFieldName("value");
+            if (!nameNode || !valueNode)
+                continue;
+            if (!credVars.test(nameNode.text))
+                continue;
+            if (valueNode.type === "string_literal" && valueNode.text.length > 5) {
+                const cwe = /key|secret|token/i.test(nameNode.text) ? "CWE-321" : "CWE-259";
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: cwe, ruleId: "ast-hardcoded-cred",
+                    vulnerability: cwe === "CWE-321" ? "Use of Hard-coded Cryptographic Key" : "Use of Hard-coded Password",
+                    severity: "high",
+                    message: `Hard-coded credential assigned to '${nameNode.text}'.`,
+                    filePath, node: valueNode, code,
+                }));
+            }
+        }
+        // Pattern 2: string literal passed directly to credential/key sink methods
+        if (node.type === "method_invocation") {
+            const methodName = node.childForFieldName("name")?.text ?? "";
+            const argsNode = node.childForFieldName("arguments");
+            if (!argsNode)
+                continue;
+            const args = getJavaArgs(argsNode);
+            if (CRED_SINK_METHODS.has(methodName)) {
+                // Last arg of getConnection/connect is typically the password
+                const lastArg = args[args.length - 1];
+                if (lastArg && isHardcodedString(lastArg, literalVars)) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId: "CWE-259", ruleId: "ast-hardcoded-cred",
+                        vulnerability: "Use of Hard-coded Password",
+                        severity: "high",
+                        message: `Hard-coded password passed to ${methodName}().`,
+                        filePath, node: lastArg, code,
+                    }));
+                }
+            }
+        }
+        // Pattern 3: string literal used to construct SecretKeySpec / PBEKeySpec
+        if (node.type === "object_creation_expression") {
+            const typeNode = node.childForFieldName("type");
+            const argsNode = node.childForFieldName("arguments");
+            if (!typeNode || !argsNode)
+                continue;
+            if (!KEY_SINK_TYPES.has(typeNode.text))
+                continue;
+            const args = getJavaArgs(argsNode);
+            // First arg is typically the key material
+            if (args.length > 0 && isHardcodedKeyMaterial(args[0], literalVars)) {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: "CWE-321", ruleId: "ast-hardcoded-cred",
+                    vulnerability: "Use of Hard-coded Cryptographic Key",
+                    severity: "high",
+                    message: `Hard-coded key material passed to ${typeNode.text}.`,
+                    filePath, node: args[0], code,
+                }));
+            }
         }
     }
     return findings;
+}
+function isHardcodedString(node, literalVars) {
+    if (node.type === "string_literal")
+        return node.text.length > 5;
+    if (node.type === "identifier")
+        return literalVars.has(node.text);
+    return false;
+}
+function isHardcodedKeyMaterial(node, literalVars) {
+    // getBytes() call on a string literal or literal variable
+    if (node.type === "method_invocation") {
+        const obj = node.childForFieldName("object");
+        const method = node.childForFieldName("name")?.text;
+        if (method === "getBytes" && obj)
+            return isHardcodedString(obj, literalVars);
+    }
+    return isHardcodedString(node, literalVars);
 }
 //# sourceMappingURL=java.js.map

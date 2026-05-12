@@ -9,7 +9,7 @@ const OVERFLOW_MEM_FUNCS = new Set(["memcpy", "memmove", "memset"]);
 const CMD_FUNCS = new Set(["system", "popen", "execl", "execlp", "execv", "execvp"]);
 const WEAK_HASH_FUNCS = new Set(["MD5", "EVP_md5"]);
 const WEAK_HASH_SHA1 = new Set(["SHA1", "EVP_sha1"]);
-const CRED_MACROS = /^(PASSWORD|PASSWD|PWD|SECRET|API_KEY|APIKEY|TOKEN|AUTH_TOKEN|ACCESS_TOKEN|SECRET_KEY|CLIENT_SECRET)/i;
+const CRED_MACROS = /^(PASSWORD|PASSWD|PWD|SECRET|API_KEY|APIKEY|TOKEN|AUTH_TOKEN|ACCESS_TOKEN|SECRET_KEY|CLIENT_SECRET|FALLBACK|KEY|PHRASE|PASSPHRASE)/i;
 
 export function analyzeC(code: string, filePath: string, tree: Tree): Finding[] {
   const findings: Finding[] = [];
@@ -177,7 +177,7 @@ export function analyzeC(code: string, filePath: string, tree: Tree): Finding[] 
       const valueNode = node.childForFieldName("value");
       if (nameNode && valueNode && CRED_MACROS.test(nameNode.text)) {
         const val = valueNode.text.trim();
-        if ((val.startsWith('"') || val.startsWith('L"')) && val.length > 5) {
+        if ((val.startsWith('"') || val.startsWith('L"') || val.startsWith('u"') || val.startsWith('U"')) && val.length > 5) {
           const cwe = /KEY|SECRET|TOKEN/i.test(nameNode.text) ? "CWE-321" : "CWE-259";
           findings.push(makeAstFinding({
             cweId: cwe, ruleId: "ast-hardcoded-cred",

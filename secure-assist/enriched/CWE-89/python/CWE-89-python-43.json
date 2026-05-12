@@ -44,5 +44,5 @@
       "evidence": "sql = \"SELECT is_admin FROM users WHERE id = \" + user_id\r"
     }
   ],
-  "enriched_at": "2026-05-12T11:36:04.003Z"
+  "enriched_at": "2026-05-12T11:52:51.900Z"
 }

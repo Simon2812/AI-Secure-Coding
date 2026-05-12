@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:36:03.015Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded password passed to getConnection().",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-259\\java\\CWE-259-java-01.java",
+      "line": 18,
+      "column": 72,
+      "evidence": "authValue"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:52:50.808Z"
 }

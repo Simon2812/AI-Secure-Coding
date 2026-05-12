@@ -33,5 +33,5 @@
       "evidence": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id='\" + accountId + \"' AND bill_month='\" + month + \"' ORDER BY invoice_id\""
     }
   ],
-  "enriched_at": "2026-05-12T11:36:03.936Z"
+  "enriched_at": "2026-05-12T11:52:51.833Z"
 }

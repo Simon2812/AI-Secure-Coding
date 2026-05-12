@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:36:03.092Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential in macro 'FALLBACK_PHRASE'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-04.c",
+      "line": 10,
+      "column": 25,
+      "evidence": "L\"StageWideSecret\"\r"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:52:50.895Z"
 }

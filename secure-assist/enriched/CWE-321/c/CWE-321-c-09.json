@@ -27,26 +27,15 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-09.c",
       "line": 91,
       "column": 9,
       "evidence": "strcpy(material, STATIC_KEY)"
-    },
-    {
-      "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
-      "vulnerability": "Integer Overflow",
-      "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-09.c",
-      "line": 31,
-      "column": 5,
-      "evidence": "memcpy(buffer, entry, *len);"
     }
   ],
-  "enriched_at": "2026-05-12T11:36:03.096Z"
+  "enriched_at": "2026-05-12T11:52:50.911Z"
 }

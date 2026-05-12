@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:36:03.119Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to SecretKeySpec.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\java\\CWE-321-java-15.java",
+      "line": 10,
+      "column": 47,
+      "evidence": "material.getBytes(\"UTF-8\")"
+    }
+  ],
+  "enriched_at": "2026-05-12T11:52:50.988Z"
 }

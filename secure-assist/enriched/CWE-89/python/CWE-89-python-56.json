@@ -33,5 +33,5 @@
       "evidence": "stmt = text(\"SELECT id, total FROM orders WHERE id IN (\" + id_blob + \")\")\r"
     }
   ],
-  "enriched_at": "2026-05-12T11:36:04.012Z"
+  "enriched_at": "2026-05-12T11:52:51.910Z"
 }

@@ -33,5 +33,5 @@
       "evidence": "query = \"UPDATE \" + table + \" SET \" + assignments + \" WHERE id = \" + account_id + \" RETURNING id, email\"\r"
     }
   ],
-  "enriched_at": "2026-05-12T11:36:04.016Z"
+  "enriched_at": "2026-05-12T11:52:51.913Z"
 }

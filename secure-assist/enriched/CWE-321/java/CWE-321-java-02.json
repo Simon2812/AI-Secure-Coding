@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-321",
-      "ruleId": "hardcoded-token",
+      "ruleId": "ast-hardcoded-cred",
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
-      "message": "Possible hard-coded authentication token found in source code.",
+      "message": "Hard-coded key material passed to SecretKeySpec.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-321\\java\\CWE-321-java-02.java",
-      "line": 18,
-      "column": 13,
-      "evidence": "token = \"23 ~j;asn!@#/>as\""
+      "line": 29,
+      "column": 51,
+      "evidence": "token.getBytes(\"UTF-8\")"
     }
   ],
-  "enriched_at": "2026-05-12T11:36:03.109Z"
+  "enriched_at": "2026-05-12T11:52:50.963Z"
 }
