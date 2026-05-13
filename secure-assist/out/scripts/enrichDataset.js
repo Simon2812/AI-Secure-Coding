@@ -44,7 +44,7 @@ const METADATA_DIR = path.join(REPO_ROOT, "dataset", "metadata");
 const SECURE_ASSIST_ROOT = path.resolve(__dirname, "..", "..");
 const ENRICHED_DIR = path.join(SECURE_ASSIST_ROOT, "enriched");
 // CWEs where AST outperforms regex
-const AST_STRONG = new Set(["CWE-259", "CWE-321", "CWE-327", "CWE-328", "CWE-787"]);
+const AST_STRONG = new Set(["CWE-22", "CWE-89", "CWE-190", "CWE-259", "CWE-321", "CWE-327", "CWE-328", "CWE-787"]);
 function pickAnalyzer(metaPath, code, codePath) {
     const cweFolder = path.relative(METADATA_DIR, metaPath).split(path.sep)[0];
     if (AST_STRONG.has(cweFolder)) {

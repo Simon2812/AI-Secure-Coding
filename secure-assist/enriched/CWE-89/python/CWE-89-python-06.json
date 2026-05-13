@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-89",
-      "ruleId": "python-sqli-variable",
-      "vulnerability": "SQL Injection",
-      "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query_text\" appears to be built unsafely before execution.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-06.py",
-      "line": 15,
-      "column": 5,
-      "evidence": "query_text = f\"SELECT sku, title FROM catalog_items ORDER BY created_at DESC LIMIT {limit} OFFSET {offset}\"\r"
-    }
-  ],
-  "enriched_at": "2026-05-12T11:52:51.872Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-13T10:57:24.283Z"
 }

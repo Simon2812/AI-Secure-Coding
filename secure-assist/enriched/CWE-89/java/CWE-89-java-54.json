@@ -23,26 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"updateSql\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
-      "line": 13,
-      "column": 13,
-      "evidence": "String updateSql = \"UPDATE tickets SET status='RESOLVED' WHERE id=\" + ticketId"
-    },
-    {
-      "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
-      "vulnerability": "SQL Injection",
-      "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"insertSql\" appears to be built unsafely before execution.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
-      "line": 18,
-      "column": 13,
-      "evidence": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (\" + ticketId + \", '\" + actor + \"', '\" + note + \"')\""
+      "line": 20,
+      "column": 34,
+      "evidence": "insertSql"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.829Z"
+  "enriched_at": "2026-05-13T10:57:24.063Z"
 }

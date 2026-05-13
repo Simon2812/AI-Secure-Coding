@@ -23,26 +23,26 @@
   "static_findings": [
     {
       "cweId": "CWE-22",
-      "ruleId": "path-traversal",
+      "ruleId": "ast-path-traversal",
       "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-01.java",
-      "line": 34,
-      "column": 21,
-      "evidence": "new FileInputStream(new File(fullPath)"
-    },
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "message": "new FileInputStream() receives user-controlled path.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-01.java",
       "line": 34,
       "column": 41,
       "evidence": "new File(fullPath)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-01.java",
+      "line": 34,
+      "column": 50,
+      "evidence": "fullPath"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:50.576Z"
+  "enriched_at": "2026-05-13T10:57:22.230Z"
 }

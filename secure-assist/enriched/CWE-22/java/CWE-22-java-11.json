@@ -22,27 +22,38 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-321",
-      "ruleId": "hardcoded-token",
-      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "Possible hard-coded authentication token found in source code.",
+      "message": "Path.resolve() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-11.java",
-      "line": 17,
-      "column": 16,
-      "evidence": "token = \"default\""
+      "line": 27,
+      "column": 23,
+      "evidence": "new Resolver().resolve(request, token)"
     },
     {
       "cweId": "CWE-22",
-      "ruleId": "path-traversal",
+      "ruleId": "ast-path-traversal",
       "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "message": "new File() receives user-controlled path.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-11.java",
       "line": 30,
-      "column": 21,
-      "evidence": "new File(root, name)"
+      "column": 36,
+      "evidence": "name"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'token'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-11.java",
+      "line": 17,
+      "column": 24,
+      "evidence": "\"default\""
     }
   ],
-  "enriched_at": "2026-05-12T11:52:50.586Z"
+  "enriched_at": "2026-05-13T10:57:22.267Z"
 }

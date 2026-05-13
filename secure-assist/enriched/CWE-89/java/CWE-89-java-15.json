@@ -22,27 +22,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-15.java",
-      "line": 27,
-      "column": 19,
-      "evidence": "new FileInputStream(\"../common/config.properties\")"
-    },
-    {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-inline",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-15.java",
       "line": 48,
-      "column": 18,
-      "evidence": "st.executeQuery(\"select * from users where name='\" + value + \"'\")"
+      "column": 34,
+      "evidence": "\"select * from users where name='\" + value + \"'\""
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.798Z"
+  "enriched_at": "2026-05-13T10:57:23.936Z"
 }

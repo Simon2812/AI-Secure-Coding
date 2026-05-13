@@ -9,6 +9,18 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:52:50.576Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-00.java",
+      "line": 29,
+      "column": 16,
+      "evidence": "ROOT.resolve(name + \".log\")"
+    }
+  ],
+  "enriched_at": "2026-05-13T10:57:22.224Z"
 }

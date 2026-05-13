@@ -9,6 +9,18 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:52:51.861Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-93.java",
+      "line": 26,
+      "column": 65,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-13T10:57:24.245Z"
 }

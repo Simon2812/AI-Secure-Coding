@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:52:50.553Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-190\\CWE-190-19.c",
+      "line": 16,
+      "column": 28,
+      "evidence": "units * batchSize"
+    }
+  ],
+  "enriched_at": "2026-05-13T10:57:22.177Z"
 }

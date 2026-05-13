@@ -12,15 +12,26 @@
   "static_findings": [
     {
       "cweId": "CWE-22",
-      "ruleId": "path-traversal",
+      "ruleId": "ast-path-traversal",
       "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-73.java",
+      "line": 16,
+      "column": 31,
+      "evidence": "new Resolver().resolve(inputValue)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-73.java",
       "line": 18,
-      "column": 27,
-      "evidence": "new File(\"/srv/storage\", selectedName)"
+      "column": 52,
+      "evidence": "selectedName"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:50.637Z"
+  "enriched_at": "2026-05-13T10:57:22.476Z"
 }

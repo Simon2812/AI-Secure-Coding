@@ -9,6 +9,29 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:52:50.656Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.of() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-97.java",
+      "line": 25,
+      "column": 27,
+      "evidence": "Path.of(name)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-97.java",
+      "line": 27,
+      "column": 16,
+      "evidence": "BASE.resolve(filename + \".snapshot\")"
+    }
+  ],
+  "enriched_at": "2026-05-13T10:57:22.546Z"
 }

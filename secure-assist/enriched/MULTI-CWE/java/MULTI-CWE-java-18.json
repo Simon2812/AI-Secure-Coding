@@ -54,5 +54,5 @@
       "evidence": "String query =\r\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\""
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.995Z"
+  "enriched_at": "2026-05-13T10:57:24.559Z"
 }

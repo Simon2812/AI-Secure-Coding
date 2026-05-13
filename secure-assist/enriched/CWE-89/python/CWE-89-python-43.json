@@ -22,27 +22,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-259",
-      "ruleId": "hardcoded-password",
-      "vulnerability": "Use of Hard-coded Password",
-      "severity": "high",
-      "message": "Possible hard-coded password found in source code.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-43.py",
-      "line": 4,
-      "column": 58,
-      "evidence": "password=\"pass\""
-    },
-    {
       "cweId": "CWE-89",
-      "ruleId": "python-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
+      "message": "SQL query is constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-43.py",
-      "line": 7,
-      "column": 5,
-      "evidence": "sql = \"SELECT is_admin FROM users WHERE id = \" + user_id\r"
+      "line": 8,
+      "column": 17,
+      "evidence": "sql"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.900Z"
+  "enriched_at": "2026-05-13T10:57:24.362Z"
 }

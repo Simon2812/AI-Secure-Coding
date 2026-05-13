@@ -175,6 +175,8 @@ function analyzeC(code, filePath, tree) {
             }
         }
     }
+    // CWE-190: constant overflow (CHAR_MAX/INT_MAX arithmetic, no user input needed)
+    findings.push(...findConstantOverflows(root, filePath, code));
     return findings;
 }
 function getArgs(argsNode) {
@@ -246,7 +248,58 @@ function isCIntegerSourceExpr(node) {
         /\bstrtol\s*\(/.test(text) ||
         /\bstrtoul\s*\(/.test(text) ||
         /\batol\s*\(/.test(text) ||
-        /\bgetenv\s*\(/.test(text);
+        /\bgetenv\s*\(/.test(text) ||
+        /\brand\s*\(/.test(text) ||
+        /\brand_r\s*\(/.test(text);
+}
+// CWE-190: constant overflow detection — track variables assigned MAX/boundary constants
+const OVERFLOW_CONST_PATTERN = /\b(CHAR_MAX|SCHAR_MAX|UCHAR_MAX|SHRT_MAX|USHRT_MAX|INT_MAX|UINT_MAX|LONG_MAX|ULONG_MAX|LLONG_MAX|ULLONG_MAX|INT8_MAX|INT16_MAX|INT32_MAX|INT64_MAX|UINT8_MAX|UINT16_MAX|UINT32_MAX|UINT64_MAX|SIZE_MAX)\b/;
+function findConstantOverflows(root, filePath, code) {
+    const findings = [];
+    // Map variable name → node where it was assigned a MAX constant
+    const maxVars = new Map();
+    for (const node of (0, taint_1.walkAll)(root)) {
+        // Seed: variable assigned to MAX constant directly (int x = INT_MAX or x = CHAR_MAX)
+        if (node.type === "init_declarator" || node.type === "assignment_expression") {
+            const lhs = node.type === "init_declarator"
+                ? (() => { const d = node.childForFieldName("declarator"); return d?.type === "identifier" ? d : null; })()
+                : node.childForFieldName("left");
+            const rhs = node.type === "init_declarator"
+                ? node.childForFieldName("value")
+                : node.childForFieldName("right");
+            if (lhs?.type === "identifier" && rhs && OVERFLOW_CONST_PATTERN.test(rhs.text)) {
+                maxVars.set(lhs.text, rhs);
+            }
+        }
+    }
+    if (maxVars.size === 0)
+        return findings;
+    for (const node of (0, taint_1.walkAll)(root)) {
+        if (node.type !== "init_declarator" && node.type !== "assignment_expression")
+            continue;
+        const valueNode = node.type === "init_declarator"
+            ? node.childForFieldName("value")
+            : node.childForFieldName("right");
+        if (!valueNode)
+            continue;
+        if (!containsArithmetic(valueNode))
+            continue;
+        // Check if any MAX variable is referenced in this arithmetic expression
+        const ids = collectIdentifiers(valueNode);
+        for (const id of ids) {
+            if (maxVars.has(id)) {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: "CWE-190", ruleId: "ast-integer-overflow",
+                    vulnerability: "Integer Overflow",
+                    severity: "medium",
+                    message: `Arithmetic on '${id}' (assigned a boundary constant) may overflow.`,
+                    filePath, node: valueNode, code,
+                }));
+                break;
+            }
+        }
+    }
+    return findings;
 }
 function isFreeCall(node) {
     return node.type === "call_expression" &&

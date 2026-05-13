@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-inline",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-08.java",
       "line": 30,
-      "column": 22,
-      "evidence": "statement.executeQuery(\"select * from orders where id='\" + queryParam + \"'\")"
+      "column": 45,
+      "evidence": "\"select * from orders where id='\" + queryParam + \"'\""
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.792Z"
+  "enriched_at": "2026-05-13T10:57:23.906Z"
 }

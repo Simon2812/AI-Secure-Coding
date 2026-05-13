@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-inline",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: query appears to be built inline using unsafe string construction.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-03.java",
       "line": 53,
-      "column": 17,
-      "evidence": "statement.executeUpdate(\"update accounts set status='active' where username='\" + data + \"'\")"
+      "column": 41,
+      "evidence": "\"update accounts set status='active' where username='\" + data + \"'\""
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.787Z"
+  "enriched_at": "2026-05-13T10:57:23.887Z"
 }

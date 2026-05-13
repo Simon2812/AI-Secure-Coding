@@ -8,12 +8,19 @@ const PATH_SINK_TYPES = new Set([
   "FileReader", "FileWriter", "RandomAccessFile", "ZipFile",
 ]);
 
-const PATH_SINK_CALLS = new Set(["Paths.get", "Path.of"]);
+const PATH_SINK_CALLS = new Set([
+  "Paths.get", "Path.of",
+  "Files.newBufferedReader", "Files.newBufferedWriter",
+  "Files.newInputStream", "Files.newOutputStream",
+  "Files.readAllBytes", "Files.readAllLines", "Files.readString",
+  "Files.write", "Files.writeString",
+]);
 
 const CMD_SINK_TYPES = new Set(["ProcessBuilder"]);
 const CMD_SINK_CALLS = new Set(["Runtime.getRuntime().exec", "Runtime.exec"]);
 
-const SQL_EXECUTE = new Set(["execute", "executeQuery", "executeUpdate"]);
+const SQL_EXECUTE = new Set(["execute", "executeQuery", "executeUpdate", "executeBatch", "addBatch"]);
+const SQL_PREPARE = new Set(["prepareStatement", "prepareCall"]);
 
 const WEAK_HASH_ALGOS = /^"(MD5|SHA-?1)"$/i;
 const WEAK_CIPHER_ALGOS = /^"DES(\/[^"]+)?"$/i;
@@ -24,7 +31,12 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
   const taint = new TaintTracker();
 
   seedJavaTaint(root, taint);
+  seedJavaMethodParams(root, taint);
   taint.propagateAssignments(root, isJavaUserInputExpr);
+  propagateJavaCollections(root, taint);
+  taint.propagateAssignments(root, isJavaUserInputExpr);
+
+  const valueMap = buildJavaValueMap(root);
 
   for (const node of walkAll(root)) {
 
@@ -36,13 +48,14 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
 
       if (PATH_SINK_TYPES.has(typeName) && argsNode) {
         const args = getJavaArgs(argsNode);
-        if (args.length > 0 && (taint.expressionIsTainted(args[0]) || isJavaUserInputExpr(args[0]))) {
+        const taintedArg = args.find(a => taint.expressionIsTainted(a) || isJavaUserInputExpr(a));
+        if (taintedArg) {
           findings.push(makeAstFinding({
             cweId: "CWE-22", ruleId: "ast-path-traversal",
             vulnerability: "Path Traversal",
             severity: "high",
             message: `new ${typeName}() receives user-controlled path.`,
-            filePath, node: args[0], code,
+            filePath, node: taintedArg, code,
           }));
         }
       }
@@ -82,15 +95,43 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
         }
       }
 
-      // SQL sinks
+      // Path.resolve(tainted) — called on any Path variable
+      if (methodName === "resolve" && argsNode) {
+        const args = getJavaArgs(argsNode);
+        if (args.some(a => taint.expressionIsTainted(a) || isJavaUserInputExpr(a))) {
+          findings.push(makeAstFinding({
+            cweId: "CWE-22", ruleId: "ast-path-traversal",
+            vulnerability: "Path Traversal",
+            severity: "high",
+            message: "Path.resolve() receives user-controlled input.",
+            filePath, node, code,
+          }));
+        }
+      }
+
+      // SQL sinks: execute / executeQuery / executeUpdate / addBatch
       if (SQL_EXECUTE.has(methodName) && argsNode) {
         const args = getJavaArgs(argsNode);
-        if (args.length > 0 && hasUnsafeSqlConstruction(args[0], taint)) {
+        if (args.length > 0 && hasUnsafeSqlConstruction(args[0], taint, valueMap)) {
           findings.push(makeAstFinding({
             cweId: "CWE-89", ruleId: "ast-sqli",
             vulnerability: "SQL Injection",
             severity: "high",
             message: "SQL query constructed with user-controlled input.",
+            filePath, node: args[0], code,
+          }));
+        }
+      }
+
+      // SQL sinks: prepareStatement / prepareCall with unsafe query
+      if (SQL_PREPARE.has(methodName) && argsNode) {
+        const args = getJavaArgs(argsNode);
+        if (args.length > 0 && hasUnsafeSqlConstruction(args[0], taint, valueMap)) {
+          findings.push(makeAstFinding({
+            cweId: "CWE-89", ruleId: "ast-sqli",
+            vulnerability: "SQL Injection",
+            severity: "high",
+            message: `${methodName}() called with user-controlled SQL query.`,
             filePath, node: args[0], code,
           }));
         }
@@ -170,14 +211,22 @@ function isJavaUserInputExpr(node: Node): boolean {
   const text = node.text;
   if (/\bgetParameter\s*\(/.test(text)) return true;
   if (/\bgetHeaders?\s*\(/.test(text)) return true;
+  if (/\bgetHeaderNames\s*\(/.test(text)) return true;
   if (/\bgetQueryString\s*\(/.test(text)) return true;
   if (/\bgetPathInfo\s*\(/.test(text)) return true;
   if (/\bgetParts?\s*\(/.test(text)) return true;
+  if (/\bgetCookies\s*\(/.test(text)) return true;
+  if (/\bgetParameterMap\s*\(/.test(text)) return true;
+  if (/\bgetParameterValues\s*\(/.test(text)) return true;
+  if (/\bgetParameterNames\s*\(/.test(text)) return true;
   if (/\.getValue\s*\(/.test(text)) return true;
   if (/\.nextElement\s*\(/.test(text)) return true;
   if (/\.nextLine\s*\(/.test(text)) return true;
   if (/\.readLine\s*\(/.test(text)) return true;
   if (/\bargs\s*\[/.test(text)) return true;
+  if (/\bURLDecoder\.decode\s*\(/.test(text)) return true;
+  if (/\bSystem\.getenv\s*\(/.test(text)) return true;
+  if (/\bSystem\.getProperty\s*\(/.test(text)) return true;
   return false;
 }
 
@@ -185,7 +234,16 @@ function getJavaArgs(argsNode: Node): Node[] {
   return argsNode.children.filter(c => c.type !== "," && c.type !== "(" && c.type !== ")");
 }
 
-function hasUnsafeSqlConstruction(node: Node, taint: TaintTracker): boolean {
+function hasUnsafeSqlConstruction(node: Node, taint: TaintTracker, valueMap?: Map<string, Node>): boolean {
+  // Tainted identifier passed directly to SQL sink
+  if (node.type === "identifier") {
+    if (taint.expressionIsTainted(node)) return true;
+    // Resolve to assigned value and check that
+    const resolved = valueMap?.get(node.text);
+    if (resolved && resolved !== node) return hasUnsafeSqlConstruction(resolved, taint, valueMap);
+    return false;
+  }
+
   const text = node.text.toLowerCase();
   if (!/\b(select|insert|update|delete)\b/.test(text)) return false;
   if (node.type === "string_literal") return false;
@@ -193,6 +251,65 @@ function hasUnsafeSqlConstruction(node: Node, taint: TaintTracker): boolean {
   if (node.type === "binary_expression" && node.text.includes("+")) return true;
   if (/String\.format\s*\(/.test(node.text)) return true;
   return false;
+}
+
+// Seed String/Object formal parameters of methods as tainted (catches param-as-input patterns)
+function seedJavaMethodParams(root: Node, taint: TaintTracker): void {
+  for (const node of walkAll(root)) {
+    if (node.type !== "method_declaration" && node.type !== "constructor_declaration") continue;
+    const params = node.childForFieldName("parameters");
+    if (!params) continue;
+    for (const param of params.children) {
+      if (param.type !== "formal_parameter") continue;
+      const type = param.childForFieldName("type")?.text ?? "";
+      const name = param.childForFieldName("name")?.text ?? "";
+      if (/^(String|Object|CharSequence|StringBuilder|StringBuffer)$/.test(type) && name) {
+        taint.add(name);
+      }
+    }
+  }
+}
+
+// Propagate taint through collection mutations: list.add(tainted) → list tainted
+const COLLECTION_ADD_METHODS = new Set(["add", "addAll", "offer", "push", "put", "putAll", "set", "insert"]);
+
+function propagateJavaCollections(root: Node, taint: TaintTracker): void {
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const node of walkAll(root)) {
+      if (node.type !== "method_invocation") continue;
+      const methodName = node.childForFieldName("name")?.text ?? "";
+      if (!COLLECTION_ADD_METHODS.has(methodName)) continue;
+      const obj = node.childForFieldName("object");
+      if (!obj || obj.type !== "identifier") continue;
+      if (taint.has(obj.text)) continue;
+      const argsNode = node.childForFieldName("arguments");
+      if (!argsNode) continue;
+      const args = getJavaArgs(argsNode);
+      if (args.some(a => taint.expressionIsTainted(a) || isJavaUserInputExpr(a))) {
+        taint.add(obj.text);
+        changed = true;
+      }
+    }
+  }
+}
+
+function buildJavaValueMap(root: Node): Map<string, Node> {
+  const map = new Map<string, Node>();
+  for (const node of walkAll(root)) {
+    if (node.type === "init_declarator") {
+      const decl = node.childForFieldName("declarator");
+      const val = node.childForFieldName("value");
+      if (decl?.type === "identifier" && val) map.set(decl.text, val);
+    }
+    if (node.type === "assignment_expression") {
+      const left = node.childForFieldName("left");
+      const right = node.childForFieldName("right");
+      if (left?.type === "identifier" && right) map.set(left.text, right);
+    }
+  }
+  return map;
 }
 
 // Sinks that indicate a string literal is used as a credential/key

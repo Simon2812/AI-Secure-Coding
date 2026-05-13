@@ -9,18 +9,6 @@
     "name": "OWASP Benchmark Project"
   },
   "vulnerabilities": [],
-  "static_findings": [
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-71.py",
-      "line": 38,
-      "column": 18,
-      "evidence": "with open(destination, \"wb\") as writer:"
-    }
-  ],
-  "enriched_at": "2026-05-12T11:52:50.720Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-13T10:57:22.722Z"
 }

@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-259",
-      "ruleId": "hardcoded-password",
-      "vulnerability": "Use of Hard-coded Password",
-      "severity": "high",
-      "message": "Possible hard-coded password found in source code.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-24.py",
-      "line": 13,
-      "column": 13,
-      "evidence": "password=\"support_pass\""
-    }
-  ],
-  "enriched_at": "2026-05-12T11:52:51.885Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-13T10:57:24.319Z"
 }

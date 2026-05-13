@@ -15,6 +15,17 @@
       "ruleId": "ast-integer-overflow",
       "vulnerability": "Integer Overflow",
       "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-79.c",
+      "line": 22,
+      "column": 20,
+      "evidence": "(int *)malloc((size_t)count * sizeof(int))"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
       "message": "malloc() size argument contains arithmetic that may overflow.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-79.c",
       "line": 22,
@@ -33,5 +44,5 @@
       "evidence": "numbers"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.747Z"
+  "enriched_at": "2026-05-13T10:57:23.824Z"
 }

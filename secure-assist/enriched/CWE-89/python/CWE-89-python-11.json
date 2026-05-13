@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-259",
-      "ruleId": "hardcoded-password-dict",
-      "vulnerability": "Use of Hard-coded Password",
-      "severity": "high",
-      "message": "Possible hard-coded password in dictionary or map literal.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-11.py",
-      "line": 17,
-      "column": 13,
-      "evidence": "\"password\": \"finance_pass\""
-    }
-  ],
-  "enriched_at": "2026-05-12T11:52:51.874Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-13T10:57:24.288Z"
 }

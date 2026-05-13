@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
+      "ruleId": "ast-integer-overflow",
       "vulnerability": "Integer Overflow",
       "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "message": "Arithmetic on user-controlled integer may overflow.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-190\\CWE-190-15.c",
       "line": 15,
-      "column": 9,
-      "evidence": "short scaled = input * 2;"
+      "column": 24,
+      "evidence": "input * 2"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:50.550Z"
+  "enriched_at": "2026-05-13T10:57:22.170Z"
 }

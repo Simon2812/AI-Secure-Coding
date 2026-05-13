@@ -20,6 +20,29 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:52:50.609Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readString() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-38.java",
+      "line": 17,
+      "column": 16,
+      "evidence": "Files.readString(profileFile)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-38.java",
+      "line": 21,
+      "column": 16,
+      "evidence": "dataRoot.resolve(name + \".conf\")"
+    }
+  ],
+  "enriched_at": "2026-05-13T10:57:22.364Z"
 }

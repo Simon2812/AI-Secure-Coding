@@ -9,6 +9,18 @@
     "name": "OWASP Benchmark Project"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-12T11:52:51.851Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-81.java",
+      "line": 51,
+      "column": 50,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-13T10:57:24.187Z"
 }

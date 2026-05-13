@@ -22,16 +22,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "message": "prepareStatement() called with user-controlled SQL query.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-16.java",
-      "line": 26,
-      "column": 22,
-      "evidence": "new FileInputStream(\"../common/config.properties\")"
+      "line": 45,
+      "column": 42,
+      "evidence": "\"update user_settings set enabled=1 where username='\" + principal + \"'\""
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.799Z"
+  "enriched_at": "2026-05-13T10:57:23.939Z"
 }

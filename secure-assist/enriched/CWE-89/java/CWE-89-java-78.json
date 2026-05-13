@@ -12,15 +12,15 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-78.java",
-      "line": 59,
-      "column": 9,
-      "evidence": "String sql = \"INSERT INTO users (username, password) VALUES ('foo','\" + bar + \"')\""
+      "line": 64,
+      "column": 48,
+      "evidence": "sql"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.849Z"
+  "enriched_at": "2026-05-13T10:57:24.175Z"
 }

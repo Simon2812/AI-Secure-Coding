@@ -23,15 +23,26 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"sql\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-60.java",
-      "line": 18,
-      "column": 9,
-      "evidence": "String sql = \"SELECT invoice_id, total FROM invoices WHERE account_id='\" + accountId + \"' AND bill_month='\" + month + \"' ORDER BY invoice_id\""
+      "line": 24,
+      "column": 54,
+      "evidence": "sql"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-60.java",
+      "line": 37,
+      "column": 65,
+      "evidence": "sql"
     }
   ],
-  "enriched_at": "2026-05-12T11:52:51.833Z"
+  "enriched_at": "2026-05-13T10:57:24.095Z"
 }
