@@ -33,15 +33,15 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-20.c",
       "line": 33,
       "column": 9,
       "evidence": "strcat(cfg->tag, argv[2])"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.518Z"
+  "enriched_at": "2026-05-13T11:13:26.396Z"
 }

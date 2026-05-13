@@ -9,6 +9,18 @@
     "name": "Juliet Test Suite"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.809Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strncpy() with strlen() as size copies based on source length, not destination size.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-69.c",
+      "line": 17,
+      "column": 5,
+      "evidence": "strncpy(destination, buffer, strlen(buffer))"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:25.633Z"
 }

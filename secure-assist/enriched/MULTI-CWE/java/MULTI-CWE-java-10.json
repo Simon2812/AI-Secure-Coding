@@ -23,26 +23,26 @@
   "static_findings": [
     {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-10.java",
       "line": 21,
       "column": 27,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(command)"
     },
     {
       "cweId": "CWE-259",
-      "ruleId": "hardcoded-password",
+      "ruleId": "ast-hardcoded-cred",
       "vulnerability": "Use of Hard-coded Password",
       "severity": "high",
-      "message": "Possible hard-coded password found in source code.",
+      "message": "Hard-coded credential assigned to 'password'.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-10.java",
       "line": 53,
-      "column": 16,
-      "evidence": "password = \"placeholderPassword\""
+      "column": 27,
+      "evidence": "\"placeholderPassword\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.553Z"
+  "enriched_at": "2026-05-13T11:13:26.542Z"
 }

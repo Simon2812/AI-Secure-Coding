@@ -42,27 +42,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-25.py",
-      "line": 209,
-      "column": 21,
-      "evidence": "subprocess.run("
-    },
-    {
       "cweId": "CWE-327",
-      "ruleId": "python-des",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "DES is an outdated and insecure encryption algorithm.",
+      "message": "DES.new() uses DES, an insecure cipher.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-25.py",
       "line": 199,
       "column": 18,
-      "evidence": "DES.new"
+      "evidence": "DES.new(key, DES.MODE_ECB)"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.617Z"
+  "enriched_at": "2026-05-13T11:13:26.999Z"
 }

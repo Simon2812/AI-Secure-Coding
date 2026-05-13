@@ -9,6 +9,51 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.534Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-37.c",
+      "line": 82,
+      "column": 11,
+      "evidence": "(int *)malloc((size_t)count * sizeof(int))"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-37.c",
+      "line": 82,
+      "column": 25,
+      "evidence": "(size_t)count * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-37.c",
+      "line": 88,
+      "column": 17,
+      "evidence": "i < count"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'arr' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-37.c",
+      "line": 95,
+      "column": 10,
+      "evidence": "arr"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.459Z"
 }

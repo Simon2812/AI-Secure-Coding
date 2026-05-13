@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-78",
-      "ruleId": "cpp-system",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "message": "system() may allow command injection if argument is user-controlled.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-10.c",
       "line": 46,
       "column": 5,
-      "evidence": "system("
+      "evidence": "system(command)"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.511Z"
+  "enriched_at": "2026-05-13T11:13:26.365Z"
 }

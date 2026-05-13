@@ -52,11 +52,22 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 50,
+      "column": 16,
+      "evidence": "count * 4"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
       "line": 73,
       "column": 5,
@@ -64,37 +75,37 @@
     },
     {
       "cweId": "CWE-78",
-      "ruleId": "cpp-system",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "message": "system() may allow command injection if argument is user-controlled.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
       "line": 74,
       "column": 5,
-      "evidence": "system("
+      "evidence": "system(cmd)"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
       "line": 98,
       "column": 9,
       "evidence": "strcpy(buf, j.buffer)"
     },
     {
-      "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
-      "vulnerability": "Integer Overflow",
-      "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buf' is used after being freed.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
-      "line": 50,
-      "column": 5,
-      "evidence": "int base = count * 4;"
+      "line": 102,
+      "column": 10,
+      "evidence": "buf"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.525Z"
+  "enriched_at": "2026-05-13T11:13:26.431Z"
 }

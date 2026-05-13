@@ -52,27 +52,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "message": "Hard-coded credential assigned to 'secret'.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-24.py",
-      "line": 107,
-      "column": 21,
-      "evidence": "subprocess.run("
-    },
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-24.py",
-      "line": 184,
-      "column": 14,
-      "evidence": "with open(manifest_path, \"w\", encoding=\"utf-8\") as handle:"
+      "line": 168,
+      "column": 18,
+      "evidence": "b\"incident-package-signing-key\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.616Z"
+  "enriched_at": "2026-05-13T11:13:26.984Z"
 }

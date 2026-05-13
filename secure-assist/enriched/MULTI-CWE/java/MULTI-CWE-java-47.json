@@ -11,16 +11,27 @@
   "vulnerabilities": [],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
-      "vulnerability": "OS Command Injection",
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Paths.get() receives user-controlled path.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-47.java",
-      "line": 31,
+      "line": 18,
       "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Paths.get(root)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-47.java",
+      "line": 27,
+      "column": 25,
+      "evidence": "resolve(resourceKey)"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.581Z"
+  "enriched_at": "2026-05-13T11:13:26.703Z"
 }

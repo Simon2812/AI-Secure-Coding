@@ -9,6 +9,29 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.847Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-90.c",
+      "line": 35,
+      "column": 35,
+      "evidence": "row * 10 + column"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-90.c",
+      "line": 35,
+      "column": 25,
+      "evidence": "column"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:25.678Z"
 }

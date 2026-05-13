@@ -20,6 +20,40 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.773Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-46.c",
+      "line": 19,
+      "column": 22,
+      "evidence": "value + 1"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-46.c",
+      "line": 18,
+      "column": 11,
+      "evidence": "pos"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-46.c",
+      "line": 19,
+      "column": 11,
+      "evidence": "pos + 1"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:25.589Z"
 }

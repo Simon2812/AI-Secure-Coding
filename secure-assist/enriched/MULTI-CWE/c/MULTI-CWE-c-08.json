@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.509Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-08.c",
+      "line": 21,
+      "column": 25,
+      "evidence": "i < n"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.360Z"
 }

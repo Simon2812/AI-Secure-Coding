@@ -30,6 +30,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.603Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'secret'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-16.py",
+      "line": 126,
+      "column": 14,
+      "evidence": "b\"default-sign-key\""
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.889Z"
 }

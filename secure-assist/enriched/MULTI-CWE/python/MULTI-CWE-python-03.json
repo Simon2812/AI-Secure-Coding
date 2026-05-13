@@ -22,16 +22,27 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "pathlib path join with user-controlled input may allow path traversal.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-03.py",
+      "line": 44,
+      "column": 33,
+      "evidence": "file_name"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "message": "subprocess.run() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-03.py",
-      "line": 51,
-      "column": 18,
-      "evidence": "subprocess.run("
+      "line": 52,
+      "column": 13,
+      "evidence": "command"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.587Z"
+  "enriched_at": "2026-05-13T11:13:26.751Z"
 }

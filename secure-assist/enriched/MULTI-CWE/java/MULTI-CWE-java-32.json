@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.570Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Paths.get() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-32.java",
+      "line": 32,
+      "column": 18,
+      "evidence": "Paths.get(\"/var/data\", id)"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.632Z"
 }

@@ -23,81 +23,26 @@
   "static_findings": [
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "message": "Pointer 'block' is used after being freed.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 28,
-      "column": 13,
-      "evidence": "strncpy(block->buffer, input, block->size - 1);"
+      "line": 24,
+      "column": 14,
+      "evidence": "block"
     },
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
+      "message": "Pointer 'block' is used after being freed.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 29,
-      "column": 5,
-      "evidence": "block->buffer[block->size - 1] = '\\0';"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 31,
-      "column": 12,
-      "evidence": "return block;"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 34,
-      "column": 21,
-      "evidence": "static void release_block(DataBlock *block)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 49,
-      "column": 19,
-      "evidence": "static void print_block(const DataBlock *block)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 51,
-      "column": 9,
-      "evidence": "if (block != NULL && block->buffer != NULL)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-04.c",
-      "line": 53,
-      "column": 33,
-      "evidence": "printf(\"Content: %s\\n\", block->buffer);"
+      "line": 46,
+      "column": 10,
+      "evidence": "block"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.507Z"
+  "enriched_at": "2026-05-13T11:13:26.351Z"
 }

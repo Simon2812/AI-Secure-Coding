@@ -42,27 +42,49 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-25.java",
+      "line": 40,
+      "column": 27,
+      "evidence": "workspace + \"/\" + name"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllBytes() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-25.java",
+      "line": 46,
+      "column": 27,
+      "evidence": "Files.readAllBytes(f.toPath())"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-25.java",
       "line": 52,
       "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(cmd)"
     },
     {
       "cweId": "CWE-327",
-      "ruleId": "java-des",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "Cipher.getInstance(\"DES\") uses DES, which is an outdated and insecure encryption algorithm.",
+      "message": "getInstance(\"DES\") uses DES, an insecure cipher.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-25.java",
       "line": 70,
-      "column": 51,
-      "evidence": "Cipher.getInstance(\"DES\")"
+      "column": 38,
+      "evidence": "javax.crypto.Cipher.getInstance(\"DES\")"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.564Z"
+  "enriched_at": "2026-05-13T11:13:26.598Z"
 }

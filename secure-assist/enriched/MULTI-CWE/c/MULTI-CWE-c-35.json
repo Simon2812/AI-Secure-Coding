@@ -36,11 +36,22 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
+      "line": 40,
+      "column": 17,
+      "evidence": "count * 4"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
       "line": 51,
       "column": 5,
@@ -48,26 +59,26 @@
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
       "line": 78,
       "column": 9,
       "evidence": "strcpy(buf, j.buffer)"
     },
     {
-      "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
-      "vulnerability": "Integer Overflow",
-      "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buf' is used after being freed.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
-      "line": 40,
-      "column": 5,
-      "evidence": "int total = count * 4;"
+      "line": 86,
+      "column": 10,
+      "evidence": "buf"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.532Z"
+  "enriched_at": "2026-05-13T11:13:26.449Z"
 }

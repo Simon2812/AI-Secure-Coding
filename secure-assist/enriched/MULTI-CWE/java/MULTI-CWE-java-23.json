@@ -43,26 +43,37 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
-      "line": 46,
-      "column": 13,
-      "evidence": "String query = \"SELECT info FROM users WHERE name = '\" + user + \"'\""
+      "line": 48,
+      "column": 49,
+      "evidence": "query"
     },
     {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
       "line": 61,
       "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(cmd)"
+    },
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'expectedPassword'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-23.java",
+      "line": 35,
+      "column": 35,
+      "evidence": "\"admin123\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.563Z"
+  "enriched_at": "2026-05-13T11:13:26.589Z"
 }

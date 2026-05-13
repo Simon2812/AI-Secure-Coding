@@ -42,16 +42,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "message": "Hard-coded credential assigned to 'secret'.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-30.py",
-      "line": 136,
-      "column": 21,
-      "evidence": "subprocess.run("
+      "line": 179,
+      "column": 18,
+      "evidence": "b\"media-review-signing-key\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.624Z"
+  "enriched_at": "2026-05-13T11:13:27.076Z"
 }

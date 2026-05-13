@@ -22,16 +22,38 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-32.c",
+      "line": 50,
+      "column": 32,
+      "evidence": "strlen(src) + 1"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-32.c",
       "line": 57,
       "column": 5,
       "evidence": "strcpy(dst, src)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'ptr' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-32.c",
+      "line": 65,
+      "column": 14,
+      "evidence": "ptr"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.529Z"
+  "enriched_at": "2026-05-13T11:13:26.440Z"
 }

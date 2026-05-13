@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-259",
-      "ruleId": "hardcoded-password-dict",
-      "vulnerability": "Use of Hard-coded Password",
-      "severity": "high",
-      "message": "Possible hard-coded password in dictionary or map literal.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-07.py",
-      "line": 111,
-      "column": 13,
-      "evidence": "\"password\": \"Publisher#2026\""
-    }
-  ],
-  "enriched_at": "2026-05-13T10:57:24.591Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-13T11:13:26.792Z"
 }

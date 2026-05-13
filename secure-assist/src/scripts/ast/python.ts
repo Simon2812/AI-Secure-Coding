@@ -279,7 +279,7 @@ function findHardcodedCredentialsPython(
   root: Node, filePath: string, code: string
 ): Finding[] {
   const findings: Finding[] = [];
-  const credVars = /^(password|passwd|pwd|secret|api_key|apikey|token|auth_token|access_token|secret_key|client_secret)$/i;
+  const credVars = /(password|passwd|pwd|secret|api_key|apikey|token|auth_token|access_token|secret_key|client_secret|passphrase|phrase|credential|cred|passcode|_pass\b)/i;
 
   for (const node of walkAll(root)) {
     if (node.type !== "assignment") continue;

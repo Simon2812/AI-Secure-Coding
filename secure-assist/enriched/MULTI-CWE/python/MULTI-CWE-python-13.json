@@ -32,27 +32,16 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
+      "message": "Hard-coded credential assigned to 'self.secret'.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-13.py",
-      "line": 28,
-      "column": 18,
-      "evidence": "with open(path, \"r\", encoding=\"utf-8\") as handle:"
-    },
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-13.py",
-      "line": 122,
-      "column": 14,
-      "evidence": "with open(target, \"w\", encoding=\"utf-8\") as handle:"
+      "line": 90,
+      "column": 23,
+      "evidence": "b\"tenant-sync-signing-key\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.599Z"
+  "enriched_at": "2026-05-13T11:13:26.861Z"
 }

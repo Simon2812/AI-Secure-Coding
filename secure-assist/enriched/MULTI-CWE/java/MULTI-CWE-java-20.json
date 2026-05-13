@@ -32,27 +32,60 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
-      "vulnerability": "OS Command Injection",
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Paths.get() receives user-controlled path.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
-      "line": 17,
-      "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "line": 10,
+      "column": 24,
+      "evidence": "Paths.get(baseDir)"
     },
     {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 17,
+      "column": 21,
+      "evidence": "Runtime.getRuntime().exec(execCmd)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 34,
+      "column": 23,
+      "evidence": "resolve(configFile)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readString() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 37,
+      "column": 19,
+      "evidence": "Files.readString(config)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
       "line": 52,
       "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(postCmd)"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.560Z"
+  "enriched_at": "2026-05-13T11:13:26.577Z"
 }

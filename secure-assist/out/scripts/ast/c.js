@@ -14,9 +14,10 @@ function analyzeC(code, filePath, tree) {
     const findings = [];
     const root = tree.rootNode;
     const freedPointers = new Map();
-    // CWE-190: taint-based integer overflow detection
+    // CWE-190 / CWE-787: taint-based integer / OOB detection
     const intTaint = new taint_1.TaintTracker();
     seedCIntegerSources(root, intTaint);
+    seedCIntParamSources(root, intTaint); // treat int params as potential user input
     intTaint.propagateAssignments(root, isCIntegerSourceExpr);
     for (const node of (0, taint_1.walkAll)(root)) {
         // CWE-190: arithmetic on user-controlled integer
@@ -63,6 +64,22 @@ function analyzeC(code, filePath, tree) {
                         message: `${fnName}() with %s format specifier may write past buffer bounds.`,
                         filePath, node, code,
                     }));
+                }
+            }
+            // CWE-787: strncpy(dest, src, strlen(src)) — copies source length into dest, ignores dest size
+            if (fnName === "strncpy" && argsNode) {
+                const args = getArgs(argsNode);
+                if (args.length >= 3 && args[2].type === "call_expression") {
+                    const sizeCallFn = args[2].childForFieldName("function")?.text ?? "";
+                    if (sizeCallFn === "strlen") {
+                        findings.push((0, utils_1.makeAstFinding)({
+                            cweId: "CWE-787", ruleId: "ast-oob-write",
+                            vulnerability: "Out-of-bounds Write",
+                            severity: "high",
+                            message: "strncpy() with strlen() as size copies based on source length, not destination size.",
+                            filePath, node, code,
+                        }));
+                    }
                 }
             }
             // CWE-78: command injection
@@ -130,6 +147,59 @@ function analyzeC(code, filePath, tree) {
                     message: `${fnName}() uses SHA-1, a weak hashing algorithm.`,
                     filePath, node, code,
                 }));
+            }
+        }
+        // CWE-787: array subscript write with tainted index — arr[user_input] = val
+        if (node.type === "assignment_expression") {
+            const left = node.childForFieldName("left");
+            if (left?.type === "subscript_expression") {
+                const index = left.childForFieldName("index");
+                if (index && intTaint.expressionIsTainted(index) && !isProtectedByBoundsCheck(node, index)) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId: "CWE-787", ruleId: "ast-oob-write",
+                        vulnerability: "Out-of-bounds Write",
+                        severity: "high",
+                        message: "Array write uses user-controlled index without bounds check.",
+                        filePath, node: index, code,
+                    }));
+                }
+            }
+            // CWE-787: pointer arithmetic write — *(ptr + user_input) = val
+            if (left?.type === "pointer_expression" || left?.type === "unary_expression") {
+                const arg = left.children.find(c => c.type !== "*" && c.type !== "(" && c.type !== ")");
+                if (arg && intTaint.expressionIsTainted(arg) && !isProtectedByBoundsCheck(node, arg)) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId: "CWE-787", ruleId: "ast-oob-write",
+                        vulnerability: "Out-of-bounds Write",
+                        severity: "high",
+                        message: "Pointer write uses user-controlled offset without bounds check.",
+                        filePath, node: arg, code,
+                    }));
+                }
+            }
+        }
+        // CWE-787: loop with user-controlled bound writing to array
+        if (node.type === "for_statement" || node.type === "while_statement") {
+            const condition = node.childForFieldName("condition");
+            if (condition && intTaint.expressionIsTainted(condition)) {
+                const body = node.childForFieldName("body");
+                if (body) {
+                    for (const inner of (0, taint_1.walkAll)(body)) {
+                        if (inner.type === "assignment_expression") {
+                            const left = inner.childForFieldName("left");
+                            if (left?.type === "subscript_expression" || left?.type === "pointer_expression") {
+                                findings.push((0, utils_1.makeAstFinding)({
+                                    cweId: "CWE-787", ruleId: "ast-oob-write",
+                                    vulnerability: "Out-of-bounds Write",
+                                    severity: "high",
+                                    message: "Loop with user-controlled bound writes to array without bounds check.",
+                                    filePath, node: condition, code,
+                                }));
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
         // CWE-416: use-after-free — detect use of freed pointer
@@ -239,6 +309,30 @@ function seedCIntegerSources(root, taint) {
             for (const m of argsNode.text.matchAll(/&([a-zA-Z_][a-zA-Z0-9_]*)/g)) {
                 taint.add(m[1]);
             }
+        }
+    }
+}
+// Seed integer-typed formal parameters as potentially user-controlled
+const C_INT_TYPES = /^(int|size_t|ssize_t|long|unsigned|uint32_t|uint64_t|int32_t|int64_t|ptrdiff_t)$/;
+function seedCIntParamSources(root, taint) {
+    for (const node of (0, taint_1.walkAll)(root)) {
+        if (node.type !== "function_definition")
+            continue;
+        const declarator = node.childForFieldName("declarator");
+        if (!declarator)
+            continue;
+        // Find the parameter_list inside the declarator
+        for (const child of (0, taint_1.walkAll)(declarator)) {
+            if (child.type !== "parameter_declaration")
+                continue;
+            const type = child.childForFieldName("type")?.text ?? "";
+            if (!C_INT_TYPES.test(type.trim()))
+                continue;
+            // The parameter name is the last identifier child
+            const decl = child.childForFieldName("declarator");
+            const name = decl?.type === "identifier" ? decl.text : decl?.children.find(c => c.type === "identifier")?.text;
+            if (name)
+                taint.add(name);
         }
     }
 }

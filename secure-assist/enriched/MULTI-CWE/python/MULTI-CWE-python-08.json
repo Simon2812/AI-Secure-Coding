@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.592Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-08.py",
+      "line": 72,
+      "column": 17,
+      "evidence": "\"SELECT id, requester, subject, priority, status \"\r\n                \"FROM tickets WHERE status = ? \"\r\n                \"O"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.801Z"
 }

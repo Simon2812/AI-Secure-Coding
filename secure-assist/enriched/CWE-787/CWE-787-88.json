@@ -9,6 +9,29 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.842Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-88.c",
+      "line": 50,
+      "column": 17,
+      "evidence": "i < limit"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-88.c",
+      "line": 52,
+      "column": 23,
+      "evidence": "start + i"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:25.670Z"
 }

@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-08.java",
-      "line": 27,
-      "column": 13,
-      "evidence": "String query =\r\n                    \"SELECT entry FROM audit_log WHERE type = '\" + t + \"' AND owner = '\" + o + \"'\""
+      "line": 30,
+      "column": 49,
+      "evidence": "query"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.551Z"
+  "enriched_at": "2026-05-13T11:13:26.535Z"
 }

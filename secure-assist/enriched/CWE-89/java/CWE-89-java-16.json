@@ -33,5 +33,5 @@
       "evidence": "\"update user_settings set enabled=1 where username='\" + principal + \"'\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:23.939Z"
+  "enriched_at": "2026-05-13T11:13:25.778Z"
 }

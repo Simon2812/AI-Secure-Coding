@@ -43,26 +43,48 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
-      "line": 33,
-      "column": 13,
-      "evidence": "String query = \"SELECT content FROM export_data WHERE category = '\" + category + \"'\""
+      "line": 35,
+      "column": 49,
+      "evidence": "query"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 46,
+      "column": 27,
+      "evidence": "exportRoot + \"/\" + name"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.write() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 52,
+      "column": 9,
+      "evidence": "Files.write(f.toPath(), content.getBytes())"
     },
     {
       "cweId": "CWE-327",
-      "ruleId": "java-md5",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "MessageDigest.getInstance(\"MD5\") uses MD5, which is considered cryptographically weak.",
+      "message": "getInstance(\"MD5\") uses a weak algorithm.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
       "line": 58,
       "column": 27,
       "evidence": "MessageDigest.getInstance(\"MD5\")"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.564Z"
+  "enriched_at": "2026-05-13T11:13:26.594Z"
 }

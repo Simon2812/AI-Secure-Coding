@@ -20,6 +20,29 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.785Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-52.c",
+      "line": 28,
+      "column": 19,
+      "evidence": "base + step * 7"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-52.c",
+      "line": 29,
+      "column": 20,
+      "evidence": "pos"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:25.602Z"
 }

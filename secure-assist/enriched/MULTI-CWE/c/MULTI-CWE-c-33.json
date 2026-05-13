@@ -33,10 +33,10 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-33.c",
       "line": 33,
       "column": 9,
@@ -44,10 +44,10 @@
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-33.c",
       "line": 45,
       "column": 5,
@@ -55,26 +55,37 @@
     },
     {
       "cweId": "CWE-78",
-      "ruleId": "cpp-system",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "message": "system() may allow command injection if argument is user-controlled.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-33.c",
       "line": 46,
       "column": 5,
-      "evidence": "system("
+      "evidence": "system(cmd)"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-33.c",
       "line": 55,
       "column": 9,
       "evidence": "strcpy(tmp, \"ok\")"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'tmp' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-33.c",
+      "line": 57,
+      "column": 14,
+      "evidence": "tmp"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.530Z"
+  "enriched_at": "2026-05-13T11:13:26.444Z"
 }

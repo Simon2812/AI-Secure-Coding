@@ -9,6 +9,40 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.577Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Paths.get() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-41.java",
+      "line": 16,
+      "column": 21,
+      "evidence": "Paths.get(base)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-41.java",
+      "line": 52,
+      "column": 16,
+      "evidence": "base.resolve(file)"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to SecretKeySpec.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-41.java",
+      "line": 72,
+      "column": 36,
+      "evidence": "key"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.677Z"
 }

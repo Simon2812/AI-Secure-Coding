@@ -44,6 +44,17 @@
       "evidence": "count * sizeof(int)"
     },
     {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-27.c",
+      "line": 28,
+      "column": 17,
+      "evidence": "i < (size_t)count"
+    },
+    {
       "cweId": "CWE-416",
       "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
@@ -55,5 +66,5 @@
       "evidence": "numbers"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:23.740Z"
+  "enriched_at": "2026-05-13T11:13:25.553Z"
 }

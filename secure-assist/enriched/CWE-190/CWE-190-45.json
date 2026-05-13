@@ -9,6 +9,18 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:22.212Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-190\\CWE-190-45.c",
+      "line": 16,
+      "column": 16,
+      "evidence": "width * height"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:23.933Z"
 }

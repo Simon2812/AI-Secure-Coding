@@ -42,16 +42,49 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Paths.get() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-28.java",
+      "line": 15,
+      "column": 24,
+      "evidence": "Paths.get(baseDir)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllLines() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-28.java",
+      "line": 51,
+      "column": 30,
+      "evidence": "Files.readAllLines(config, StandardCharsets.UTF_8)"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-28.java",
       "line": 67,
       "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(cmd)"
+    },
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'storedPassword'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-28.java",
+      "line": 22,
+      "column": 33,
+      "evidence": "\"admin123\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.567Z"
+  "enriched_at": "2026-05-13T11:13:26.613Z"
 }

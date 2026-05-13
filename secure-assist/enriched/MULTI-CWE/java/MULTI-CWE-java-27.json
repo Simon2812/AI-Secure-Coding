@@ -53,15 +53,15 @@
   "static_findings": [
     {
       "cweId": "CWE-327",
-      "ruleId": "java-sha1",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "MessageDigest.getInstance(\"SHA-1\") uses SHA-1, which is considered cryptographically weak.",
+      "message": "getInstance(\"SHA-1\") uses a weak algorithm.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-27.java",
       "line": 34,
       "column": 27,
       "evidence": "MessageDigest.getInstance(\"SHA-1\")"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.566Z"
+  "enriched_at": "2026-05-13T11:13:26.606Z"
 }

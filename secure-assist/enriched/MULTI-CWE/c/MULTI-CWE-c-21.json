@@ -43,15 +43,26 @@
   "static_findings": [
     {
       "cweId": "CWE-78",
-      "ruleId": "cpp-system",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of system() may allow OS command injection if input is not controlled.",
+      "message": "system() may allow command injection if argument is user-controlled.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-21.c",
       "line": 69,
       "column": 5,
-      "evidence": "system("
+      "evidence": "system(command)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buffer' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-21.c",
+      "line": 93,
+      "column": 10,
+      "evidence": "buffer"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.519Z"
+  "enriched_at": "2026-05-13T11:13:26.399Z"
 }

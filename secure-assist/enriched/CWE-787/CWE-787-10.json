@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.717Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strncpy() with strlen() as size copies based on source length, not destination size.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-10.c",
+      "line": 16,
+      "column": 5,
+      "evidence": "strncpy(result, text, strlen(text))"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:25.526Z"
 }

@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:22.834Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-259\\java\\CWE-259-java-10.java",
+      "line": 14,
+      "column": 21,
+      "evidence": "\"gatewayUser\""
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:24.578Z"
 }

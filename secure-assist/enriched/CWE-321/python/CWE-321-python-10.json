@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:23.055Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'phrase'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-10.py",
+      "line": 30,
+      "column": 18,
+      "evidence": "\"nightly-export-passphrase\""
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:24.818Z"
 }

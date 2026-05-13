@@ -43,15 +43,26 @@
   "static_findings": [
     {
       "cweId": "CWE-327",
-      "ruleId": "java-md5",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "MessageDigest.getInstance(\"MD5\") uses MD5, which is considered cryptographically weak.",
+      "message": "getInstance(\"MD5\") uses a weak algorithm.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-22.java",
       "line": 37,
       "column": 32,
       "evidence": "MessageDigest.getInstance(\"MD5\")"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to SecretKeySpec.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-22.java",
+      "line": 56,
+      "column": 47,
+      "evidence": "\"hmacKey\".getBytes()"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.562Z"
+  "enriched_at": "2026-05-13T11:13:26.585Z"
 }

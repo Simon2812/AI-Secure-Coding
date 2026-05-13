@@ -33,26 +33,26 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
-      "line": 14,
-      "column": 9,
-      "evidence": "String query =\r\n                \"SELECT id FROM users WHERE username = '\" + username + \"' AND password = '\" + password + \"'\""
+      "line": 18,
+      "column": 45,
+      "evidence": "query"
     },
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-18.java",
-      "line": 41,
-      "column": 9,
-      "evidence": "String query =\r\n                \"SELECT name FROM employees WHERE department = '\" + department + \"'\""
+      "line": 45,
+      "column": 45,
+      "evidence": "query"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.559Z"
+  "enriched_at": "2026-05-13T11:13:26.570Z"
 }

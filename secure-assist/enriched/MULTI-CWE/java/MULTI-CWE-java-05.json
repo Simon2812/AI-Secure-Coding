@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.549Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'expectedPassword'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-05.java",
+      "line": 7,
+      "column": 35,
+      "evidence": "\"adminAccess42\""
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:26.526Z"
 }

@@ -52,27 +52,60 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Paths.get() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-30.java",
+      "line": 42,
+      "column": 21,
+      "evidence": "Paths.get(jobsRoot, jobName)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllLines() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-30.java",
+      "line": 48,
+      "column": 30,
+      "evidence": "Files.readAllLines(path)"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-30.java",
       "line": 61,
       "column": 27,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(command)"
     },
     {
       "cweId": "CWE-327",
-      "ruleId": "java-sha1",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "MessageDigest.getInstance(\"SHA-1\") uses SHA-1, which is considered cryptographically weak.",
+      "message": "getInstance(\"SHA-1\") uses a weak algorithm.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-30.java",
       "line": 79,
       "column": 32,
       "evidence": "MessageDigest.getInstance(\"SHA-1\")"
+    },
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'storedPassword'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-30.java",
+      "line": 32,
+      "column": 33,
+      "evidence": "\"opsPass!\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.568Z"
+  "enriched_at": "2026-05-13T11:13:26.625Z"
 }

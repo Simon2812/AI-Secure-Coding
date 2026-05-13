@@ -33,15 +33,37 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
-      "line": 28,
-      "column": 13,
-      "evidence": "String query = \"SELECT report FROM user_reports WHERE username = '\" + u + \"'\""
+      "line": 30,
+      "column": 49,
+      "evidence": "query"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
+      "line": 37,
+      "column": 30,
+      "evidence": "BASE_DIR + f"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllBytes() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
+      "line": 43,
+      "column": 27,
+      "evidence": "Files.readAllBytes(file.toPath())"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.554Z"
+  "enriched_at": "2026-05-13T11:13:26.545Z"
 }

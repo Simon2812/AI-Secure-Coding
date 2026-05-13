@@ -43,37 +43,37 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
+      "message": "sscanf() with %s format specifier may write past buffer bounds.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
       "line": 40,
       "column": 9,
       "evidence": "sscanf(argv[2], \"%s\", cfg->label)"
     },
     {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'entry' is used after being freed.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
+      "line": 76,
+      "column": 14,
+      "evidence": "entry"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "cpp-popen",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of popen() may allow OS command injection if input is not controlled.",
+      "message": "popen() may allow command injection if argument is user-controlled.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
       "line": 83,
       "column": 20,
-      "evidence": "popen("
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
-      "line": 108,
-      "column": 12,
-      "evidence": "Entry *entry;"
+      "evidence": "popen(command_line, \"r\")"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.521Z"
+  "enriched_at": "2026-05-13T11:13:26.407Z"
 }

@@ -42,27 +42,27 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-259",
-      "ruleId": "hardcoded-password",
-      "vulnerability": "Use of Hard-coded Password",
-      "severity": "high",
-      "message": "Possible hard-coded password found in source code.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-27.py",
-      "line": 145,
-      "column": 9,
-      "evidence": "password = \"RelayMail!2026\""
-    },
-    {
       "cweId": "CWE-327",
-      "ruleId": "python-sha1",
-      "vulnerability": "Use of a Broken or Risky Cryptographic Algorithm",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.sha1() uses SHA-1, which is considered cryptographically weak.",
+      "message": "hashlib.sha1() uses a weak hashing algorithm.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-27.py",
       "line": 113,
       "column": 16,
-      "evidence": "hashlib.sha1("
+      "evidence": "hashlib.sha1(raw)"
+    },
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-27.py",
+      "line": 145,
+      "column": 20,
+      "evidence": "\"RelayMail!2026\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.620Z"
+  "enriched_at": "2026-05-13T11:13:27.027Z"
 }

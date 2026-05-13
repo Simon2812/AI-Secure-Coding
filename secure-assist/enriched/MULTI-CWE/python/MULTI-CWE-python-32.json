@@ -43,26 +43,15 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "python-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query is constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-32.py",
-      "line": 25,
-      "column": 13,
-      "evidence": "query = \"SELECT metric_name FROM metrics WHERE namespace = '\" + namespace + \"'\"\r"
-    },
-    {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-32.py",
-      "line": 67,
-      "column": 12,
-      "evidence": "subprocess.run("
+      "line": 26,
+      "column": 25,
+      "evidence": "query"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.627Z"
+  "enriched_at": "2026-05-13T11:13:27.095Z"
 }

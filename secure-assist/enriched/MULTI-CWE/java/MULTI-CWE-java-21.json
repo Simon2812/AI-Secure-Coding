@@ -43,26 +43,59 @@
   "static_findings": [
     {
       "cweId": "CWE-89",
-      "ruleId": "java-sqli-variable",
+      "ruleId": "ast-sqli",
       "vulnerability": "SQL Injection",
       "severity": "high",
-      "message": "Possible SQL injection: SQL query variable \"query\" appears to be built unsafely before execution.",
+      "message": "SQL query constructed with user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-21.java",
-      "line": 36,
-      "column": 13,
-      "evidence": "String query = \"SELECT data FROM reports WHERE user = '\" + user + \"'\""
+      "line": 25,
+      "column": 37,
+      "evidence": "action"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-21.java",
+      "line": 38,
+      "column": 49,
+      "evidence": "query"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-21.java",
+      "line": 49,
+      "column": 27,
+      "evidence": "storageRoot + \"/\" + name"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllBytes() receives user-controlled path.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-21.java",
+      "line": 55,
+      "column": 27,
+      "evidence": "Files.readAllBytes(f.toPath())"
     },
     {
       "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+      "message": "Runtime.exec() receives user-controlled input.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-21.java",
       "line": 61,
       "column": 21,
-      "evidence": "Runtime.getRuntime().exec("
+      "evidence": "Runtime.getRuntime().exec(cmd)"
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.561Z"
+  "enriched_at": "2026-05-13T11:13:26.581Z"
 }

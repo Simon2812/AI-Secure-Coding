@@ -314,14 +314,14 @@ function buildJavaValueMap(root: Node): Map<string, Node> {
 
 // Sinks that indicate a string literal is used as a credential/key
 const CRED_SINK_METHODS = new Set(["getConnection", "connect", "login", "authenticate"]);
-const KEY_SINK_TYPES = new Set(["SecretKeySpec", "PBEKeySpec", "SecretKey"]);
+const KEY_SINK_TYPES = new Set(["SecretKeySpec", "PBEKeySpec", "SecretKey", "KerberosKey", "PasswordAuthentication"]);
 const KEY_SINK_METHODS = new Set(["doFinal", "init", "encrypt", "decrypt", "sign", "verify"]);
 
 function findHardcodedCredentialsJava(
   root: Node, filePath: string, code: string
 ): Finding[] {
   const findings: Finding[] = [];
-  const credVars = /^(password|passwd|pwd|secret|apiKey|api_key|token|authToken|accessToken|secretKey|clientSecret)$/i;
+  const credVars = /(password|passwd|pwd|secret|apiKey|api_key|token|authToken|accessToken|secretKey|clientSecret|passphrase|phrase|credential|cred|passcode|_pass\b)/i;
 
   // Track string literals assigned to any variable, then check if used in credential sinks
   const literalVars = new Map<string, Node>(); // varName → string literal node
@@ -394,8 +394,8 @@ function findHardcodedCredentialsJava(
       if (!typeNode || !argsNode) continue;
       if (!KEY_SINK_TYPES.has(typeNode.text)) continue;
       const args = getJavaArgs(argsNode);
-      // First arg is typically the key material
-      if (args.length > 0 && isHardcodedKeyMaterial(args[0], literalVars)) {
+      // Check all args — password/key may be at any position (e.g. PasswordAuthentication index 1)
+      if (args.some(a => isHardcodedKeyMaterial(a, literalVars))) {
         findings.push(makeAstFinding({
           cweId: "CWE-321", ruleId: "ast-hardcoded-cred",
           vulnerability: "Use of Hard-coded Cryptographic Key",
@@ -416,11 +416,13 @@ function isHardcodedString(node: Node, literalVars: Map<string, Node>): boolean 
 }
 
 function isHardcodedKeyMaterial(node: Node, literalVars: Map<string, Node>): boolean {
-  // getBytes() call on a string literal or literal variable
+  // getBytes() / toCharArray() call on a string literal or literal variable
   if (node.type === "method_invocation") {
     const obj = node.childForFieldName("object");
     const method = node.childForFieldName("name")?.text;
-    if (method === "getBytes" && obj) return isHardcodedString(obj, literalVars);
+    if ((method === "getBytes" || method === "toCharArray") && obj) {
+      return isHardcodedString(obj, literalVars);
+    }
   }
   return isHardcodedString(node, literalVars);
 }

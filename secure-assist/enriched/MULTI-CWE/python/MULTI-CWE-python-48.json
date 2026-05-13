@@ -9,6 +9,18 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T10:57:24.643Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-48.py",
+      "line": 32,
+      "column": 13,
+      "evidence": "\"SELECT record_id, payload, size_hint \"\r\n            \"FROM stream_records \"\r\n            \"WHERE stream_name = ? AND stat"
+    }
+  ],
+  "enriched_at": "2026-05-13T11:13:27.222Z"
 }

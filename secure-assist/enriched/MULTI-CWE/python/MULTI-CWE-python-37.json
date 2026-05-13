@@ -9,40 +9,6 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-37.py",
-      "line": 58,
-      "column": 18,
-      "evidence": "with open(path, \"r\", encoding=\"utf-8\") as handle:"
-    },
-    {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-37.py",
-      "line": 132,
-      "column": 21,
-      "evidence": "subprocess.run("
-    },
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-37.py",
-      "line": 181,
-      "column": 14,
-      "evidence": "with open(path, \"w\", encoding=\"utf-8\") as handle:"
-    }
-  ],
-  "enriched_at": "2026-05-13T10:57:24.632Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-13T11:13:27.136Z"
 }

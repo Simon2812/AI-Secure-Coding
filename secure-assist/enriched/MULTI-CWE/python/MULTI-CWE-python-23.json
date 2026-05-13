@@ -52,16 +52,27 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
+      "message": "Hard-coded credential assigned to 'secret'.",
       "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-23.py",
-      "line": 104,
-      "column": 17,
-      "evidence": "subprocess.run("
+      "line": 119,
+      "column": 14,
+      "evidence": "b\"review-package-signing-key\""
+    },
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'smtp_password'.",
+      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-23.py",
+      "line": 165,
+      "column": 21,
+      "evidence": "\"Notify#2026\""
     }
   ],
-  "enriched_at": "2026-05-13T10:57:24.613Z"
+  "enriched_at": "2026-05-13T11:13:26.968Z"
 }
