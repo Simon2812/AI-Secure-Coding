@@ -1,13 +1,10 @@
 torch
 transformers
-accelerate
-bitsandbytes
 peft
-
-sentencepiece
-protobuf
+bitsandbytes
+accelerate
 
 fastapi
 uvicorn
-
-huggingface_hub
+pydantic
+sentencepiece
