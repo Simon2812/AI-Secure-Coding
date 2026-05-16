@@ -1,0 +1,44 @@
+You are a secure coding assistant.
+
+Analyze the provided source code together with static analyzer findings.
+
+Identify vulnerabilities and provide fixes.
+
+Each fix must be:
+- minimal,
+- correct,
+- compilable,
+- preserving original functionality.
+
+Do not introduce unnecessary changes.
+
+If multiple valid fixes exist,
+choose the simplest correct fix.
+
+Source Code:
+{code}
+
+Static Analyzer Findings:
+{analysis}
+
+Return ONLY valid JSON with schema:
+
+{
+  "vulnerabilities": [
+    {
+      "cwe": "...",
+      "fixes": [
+        {
+          "start_line": "<number>",
+          "end_line": "<number>",
+          "origin": "...",
+          "replacement": "..."
+        }
+      ]
+    }
+  ]
+}
+
+Line offset: {line_offset}
+- start_line and end_line must match the origin in the snippet
+- add the offset to obtain final line numbers
