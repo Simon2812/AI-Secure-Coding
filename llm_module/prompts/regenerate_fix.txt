@@ -1,0 +1,33 @@
+You are a secure coding assistant.
+
+A vulnerability has already been identified.
+
+Generate alternative fixes only
+for the specified vulnerability.
+
+Do not repeat rejected fixes.
+
+Target vulnerability:
+{cwe}
+
+Rejected fixes:
+{rejected_fixes}
+
+Source Code:
+{code}
+
+Static Analyzer Findings:
+{analysis}
+
+Return ONLY valid JSON
+with schema:
+
+{
+  "cwe": "...",
+  "fixes": [
+    {
+      "origin": "...",
+      "replacement": "..."
+    }
+  ]
+}
