@@ -193,13 +193,13 @@ class SecureCodingModel:
         print("Checkpoint saved.")
 
 
-    def build_input(self, code, analysis):
+    def build_input(self, code, line_offset, analysis):
         """
         Build unified prompt used for:
         - training
         - validation
         - inference
-        """
+        """ 
 
         prompt_version = self.training_config["prompt_version"]
 
@@ -216,6 +216,7 @@ class SecureCodingModel:
         # Inject dynamic content.
         prompt = template \
             .replace("{code}", code) \
+            .replace("{line_offset}", str(line_offset)) \
             .replace(
                 "{analysis}",
                 json.dumps(analysis, indent=2)
@@ -227,6 +228,7 @@ class SecureCodingModel:
     def build_regeneration_input(
         self,
         code,
+        line_offset,
         analysis,
         cwe,
         rejected_fixes,
@@ -253,6 +255,7 @@ class SecureCodingModel:
         prompt = (
             template
             .replace("{code}", code)
+            .replace("{line_offset}", str(line_offset))
             .replace(
                 "{analysis}",
                 json.dumps(analysis, indent=2),
@@ -319,7 +322,7 @@ class SecureCodingModel:
         return self.extract_json(text)
 
 
-    def predict(self, code, analysis):
+    def predict(self, code, line_offset, analysis):
         """
         Generate structured vulnerability prediction.
         """
@@ -329,6 +332,7 @@ class SecureCodingModel:
 
         input_text = self.build_input(
             code,
+            line_offset,
             analysis,
         )
 
@@ -338,6 +342,7 @@ class SecureCodingModel:
     def regenerate_fix(
         self,
         code,
+        line_offset,
         analysis,
         cwe,
         rejected_fixes,
@@ -352,6 +357,7 @@ class SecureCodingModel:
 
         input_text = self.build_regeneration_input(
             code,
+            line_offset,
             analysis,
             cwe,
             rejected_fixes,
