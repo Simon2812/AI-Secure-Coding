@@ -113,83 +113,6 @@ class SecureCodingModel:
         print("Model loaded successfully.")
 
 
-    def load_dataset(self, metadata_root):
-        """
-        Load metadata files, resolve source code,
-        and split samples into train/val/test.
-        """
-
-        train_data, val_data, test_data = [], [], []
-        metadata_root = Path(metadata_root)
-
-        for json_file in metadata_root.rglob("*.json"):
-            with open(json_file, "r", encoding="utf-8") as f:
-                metadata = json.load(f)
-
-            # Source code path is stored inside metadata.
-            code_path = Path(metadata_root) / metadata["path"].lstrip("/")
-
-            with open(code_path, "r", encoding="utf-8") as f:
-                code = f.read()
-
-            sample = {
-                "code": code,
-                "analysis": metadata["analysis"],
-                "target": metadata["vulnerabilities"],
-                "split": metadata["split"],
-                "language": metadata["language"],
-                "metadata": metadata,
-            }
-
-            split = sample["split"]
-
-            if split == "train":
-                train_data.append(sample)
-            elif split == "val":
-                val_data.append(sample)
-            elif split == "test":
-                test_data.append(sample)
-            else:
-                raise ValueError(f"Unknown split: {split}")
-
-        print(
-            f"Loaded {len(train_data)} train, "
-            f"{len(val_data)} val, {len(test_data)} test samples."
-        )
-
-        return train_data, val_data, test_data
-
-
-    def save_checkpoint(self, checkpoint_dir):
-        """
-        Save current LoRA weights,
-        tokenizer and training config.
-        """
-
-        checkpoint_path = Path(checkpoint_dir)
-        checkpoint_path.mkdir(parents=True, exist_ok=True)
-
-        print(f"Saving checkpoint to {checkpoint_path}")
-
-        if self.model is None:
-            raise RuntimeError(
-                "Cannot save checkpoint before model is loaded."
-            )
-
-        self.model.save_pretrained(checkpoint_path)
-        self.tokenizer.save_pretrained(checkpoint_path)
-
-        # Save training config.
-        with open(checkpoint_path / "training_config.json", "w") as f:
-            json.dump(self.training_config, f, indent=4)
-
-        # Save generation settings for reproducible inference.
-        with open(checkpoint_path / "generation_config.json", "w") as f:
-            json.dump(self.generation_config, f, indent=4)
-
-        print("Checkpoint saved.")
-
-
     def load_checkpoint(self, checkpoint_dir):
         """
         Restore trained LoRA adapters
@@ -240,6 +163,36 @@ class SecureCodingModel:
         print("Checkpoint loaded.")
 
 
+    def save_checkpoint(self, checkpoint_dir):
+        """
+        Save current LoRA weights,
+        tokenizer and training config.
+        """
+
+        checkpoint_path = Path(checkpoint_dir)
+        checkpoint_path.mkdir(parents=True, exist_ok=True)
+
+        print(f"Saving checkpoint to {checkpoint_path}")
+
+        if self.model is None:
+            raise RuntimeError(
+                "Cannot save checkpoint before model is loaded."
+            )
+
+        self.model.save_pretrained(checkpoint_path)
+        self.tokenizer.save_pretrained(checkpoint_path)
+
+        # Save training config.
+        with open(checkpoint_path / "training_config.json", "w") as f:
+            json.dump(self.training_config, f, indent=4)
+
+        # Save generation settings for reproducible inference.
+        with open(checkpoint_path / "generation_config.json", "w") as f:
+            json.dump(self.generation_config, f, indent=4)
+
+        print("Checkpoint saved.")
+
+
     def build_input(self, code, analysis):
         """
         Build unified prompt used for:
@@ -271,17 +224,63 @@ class SecureCodingModel:
         return prompt.strip()
 
 
-    def predict(self, code, analysis):
+    def build_regeneration_input(
+        self,
+        code,
+        analysis,
+        cwe,
+        rejected_fixes,
+    ):
         """
-        Generate structured vulnerability prediction.
+        Build prompt for
+        fix regeneration.
+        """
+
+        prompt_path = (
+            Path(__file__).parent
+            / "prompts"
+            / "regenerate_fix.txt"
+        )
+
+        if not prompt_path.exists():
+            raise FileNotFoundError(
+                f"Prompt not found: {prompt_path}"
+            )
+
+        with open(prompt_path, "r", encoding="utf-8") as file:
+            template = file.read()
+
+        prompt = (
+            template
+            .replace("{code}", code)
+            .replace(
+                "{analysis}",
+                json.dumps(analysis, indent=2),
+            )
+            .replace("{cwe}", cwe)
+            .replace(
+                "{rejected_fixes}",
+                json.dumps(rejected_fixes, indent=2),
+            )
+        )
+
+        return prompt.strip()
+
+
+    def _generate_json(
+        self,
+        input_text,
+        generation_overrides=None,
+    ):
+        """
+        Run model inference
+        on prepared prompt.
         """
 
         if self.model is None:
             raise RuntimeError("Model must be loaded.")
 
         self.model.eval()
-
-        input_text = self.build_input(code, analysis)
 
         inputs = self.tokenizer(
             input_text,
@@ -292,11 +291,20 @@ class SecureCodingModel:
 
         # Align tensors with model device.
         device = next(self.model.parameters()).device
-        inputs = {k: v.to(device) for k, v in inputs.items()}
+
+        inputs = {
+            key: value.to(device)
+            for key, value in inputs.items()
+        }
+
+        generation_config = self.generation_config.copy()
+
+        if generation_overrides:
+            generation_config.update(generation_overrides)
 
         outputs = self.model.generate(
             **inputs,
-            **self.generation_config,
+            **generation_config,
         )
 
         # Decode only generated tokens.
@@ -309,6 +317,100 @@ class SecureCodingModel:
         )
 
         return self.extract_json(text)
+
+
+    def predict(self, code, analysis):
+        """
+        Generate structured vulnerability prediction.
+        """
+
+        if self.model is None:
+            raise RuntimeError("Model must be loaded.")
+
+        input_text = self.build_input(
+            code,
+            analysis,
+        )
+
+        return self._generate_json(input_text)
+
+
+    def regenerate_fix(
+        self,
+        code,
+        analysis,
+        cwe,
+        rejected_fixes,
+    ):
+        """
+        Generate alternative fixes
+        for one vulnerability.
+        """
+
+        if self.model is None:
+            raise RuntimeError("Model must be loaded.")
+
+        input_text = self.build_regeneration_input(
+            code,
+            analysis,
+            cwe,
+            rejected_fixes,
+        )
+
+        return self._generate_json(
+            input_text,
+            generation_overrides={
+                "temperature": 0.2,
+                "do_sample": True,
+            },
+        )
+
+
+    def load_dataset(self, metadata_root):
+        """
+        Load metadata files, resolve source code,
+        and split samples into train/val/test.
+        """
+
+        train_data, val_data, test_data = [], [], []
+        metadata_root = Path(metadata_root)
+
+        for json_file in metadata_root.rglob("*.json"):
+            with open(json_file, "r", encoding="utf-8") as f:
+                metadata = json.load(f)
+
+            # Source code path is stored inside metadata.
+            code_path = Path(metadata_root) / metadata["path"].lstrip("/")
+
+            with open(code_path, "r", encoding="utf-8") as f:
+                code = f.read()
+
+            sample = {
+                "code": code,
+                "analysis": metadata["analysis"],
+                "target": metadata["vulnerabilities"],
+                "split": metadata["split"],
+                "language": metadata["language"],
+                "metadata": metadata,
+            }
+
+            split = sample["split"]
+
+            if split == "train":
+                train_data.append(sample)
+            elif split == "val":
+                val_data.append(sample)
+            elif split == "test":
+                test_data.append(sample)
+            else:
+                raise ValueError(f"Unknown split: {split}")
+
+        print(
+            f"Loaded {len(train_data)} train, "
+            f"{len(val_data)} val, {len(test_data)} test samples."
+        )
+
+        return train_data, val_data, test_data
 
 
     def train(self, train_data, val_data, evaluator):
