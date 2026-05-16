@@ -37,7 +37,7 @@ class SecureCodingModel:
 
         # Base instruction model.
         self.model_name = (
-            "deepseek-ai/deepseek-coder-6.7b-instruct"
+            "Qwen/Qwen2.5-Coder-7B-Instruct"
         )
 
         self.model = None
@@ -83,7 +83,8 @@ class SecureCodingModel:
 
         self.tokenizer = (
             AutoTokenizer.from_pretrained(
-                self.model_name
+                self.model_name,
+                trust_remote_code=True
             )
         )
 
@@ -93,23 +94,52 @@ class SecureCodingModel:
                 self.tokenizer.eos_token
             )
 
+        # Qwen usually behaves better
+        # with left padding.
+        self.tokenizer.padding_side = (
+            "left"
+        )
+
+        # Explicit generation tokens
+        # for stable decoding.
+        self.generation_config[
+            "pad_token_id"
+        ] = (
+            self.tokenizer.eos_token_id
+        )
+
+        self.generation_config[
+            "eos_token_id"
+        ] = (
+            self.tokenizer.eos_token_id
+        )
+
         self.model = (
             AutoModelForCausalLM
             .from_pretrained(
                 self.model_name,
                 device_map="auto",
+                trust_remote_code=True,
                 quantization_config=
                     self.quantization_config
             )
         )
 
         # LoRA enables lightweight fine-tuning.
+        # Explicit Qwen modules.
         lora_config = LoraConfig(
             r=16,
             lora_alpha=32,
             lora_dropout=0.05,
             bias="none",
-            task_type="CAUSAL_LM"
+            task_type="CAUSAL_LM",
+
+            target_modules=[
+                "q_proj",
+                "k_proj",
+                "v_proj",
+                "o_proj"
+            ]
         )
 
         self.model = get_peft_model(
@@ -134,20 +164,30 @@ class SecureCodingModel:
         val_data = []
         test_data = []
 
-        metadata_root = Path(metadata_root)
+        metadata_root = Path(
+            metadata_root
+        )
 
-        for json_file in metadata_root.rglob("*.json"):
+        for json_file in metadata_root.rglob(
+            "*.json"
+        ):
 
             with open(
                 json_file,
                 "r",
                 encoding="utf-8"
             ) as file:
-                metadata = json.load(file)
 
-            # Source code path is stored inside metadata.
+                metadata = json.load(
+                    file
+                )
+
+            # Source code path
+            # is stored inside metadata.
             code_path = Path(
-                metadata["path"].lstrip("/")
+                metadata[
+                    "path"
+                ].lstrip("/")
             )
 
             with open(
@@ -155,31 +195,58 @@ class SecureCodingModel:
                 "r",
                 encoding="utf-8"
             ) as file:
+
                 code = file.read()
 
             sample = {
                 "code": code,
-                "analysis": metadata["analysis"],
-                "target": metadata["vulnerabilities"],
-                "split": metadata["split"],
-                "language": metadata["language"],
-                "metadata": metadata
+                "analysis":
+                    metadata[
+                        "analysis"
+                    ],
+                "target":
+                    metadata[
+                        "vulnerabilities"
+                    ],
+                "split":
+                    metadata[
+                        "split"
+                    ],
+                "language":
+                    metadata[
+                        "language"
+                    ],
+                "metadata":
+                    metadata
             }
 
-            split = metadata["split"]
+            split = metadata[
+                "split"
+            ]
 
             if split == "train":
-                train_data.append(sample)
+
+                train_data.append(
+                    sample
+                )
 
             elif split == "val":
-                val_data.append(sample)
+
+                val_data.append(
+                    sample
+                )
 
             elif split == "test":
-                test_data.append(sample)
+
+                test_data.append(
+                    sample
+                )
 
             else:
+
                 raise ValueError(
-                    f"Unknown split: {split}"
+                    f"Unknown split: "
+                    f"{split}"
                 )
 
         print(
@@ -189,10 +256,17 @@ class SecureCodingModel:
             f"{len(test_data)} test samples."
         )
 
-        return train_data, val_data, test_data
+        return (
+            train_data,
+            val_data,
+            test_data
+        )
 
 
-    def save_checkpoint(self, checkpoint_dir):
+    def save_checkpoint(
+        self,
+        checkpoint_dir
+    ):
         """
         Save current LoRA weights,
         tokenizer and training config.
@@ -213,8 +287,10 @@ class SecureCodingModel:
         )
 
         if self.model is None:
+
             raise RuntimeError(
-                "Cannot save checkpoint before model is loaded."
+                "Cannot save checkpoint "
+                "before model is loaded."
             )
 
         self.model.save_pretrained(
@@ -227,7 +303,8 @@ class SecureCodingModel:
 
         config_path = (
             checkpoint_path
-            / "training_config.json"
+            /
+            "training_config.json"
         )
 
         with open(
@@ -241,10 +318,34 @@ class SecureCodingModel:
                 indent=4
             )
 
-        print("Checkpoint saved.")
+        # Save generation settings
+        # for reproducible inference.
+        generation_path = (
+            checkpoint_path
+            /
+            "generation_config.json"
+        )
+
+        with open(
+            generation_path,
+            "w"
+        ) as file:
+
+            json.dump(
+                self.generation_config,
+                file,
+                indent=4
+            )
+
+        print(
+            "Checkpoint saved."
+        )
 
 
-    def load_checkpoint(self, checkpoint_dir):
+    def load_checkpoint(
+        self,
+        checkpoint_dir
+    ):
         """
         Restore trained LoRA adapters
         from an existing checkpoint.
@@ -255,33 +356,44 @@ class SecureCodingModel:
         )
 
         if not checkpoint_path.exists():
+
             raise FileNotFoundError(
                 f"Checkpoint not found: "
                 f"{checkpoint_path}"
             )
 
         print(
-            f"Loading checkpoint from "
+            f"Loading checkpoint "
+            f"from "
             f"{checkpoint_path}"
         )
 
         self.tokenizer = (
-            AutoTokenizer.from_pretrained(
-                checkpoint_path
+            AutoTokenizer
+            .from_pretrained(
+                checkpoint_path,
+                trust_remote_code=True
             )
         )
 
         if self.tokenizer.pad_token is None:
+
             self.tokenizer.pad_token = (
                 self.tokenizer.eos_token
             )
 
-        # Recreate quantized base model.
+        self.tokenizer.padding_side = (
+            "left"
+        )
+
+        # Recreate quantized
+        # base model.
         base_model = (
             AutoModelForCausalLM
             .from_pretrained(
                 self.model_name,
                 device_map="auto",
+                trust_remote_code=True,
                 quantization_config=
                     self.quantization_config
             )
@@ -290,11 +402,32 @@ class SecureCodingModel:
         from peft import PeftModel
 
         self.model = (
-            PeftModel.from_pretrained(
+            PeftModel
+            .from_pretrained(
                 base_model,
                 checkpoint_path
             )
         )
+
+        # Restore generation settings.
+        generation_path = (
+            checkpoint_path
+            /
+            "generation_config.json"
+        )
+
+        if generation_path.exists():
+
+            with open(
+                generation_path,
+                "r"
+            ) as file:
+
+                self.generation_config = (
+                    json.load(
+                        file
+                    )
+                )
 
         self.model.print_trainable_parameters()
 
@@ -303,7 +436,11 @@ class SecureCodingModel:
         )
 
 
-    def build_input(self, code, analysis):
+    def build_input(
+        self,
+        code,
+        analysis
+    ):
         """
         Build unified prompt used for:
         - training
@@ -345,20 +482,27 @@ class SecureCodingModel:
         return prompt.strip()
 
 
-    def predict(self, code, analysis):
+    def predict(
+        self,
+        code,
+        analysis
+    ):
         """
         Generate structured vulnerability
         prediction for one code sample.
         """
 
         if self.model is None:
+
             raise RuntimeError(
                 "Model must be loaded."
             )
 
-        input_text = self.build_input(
-            code,
-            analysis
+        input_text = (
+            self.build_input(
+                code,
+                analysis
+            )
         )
 
         inputs = self.tokenizer(
@@ -368,14 +512,16 @@ class SecureCodingModel:
             max_length=2048
         )
 
-        # Align tensors with model device.
+        # Align tensors
+        # with model device.
         device = next(
             self.model.parameters()
         ).device
 
         inputs = {
             key: value.to(device)
-            for key, value in inputs.items()
+            for key, value
+            in inputs.items()
         }
 
         outputs = self.model.generate(
@@ -383,9 +529,23 @@ class SecureCodingModel:
             **self.generation_config
         )
 
+        # Decode only newly
+        # generated tokens.
+        prompt_length = (
+            inputs[
+                "input_ids"
+            ].shape[1]
+        )
+
+        generated_tokens = (
+            outputs[
+                0
+            ][prompt_length:]
+        )
+
         generated_text = (
             self.tokenizer.decode(
-                outputs[0],
+                generated_tokens,
                 skip_special_tokens=True
             )
         )
@@ -395,15 +555,25 @@ class SecureCodingModel:
         )
 
 
-    def train(self, train_data, val_data, evaluator):
+    def train(
+        self,
+        train_data,
+        val_data,
+        evaluator
+    ):
         """
-        Fine-tune LoRA adapters on train split.
+        Fine-tune LoRA adapters
+        on train split.
 
-        Validation is performed after each epoch.
-        Best checkpoint is selected using evaluator.
+        Validation is performed
+        after each epoch.
+
+        Best checkpoint is selected
+        using evaluator.
         """
 
         if self.model is None:
+
             raise RuntimeError(
                 "Model must be loaded."
             )
@@ -416,27 +586,34 @@ class SecureCodingModel:
 
         best_validation_score = -1
 
-        # Only train LoRA parameters.
+        # Only train
+        # LoRA parameters.
         optimizer = AdamW(
             filter(
-                lambda p: p.requires_grad,
+                lambda p:
+                    p.requires_grad,
                 self.model.parameters()
             ),
-            lr=self.training_config[
-                "learning_rate"
-            ]
+            lr=
+                self.training_config[
+                    "learning_rate"
+                ]
         )
 
-        for epoch in range(epochs):
+        for epoch in range(
+            epochs
+        ):
 
             print(
                 f"\nEpoch "
-                f"{epoch + 1}/{epochs}"
+                f"{epoch + 1}/"
+                f"{epochs}"
             )
 
             self.model.train()
 
-            # Shuffle train samples every epoch.
+            # Shuffle train samples
+            # every epoch.
             random.shuffle(
                 train_data
             )
@@ -445,14 +622,25 @@ class SecureCodingModel:
 
             for sample in train_data:
 
-                prompt = self.build_input(
-                    sample["code"],
-                    sample["analysis"]
+                prompt = (
+                    self.build_input(
+                        sample[
+                            "code"
+                        ],
+                        sample[
+                            "analysis"
+                        ]
+                    )
                 )
 
-                target = (
-                    sample["target"]
-                )
+                # Match training target
+                # with prompt schema.
+                target = {
+                    "vulnerabilities":
+                        sample[
+                            "target"
+                        ]
+                }
 
                 full_text = (
                     prompt
@@ -463,11 +651,26 @@ class SecureCodingModel:
                     )
                 )
 
-                inputs = self.tokenizer(
-                    full_text,
-                    return_tensors="pt",
-                    truncation=True,
-                    max_length=2048
+                # Tokenize prompt
+                # separately
+                # to mask
+                # instruction tokens.
+                prompt_tokens = (
+                    self.tokenizer(
+                        prompt,
+                        return_tensors="pt",
+                        truncation=True,
+                        max_length=2048
+                    )
+                )
+
+                inputs = (
+                    self.tokenizer(
+                        full_text,
+                        return_tensors="pt",
+                        truncation=True,
+                        max_length=2048
+                    )
                 )
 
                 device = next(
@@ -475,20 +678,47 @@ class SecureCodingModel:
                 ).device
 
                 inputs = {
-                    key: value.to(device)
-                    for key, value in inputs.items()
+                    key:
+                        value.to(
+                            device
+                        )
+                    for key,
+                    value
+                    in inputs.items()
                 }
+
+                # Train only
+                # on target JSON.
+                labels = (
+                    inputs[
+                        "input_ids"
+                    ]
+                    .clone()
+                )
+
+                prompt_length = (
+                    prompt_tokens[
+                        "input_ids"
+                    ].shape[1]
+                )
+
+                labels[
+                    :,
+                    :prompt_length
+                ] = -100
 
                 optimizer.zero_grad()
 
-                outputs = self.model(
-                    **inputs,
-                    labels=inputs[
-                        "input_ids"
-                    ]
+                outputs = (
+                    self.model(
+                        **inputs,
+                        labels=labels
+                    )
                 )
 
-                loss = outputs.loss
+                loss = (
+                    outputs.loss
+                )
 
                 total_loss += (
                     loss.item()
@@ -500,7 +730,10 @@ class SecureCodingModel:
 
             average_loss = (
                 total_loss
-                / len(train_data)
+                /
+                len(
+                    train_data
+                )
             )
 
             print(
@@ -512,29 +745,39 @@ class SecureCodingModel:
 
             validation_score = 0
 
-            # Validation never updates weights.
+            # Validation never
+            # updates weights.
             with torch.no_grad():
 
                 for sample in val_data:
 
                     prediction = (
                         self.predict(
-                            sample["code"],
-                            sample["analysis"]
+                            sample[
+                                "code"
+                            ],
+                            sample[
+                                "analysis"
+                            ]
                         )
                     )
 
                     score = (
-                        evaluator.evaluate(
+                        evaluator
+                        .evaluate(
                             sample,
                             prediction
                         )
                     )
 
-                    validation_score += score
+                    validation_score += (
+                        score
+                    )
 
-            validation_score /= len(
-                val_data
+            validation_score /= (
+                len(
+                    val_data
+                )
             )
 
             print(
@@ -542,10 +785,12 @@ class SecureCodingModel:
                 f"{validation_score:.4f}"
             )
 
-            # Keep only best checkpoint.
+            # Keep only
+            # best checkpoint.
             if (
                 validation_score
-                > best_validation_score
+                >
+                best_validation_score
             ):
 
                 best_validation_score = (
@@ -565,16 +810,29 @@ class SecureCodingModel:
         )
 
 
-    def extract_json(self, text):
+    def extract_json(
+        self,
+        text
+    ):
         """
         Extract first JSON object
         from generated model output.
         """
 
-        start = text.find("{")
-        end = text.rfind("}")
+        start = text.find(
+            "{"
+        )
 
-        if start == -1 or end == -1:
+        end = text.rfind(
+            "}"
+        )
+
+        if (
+            start == -1
+            or
+            end == -1
+        ):
+
             raise ValueError(
                 "No JSON found."
             )
