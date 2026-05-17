@@ -1,4 +1,7 @@
 from pathlib import Path
+from collections import defaultdict
+from utils import metric_dict, print_group_stats
+
 import json
 import random
 import torch
@@ -9,7 +12,7 @@ from transformers import (
     AutoModelForCausalLM,
     BitsAndBytesConfig,
 )
-from peft import LoraConfig, get_peft_model
+from peft import LoraConfig, get_peft_model, PeftModel
 
 
 class SecureCodingModel:
@@ -118,8 +121,6 @@ class SecureCodingModel:
         Restore trained LoRA adapters
         from an existing checkpoint.
         """
-
-        from peft import PeftModel
 
         checkpoint_path = Path(checkpoint_dir)
 
@@ -393,11 +394,17 @@ class SecureCodingModel:
 
             sample = {
                 "code": code,
+                "line_offset": 0,  # Can be used for line number adjustments if needed.
                 "analysis": metadata["analysis"],
                 "target": metadata["vulnerabilities"],
                 "split": metadata["split"],
                 "language": metadata["language"],
-                "metadata": metadata,
+                "cwes": [
+                            vuln["cwe"]
+                            for vuln in metadata[
+                                "vulnerabilities"
+                            ]
+                ],
             }
 
             split = sample["split"]
@@ -417,9 +424,9 @@ class SecureCodingModel:
         )
 
         return train_data, val_data, test_data
+    
 
-
-    def train(self, train_data, val_data, evaluator):
+    def train(self, train_data, val_data, evaluator, checkpoint_path):
         """
         Fine-tune LoRA adapters on train split.
         Validation runs after each epoch.
@@ -449,6 +456,7 @@ class SecureCodingModel:
             for sample in train_data:
                 prompt = self.build_input(
                     sample["code"],
+                    sample["line_offset"],
                     sample["analysis"],
                 )
 
@@ -500,27 +508,65 @@ class SecureCodingModel:
             avg_loss = total_loss / len(train_data)
             print(f"Train loss: {avg_loss:.4f}")
 
-            self.model.eval()
-            val_score = 0
+            # ================= VALIDATION =================
 
-            # Validation does not update weights.
+            self.model.eval()
+
+            val_final_score = 0
+            val_cwe_score = 0
+            val_fix_score = 0
+
+            per_cwe = defaultdict(metric_dict)
+            per_language = defaultdict(metric_dict)
+
             with torch.no_grad():
                 for sample in val_data:
+
                     pred = self.predict(
                         sample["code"],
+                        sample["line_offset"],
                         sample["analysis"],
                     )
 
-                    val_score += evaluator.evaluate(sample, pred)
+                    scores = evaluator.evaluate(sample, pred)
 
-            val_score /= len(val_data)
-            print(f"Validation score: {val_score:.4f}")
+                    val_final_score += scores["final_score"]
+                    val_cwe_score += scores["cwe_score"]
+                    val_fix_score += scores["fix_score"]
 
-            # Save best checkpoint.
-            if val_score > best_score:
-                best_score = val_score
-                self.save_checkpoint("./checkpoints/best")
-                print("New best checkpoint.")
+                    # Per-CWE stats
+                    for cwe in sample["cwes"]:
+                        per_cwe[cwe]["final"].append(scores["final_score"])
+                        per_cwe[cwe]["cwe"].append(scores["cwe_score"])
+                        per_cwe[cwe]["fix"].append(scores["fix_score"])
+
+                    # Per-language stats
+                    lang = sample["language"]
+                    per_language[lang]["final"].append(scores["final_score"])
+                    per_language[lang]["cwe"].append(scores["cwe_score"])
+                    per_language[lang]["fix"].append(scores["fix_score"])
+
+            n = len(val_data)
+
+            val_final_score /= n
+            val_cwe_score /= n
+            val_fix_score /= n
+
+            print(
+                f"\nValidation scores | "
+                f"Final: {val_final_score:.4f} | "
+                f"CWE: {val_cwe_score:.4f} | "
+                f"Fix: {val_fix_score:.4f}"
+            )
+
+            print_group_stats("Per-CWE validation:", per_cwe)
+            print_group_stats("Per-language validation:", per_language)
+
+            # Save best checkpoint based on final score
+            if val_final_score > best_score:
+                best_score = val_final_score
+                self.save_checkpoint(checkpoint_path / "best")
+                print("\nNew best checkpoint.")
 
         print("\nTraining completed.")
 
@@ -537,3 +583,70 @@ class SecureCodingModel:
             raise ValueError("No JSON found.")
 
         return json.loads(text[start : end + 1])
+    
+
+    def test(self, test_data, evaluator):
+        """
+        Final evaluation on unseen test split.
+        """
+
+        if self.model is None:
+            raise RuntimeError("Model must be loaded.")
+
+        self.model.eval()
+
+        test_final_score = 0
+        test_cwe_score = 0
+        test_fix_score = 0
+
+        per_cwe = defaultdict(metric_dict)
+        per_language = defaultdict(metric_dict)
+
+        with torch.no_grad():
+            for sample in test_data:
+
+                pred = self.predict(
+                    sample["code"],
+                    sample["line_offset"],
+                    sample["analysis"],
+                )
+
+                scores = evaluator.evaluate(sample, pred)
+
+                test_final_score += scores["final_score"]
+                test_cwe_score += scores["cwe_score"]
+                test_fix_score += scores["fix_score"]
+
+                # Per-CWE stats
+                for cwe in sample["cwes"]:
+                    per_cwe[cwe]["final"].append(scores["final_score"])
+                    per_cwe[cwe]["cwe"].append(scores["cwe_score"])
+                    per_cwe[cwe]["fix"].append(scores["fix_score"])
+
+                # Per-language stats
+                lang = sample["language"]
+                per_language[lang]["final"].append(scores["final_score"])
+                per_language[lang]["cwe"].append(scores["cwe_score"])
+                per_language[lang]["fix"].append(scores["fix_score"])
+
+        n = len(test_data)
+
+        test_final_score /= n
+        test_cwe_score /= n
+        test_fix_score /= n
+
+        print(
+            f"\nTest scores | "
+            f"Final: {test_final_score:.4f} | "
+            f"CWE: {test_cwe_score:.4f} | "
+            f"Fix: {test_fix_score:.4f}"
+        )
+
+        print_group_stats("Per-CWE test:", per_cwe)
+        print_group_stats("Per-language test:", per_language)
+
+        return {
+            "final_score": test_final_score,
+            "cwe_score": test_cwe_score,
+            "fix_score": test_fix_score,
+        }
