@@ -37,11 +37,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'secret'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-16.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-16.py",
       "line": 126,
       "column": 14,
       "evidence": "b\"default-sign-key\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.889Z"
+  "enriched_at": "2026-05-26T14:27:56.578Z"
 }

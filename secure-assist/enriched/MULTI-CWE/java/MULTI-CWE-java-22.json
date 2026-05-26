@@ -47,7 +47,7 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"MD5\") uses a weak algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-22.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-22.java",
       "line": 37,
       "column": 32,
       "evidence": "MessageDigest.getInstance(\"MD5\")"
@@ -58,11 +58,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded key material passed to SecretKeySpec.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-22.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-22.java",
       "line": 56,
       "column": 47,
       "evidence": "\"hmacKey\".getBytes()"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.585Z"
+  "enriched_at": "2026-05-26T14:27:55.975Z"
 }

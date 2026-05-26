@@ -27,7 +27,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-43.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-43.c",
       "line": 19,
       "column": 19,
       "evidence": "idx < len"
@@ -38,11 +38,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Pointer write uses user-controlled offset without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-43.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-43.c",
       "line": 21,
       "column": 10,
       "evidence": "(buf + offset)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.584Z"
+  "enriched_at": "2026-05-26T14:27:53.435Z"
 }

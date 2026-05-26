@@ -12,15 +12,15 @@
   "static_findings": [
     {
       "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-93.py",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-93.py",
       "line": 18,
-      "column": 24,
-      "evidence": "subprocess.run("
+      "column": 39,
+      "evidence": "argv"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.507Z"
+  "enriched_at": "2026-05-26T14:27:53.192Z"
 }

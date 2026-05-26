@@ -12,15 +12,26 @@
   "static_findings": [
     {
       "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
+      "ruleId": "ast-integer-overflow",
       "vulnerability": "Integer Overflow",
       "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-416\\CWE-416-32.c",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-416\\CWE-416-32.c",
       "line": 18,
-      "column": 5,
-      "evidence": "records = (long *)malloc(80 * sizeof(long));"
+      "column": 30,
+      "evidence": "80 * sizeof(long)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'records' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-416\\CWE-416-32.c",
+      "line": 38,
+      "column": 10,
+      "evidence": "records"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.264Z"
+  "enriched_at": "2026-05-26T14:27:51.419Z"
 }

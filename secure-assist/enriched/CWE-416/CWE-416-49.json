@@ -11,27 +11,49 @@
   "vulnerabilities": [],
   "static_findings": [
     {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-49.c",
+      "line": 7,
+      "column": 30,
+      "evidence": "strlen(src) + 1"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-49.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-49.c",
       "line": 11,
       "column": 5,
       "evidence": "strcpy(p, src)"
     },
     {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'p' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-49.c",
+      "line": 27,
+      "column": 10,
+      "evidence": "p"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-49.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-49.c",
       "line": 38,
       "column": 5,
       "evidence": "strcpy(snapshot, data)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.279Z"
+  "enriched_at": "2026-05-26T14:27:51.482Z"
 }

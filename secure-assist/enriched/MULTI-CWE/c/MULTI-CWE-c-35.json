@@ -41,7 +41,7 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "Arithmetic on user-controlled integer may overflow.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
       "line": 40,
       "column": 17,
       "evidence": "count * 4"
@@ -52,7 +52,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcat() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
       "line": 51,
       "column": 5,
       "evidence": "strcat(buf, src)"
@@ -63,7 +63,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
       "line": 78,
       "column": 9,
       "evidence": "strcpy(buf, j.buffer)"
@@ -74,11 +74,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'buf' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-35.c",
       "line": 86,
       "column": 10,
       "evidence": "buf"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.449Z"
+  "enriched_at": "2026-05-26T14:27:55.600Z"
 }

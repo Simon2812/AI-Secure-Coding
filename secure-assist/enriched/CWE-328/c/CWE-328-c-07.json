@@ -27,11 +27,22 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-328\\c\\CWE-328-c-07.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-328\\c\\CWE-328-c-07.c",
       "line": 22,
       "column": 11,
       "evidence": "(pos < width)"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_MD2, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-328\\c\\CWE-328-c-07.c",
+      "line": 69,
+      "column": 35,
+      "evidence": "CALG_MD2"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.059Z"
+  "enriched_at": "2026-05-26T14:27:51.005Z"
 }

@@ -23,26 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-22",
-      "ruleId": "path-traversal",
+      "ruleId": "ast-path-traversal",
       "vulnerability": "Path Traversal",
       "severity": "high",
-      "message": "This file operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-32.py",
+      "message": "open() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-32.py",
       "line": 12,
-      "column": 22,
-      "evidence": "with open(filename, \"r\", encoding=\"utf-8\") as f:"
-    },
-    {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-32.py",
-      "line": 15,
-      "column": 24,
-      "evidence": "subprocess.run("
+      "column": 27,
+      "evidence": "filename"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.460Z"
+  "enriched_at": "2026-05-26T14:27:52.887Z"
 }

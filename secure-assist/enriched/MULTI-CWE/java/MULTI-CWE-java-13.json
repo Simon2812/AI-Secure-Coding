@@ -37,7 +37,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "new File() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
       "line": 20,
       "column": 30,
       "evidence": "rootDirectory + f"
@@ -48,7 +48,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Files.readAllBytes() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
       "line": 26,
       "column": 23,
       "evidence": "Files.readAllBytes(file.toPath())"
@@ -59,11 +59,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"DES\") uses DES, an insecure cipher.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-13.java",
       "line": 35,
       "column": 25,
       "evidence": "Cipher.getInstance(\"DES\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.553Z"
+  "enriched_at": "2026-05-26T14:27:55.891Z"
 }

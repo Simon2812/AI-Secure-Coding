@@ -27,11 +27,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-13.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-13.java",
       "line": 74,
       "column": 45,
       "evidence": "\"insert into users (status) values ('updated') where name='\" + requestLine + \"'\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.765Z"
+  "enriched_at": "2026-05-26T14:27:53.915Z"
 }

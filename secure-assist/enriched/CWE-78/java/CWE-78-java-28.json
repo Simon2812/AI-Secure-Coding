@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-78",
-      "ruleId": "java-processbuilder",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "ProcessBuilder may allow OS command injection if arguments include unsafe input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-28.java",
-      "line": 49,
-      "column": 38,
-      "evidence": "ProcessBuilder("
-    }
-  ],
-  "enriched_at": "2026-05-13T11:13:25.374Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-26T14:27:52.213Z"
 }

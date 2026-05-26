@@ -37,7 +37,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-13.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-13.c",
       "line": 68,
       "column": 17,
       "evidence": "i < count && i < 4"
@@ -48,7 +48,7 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "memcpy() size argument contains arithmetic that may overflow.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-13.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-13.c",
       "line": 76,
       "column": 22,
       "evidence": "strlen(src) + 1"
@@ -59,11 +59,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'values' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-13.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-13.c",
       "line": 107,
       "column": 10,
       "evidence": "values"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.376Z"
+  "enriched_at": "2026-05-26T14:27:55.397Z"
 }

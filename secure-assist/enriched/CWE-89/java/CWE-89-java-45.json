@@ -27,11 +27,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "prepareCall() called with user-controlled SQL query.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-45.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-45.java",
       "line": 5,
       "column": 58,
       "evidence": "call"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.889Z"
+  "enriched_at": "2026-05-26T14:27:54.206Z"
 }

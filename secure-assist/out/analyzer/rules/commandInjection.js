@@ -13,7 +13,7 @@ function findCommandInjection(context) {
                 cweId: "CWE-78",
                 vulnerability: "OS Command Injection",
                 severity: "high",
-                regex: /\bsystem\s*\(/g,
+                regex: /\bsystem\s*\(/gi,
                 message: "Use of system() may allow OS command injection if input is not controlled.",
             },
             {
@@ -21,8 +21,24 @@ function findCommandInjection(context) {
                 cweId: "CWE-78",
                 vulnerability: "OS Command Injection",
                 severity: "high",
-                regex: /\bpopen\s*\(/g,
+                regex: /\bpopen\s*\(/gi,
                 message: "Use of popen() may allow OS command injection if input is not controlled.",
+            },
+            {
+                ruleId: "cpp-exec",
+                cweId: "CWE-78",
+                vulnerability: "OS Command Injection",
+                severity: "high",
+                regex: /\b(execl|execlp|execle|execv|execvp|execve|execvpe)\s*\(/gi,
+                message: "Use of exec*() may allow OS command injection if arguments are user-controlled.",
+            },
+            {
+                ruleId: "cpp-spawn",
+                cweId: "CWE-78",
+                vulnerability: "OS Command Injection",
+                severity: "high",
+                regex: /\b(_spawnl|_spawnlp|_spawnle|_spawnlpe|_spawnv|_spawnvp|_spawnve|_spawnvpe|posix_spawn|posix_spawnp)\s*\(/gi,
+                message: "Use of spawn*() may allow OS command injection if arguments are user-controlled.",
             },
         ];
     }
@@ -33,8 +49,8 @@ function findCommandInjection(context) {
                 cweId: "CWE-78",
                 vulnerability: "OS Command Injection",
                 severity: "high",
-                regex: /Runtime\s*\.\s*getRuntime\s*\(\s*\)\s*\.\s*exec\s*\(/g,
-                message: "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
+                regex: /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\.\s*exec\s*\(/g,
+                message: "Runtime.exec() may allow OS command injection if input is not controlled.",
             },
             {
                 ruleId: "java-processbuilder",

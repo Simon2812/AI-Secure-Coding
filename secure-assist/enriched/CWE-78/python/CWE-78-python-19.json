@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-78",
-      "ruleId": "python-os-system",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "os.system() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-19.py",
-      "line": 15,
-      "column": 26,
-      "evidence": "os.system("
-    }
-  ],
-  "enriched_at": "2026-05-13T11:13:25.450Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-26T14:27:52.829Z"
 }

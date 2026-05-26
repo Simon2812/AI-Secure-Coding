@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:25.298Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "POPEN() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-25.c",
+      "line": 34,
+      "column": 16,
+      "evidence": "POPEN(data, L\"w\")"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:51.598Z"
 }

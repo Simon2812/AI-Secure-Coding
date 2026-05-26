@@ -36,12 +36,12 @@
       "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "system() may allow command injection if argument is user-controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-16.c",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-16.c",
       "line": 56,
       "column": 5,
       "evidence": "system(command)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.384Z"
+  "enriched_at": "2026-05-26T14:27:55.423Z"
 }

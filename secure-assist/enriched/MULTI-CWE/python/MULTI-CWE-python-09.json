@@ -27,7 +27,7 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "hashlib.sha1() uses a weak hashing algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-09.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-09.py",
       "line": 16,
       "column": 15,
       "evidence": "hashlib.sha1(raw)"
@@ -38,11 +38,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "hashlib.sha1() uses a weak hashing algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-09.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-09.py",
       "line": 27,
       "column": 20,
       "evidence": "hashlib.sha1(raw)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.809Z"
+  "enriched_at": "2026-05-26T14:27:56.402Z"
 }

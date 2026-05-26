@@ -12,70 +12,70 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 15,
       "column": 5,
       "evidence": "strcpy(rows[0].key, \"mode\")"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 16,
       "column": 5,
       "evidence": "strcpy(rows[1].key, \"theme\")"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 17,
       "column": 5,
       "evidence": "strcpy(rows[2].key, \"lang\")"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 32,
       "column": 5,
       "evidence": "strcpy(rows[0].value, \"debug\")"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 33,
       "column": 5,
       "evidence": "strcpy(rows[1].value, \"light\")"
     },
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-47.c",
       "line": 34,
       "column": 5,
       "evidence": "strcpy(rows[2].value, \"en\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.277Z"
+  "enriched_at": "2026-05-26T14:27:51.475Z"
 }

@@ -22,115 +22,49 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
+      "line": 15,
+      "column": 30,
+      "evidence": "strlen(text) + 1"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'r' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
+      "line": 18,
+      "column": 14,
+      "evidence": "r"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
       "line": 22,
       "column": 5,
       "evidence": "strcpy(r->data, text)"
     },
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 22,
-      "column": 7,
-      "evidence": "strcpy(r->data, text);"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 23,
-      "column": 5,
-      "evidence": "return r;"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 26,
-      "column": 33,
-      "evidence": "static void module_cleanup(Resource *r)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 28,
+      "message": "Pointer 'r' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
+      "line": 34,
       "column": 10,
-      "evidence": "if (!r)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 31,
-      "column": 9,
-      "evidence": "if (r->data)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 32,
-      "column": 10,
-      "evidence": "free(r->data);"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 37,
-      "column": 28,
-      "evidence": "static int module_use(Resource *r)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 41,
-      "column": 7,
-      "evidence": "for (size_t i = 0; r->data[i] != '\\0'; i++)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-30.c",
-      "line": 42,
-      "column": 18,
-      "evidence": "value += r->data[i];"
+      "evidence": "r"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.262Z"
+  "enriched_at": "2026-05-26T14:27:51.413Z"
 }

@@ -27,7 +27,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-59.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-59.java",
       "line": 23,
       "column": 54,
       "evidence": "sql"
@@ -38,11 +38,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "prepareStatement() called with user-controlled SQL query.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-59.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-59.java",
       "line": 36,
       "column": 65,
       "evidence": "sql"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.932Z"
+  "enriched_at": "2026-05-26T14:27:54.316Z"
 }

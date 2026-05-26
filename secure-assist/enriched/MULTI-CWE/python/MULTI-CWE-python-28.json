@@ -47,7 +47,7 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "hashlib.md5() uses a weak hashing algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
       "line": 112,
       "column": 12,
       "evidence": "hashlib.md5(encrypted)"
@@ -58,11 +58,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query is constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
       "line": 125,
       "column": 20,
       "evidence": "statement"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:27.042Z"
+  "enriched_at": "2026-05-26T14:27:56.988Z"
 }

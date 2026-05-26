@@ -37,11 +37,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'self.secret'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-13.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-13.py",
       "line": 90,
       "column": 23,
       "evidence": "b\"tenant-sync-signing-key\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.861Z"
+  "enriched_at": "2026-05-26T14:27:56.514Z"
 }

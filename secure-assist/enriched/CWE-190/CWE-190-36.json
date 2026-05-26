@@ -9,6 +9,18 @@
     "name": "Juliet Test Suite"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:23.921Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-190\\CWE-190-36.c",
+      "line": 72,
+      "column": 16,
+      "evidence": "received"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:49.099Z"
 }

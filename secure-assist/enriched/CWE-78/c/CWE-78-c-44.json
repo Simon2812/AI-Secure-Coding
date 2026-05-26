@@ -23,26 +23,26 @@
   "static_findings": [
     {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-44.c",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-44.c",
       "line": 25,
       "column": 5,
       "evidence": "strcat(cmd, key)"
     },
     {
       "cweId": "CWE-78",
-      "ruleId": "cpp-popen",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of popen() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-44.c",
+      "message": "popen() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-44.c",
       "line": 27,
       "column": 15,
-      "evidence": "popen("
+      "evidence": "popen(cmd, \"r\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.312Z"
+  "enriched_at": "2026-05-26T14:27:51.686Z"
 }

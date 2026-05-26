@@ -27,11 +27,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-08.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-08.c",
       "line": 15,
       "column": 9,
       "evidence": "strcpy(auth, value)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.533Z"
+  "enriched_at": "2026-05-26T14:27:50.088Z"
 }

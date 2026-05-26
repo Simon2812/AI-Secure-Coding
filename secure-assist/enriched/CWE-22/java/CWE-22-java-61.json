@@ -16,7 +16,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "new FileInputStream() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-61.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-61.java",
       "line": 38,
       "column": 42,
       "evidence": "new File(path)"
@@ -27,7 +27,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "new File() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-61.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-61.java",
       "line": 38,
       "column": 51,
       "evidence": "path"
@@ -38,11 +38,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'token'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-61.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-61.java",
       "line": 18,
       "column": 24,
       "evidence": "\"default.txt\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.146Z"
+  "enriched_at": "2026-05-26T14:27:49.459Z"
 }

@@ -20,6 +20,29 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:25.371Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-25.java",
+      "line": 59,
+      "column": 31,
+      "evidence": "runtime.exec(cmdArgs, envVars)"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'token'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-25.java",
+      "line": 40,
+      "column": 24,
+      "evidence": "\"none\""
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:52.191Z"
 }

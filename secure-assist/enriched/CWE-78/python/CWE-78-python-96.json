@@ -9,6 +9,29 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:25.509Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "os.path.abspath() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-96.py",
+      "line": 14,
+      "column": 42,
+      "evidence": "os.path.join(base, rel)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "os.path.join() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-96.py",
+      "line": 14,
+      "column": 61,
+      "evidence": "rel"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:53.206Z"
 }

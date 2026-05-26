@@ -16,7 +16,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Path.of() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-82.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-82.java",
       "line": 12,
       "column": 25,
       "evidence": "Path.of(profileId)"
@@ -27,7 +27,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Path.resolve() receives user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-82.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-82.java",
       "line": 14,
       "column": 21,
       "evidence": "ROOT.resolve(safeId + \".conf\")"
@@ -38,11 +38,11 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Files.readAllLines() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-82.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-82.java",
       "line": 20,
       "column": 16,
       "evidence": "Files.readAllLines(file)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.232Z"
+  "enriched_at": "2026-05-26T14:27:49.596Z"
 }

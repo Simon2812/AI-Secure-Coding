@@ -27,11 +27,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query is constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-08.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-08.py",
       "line": 72,
       "column": 17,
       "evidence": "\"SELECT id, requester, subject, priority, status \"\r\n                \"FROM tickets WHERE status = ? \"\r\n                \"O"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.801Z"
+  "enriched_at": "2026-05-26T14:27:56.388Z"
 }

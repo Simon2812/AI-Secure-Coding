@@ -9,6 +9,18 @@
     "name": "Juliet Test Suite"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:25.406Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-69.java",
+      "line": 22,
+      "column": 36,
+      "evidence": "suppliedPath"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:52.441Z"
 }

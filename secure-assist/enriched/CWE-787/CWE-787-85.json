@@ -16,11 +16,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-85.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-85.c",
       "line": 28,
       "column": 11,
       "evidence": "(cursor < end && i < total)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.663Z"
+  "enriched_at": "2026-05-26T14:27:53.657Z"
 }

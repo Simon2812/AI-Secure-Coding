@@ -47,7 +47,7 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "Arithmetic on user-controlled integer may overflow.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 42,
       "column": 11,
       "evidence": "(char *)malloc(n * 16)"
@@ -58,7 +58,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 9,
       "column": 17,
       "evidence": "i < n"
@@ -69,7 +69,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcat() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 20,
       "column": 5,
       "evidence": "strcat(cmd, path)"
@@ -79,8 +79,8 @@
       "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "system() may allow command injection if argument is user-controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 21,
       "column": 5,
       "evidence": "system(cmd)"
@@ -91,7 +91,7 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "malloc() size argument contains arithmetic that may overflow.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 42,
       "column": 26,
       "evidence": "n * 16"
@@ -102,7 +102,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 47,
       "column": 9,
       "evidence": "strcpy(ptr, base)"
@@ -113,11 +113,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'ptr' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-30.c",
       "line": 51,
       "column": 10,
       "evidence": "ptr"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.434Z"
+  "enriched_at": "2026-05-26T14:27:55.546Z"
 }

@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-39.py",
-      "line": 17,
-      "column": 21,
-      "evidence": "subprocess.run("
-    }
-  ],
-  "enriched_at": "2026-05-13T11:13:25.466Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-26T14:27:52.916Z"
 }

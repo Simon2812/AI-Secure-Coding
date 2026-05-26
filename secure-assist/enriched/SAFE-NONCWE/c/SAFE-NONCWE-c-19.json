@@ -16,11 +16,11 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\SAFE-NONCWE\\c\\SAFE-NONCWE-c-19.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\SAFE-NONCWE\\c\\SAFE-NONCWE-c-19.c",
       "line": 53,
       "column": 5,
       "evidence": "int total_days = e->days_present + e->days_late;"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:27.247Z"
+  "enriched_at": "2026-05-26T14:27:57.419Z"
 }

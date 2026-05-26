@@ -22,93 +22,49 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 17,
+      "column": 33,
+      "evidence": "f->length + 1"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'f' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 20,
+      "column": 14,
+      "evidence": "f"
+    },
+    {
       "cweId": "CWE-787",
-      "ruleId": "out-of-bounds-write",
+      "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
-      "message": "This code uses a function that can write past the bounds of a buffer. Consider safer bounded alternatives such as fgets, snprintf, or explicit length checks.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
       "line": 24,
       "column": 5,
       "evidence": "strcpy(f->payload, msg)"
     },
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 24,
-      "column": 12,
-      "evidence": "strcpy(f->payload, msg);"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 25,
-      "column": 12,
-      "evidence": "return f;"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 28,
-      "column": 21,
-      "evidence": "static void release_frame(Frame *f)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 30,
-      "column": 6,
-      "evidence": "if (!f)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 33,
-      "column": 6,
-      "evidence": "if (f->payload)"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 34,
-      "column": 9,
-      "evidence": "free(f->payload);"
-    },
-    {
-      "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
-      "vulnerability": "Integer Overflow",
-      "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
-      "line": 17,
-      "column": 5,
-      "evidence": "f->payload = (char *)malloc(f->length + 1);"
+      "message": "Pointer 'f' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-26.c",
+      "line": 36,
+      "column": 10,
+      "evidence": "f"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.258Z"
+  "enriched_at": "2026-05-26T14:27:51.396Z"
 }

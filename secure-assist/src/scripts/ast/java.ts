@@ -23,7 +23,7 @@ const SQL_EXECUTE = new Set(["execute", "executeQuery", "executeUpdate", "execut
 const SQL_PREPARE = new Set(["prepareStatement", "prepareCall"]);
 
 const WEAK_HASH_ALGOS = /^"(MD5|SHA-?1)"$/i;
-const WEAK_CIPHER_ALGOS = /^"DES(\/[^"]+)?"$/i;
+const WEAK_CIPHER_ALGOS = /^"(DES|RC2|RC4|Blowfish|TripleDES|3DES)(\/[^"]+)?"$/i;
 
 export function analyzeJava(code: string, filePath: string, tree: Tree): Finding[] {
   const findings: Finding[] = [];
@@ -62,7 +62,22 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
 
       if (CMD_SINK_TYPES.has(typeName) && argsNode) {
         const args = getJavaArgs(argsNode);
-        if (args.some(a => taint.expressionIsTainted(a) || isJavaUserInputExpr(a))) {
+        // ProcessBuilder(cmd, arg1, arg2, ...) — only the first arg is the program.
+        // Subsequent args are passed directly to the OS (no shell expansion), so only
+        // flag when the command itself (args[0]) is user-controlled, or the full
+        // command is built as a single concatenated/formatted string.
+        const cmdArg = args[0];
+        const isSingleStringCmd = args.length === 1;
+        if (cmdArg && (taint.expressionIsTainted(cmdArg) || isJavaUserInputExpr(cmdArg))) {
+          findings.push(makeAstFinding({
+            cweId: "CWE-78", ruleId: "ast-cmd-injection",
+            vulnerability: "OS Command Injection",
+            severity: "high",
+            message: `new ${typeName}() receives user-controlled command.`,
+            filePath, node, code,
+          }));
+        } else if (isSingleStringCmd && cmdArg &&
+                   args.some(a => taint.expressionIsTainted(a) || isJavaUserInputExpr(a))) {
           findings.push(makeAstFinding({
             cweId: "CWE-78", ruleId: "ast-cmd-injection",
             vulnerability: "OS Command Injection",
@@ -142,10 +157,10 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
         const args = getJavaArgs(argsNode);
         if (args.length > 0 && WEAK_HASH_ALGOS.test(args[0].text)) {
           findings.push(makeAstFinding({
-            cweId: "CWE-327", ruleId: "ast-weak-hash",
-            vulnerability: "Use of Broken Cryptographic Algorithm",
+            cweId: "CWE-328", ruleId: "ast-weak-hash",
+            vulnerability: "Use of Weak Hash",
             severity: "medium",
-            message: `getInstance(${args[0].text}) uses a weak algorithm.`,
+            message: `getInstance(${args[0].text}) uses a weak hash algorithm (MD5/SHA-1).`,
             filePath, node, code,
           }));
         }
@@ -154,7 +169,7 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
             cweId: "CWE-327", ruleId: "ast-weak-cipher",
             vulnerability: "Use of Broken Cryptographic Algorithm",
             severity: "medium",
-            message: `getInstance(${args[0].text}) uses DES, an insecure cipher.`,
+            message: `getInstance(${args[0].text}) uses a broken or weak cipher.`,
             filePath, node, code,
           }));
         }
@@ -321,18 +336,26 @@ function findHardcodedCredentialsJava(
   root: Node, filePath: string, code: string
 ): Finding[] {
   const findings: Finding[] = [];
-  const credVars = /(password|passwd|pwd|secret|apiKey|api_key|token|authToken|accessToken|secretKey|clientSecret|passphrase|phrase|credential|cred|passcode|_pass\b)/i;
+  const credVars = /(password|passwd|pwd|secret|apiKey|api_key|token|authToken|accessToken|secretKey|clientSecret|passphrase|phrase|credential|cred|passcode|_pass\b|material|fallback|keyBytes|keyData|keyValue|crypto|cipher)/i;
 
   // Track string literals assigned to any variable, then check if used in credential sinks
   const literalVars = new Map<string, Node>(); // varName → string literal node
 
   for (const node of walkAll(root)) {
-    // Collect all string-literal variable assignments
+    // Collect all string-literal variable assignments (incl. "str".getBytes())
     if (node.type === "variable_declarator") {
       const nameNode = node.childForFieldName("name");
       const valueNode = node.childForFieldName("value");
-      if (nameNode && valueNode && valueNode.type === "string_literal" && valueNode.text.length > 5) {
-        literalVars.set(nameNode.text, valueNode);
+      if (nameNode && valueNode) {
+        if (valueNode.type === "string_literal" && valueNode.text.length > 5) {
+          literalVars.set(nameNode.text, valueNode);
+        } else if (valueNode.type === "method_invocation") {
+          const obj = valueNode.childForFieldName("object");
+          const method = valueNode.childForFieldName("name")?.text;
+          if ((method === "getBytes" || method === "toCharArray") && obj?.type === "string_literal" && obj.text.length > 5) {
+            literalVars.set(nameNode.text, obj);
+          }
+        }
       }
     }
 
@@ -353,7 +376,11 @@ function findHardcodedCredentialsJava(
       const valueNode = node.childForFieldName("value");
       if (!nameNode || !valueNode) continue;
       if (!credVars.test(nameNode.text)) continue;
-      if (valueNode.type === "string_literal" && valueNode.text.length > 5) {
+      const resolvedLit =
+        valueNode.type === "string_literal" ? valueNode :
+        (valueNode.type === "method_invocation" && (valueNode.childForFieldName("name")?.text === "getBytes" || valueNode.childForFieldName("name")?.text === "toCharArray"))
+          ? valueNode.childForFieldName("object") : null;
+      if (resolvedLit?.type === "string_literal" && resolvedLit.text.length > 5) {
         const cwe = /key|secret|token/i.test(nameNode.text) ? "CWE-321" : "CWE-259";
         findings.push(makeAstFinding({
           cweId: cwe, ruleId: "ast-hardcoded-cred",
@@ -382,6 +409,23 @@ function findHardcodedCredentialsJava(
             severity: "high",
             message: `Hard-coded password passed to ${methodName}().`,
             filePath, node: lastArg, code,
+          }));
+        }
+      }
+
+      // Pattern 2b: map.put("credential-key", stringLiteral) — hardcoded value in a map
+      if (methodName === "put" && args.length >= 2) {
+        const keyArg = args[0];
+        const valArg = args[1];
+        if (keyArg.type === "string_literal" && credVars.test(keyArg.text)
+            && isHardcodedString(valArg, literalVars)) {
+          const cwe = /key|secret|token|material|cipher|crypto/i.test(keyArg.text) ? "CWE-321" : "CWE-259";
+          findings.push(makeAstFinding({
+            cweId: cwe, ruleId: "ast-hardcoded-cred",
+            vulnerability: cwe === "CWE-321" ? "Use of Hard-coded Cryptographic Key" : "Use of Hard-coded Password",
+            severity: "high",
+            message: `Hard-coded credential value stored under key ${keyArg.text}.`,
+            filePath, node: valArg, code,
           }));
         }
       }

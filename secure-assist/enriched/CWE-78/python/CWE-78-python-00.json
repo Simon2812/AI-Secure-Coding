@@ -11,16 +11,49 @@
   "vulnerabilities": [],
   "static_findings": [
     {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "os.path.abspath() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-00.py",
+      "line": 16,
+      "column": 32,
+      "evidence": "os.path.join(base, name)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "os.path.join() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-00.py",
+      "line": 16,
+      "column": 45,
+      "evidence": "base"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "os.path.join() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-00.py",
+      "line": 21,
+      "column": 43,
+      "evidence": "path"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "python-subprocess",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "subprocess execution may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-00.py",
+      "message": "subprocess.Popen() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-00.py",
       "line": 52,
-      "column": 21,
-      "evidence": "subprocess.Popen("
+      "column": 38,
+      "evidence": "argv"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.435Z"
+  "enriched_at": "2026-05-26T14:27:52.723Z"
 }

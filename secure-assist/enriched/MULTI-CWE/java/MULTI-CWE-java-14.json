@@ -37,7 +37,7 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"MD5\") uses a weak algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
       "line": 24,
       "column": 32,
       "evidence": "MessageDigest.getInstance(\"MD5\")"
@@ -48,7 +48,7 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'SECRET'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
       "line": 9,
       "column": 42,
       "evidence": "\"globalStaticKey\""
@@ -59,11 +59,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded key material passed to SecretKeySpec.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
       "line": 12,
       "column": 47,
       "evidence": "SECRET.getBytes(StandardCharsets.UTF_8)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.556Z"
+  "enriched_at": "2026-05-26T14:27:55.900Z"
 }

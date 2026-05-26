@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:24.665Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential in macro 'SYSTEM_PHRASE'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-05.c",
+      "line": 10,
+      "column": 23,
+      "evidence": "L\"TenantWideValue\"\r"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:50.302Z"
 }

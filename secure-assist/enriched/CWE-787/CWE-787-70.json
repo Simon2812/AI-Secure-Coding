@@ -16,11 +16,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'buffer' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-70.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-70.c",
       "line": 22,
       "column": 10,
       "evidence": "buffer"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.635Z"
+  "enriched_at": "2026-05-26T14:27:53.581Z"
 }

@@ -9,6 +9,18 @@
     "name": "OWASP Benchmark Project"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:24.475Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "open() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-78.py",
+      "line": 34,
+      "column": 27,
+      "evidence": "file_path"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:50.001Z"
 }

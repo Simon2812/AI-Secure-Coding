@@ -16,11 +16,11 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query is constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-48.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-48.py",
       "line": 32,
       "column": 13,
       "evidence": "\"SELECT record_id, payload, size_hint \"\r\n            \"FROM stream_records \"\r\n            \"WHERE stream_name = ? AND stat"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:27.222Z"
+  "enriched_at": "2026-05-26T14:27:57.369Z"
 }

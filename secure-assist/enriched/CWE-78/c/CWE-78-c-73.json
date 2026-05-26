@@ -9,6 +9,29 @@
     "name": "Juliet Test Suite"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:25.331Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "POPEN() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-73.c",
+      "line": 79,
+      "column": 20,
+      "evidence": "POPEN(x, L\"w\")"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "POPEN() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-73.c",
+      "line": 81,
+      "column": 20,
+      "evidence": "POPEN((char *)\"id\", \"w\")"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:51.834Z"
 }

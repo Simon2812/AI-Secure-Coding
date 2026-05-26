@@ -22,27 +22,38 @@
   ],
   "static_findings": [
     {
-      "cweId": "CWE-78",
-      "ruleId": "cpp-system",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "Use of system() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
-      "line": 43,
-      "column": 14,
-      "evidence": "system("
-    },
-    {
       "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
+      "ruleId": "ast-integer-overflow",
       "vulnerability": "Integer Overflow",
       "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
       "line": 10,
+      "column": 20,
+      "evidence": "fread(buf + used, 1, cap - 1 - used, in)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 15,
       "column": 9,
-      "evidence": "size_t r = fread(buf + used, 1, cap - 1 - used, in);"
+      "evidence": "used"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 43,
+      "column": 14,
+      "evidence": "system(cmd)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.321Z"
+  "enriched_at": "2026-05-26T14:27:51.750Z"
 }

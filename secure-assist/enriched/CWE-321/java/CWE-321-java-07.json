@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:24.760Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential value stored under key \"crypto\".",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\java\\CWE-321-java-07.java",
+      "line": 13,
+      "column": 30,
+      "evidence": "\"b7e3c9f1a2d44e8f\""
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:50.477Z"
 }

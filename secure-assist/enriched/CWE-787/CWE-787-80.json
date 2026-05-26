@@ -16,7 +16,7 @@
       "vulnerability": "Integer Overflow",
       "severity": "medium",
       "message": "Arithmetic on user-controlled integer may overflow.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-80.cpp",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-80.cpp",
       "line": 33,
       "column": 20,
       "evidence": "(size_t)count * sizeof(int)"
@@ -27,11 +27,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-80.cpp",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-80.cpp",
       "line": 37,
       "column": 24,
       "evidence": "i < (size_t)count"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.652Z"
+  "enriched_at": "2026-05-26T14:27:53.626Z"
 }

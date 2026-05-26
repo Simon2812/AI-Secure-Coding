@@ -22,16 +22,27 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-02.c",
+      "line": 68,
+      "column": 16,
+      "evidence": "baseLen + (size_t)nread"
+    },
+    {
       "cweId": "CWE-78",
-      "ruleId": "cpp-system",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of system() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-02.c",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-02.c",
       "line": 85,
       "column": 9,
-      "evidence": "system("
+      "evidence": "system(buffer)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.282Z"
+  "enriched_at": "2026-05-26T14:27:51.502Z"
 }

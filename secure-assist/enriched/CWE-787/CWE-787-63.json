@@ -16,11 +16,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Array write uses user-controlled index without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-787\\CWE-787-63.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-63.c",
       "line": 23,
       "column": 16,
       "evidence": "value"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.625Z"
+  "enriched_at": "2026-05-26T14:27:53.559Z"
 }

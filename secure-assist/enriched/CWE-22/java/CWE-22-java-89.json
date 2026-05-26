@@ -16,7 +16,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Path.resolve() receives user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-89.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-89.java",
       "line": 24,
       "column": 26,
       "evidence": "BASE.resolve(relative)"
@@ -27,11 +27,11 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Files.readString() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-89.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-89.java",
       "line": 30,
       "column": 16,
       "evidence": "Files.readString(themeFile)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.246Z"
+  "enriched_at": "2026-05-26T14:27:49.618Z"
 }

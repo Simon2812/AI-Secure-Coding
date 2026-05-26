@@ -47,11 +47,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'self.api_key'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-21.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-21.py",
       "line": 96,
       "column": 24,
       "evidence": "\"internal-api-key-123\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.941Z"
+  "enriched_at": "2026-05-26T14:27:56.706Z"
 }

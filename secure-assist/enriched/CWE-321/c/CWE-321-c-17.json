@@ -16,11 +16,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-17.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-17.c",
       "line": 63,
       "column": 9,
       "evidence": "strcpy(inputBuffer, \"unused\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.709Z"
+  "enriched_at": "2026-05-26T14:27:50.385Z"
 }

@@ -20,6 +20,29 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:24.879Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptDeriveKey() uses CALG_RC2, a weak or broken cipher.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\c\\CWE-327-c-10.c",
+      "line": 42,
+      "column": 35,
+      "evidence": "CALG_RC2"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptDeriveKey() uses CALG_RC2, a weak or broken cipher.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\c\\CWE-327-c-10.c",
+      "line": 46,
+      "column": 35,
+      "evidence": "CALG_RC2"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:50.696Z"
 }

@@ -27,11 +27,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'stored_secret'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-09.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-09.py",
       "line": 11,
       "column": 21,
       "evidence": "\"SupportLogin#77\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.620Z"
+  "enriched_at": "2026-05-26T14:27:50.225Z"
 }

@@ -26,8 +26,8 @@
       "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "system() may allow command injection if argument is user-controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-07.c",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-07.c",
       "line": 33,
       "column": 5,
       "evidence": "system(command)"
@@ -37,12 +37,12 @@
       "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "system() may allow command injection if argument is user-controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-07.c",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-07.c",
       "line": 40,
       "column": 5,
       "evidence": "system(command)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.358Z"
+  "enriched_at": "2026-05-26T14:27:55.352Z"
 }

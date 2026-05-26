@@ -23,37 +23,26 @@
   "static_findings": [
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
-      "line": 35,
-      "column": 9,
-      "evidence": "static int read_value(Node *n)"
+      "message": "Pointer 'n' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
+      "line": 32,
+      "column": 14,
+      "evidence": "n"
     },
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
-      "line": 37,
+      "message": "Pointer 'head' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
+      "line": 55,
       "column": 10,
-      "evidence": "return n->value;"
-    },
-    {
-      "cweId": "CWE-416",
-      "ruleId": "use-after-free",
-      "vulnerability": "Use After Free",
-      "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
-      "line": 53,
-      "column": 8,
-      "evidence": "printf(\"%d\\n\", result);"
+      "evidence": "head"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.259Z"
+  "enriched_at": "2026-05-26T14:27:51.400Z"
 }

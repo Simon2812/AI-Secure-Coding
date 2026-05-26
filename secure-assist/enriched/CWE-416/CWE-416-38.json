@@ -9,18 +9,6 @@
     "name": "Juliet Test Suite"
   },
   "vulnerabilities": [],
-  "static_findings": [
-    {
-      "cweId": "CWE-190",
-      "ruleId": "integer-overflow",
-      "vulnerability": "Integer Overflow",
-      "severity": "medium",
-      "message": "This arithmetic operation may overflow before being used for allocation, copying, or size calculation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-416\\CWE-416-38.cpp",
-      "line": 8,
-      "column": 5,
-      "evidence": "long local = *p;"
-    }
-  ],
-  "enriched_at": "2026-05-13T11:13:25.269Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-26T14:27:51.437Z"
 }

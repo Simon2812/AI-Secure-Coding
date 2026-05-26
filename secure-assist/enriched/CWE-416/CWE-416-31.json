@@ -9,6 +9,18 @@
     "name": "Juliet Test Suite"
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-13T11:13:25.263Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'segment' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-416\\CWE-416-31.c",
+      "line": 25,
+      "column": 10,
+      "evidence": "segment"
+    }
+  ],
+  "enriched_at": "2026-05-26T14:27:51.415Z"
 }

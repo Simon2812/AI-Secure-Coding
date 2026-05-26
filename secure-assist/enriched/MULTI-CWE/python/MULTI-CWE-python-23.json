@@ -57,7 +57,7 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'secret'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-23.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-23.py",
       "line": 119,
       "column": 14,
       "evidence": "b\"review-package-signing-key\""
@@ -68,11 +68,11 @@
       "vulnerability": "Use of Hard-coded Password",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'smtp_password'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-23.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-23.py",
       "line": 165,
       "column": 21,
       "evidence": "\"Notify#2026\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.968Z"
+  "enriched_at": "2026-05-26T14:27:56.786Z"
 }

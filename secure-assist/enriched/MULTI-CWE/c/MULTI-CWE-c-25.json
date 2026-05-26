@@ -47,7 +47,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcat() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-25.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-25.c",
       "line": 72,
       "column": 5,
       "evidence": "strcat(cmd, file)"
@@ -57,12 +57,12 @@
       "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "system() may allow command injection if argument is user-controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-25.c",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-25.c",
       "line": 73,
       "column": 5,
       "evidence": "system(cmd)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.414Z"
+  "enriched_at": "2026-05-26T14:27:55.498Z"
 }

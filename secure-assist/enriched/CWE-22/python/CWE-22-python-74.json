@@ -16,11 +16,11 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "codecs.open() receives user-controlled path without validation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-74.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-74.py",
       "line": 38,
       "column": 17,
       "evidence": "f\"{helpers.utils.TESTFILES_DIR}/{selected_file}\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.461Z"
+  "enriched_at": "2026-05-26T14:27:49.978Z"
 }

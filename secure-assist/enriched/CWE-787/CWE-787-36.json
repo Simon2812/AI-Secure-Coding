@@ -27,11 +27,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Pointer write uses user-controlled offset without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-787\\CWE-787-36.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-36.c",
       "line": 18,
       "column": 6,
       "evidence": "(base + slot)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.572Z"
+  "enriched_at": "2026-05-26T14:27:53.405Z"
 }

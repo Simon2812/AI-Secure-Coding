@@ -47,11 +47,11 @@
       "vulnerability": "Use of Hard-coded Cryptographic Key",
       "severity": "high",
       "message": "Hard-coded credential assigned to 'secret'.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-22.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-22.py",
       "line": 220,
       "column": 14,
       "evidence": "b\"package-export-key\""
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.955Z"
+  "enriched_at": "2026-05-26T14:27:56.747Z"
 }

@@ -27,7 +27,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query is constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
       "line": 27,
       "column": 28,
       "evidence": "query"
@@ -38,7 +38,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "pathlib path join with user-controlled input may allow path traversal.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
       "line": 109,
       "column": 31,
       "evidence": "export_name"
@@ -49,11 +49,11 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "open() receives user-controlled path without validation.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
       "line": 113,
       "column": 15,
       "evidence": "output_path"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.734Z"
+  "enriched_at": "2026-05-26T14:27:56.285Z"
 }

@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-78",
-      "ruleId": "java-processbuilder",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "ProcessBuilder may allow OS command injection if arguments include unsafe input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-24.java",
+      "message": "new ProcessBuilder() receives user-controlled command.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-24.java",
       "line": 85,
-      "column": 38,
-      "evidence": "ProcessBuilder("
+      "column": 34,
+      "evidence": "new ProcessBuilder(args)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.371Z"
+  "enriched_at": "2026-05-26T14:27:52.182Z"
 }

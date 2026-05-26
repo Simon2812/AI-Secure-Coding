@@ -47,7 +47,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-27.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-27.c",
       "line": 58,
       "column": 5,
       "evidence": "strcpy(text, name)"
@@ -58,11 +58,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'text' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-27.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-27.c",
       "line": 98,
       "column": 10,
       "evidence": "text"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.423Z"
+  "enriched_at": "2026-05-26T14:27:55.518Z"
 }

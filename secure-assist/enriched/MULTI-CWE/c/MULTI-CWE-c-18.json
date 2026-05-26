@@ -37,7 +37,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "Loop with user-controlled bound writes to array without bounds check.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-18.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-18.c",
       "line": 58,
       "column": 17,
       "evidence": "i < count"
@@ -48,11 +48,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'items' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-18.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-18.c",
       "line": 68,
       "column": 14,
       "evidence": "items"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.390Z"
+  "enriched_at": "2026-05-26T14:27:55.443Z"
 }

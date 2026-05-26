@@ -16,11 +16,11 @@
       "vulnerability": "Use After Free",
       "severity": "high",
       "message": "Pointer 'out' is used after being freed.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-24.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-24.c",
       "line": 39,
       "column": 10,
       "evidence": "out"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.112Z"
+  "enriched_at": "2026-05-26T14:27:51.106Z"
 }

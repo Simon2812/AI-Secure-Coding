@@ -27,7 +27,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "new File() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
       "line": 14,
       "column": 30,
       "evidence": "BASE_DIR + normalized"
@@ -38,7 +38,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Files.readAllBytes() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
       "line": 20,
       "column": 26,
       "evidence": "Files.readAllBytes(file.toPath())"
@@ -49,11 +49,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"MD5\") uses a weak algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
       "line": 46,
       "column": 32,
       "evidence": "MessageDigest.getInstance(\"MD5\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.538Z"
+  "enriched_at": "2026-05-26T14:27:55.851Z"
 }

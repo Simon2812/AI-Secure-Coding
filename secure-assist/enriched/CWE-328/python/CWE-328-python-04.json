@@ -27,11 +27,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "hashlib.new() uses a weak hashing algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-328\\python\\CWE-328-python-04.py",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-328\\python\\CWE-328-python-04.py",
       "line": 36,
       "column": 18,
       "evidence": "hashlib.new('md5')"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.188Z"
+  "enriched_at": "2026-05-26T14:27:51.228Z"
 }

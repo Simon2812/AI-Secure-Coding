@@ -23,15 +23,15 @@
   "static_findings": [
     {
       "cweId": "CWE-416",
-      "ruleId": "use-after-free",
+      "ruleId": "ast-use-after-free",
       "vulnerability": "Use After Free",
       "severity": "high",
-      "message": "This code appears to use a pointer after it was freed. Accessing freed memory can cause crashes or security vulnerabilities.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-416\\CWE-416-01.c",
-      "line": 20,
-      "column": 20,
-      "evidence": "printf(\"%s\\n\", buffer);"
+      "message": "Pointer 'buffer' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-416\\CWE-416-01.c",
+      "line": 18,
+      "column": 10,
+      "evidence": "buffer"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.237Z"
+  "enriched_at": "2026-05-26T14:27:51.317Z"
 }

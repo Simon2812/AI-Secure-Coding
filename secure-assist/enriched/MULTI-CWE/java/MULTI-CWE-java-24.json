@@ -47,7 +47,7 @@
       "vulnerability": "SQL Injection",
       "severity": "high",
       "message": "SQL query constructed with user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
       "line": 35,
       "column": 49,
       "evidence": "query"
@@ -58,7 +58,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "new File() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
       "line": 46,
       "column": 27,
       "evidence": "exportRoot + \"/\" + name"
@@ -69,7 +69,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Files.write() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
       "line": 52,
       "column": 9,
       "evidence": "Files.write(f.toPath(), content.getBytes())"
@@ -80,11 +80,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"MD5\") uses a weak algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
       "line": 58,
       "column": 27,
       "evidence": "MessageDigest.getInstance(\"MD5\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.594Z"
+  "enriched_at": "2026-05-26T14:27:55.994Z"
 }

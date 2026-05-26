@@ -22,6 +22,14 @@ function findOutOfBoundsWrite(context) {
         for (const match of code.matchAll(regex)) {
             if (match.index === undefined)
                 continue;
+            // strcpy/strcat with a string literal second arg is safe (no overflow risk)
+            const fnName = match[0].match(/^\w+/)?.[0] ?? "";
+            if (fnName === "strcpy" || fnName === "strcat") {
+                const args = match[1]?.split(",") ?? [];
+                const secondArg = args[1]?.trim() ?? "";
+                if (/^"[^"]*"$/.test(secondArg) || /^L"[^"]*"$/.test(secondArg))
+                    continue;
+            }
             findings.push((0, utils_1.createFinding)({
                 cweId: "CWE-787",
                 ruleId: "out-of-bounds-write",

@@ -27,11 +27,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"DES\") uses DES, an insecure cipher.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-06.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-06.java",
       "line": 13,
       "column": 25,
       "evidence": "Cipher.getInstance(\"DES\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.528Z"
+  "enriched_at": "2026-05-26T14:27:55.827Z"
 }

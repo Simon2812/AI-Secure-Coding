@@ -12,15 +12,15 @@
   "static_findings": [
     {
       "cweId": "CWE-78",
-      "ruleId": "cpp-popen",
+      "ruleId": "ast-cmd-injection",
       "vulnerability": "OS Command Injection",
       "severity": "high",
-      "message": "Use of popen() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-96.c",
+      "message": "popen() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-96.c",
       "line": 30,
       "column": 15,
-      "evidence": "popen("
+      "evidence": "popen(cmd, \"r\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.345Z"
+  "enriched_at": "2026-05-26T14:27:52.001Z"
 }

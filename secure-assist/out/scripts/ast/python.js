@@ -25,7 +25,11 @@ const CMD_SINKS = new Set([
     "subprocess.check_call", "subprocess.check_output",
 ]);
 const WEAK_HASH = new Set(["hashlib.md5", "hashlib.sha1", "hashlib.new"]);
-const WEAK_CIPHER = new Set(["DES.new", "Crypto.Cipher.DES"]);
+const WEAK_CIPHER = new Set([
+    "DES.new", "Crypto.Cipher.DES",
+    "ARC4.new", "Crypto.Cipher.ARC4",
+    "Blowfish.new", "Crypto.Cipher.Blowfish",
+]);
 function analyzePython(code, filePath, tree) {
     const findings = [];
     const root = tree.rootNode;
@@ -102,22 +106,23 @@ function analyzePython(code, filePath, tree) {
                 }));
             }
         }
-        // CWE-327/328: weak crypto
+        // CWE-328: weak hash
         if (fnName && WEAK_HASH.has(fnName)) {
             findings.push((0, utils_1.makeAstFinding)({
-                cweId: "CWE-327", ruleId: "ast-weak-hash",
-                vulnerability: "Use of Broken Cryptographic Algorithm",
+                cweId: "CWE-328", ruleId: "ast-weak-hash",
+                vulnerability: "Use of Weak Hash",
                 severity: "medium",
-                message: `${fnName}() uses a weak hashing algorithm.`,
+                message: `${fnName}() uses a weak hashing algorithm (MD5/SHA1).`,
                 filePath, node, code,
             }));
         }
+        // CWE-327: weak cipher
         if (fnName && WEAK_CIPHER.has(fnName)) {
             findings.push((0, utils_1.makeAstFinding)({
                 cweId: "CWE-327", ruleId: "ast-weak-cipher",
                 vulnerability: "Use of Broken Cryptographic Algorithm",
                 severity: "medium",
-                message: `${fnName}() uses DES, an insecure cipher.`,
+                message: `${fnName}() uses a broken or weak cipher.`,
                 filePath, node, code,
             }));
         }
@@ -127,6 +132,24 @@ function analyzePython(code, filePath, tree) {
     return findings;
 }
 function seedPythonTaint(root, taint) {
+    // Seed Flask/web framework globals — 'request' is always user-controlled in web apps
+    let hasFlaskImport = false;
+    for (const node of (0, taint_1.walkAll)(root)) {
+        if (node.type === "import_from_statement") {
+            const moduleName = node.childForFieldName("module_name")?.text ?? "";
+            if (moduleName === "flask" || moduleName === "quart" || moduleName === "fastapi") {
+                hasFlaskImport = true;
+            }
+        }
+        if (node.type === "import_statement") {
+            if (/\b(flask|quart|fastapi|django)\b/.test(node.text)) {
+                hasFlaskImport = true;
+            }
+        }
+    }
+    if (hasFlaskImport) {
+        taint.add("request");
+    }
     for (const node of (0, taint_1.walkAll)(root)) {
         // Direct assignment from user input expression
         if (node.type === "assignment") {
@@ -245,8 +268,12 @@ function hasUnsafeSqlConstruction(node, taint, valueMap) {
     const text = node.text.toLowerCase();
     if (!/\b(select|insert|update|delete)\b/.test(text))
         return false;
-    if (node.type === "string")
+    if (node.type === "string") {
+        // f-strings (f"..." / f'...') may be typed as "string" in some grammar versions
+        if (/^f["']/i.test(node.text))
+            return true;
         return false;
+    }
     if (taint.expressionIsTainted(node))
         return true;
     if (node.type === "binary_operator" || node.type === "concatenated_string")
@@ -271,7 +298,7 @@ function buildPythonValueMap(root) {
 }
 function findHardcodedCredentialsPython(root, filePath, code) {
     const findings = [];
-    const credVars = /(password|passwd|pwd|secret|api_key|apikey|token|auth_token|access_token|secret_key|client_secret|passphrase|phrase|credential|cred|passcode|_pass\b)/i;
+    const credVars = /(password|passwd|pwd|secret|api_key|apikey|token|auth_token|access_token|secret_key|client_secret|passphrase|phrase|credential|cred|passcode|_pass\b|key)/i;
     for (const node of (0, taint_1.walkAll)(root)) {
         if (node.type !== "assignment")
             continue;

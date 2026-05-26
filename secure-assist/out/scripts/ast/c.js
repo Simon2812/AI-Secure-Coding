@@ -6,10 +6,24 @@ const utils_1 = require("./utils");
 const OOB_WRITE_FUNCS = new Set(["gets", "strcpy", "strcat", "sprintf", "vsprintf"]);
 const OVERFLOW_ALLOC_FUNCS = new Set(["malloc", "realloc", "calloc"]);
 const OVERFLOW_MEM_FUNCS = new Set(["memcpy", "memmove", "memset"]);
-const CMD_FUNCS = new Set(["system", "popen", "execl", "execlp", "execv", "execvp"]);
+const CMD_FUNCS = new Set([
+    // Standard POSIX exec/spawn
+    "system", "popen", "execl", "execlp", "execle", "execv", "execvp", "execve", "execvpe",
+    // Uppercase macro variants (common in Juliet / NIST test suites)
+    "SYSTEM", "POPEN", "EXECL", "EXECLP", "EXECLE", "EXECV", "EXECVP", "EXECVE",
+    // Windows spawn family
+    "_spawnl", "_spawnlp", "_spawnle", "_spawnlpe",
+    "_spawnv", "_spawnvp", "_spawnve", "_spawnvpe",
+    "posix_spawn", "posix_spawnp",
+    // Uppercase spawn macros
+    "SPAWNL", "SPAWNV", "SPAWNVP",
+]);
 const WEAK_HASH_FUNCS = new Set(["MD5", "EVP_md5"]);
 const WEAK_HASH_SHA1 = new Set(["SHA1", "EVP_sha1"]);
-const CRED_MACROS = /^(PASSWORD|PASSWD|PWD|SECRET|API_KEY|APIKEY|TOKEN|AUTH_TOKEN|ACCESS_TOKEN|SECRET_KEY|CLIENT_SECRET|FALLBACK|KEY|PHRASE|PASSPHRASE)/i;
+const CRED_MACROS = /(PASSWORD|PASSWD|PWD|SECRET|API_KEY|APIKEY|TOKEN|AUTH_TOKEN|ACCESS_TOKEN|SECRET_KEY|CLIENT_SECRET|FALLBACK|KEY|PHRASE|PASSPHRASE|MATERIAL)/i;
+// Windows Crypto API weak algorithm constants
+const WEAK_CALG_CIPHER = new Set(["CALG_3DES", "CALG_3DES_112", "CALG_DES", "CALG_RC2", "CALG_RC4", "CALG_RC5"]);
+const WEAK_CALG_HASH = new Set(["CALG_MD5", "CALG_MD4", "CALG_MD2", "CALG_SHA", "CALG_SHA1"]);
 function analyzeC(code, filePath, tree) {
     const findings = [];
     const root = tree.rootNode;
@@ -19,6 +33,10 @@ function analyzeC(code, filePath, tree) {
     seedCIntegerSources(root, intTaint);
     seedCIntParamSources(root, intTaint); // treat int params as potential user input
     intTaint.propagateAssignments(root, isCIntegerSourceExpr);
+    // CWE-78: string taint — track char* variables from user-controlled string sources
+    const strTaint = new taint_1.TaintTracker();
+    seedCStringSources(root, strTaint);
+    strTaint.propagateAssignments(root, isCStringSourceExpr);
     for (const node of (0, taint_1.walkAll)(root)) {
         // CWE-190: arithmetic on user-controlled integer
         if (node.type === "init_declarator" || node.type === "assignment_expression") {
@@ -33,6 +51,32 @@ function analyzeC(code, filePath, tree) {
                     severity: "medium",
                     message: "Arithmetic on user-controlled integer may overflow.",
                     filePath, node: valueNode, code,
+                }));
+            }
+        }
+        // CWE-190: x++ / x-- on tainted integer (update_expression)
+        if (node.type === "update_expression") {
+            const arg = node.children.find(c => c.type === "identifier");
+            if (arg && intTaint.has(arg.text) && !isProtectedByBoundsCheck(node, arg)) {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: "CWE-190", ruleId: "ast-integer-overflow",
+                    vulnerability: "Integer Overflow",
+                    severity: "medium",
+                    message: `Increment/decrement of user-controlled integer '${arg.text}' may overflow.`,
+                    filePath, node, code,
+                }));
+            }
+        }
+        // CWE-190: x += n / x -= n / x *= n (augmented_assignment on tainted var)
+        if (node.type === "augmented_assignment_expression") {
+            const left = node.childForFieldName("left");
+            if (left?.type === "identifier" && intTaint.has(left.text) && !isProtectedByBoundsCheck(node, left)) {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: "CWE-190", ruleId: "ast-integer-overflow",
+                    vulnerability: "Integer Overflow",
+                    severity: "medium",
+                    message: `Augmented arithmetic on user-controlled integer '${left.text}' may overflow.`,
+                    filePath, node, code,
                 }));
             }
         }
@@ -85,14 +129,36 @@ function analyzeC(code, filePath, tree) {
             // CWE-78: command injection
             if (CMD_FUNCS.has(fnName) && argsNode) {
                 const args = getArgs(argsNode);
-                if (args.length > 0 && !isStringLiteral(args[0])) {
-                    findings.push((0, utils_1.makeAstFinding)({
-                        cweId: "CWE-78", ruleId: "ast-cmd-injection",
-                        vulnerability: "OS Command Injection",
-                        severity: "high",
-                        message: `${fnName}() may allow command injection if argument is user-controlled.`,
-                        filePath, node, code,
-                    }));
+                if (args.length > 0) {
+                    // For system/popen: the entire first arg is the shell command — flag if non-literal
+                    const isShellFunc = fnName.toLowerCase() === "system" || fnName.toLowerCase() === "popen";
+                    if (isShellFunc) {
+                        if (!isStringLiteral(args[0]) && !isNullOrConstant(args[0]) && !strTaint.has(args[0].text)) {
+                            findings.push((0, utils_1.makeAstFinding)({
+                                cweId: "CWE-78", ruleId: "ast-cmd-injection",
+                                vulnerability: "OS Command Injection",
+                                severity: "high",
+                                message: `${fnName}() receives a non-literal command argument.`,
+                                filePath, node, code,
+                            }));
+                        }
+                    }
+                    else {
+                        // For exec/spawn family: flag only if the program path (first arg after any mode flag)
+                        // is tainted, OR if a tainted string variable appears in any arg
+                        const pathArgIdx = fnName.startsWith("_spawn") ? 1 : 0; // _spawnX has mode as arg[0]
+                        const pathArg = args[pathArgIdx];
+                        const anyTainted = args.some(a => strTaint.expressionIsTainted(a) || intTaint.expressionIsTainted(a));
+                        if (anyTainted || (pathArg && !isStringLiteral(pathArg) && !isNullOrConstant(pathArg))) {
+                            findings.push((0, utils_1.makeAstFinding)({
+                                cweId: "CWE-78", ruleId: "ast-cmd-injection",
+                                vulnerability: "OS Command Injection",
+                                severity: "high",
+                                message: `${fnName}() receives user-controlled argument.`,
+                                filePath, node, code,
+                            }));
+                        }
+                    }
                 }
             }
             // CWE-190: integer overflow in allocation/memory functions
@@ -147,6 +213,34 @@ function analyzeC(code, filePath, tree) {
                     message: `${fnName}() uses SHA-1, a weak hashing algorithm.`,
                     filePath, node, code,
                 }));
+            }
+            // CWE-327: Windows Crypto API — CryptDeriveKey/CryptEncrypt with weak cipher
+            if ((fnName === "CryptDeriveKey" || fnName === "CryptEncrypt" || fnName === "CryptDecrypt") && argsNode) {
+                const args = getArgs(argsNode);
+                const algoArg = args[1]; // second arg is the algorithm constant
+                if (algoArg && WEAK_CALG_CIPHER.has(algoArg.text)) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId: "CWE-327", ruleId: "ast-weak-wincrypt-cipher",
+                        vulnerability: "Use of Broken Cryptographic Algorithm",
+                        severity: "medium",
+                        message: `${fnName}() uses ${algoArg.text}, a weak or broken cipher.`,
+                        filePath, node: algoArg, code,
+                    }));
+                }
+            }
+            // CWE-327: Windows Crypto API — CryptCreateHash with weak hash
+            if (fnName === "CryptCreateHash" && argsNode) {
+                const args = getArgs(argsNode);
+                const algoArg = args[1]; // second arg is the algorithm constant
+                if (algoArg && WEAK_CALG_HASH.has(algoArg.text)) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId: "CWE-327", ruleId: "ast-weak-wincrypt-hash",
+                        vulnerability: "Use of Broken Cryptographic Algorithm",
+                        severity: "medium",
+                        message: `CryptCreateHash() uses ${algoArg.text}, a weak hashing algorithm.`,
+                        filePath, node: algoArg, code,
+                    }));
+                }
             }
         }
         // CWE-787: array subscript write with tainted index — arr[user_input] = val
@@ -255,12 +349,25 @@ function getArgs(argsNode) {
 function isStringLiteral(node) {
     return node.type === "string_literal" || node.type === "concatenated_string";
 }
+// NULL pointer, numeric literals, or ALL_CAPS constants (macro-defined path/flag constants)
+function isNullOrConstant(node) {
+    if (node.type === "null" || node.text === "NULL")
+        return true;
+    if (node.type === "number_literal")
+        return true;
+    // ALL_CAPS identifiers are typically #define constants (e.g. CMD_PATH, _P_WAIT)
+    if (node.type === "identifier" && /^[A-Z_][A-Z0-9_]*$/.test(node.text))
+        return true;
+    return false;
+}
 function containsArithmetic(node) {
     if (node.type === "binary_expression") {
-        const op = node.children.find(c => c.type === "+" || c.type === "*");
+        const op = node.children.find(c => c.type === "+" || c.type === "*" || c.type === "-");
         if (op)
             return true;
     }
+    if (node.type === "update_expression")
+        return true;
     return node.children.some(c => containsArithmetic(c));
 }
 function isProtectedByBoundsCheck(callNode, sizeArg) {
@@ -342,9 +449,17 @@ function isCIntegerSourceExpr(node) {
         /\bstrtol\s*\(/.test(text) ||
         /\bstrtoul\s*\(/.test(text) ||
         /\batol\s*\(/.test(text) ||
+        /\bstrtoll\s*\(/.test(text) ||
+        /\bstrtoull\s*\(/.test(text) ||
         /\bgetenv\s*\(/.test(text) ||
         /\brand\s*\(/.test(text) ||
-        /\brand_r\s*\(/.test(text);
+        /\brand_r\s*\(/.test(text) ||
+        /\brecv\s*\(/.test(text) ||
+        /\bread\s*\(/.test(text) ||
+        /\bfread\s*\(/.test(text) ||
+        /\bfgets\s*\(/.test(text) ||
+        /\bgetchar\s*\(/.test(text) ||
+        /\bgetc\s*\(/.test(text);
 }
 // CWE-190: constant overflow detection — track variables assigned MAX/boundary constants
 const OVERFLOW_CONST_PATTERN = /\b(CHAR_MAX|SCHAR_MAX|UCHAR_MAX|SHRT_MAX|USHRT_MAX|INT_MAX|UINT_MAX|LONG_MAX|ULONG_MAX|LLONG_MAX|ULLONG_MAX|INT8_MAX|INT16_MAX|INT32_MAX|INT64_MAX|UINT8_MAX|UINT16_MAX|UINT32_MAX|UINT64_MAX|SIZE_MAX)\b/;
@@ -394,6 +509,45 @@ function findConstantOverflows(root, filePath, code) {
         }
     }
     return findings;
+}
+function seedCStringSources(root, taint) {
+    for (const node of (0, taint_1.walkAll)(root)) {
+        if (node.type !== "call_expression")
+            continue;
+        const fn = node.childForFieldName("function")?.text ?? "";
+        const argsNode = node.childForFieldName("arguments");
+        if (!argsNode)
+            continue;
+        // fgets(buf, size, stream) / gets(buf) — first arg is the destination buffer
+        if (fn === "fgets" || fn === "gets") {
+            const args = getArgs(argsNode);
+            if (args.length > 0 && args[0].type === "identifier") {
+                taint.add(args[0].text);
+            }
+        }
+        // scanf/fscanf/sscanf — address-of args are destination buffers
+        if (fn === "scanf" || fn === "fscanf" || fn === "sscanf") {
+            for (const m of argsNode.text.matchAll(/&([a-zA-Z_][a-zA-Z0-9_]*)/g)) {
+                taint.add(m[1]);
+            }
+        }
+        // recv(sock, buf, ...) — second arg is the buffer
+        if (fn === "recv" || fn === "read") {
+            const args = getArgs(argsNode);
+            if (args.length >= 2 && args[1].type === "identifier") {
+                taint.add(args[1].text);
+            }
+        }
+        // getenv returns a char* from environment — assign target is tainted
+    }
+    // getenv: the return value is tainted — caught via propagateAssignments with isCStringSourceExpr
+}
+function isCStringSourceExpr(node) {
+    const text = node.text;
+    return /\bgetenv\s*\(/.test(text) ||
+        /\bgetlogin\s*\(/.test(text) ||
+        /\bcuserid\s*\(/.test(text) ||
+        /\bgetcwd\s*\(/.test(text);
 }
 function isFreeCall(node) {
     return node.type === "call_expression" &&

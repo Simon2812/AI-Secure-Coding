@@ -27,7 +27,7 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
       "line": 25,
       "column": 13,
       "evidence": "strcpy(material, \"Alpha\")"
@@ -38,11 +38,11 @@
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-14.c",
       "line": 28,
       "column": 13,
       "evidence": "strcpy(material, \"BetaValue\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.695Z"
+  "enriched_at": "2026-05-26T14:27:50.363Z"
 }

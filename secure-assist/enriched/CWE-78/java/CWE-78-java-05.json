@@ -20,29 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-22",
-      "ruleId": "path-traversal",
-      "vulnerability": "Path Traversal",
-      "severity": "high",
-      "message": "This file or path operation appears to use a user-controlled path without proper validation, which may allow directory traversal or access to unintended files.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-05.java",
-      "line": 25,
-      "column": 26,
-      "evidence": "new FileInputStream(\"../common/config.properties\")"
-    },
-    {
-      "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-05.java",
-      "line": 58,
-      "column": 29,
-      "evidence": "Runtime.getRuntime().exec("
-    }
-  ],
-  "enriched_at": "2026-05-13T11:13:25.354Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-26T14:27:52.048Z"
 }

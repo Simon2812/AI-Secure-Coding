@@ -27,11 +27,11 @@
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
       "message": "getInstance(\"SHA1\") uses a weak algorithm.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-328\\java\\CWE-328-java-05.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-328\\java\\CWE-328-java-05.java",
       "line": 13,
       "column": 39,
       "evidence": "MessageDigest.getInstance(\"SHA1\")"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:25.125Z"
+  "enriched_at": "2026-05-26T14:27:51.125Z"
 }

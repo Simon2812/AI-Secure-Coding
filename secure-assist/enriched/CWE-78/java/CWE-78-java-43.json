@@ -20,18 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-78",
-      "ruleId": "java-runtime-exec",
-      "vulnerability": "OS Command Injection",
-      "severity": "high",
-      "message": "Runtime.getRuntime().exec() may allow OS command injection if input is not controlled.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\CWE-78\\java\\CWE-78-java-43.java",
-      "line": 16,
-      "column": 24,
-      "evidence": "Runtime.getRuntime().exec("
-    }
-  ],
-  "enriched_at": "2026-05-13T11:13:25.387Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-26T14:27:52.329Z"
 }

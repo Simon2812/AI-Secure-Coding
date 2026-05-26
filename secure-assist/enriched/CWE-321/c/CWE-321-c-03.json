@@ -22,16 +22,27 @@
   ],
   "static_findings": [
     {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential in macro 'BOOTSTRAP_SECRET'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-03.c",
+      "line": 9,
+      "column": 26,
+      "evidence": "\"LocalStageSeed\"\r"
+    },
+    {
       "cweId": "CWE-787",
       "ruleId": "ast-oob-write",
       "vulnerability": "Out-of-bounds Write",
       "severity": "high",
       "message": "strcpy() does not perform bounds checking and may write past a buffer.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-03.c",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-321\\c\\CWE-321-c-03.c",
       "line": 44,
       "column": 9,
       "evidence": "strcpy(keySource, BOOTSTRAP_SECRET)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:24.658Z"
+  "enriched_at": "2026-05-26T14:27:50.289Z"
 }

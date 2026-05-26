@@ -37,7 +37,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Paths.get() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
       "line": 10,
       "column": 24,
       "evidence": "Paths.get(baseDir)"
@@ -48,7 +48,7 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "Runtime.exec() receives user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
       "line": 17,
       "column": 21,
       "evidence": "Runtime.getRuntime().exec(execCmd)"
@@ -59,7 +59,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Path.resolve() receives user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
       "line": 34,
       "column": 23,
       "evidence": "resolve(configFile)"
@@ -70,7 +70,7 @@
       "vulnerability": "Path Traversal",
       "severity": "high",
       "message": "Files.readString() receives user-controlled path.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
       "line": 37,
       "column": 19,
       "evidence": "Files.readString(config)"
@@ -81,11 +81,11 @@
       "vulnerability": "OS Command Injection",
       "severity": "high",
       "message": "Runtime.exec() receives user-controlled input.",
-      "file": "C:\\temp\\ai-secure-main\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
       "line": 52,
       "column": 21,
       "evidence": "Runtime.getRuntime().exec(postCmd)"
     }
   ],
-  "enriched_at": "2026-05-13T11:13:26.577Z"
+  "enriched_at": "2026-05-26T14:27:55.952Z"
 }
