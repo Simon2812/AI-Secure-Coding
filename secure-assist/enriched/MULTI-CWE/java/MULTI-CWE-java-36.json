@@ -33,5 +33,5 @@
       "evidence": "storageRoot.resolve(attachmentName == null ? \"default.bin\" : attachmentName)"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:56.111Z"
+  "enriched_at": "2026-05-27T15:52:51.284Z"
 }

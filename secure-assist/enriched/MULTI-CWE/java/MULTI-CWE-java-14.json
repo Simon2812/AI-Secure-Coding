@@ -36,7 +36,18 @@
       "ruleId": "ast-weak-hash",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "getInstance(\"MD5\") uses a weak algorithm.",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
+      "line": 24,
+      "column": 32,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-14.java",
       "line": 24,
       "column": 32,
@@ -65,5 +76,5 @@
       "evidence": "SECRET.getBytes(StandardCharsets.UTF_8)"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:55.900Z"
+  "enriched_at": "2026-05-27T15:52:51.067Z"
 }

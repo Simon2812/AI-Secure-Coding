@@ -43,10 +43,32 @@
   "static_findings": [
     {
       "cweId": "CWE-327",
+      "ruleId": "ast-weak-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "ARC4.new() uses a broken or weak cipher.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
+      "line": 110,
+      "column": 14,
+      "evidence": "ARC4.new(key.encode(\"utf-8\"))"
+    },
+    {
+      "cweId": "CWE-327",
       "ruleId": "ast-weak-hash",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.md5() uses a weak hashing algorithm.",
+      "message": "hashlib.md5() uses a weak hashing algorithm (MD5/SHA1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
+      "line": 112,
+      "column": 12,
+      "evidence": "hashlib.md5(encrypted)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.md5() uses a weak hashing algorithm (MD5/SHA1).",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-28.py",
       "line": 112,
       "column": 12,
@@ -64,5 +86,5 @@
       "evidence": "statement"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:56.988Z"
+  "enriched_at": "2026-05-27T15:52:52.138Z"
 }

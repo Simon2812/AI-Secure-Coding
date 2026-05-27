@@ -26,7 +26,7 @@
       "ruleId": "ast-weak-cipher",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "getInstance(\"DES\") uses DES, an insecure cipher.",
+      "message": "getInstance(\"DES\") uses a broken or weak cipher.",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-327\\java\\CWE-327-java-02.java",
       "line": 12,
       "column": 38,
@@ -37,12 +37,12 @@
       "ruleId": "ast-weak-cipher",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "getInstance(\"DES\") uses DES, an insecure cipher.",
+      "message": "getInstance(\"DES\") uses a broken or weak cipher.",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-327\\java\\CWE-327-java-02.java",
       "line": 20,
       "column": 29,
       "evidence": "Cipher.getInstance(\"DES\")"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:50.821Z"
+  "enriched_at": "2026-05-27T15:52:44.697Z"
 }

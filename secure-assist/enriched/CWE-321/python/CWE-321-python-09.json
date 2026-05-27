@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-26T14:27:50.568Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'DEFAULT_KEY'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-09.py",
+      "line": 12,
+      "column": 19,
+      "evidence": "b\"store-default-key-9922\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.307Z"
 }

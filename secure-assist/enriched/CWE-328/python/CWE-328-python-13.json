@@ -26,12 +26,23 @@
       "ruleId": "ast-weak-hash",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.md5() uses a weak hashing algorithm.",
+      "message": "hashlib.md5() uses a weak hashing algorithm (MD5/SHA1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-13.py",
+      "line": 7,
+      "column": 12,
+      "evidence": "hashlib.md5(data)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.md5() uses a weak hashing algorithm (MD5/SHA1).",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-13.py",
       "line": 7,
       "column": 12,
       "evidence": "hashlib.md5(data)"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:51.268Z"
+  "enriched_at": "2026-05-27T15:52:45.332Z"
 }

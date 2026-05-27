@@ -22,5 +22,5 @@
       "evidence": "(written < count && written < (int)(sizeof(c->bucket) / sizeof(c->bucket[0])))"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:53.742Z"
+  "enriched_at": "2026-05-27T15:52:48.979Z"
 }

@@ -42,7 +42,18 @@
       "line": 72,
       "column": 32,
       "evidence": "CALG_SHA1"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_SHA1, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-328\\c\\CWE-328-c-03.c",
+      "line": 72,
+      "column": 32,
+      "evidence": "CALG_SHA1"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:50.979Z"
+  "enriched_at": "2026-05-27T15:52:44.936Z"
 }

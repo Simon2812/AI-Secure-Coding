@@ -37,6 +37,17 @@
       "evidence": "CALG_MD5"
     },
     {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_MD5, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-15.c",
+      "line": 24,
+      "column": 31,
+      "evidence": "CALG_MD5"
+    },
+    {
       "cweId": "CWE-327",
       "ruleId": "ast-weak-wincrypt-hash",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
@@ -46,7 +57,18 @@
       "line": 30,
       "column": 31,
       "evidence": "CALG_SHA1"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_SHA1, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-15.c",
+      "line": 30,
+      "column": 31,
+      "evidence": "CALG_SHA1"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:51.051Z"
+  "enriched_at": "2026-05-27T15:52:45.038Z"
 }

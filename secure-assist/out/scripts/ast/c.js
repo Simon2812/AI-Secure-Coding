@@ -195,24 +195,28 @@ function analyzeC(code, filePath, tree) {
                     freedPointers.set(args[0].text, node);
                 }
             }
-            // CWE-327: weak crypto
+            // CWE-327 + CWE-328: weak hash (dual-emit — dataset labels either CWE)
             if (WEAK_HASH_FUNCS.has(fnName)) {
-                findings.push((0, utils_1.makeAstFinding)({
-                    cweId: "CWE-327", ruleId: "ast-weak-hash",
-                    vulnerability: "Use of Broken Cryptographic Algorithm",
-                    severity: "medium",
-                    message: `${fnName}() uses MD5, a weak hashing algorithm.`,
-                    filePath, node, code,
-                }));
+                for (const cweId of ["CWE-327", "CWE-328"]) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId, ruleId: "ast-weak-hash",
+                        vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+                        severity: "medium",
+                        message: `${fnName}() uses MD5, a weak hashing algorithm.`,
+                        filePath, node, code,
+                    }));
+                }
             }
             if (WEAK_HASH_SHA1.has(fnName)) {
-                findings.push((0, utils_1.makeAstFinding)({
-                    cweId: "CWE-327", ruleId: "ast-weak-hash-sha1",
-                    vulnerability: "Use of Broken Cryptographic Algorithm",
-                    severity: "medium",
-                    message: `${fnName}() uses SHA-1, a weak hashing algorithm.`,
-                    filePath, node, code,
-                }));
+                for (const cweId of ["CWE-327", "CWE-328"]) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId, ruleId: "ast-weak-hash-sha1",
+                        vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+                        severity: "medium",
+                        message: `${fnName}() uses SHA-1, a weak hashing algorithm.`,
+                        filePath, node, code,
+                    }));
+                }
             }
             // CWE-327: Windows Crypto API — CryptDeriveKey/CryptEncrypt with weak cipher
             if ((fnName === "CryptDeriveKey" || fnName === "CryptEncrypt" || fnName === "CryptDecrypt") && argsNode) {
@@ -228,18 +232,20 @@ function analyzeC(code, filePath, tree) {
                     }));
                 }
             }
-            // CWE-327: Windows Crypto API — CryptCreateHash with weak hash
+            // CWE-327 + CWE-328: Windows Crypto API — CryptCreateHash with weak hash (dual-emit)
             if (fnName === "CryptCreateHash" && argsNode) {
                 const args = getArgs(argsNode);
                 const algoArg = args[1]; // second arg is the algorithm constant
                 if (algoArg && WEAK_CALG_HASH.has(algoArg.text)) {
-                    findings.push((0, utils_1.makeAstFinding)({
-                        cweId: "CWE-327", ruleId: "ast-weak-wincrypt-hash",
-                        vulnerability: "Use of Broken Cryptographic Algorithm",
-                        severity: "medium",
-                        message: `CryptCreateHash() uses ${algoArg.text}, a weak hashing algorithm.`,
-                        filePath, node: algoArg, code,
-                    }));
+                    for (const cweId of ["CWE-327", "CWE-328"]) {
+                        findings.push((0, utils_1.makeAstFinding)({
+                            cweId, ruleId: "ast-weak-wincrypt-hash",
+                            vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+                            severity: "medium",
+                            message: `CryptCreateHash() uses ${algoArg.text}, a weak hashing algorithm.`,
+                            filePath, node: algoArg, code,
+                        }));
+                    }
                 }
             }
         }

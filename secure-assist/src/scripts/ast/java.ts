@@ -156,13 +156,15 @@ export function analyzeJava(code: string, filePath: string, tree: Tree): Finding
       if (methodName === "getInstance" && argsNode) {
         const args = getJavaArgs(argsNode);
         if (args.length > 0 && WEAK_HASH_ALGOS.test(args[0].text)) {
-          findings.push(makeAstFinding({
-            cweId: "CWE-328", ruleId: "ast-weak-hash",
-            vulnerability: "Use of Weak Hash",
-            severity: "medium",
-            message: `getInstance(${args[0].text}) uses a weak hash algorithm (MD5/SHA-1).`,
-            filePath, node, code,
-          }));
+          for (const cweId of ["CWE-327", "CWE-328"] as const) {
+            findings.push(makeAstFinding({
+              cweId, ruleId: "ast-weak-hash",
+              vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+              severity: "medium",
+              message: `getInstance(${args[0].text}) uses a weak hash algorithm (MD5/SHA-1).`,
+              filePath, node, code,
+            }));
+          }
         }
         if (args.length > 0 && WEAK_CIPHER_ALGOS.test(args[0].text)) {
           findings.push(makeAstFinding({

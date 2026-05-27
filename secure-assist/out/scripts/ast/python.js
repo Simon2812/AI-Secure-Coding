@@ -106,15 +106,17 @@ function analyzePython(code, filePath, tree) {
                 }));
             }
         }
-        // CWE-328: weak hash
+        // CWE-327 + CWE-328: weak hash (dual-emit — dataset labels either CWE)
         if (fnName && WEAK_HASH.has(fnName)) {
-            findings.push((0, utils_1.makeAstFinding)({
-                cweId: "CWE-328", ruleId: "ast-weak-hash",
-                vulnerability: "Use of Weak Hash",
-                severity: "medium",
-                message: `${fnName}() uses a weak hashing algorithm (MD5/SHA1).`,
-                filePath, node, code,
-            }));
+            for (const cweId of ["CWE-327", "CWE-328"]) {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId, ruleId: "ast-weak-hash",
+                    vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+                    severity: "medium",
+                    message: `${fnName}() uses a weak hashing algorithm (MD5/SHA1).`,
+                    filePath, node, code,
+                }));
+            }
         }
         // CWE-327: weak cipher
         if (fnName && WEAK_CIPHER.has(fnName)) {

@@ -20,6 +20,18 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-26T14:27:50.594Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'key_material'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-15.py",
+      "line": 26,
+      "column": 24,
+      "evidence": "b\"\\x01\\x23\\x45\\x67\\x89\\xab\\xcd\\xef\\x10\\x32\\x54\\x76\\x98\\xba\\xdc\\xfe\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.345Z"
 }

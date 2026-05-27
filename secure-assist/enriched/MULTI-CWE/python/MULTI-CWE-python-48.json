@@ -22,5 +22,5 @@
       "evidence": "\"SELECT record_id, payload, size_hint \"\r\n            \"FROM stream_records \"\r\n            \"WHERE stream_name = ? AND stat"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:57.369Z"
+  "enriched_at": "2026-05-27T15:52:52.567Z"
 }

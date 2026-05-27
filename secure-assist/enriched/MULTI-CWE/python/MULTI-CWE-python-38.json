@@ -9,6 +9,18 @@
     "name": null
   },
   "vulnerabilities": [],
-  "static_findings": [],
-  "enriched_at": "2026-05-26T14:27:57.211Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-38.py",
+      "line": 66,
+      "column": 28,
+      "evidence": "statement"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:52.361Z"
 }

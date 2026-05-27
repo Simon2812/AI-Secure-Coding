@@ -46,7 +46,18 @@
       "ruleId": "ast-weak-hash",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.sha1() uses a weak hashing algorithm.",
+      "message": "hashlib.sha1() uses a weak hashing algorithm (MD5/SHA1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-27.py",
+      "line": 113,
+      "column": 16,
+      "evidence": "hashlib.sha1(raw)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.sha1() uses a weak hashing algorithm (MD5/SHA1).",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-27.py",
       "line": 113,
       "column": 16,
@@ -64,5 +75,5 @@
       "evidence": "\"RelayMail!2026\""
     }
   ],
-  "enriched_at": "2026-05-26T14:27:56.957Z"
+  "enriched_at": "2026-05-27T15:52:52.094Z"
 }

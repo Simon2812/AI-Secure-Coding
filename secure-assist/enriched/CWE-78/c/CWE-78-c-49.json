@@ -33,5 +33,5 @@
       "evidence": "posix_spawn(&pid, \"/bin/sh\", NULL, NULL, argv, environ)"
     }
   ],
-  "enriched_at": "2026-05-26T14:27:51.706Z"
+  "enriched_at": "2026-05-27T15:52:46.047Z"
 }
