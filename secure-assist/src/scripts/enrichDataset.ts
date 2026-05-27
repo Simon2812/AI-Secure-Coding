@@ -8,6 +8,10 @@ const REPO_ROOT = process.argv[2]
   ? path.resolve(process.argv[2])
   : path.resolve(__dirname, "..", "..", "..");
 const METADATA_DIR = path.join(REPO_ROOT, "dataset", "metadata");
+// Optional: comma-separated CWE filter, e.g. "CWE-327,CWE-328"
+const CWE_FILTER: Set<string> | null = process.argv[3]
+  ? new Set(process.argv[3].split(",").map(s => s.trim()))
+  : null;
 const SECURE_ASSIST_ROOT = path.resolve(__dirname, "..", "..");
 const ENRICHED_DIR = path.join(SECURE_ASSIST_ROOT, "enriched");
 
@@ -58,7 +62,14 @@ function walkJson(dir: string): string[] {
 
 async function main() {
   await initAstAnalyzer();
-  const metadataFiles = walkJson(METADATA_DIR);
+  const allFiles = walkJson(METADATA_DIR);
+  const metadataFiles = CWE_FILTER
+    ? allFiles.filter(f => {
+        const cweFolder = path.relative(METADATA_DIR, f).split(path.sep)[0];
+        return CWE_FILTER.has(cweFolder);
+      })
+    : allFiles;
+  if (CWE_FILTER) console.log(`CWE filter: ${[...CWE_FILTER].join(", ")}`);
 
   let processed = 0;
   let skipped = 0;

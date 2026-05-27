@@ -18,8 +18,9 @@ const CMD_FUNCS = new Set([
   // Uppercase spawn macros
   "SPAWNL", "SPAWNV", "SPAWNVP",
 ]);
-const WEAK_HASH_FUNCS = new Set(["MD5", "EVP_md5"]);
-const WEAK_HASH_SHA1 = new Set(["SHA1", "EVP_sha1"]);
+// Regex-based: catches MD5/SHA1 regardless of OpenSSL step function variant
+// (MD5, MD5_Init, MD5_Update, MD5_Final, EVP_md5, SHA1, SHA1_Init, EVP_sha1, etc.)
+const WEAK_HASH_FN = /^(MD[245]|EVP_md[245]|SHA1?|EVP_sha1?)(_Init|_Update|_Final)?$/i;
 const CRED_MACROS = /(PASSWORD|PASSWD|PWD|SECRET|API_KEY|APIKEY|TOKEN|AUTH_TOKEN|ACCESS_TOKEN|SECRET_KEY|CLIENT_SECRET|FALLBACK|KEY|PHRASE|PASSPHRASE|MATERIAL)/i;
 
 // Windows Crypto API weak algorithm constants
@@ -212,24 +213,13 @@ export function analyzeC(code: string, filePath: string, tree: Tree): Finding[] 
       }
 
       // CWE-327 + CWE-328: weak hash (dual-emit — dataset labels either CWE)
-      if (WEAK_HASH_FUNCS.has(fnName)) {
+      if (WEAK_HASH_FN.test(fnName)) {
         for (const cweId of ["CWE-327", "CWE-328"] as const) {
           findings.push(makeAstFinding({
             cweId, ruleId: "ast-weak-hash",
             vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
             severity: "medium",
-            message: `${fnName}() uses MD5, a weak hashing algorithm.`,
-            filePath, node, code,
-          }));
-        }
-      }
-      if (WEAK_HASH_SHA1.has(fnName)) {
-        for (const cweId of ["CWE-327", "CWE-328"] as const) {
-          findings.push(makeAstFinding({
-            cweId, ruleId: "ast-weak-hash-sha1",
-            vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
-            severity: "medium",
-            message: `${fnName}() uses SHA-1, a weak hashing algorithm.`,
+            message: `${fnName}() uses a weak hashing algorithm (MD5/SHA1).`,
             filePath, node, code,
           }));
         }

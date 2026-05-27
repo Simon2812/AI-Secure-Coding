@@ -24,12 +24,11 @@ const CMD_SINKS = new Set([
     "subprocess.run", "subprocess.Popen", "subprocess.call",
     "subprocess.check_call", "subprocess.check_output",
 ]);
-const WEAK_HASH = new Set(["hashlib.md5", "hashlib.sha1", "hashlib.new"]);
-const WEAK_CIPHER = new Set([
-    "DES.new", "Crypto.Cipher.DES",
-    "ARC4.new", "Crypto.Cipher.ARC4",
-    "Blowfish.new", "Crypto.Cipher.Blowfish",
-]);
+// Regex-based: catches weak algorithm names regardless of library.
+// No trailing \b so we catch compound names: md5Hex, MD5Digest, DESEngine, etc.
+// Case-sensitive (no i flag) to avoid FP on common words like 'describe', 'destroy'.
+const WEAK_HASH_FN = /\b(md2|md4|md5|MD2|MD4|MD5|ripemd|RIPEMD|sha[-_]?1|SHA[-_]?1)/;
+const WEAK_CIPHER_FN = /\b(DES|TripleDES|3DES|RC2|RC4|ARC4|Blowfish)/;
 function analyzePython(code, filePath, tree) {
     const findings = [];
     const root = tree.rootNode;
@@ -107,19 +106,29 @@ function analyzePython(code, filePath, tree) {
             }
         }
         // CWE-327 + CWE-328: weak hash (dual-emit — dataset labels either CWE)
-        if (fnName && WEAK_HASH.has(fnName)) {
+        // Checks fn name OR any arg (catches hashlib.new("md5"), hmac.new(..., digestmod=hashlib.md4), etc.)
+        // Also resolves identifier args through valueMap (catches algo = "md5"; hashlib.new(algo))
+        const hashArgWeak = args.some(a => {
+            const text = a.type === "identifier" ? (valueMap.get(a.text)?.text ?? a.text) : a.text;
+            return WEAK_HASH_FN.test(text);
+        });
+        if (fnName && (WEAK_HASH_FN.test(fnName) || hashArgWeak)) {
             for (const cweId of ["CWE-327", "CWE-328"]) {
                 findings.push((0, utils_1.makeAstFinding)({
                     cweId, ruleId: "ast-weak-hash",
                     vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
                     severity: "medium",
-                    message: `${fnName}() uses a weak hashing algorithm (MD5/SHA1).`,
+                    message: `${fnName}() uses a weak hashing algorithm.`,
                     filePath, node, code,
                 }));
             }
         }
-        // CWE-327: weak cipher
-        if (fnName && WEAK_CIPHER.has(fnName)) {
+        // CWE-327: weak cipher — checks fn name OR any arg
+        const cipherArgWeak = args.some(a => {
+            const text = a.type === "identifier" ? (valueMap.get(a.text)?.text ?? a.text) : a.text;
+            return WEAK_CIPHER_FN.test(text);
+        });
+        if (fnName && (WEAK_CIPHER_FN.test(fnName) || cipherArgWeak)) {
             findings.push((0, utils_1.makeAstFinding)({
                 cweId: "CWE-327", ruleId: "ast-weak-cipher",
                 vulnerability: "Use of Broken Cryptographic Algorithm",

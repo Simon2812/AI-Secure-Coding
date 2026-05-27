@@ -20,29 +20,6 @@
       ]
     }
   ],
-  "static_findings": [
-    {
-      "cweId": "CWE-327",
-      "ruleId": "ast-weak-hash",
-      "vulnerability": "Use of Broken Cryptographic Algorithm",
-      "severity": "medium",
-      "message": "hashlib.new() uses a weak hashing algorithm (MD5/SHA1).",
-      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-02.py",
-      "line": 13,
-      "column": 13,
-      "evidence": "hashlib.new(algorithm, encoded)"
-    },
-    {
-      "cweId": "CWE-328",
-      "ruleId": "ast-weak-hash",
-      "vulnerability": "Use of Weak Hash",
-      "severity": "medium",
-      "message": "hashlib.new() uses a weak hashing algorithm (MD5/SHA1).",
-      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-02.py",
-      "line": 13,
-      "column": 13,
-      "evidence": "hashlib.new(algorithm, encoded)"
-    }
-  ],
-  "enriched_at": "2026-05-27T15:52:44.835Z"
+  "static_findings": [],
+  "enriched_at": "2026-05-27T18:00:38.577Z"
 }

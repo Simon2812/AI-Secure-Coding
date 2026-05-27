@@ -20,6 +20,51 @@
       ]
     }
   ],
-  "static_findings": [],
-  "enriched_at": "2026-05-27T15:52:44.838Z"
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hmac.new(self.secret_key, payload, digestmod=hashlib.md5).hexdigest() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-03.py",
+      "line": 12,
+      "column": 17,
+      "evidence": "hmac.new(self.secret_key, payload, digestmod=hashlib.md5).hexdigest()"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hmac.new(self.secret_key, payload, digestmod=hashlib.md5).hexdigest() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-03.py",
+      "line": 12,
+      "column": 17,
+      "evidence": "hmac.new(self.secret_key, payload, digestmod=hashlib.md5).hexdigest()"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hmac.new() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-03.py",
+      "line": 12,
+      "column": 17,
+      "evidence": "hmac.new(self.secret_key, payload, digestmod=hashlib.md5)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hmac.new() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-327\\python\\CWE-327-python-03.py",
+      "line": 12,
+      "column": 17,
+      "evidence": "hmac.new(self.secret_key, payload, digestmod=hashlib.md5)"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.581Z"
 }

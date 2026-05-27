@@ -18,8 +18,14 @@ const CMD_SINK_TYPES = new Set(["ProcessBuilder"]);
 const CMD_SINK_CALLS = new Set(["Runtime.getRuntime().exec", "Runtime.exec"]);
 const SQL_EXECUTE = new Set(["execute", "executeQuery", "executeUpdate", "executeBatch", "addBatch"]);
 const SQL_PREPARE = new Set(["prepareStatement", "prepareCall"]);
-const WEAK_HASH_ALGOS = /^"(MD5|SHA-?1)"$/i;
+// Matches string argument in getInstance("MD5"), getInstance("DES/ECB/...")
+const WEAK_HASH_ALGOS = /^"(MD2|MD4|MD5|RIPEMD-?160|SHA|SHA-?1|SHA-224)"$/i;
 const WEAK_CIPHER_ALGOS = /^"(DES|RC2|RC4|Blowfish|TripleDES|3DES)(\/[^"]+)?"$/i;
+// Regex-based: catches weak algorithm names in method/type names regardless of library.
+// No trailing \b so we catch compound names: md5Hex, MD5Digest, DESEngine, etc.
+// Case-sensitive (no i flag) to avoid FP on common words like 'describe', 'destroy'.
+const WEAK_HASH_NAME = /\b(md2|md4|md5|MD2|MD4|MD5|ripemd|RIPEMD|sha[-_]?1|SHA[-_]?1)/;
+const WEAK_CIPHER_NAME = /\b(DES|TripleDES|3DES|RC2|RC4|ARC4|Blowfish)/;
 function analyzeJava(code, filePath, tree) {
     const findings = [];
     const root = tree.rootNode;
@@ -48,6 +54,27 @@ function analyzeJava(code, filePath, tree) {
                         filePath, node: taintedArg, code,
                     }));
                 }
+            }
+            // CWE-327/328: weak hash/cipher in type name (new MD5Digest(), new DESEngine(), etc.)
+            if (WEAK_HASH_NAME.test(typeName)) {
+                for (const cweId of ["CWE-327", "CWE-328"]) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId, ruleId: "ast-weak-hash",
+                        vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+                        severity: "medium",
+                        message: `new ${typeName}() uses a weak hashing algorithm (MD5/SHA1).`,
+                        filePath, node, code,
+                    }));
+                }
+            }
+            if (WEAK_CIPHER_NAME.test(typeName) && !PATH_SINK_TYPES.has(typeName)) {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: "CWE-327", ruleId: "ast-weak-cipher",
+                    vulnerability: "Use of Broken Cryptographic Algorithm",
+                    severity: "medium",
+                    message: `new ${typeName}() uses a broken or weak cipher.`,
+                    filePath, node, code,
+                }));
             }
             if (CMD_SINK_TYPES.has(typeName) && argsNode) {
                 const args = getJavaArgs(argsNode);
@@ -159,6 +186,28 @@ function analyzeJava(code, filePath, tree) {
                         filePath, node, code,
                     }));
                 }
+            }
+            // CWE-327/328: weak hash in method/full name (DigestUtils.md5Hex, Hashing.md5, etc.)
+            if (WEAK_HASH_NAME.test(fullName) && methodName !== "getInstance") {
+                for (const cweId of ["CWE-327", "CWE-328"]) {
+                    findings.push((0, utils_1.makeAstFinding)({
+                        cweId, ruleId: "ast-weak-hash",
+                        vulnerability: cweId === "CWE-328" ? "Use of Weak Hash" : "Use of Broken Cryptographic Algorithm",
+                        severity: "medium",
+                        message: `${fullName}() uses a weak hashing algorithm (MD5/SHA1).`,
+                        filePath, node, code,
+                    }));
+                }
+            }
+            // CWE-327: weak cipher in method/full name
+            if (WEAK_CIPHER_NAME.test(fullName) && methodName !== "getInstance") {
+                findings.push((0, utils_1.makeAstFinding)({
+                    cweId: "CWE-327", ruleId: "ast-weak-cipher",
+                    vulnerability: "Use of Broken Cryptographic Algorithm",
+                    severity: "medium",
+                    message: `${fullName}() uses a broken or weak cipher.`,
+                    filePath, node, code,
+                }));
             }
             // Command injection via Runtime.exec
             if ((methodName === "exec") && argsNode) {

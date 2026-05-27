@@ -26,7 +26,29 @@
       "ruleId": "ast-weak-hash",
       "vulnerability": "Use of Broken Cryptographic Algorithm",
       "severity": "medium",
-      "message": "hashlib.sha1() uses a weak hashing algorithm (MD5/SHA1).",
+      "message": "hashlib.sha1(data).hexdigest() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-14.py",
+      "line": 13,
+      "column": 18,
+      "evidence": "hashlib.sha1(data).hexdigest()"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.sha1(data).hexdigest() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-14.py",
+      "line": 13,
+      "column": 18,
+      "evidence": "hashlib.sha1(data).hexdigest()"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.sha1() uses a weak hashing algorithm.",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-14.py",
       "line": 13,
       "column": 18,
@@ -37,12 +59,34 @@
       "ruleId": "ast-weak-hash",
       "vulnerability": "Use of Weak Hash",
       "severity": "medium",
-      "message": "hashlib.sha1() uses a weak hashing algorithm (MD5/SHA1).",
+      "message": "hashlib.sha1() uses a weak hashing algorithm.",
       "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-14.py",
       "line": 13,
       "column": 18,
       "evidence": "hashlib.sha1(data)"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "self.tokens.append() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-14.py",
+      "line": 14,
+      "column": 9,
+      "evidence": "self.tokens.append(digest)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "self.tokens.append() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-14.py",
+      "line": 14,
+      "column": 9,
+      "evidence": "self.tokens.append(digest)"
     }
   ],
-  "enriched_at": "2026-05-27T15:52:45.335Z"
+  "enriched_at": "2026-05-27T18:00:39.116Z"
 }
