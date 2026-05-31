@@ -194,7 +194,7 @@ class SecureCodingModel:
         print("Checkpoint saved.")
 
 
-    def build_input(self, code, line_offset, analysis):
+    def build_input(self, code, line_offset, static_findings):
         """
         Build unified prompt used for:
         - training
@@ -219,8 +219,8 @@ class SecureCodingModel:
             .replace("{code}", code) \
             .replace("{line_offset}", str(line_offset)) \
             .replace(
-                "{analysis}",
-                json.dumps(analysis, indent=2)
+                "{static_findings}",
+                json.dumps(static_findings, indent=2)
             )
 
         return prompt.strip()
@@ -230,7 +230,7 @@ class SecureCodingModel:
         self,
         code,
         line_offset,
-        analysis,
+        static_findings,
         cwe,
         rejected_fixes,
     ):
@@ -258,8 +258,8 @@ class SecureCodingModel:
             .replace("{code}", code)
             .replace("{line_offset}", str(line_offset))
             .replace(
-                "{analysis}",
-                json.dumps(analysis, indent=2),
+                "{static_findings}",
+                json.dumps(static_findings, indent=2),
             )
             .replace("{cwe}", cwe)
             .replace(
@@ -323,7 +323,7 @@ class SecureCodingModel:
         return self.extract_json(text)
 
 
-    def predict(self, code, line_offset, analysis):
+    def predict(self, code, line_offset, static_findings):
         """
         Generate structured vulnerability prediction.
         """
@@ -334,7 +334,7 @@ class SecureCodingModel:
         input_text = self.build_input(
             code,
             line_offset,
-            analysis,
+            static_findings,
         )
 
         return self._generate_json(input_text)
@@ -344,7 +344,7 @@ class SecureCodingModel:
         self,
         code,
         line_offset,
-        analysis,
+        static_findings,
         cwe,
         rejected_fixes,
     ):
@@ -359,7 +359,7 @@ class SecureCodingModel:
         input_text = self.build_regeneration_input(
             code,
             line_offset,
-            analysis,
+            static_findings,
             cwe,
             rejected_fixes,
         )
@@ -459,7 +459,7 @@ class SecureCodingModel:
                 prompt = self.build_input(
                     sample["code"],
                     sample["line_offset"],
-                    sample["analysis"],
+                    sample["static_findings"],
                 )
 
                 # Ground truth aligned with expected JSON format.
@@ -527,7 +527,7 @@ class SecureCodingModel:
                     pred = self.predict(
                         sample["code"],
                         sample["line_offset"],
-                        sample["analysis"],
+                        sample["static_findings"],
                     )
 
                     scores = evaluator.evaluate(sample, pred)
@@ -610,7 +610,7 @@ class SecureCodingModel:
                 pred = self.predict(
                     sample["code"],
                     sample["line_offset"],
-                    sample["analysis"],
+                    sample["static_findings"],
                 )
 
                 scores = evaluator.evaluate(sample, pred)
