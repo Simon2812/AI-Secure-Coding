@@ -15,8 +15,8 @@ from evaluator import Evaluator
 
 if __name__ == "__main__":
 
-    # Path to dataset metadata root
-    metadata_root = "./dataset/metadata"
+    # Path to dataset enriched metadata root
+    metadata_root = ".secure-assist/enriched"
 
     # Evaluator instance (defines scoring logic)
     evaluator = Evaluator()

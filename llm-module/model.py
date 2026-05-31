@@ -399,6 +399,7 @@ class SecureCodingModel:
                 "target": metadata["vulnerabilities"],
                 "split": metadata["split"],
                 "language": metadata["language"],
+                "static_findings": metadata["static_findings"],
                 "cwes": [
                             vuln["cwe"]
                             for vuln in metadata[
