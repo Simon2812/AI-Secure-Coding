@@ -378,7 +378,9 @@ class SecureCodingModel:
         Load metadata files, resolve source code,
         and split samples into train/val/test.
         """
-
+        
+        repo_root = Path(__file__).resolve().parent.parent
+        
         train_data, val_data, test_data = [], [], []
         metadata_root = Path(metadata_root)
 
@@ -387,7 +389,7 @@ class SecureCodingModel:
                 metadata = json.load(f)
 
             # Source code path is stored inside metadata.
-            code_path = Path(metadata_root) / metadata["path"].lstrip("/")
+            code_path = repo_root / metadata["path"].lstrip("/")
 
             with open(code_path, "r", encoding="utf-8") as f:
                 code = f.read()
