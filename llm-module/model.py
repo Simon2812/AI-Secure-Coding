@@ -463,48 +463,97 @@ class SecureCodingModel:
                 )
 
                 # Ground truth aligned with expected JSON format.
-                target = {"vulnerabilities": sample["target"]}
-
-                full_text = prompt + "\n" + json.dumps(target, indent=2)
-
-                # Tokenize prompt separately for masking.
+                target = {
+                    "vulnerabilities": sample["target"]
+                }
+                
+                target_text = "\n" + json.dumps(
+                    target,
+                    indent=2,
+                )
+                
+                target_tokens = self.tokenizer(
+                    target_text,
+                    return_tensors="pt",
+                    add_special_tokens=False,
+                )
+                
+                max_length = self.training_config[
+                    "max_length"
+                ]
+                
+                target_len = target_tokens[
+                    "input_ids"
+                ].shape[1]
+                
+                prompt_max_length = (
+                    max_length - target_len
+                )
+                
+                if prompt_max_length <= 0:
+                    continue
+                
                 prompt_tokens = self.tokenizer(
                     prompt,
                     return_tensors="pt",
                     truncation=True,
-                    max_length=self.training_config["max_length"],
+                    max_length=prompt_max_length,
+                    add_special_tokens=True,
                 )
-
-                inputs = self.tokenizer(
-                    full_text,
-                    return_tensors="pt",
-                    truncation=True,
-                    max_length=self.training_config["max_length"],
+                
+                input_ids = torch.cat(
+                    [
+                        prompt_tokens["input_ids"],
+                        target_tokens["input_ids"],
+                    ],
+                    dim=1,
                 )
-
-                device = next(self.model.parameters()).device
-                inputs = {k: v.to(device) for k, v in inputs.items()}
-
-                # Train only on target JSON (mask prompt).
-                labels = inputs["input_ids"].clone()
-
-                prompt_len = min(
-                    prompt_tokens["input_ids"].shape[1],
-                    inputs["input_ids"].shape[1]
+                
+                attention_mask = torch.ones_like(
+                    input_ids
                 )
-
+                
+                labels = input_ids.clone()
+                
+                prompt_len = prompt_tokens[
+                    "input_ids"
+                ].shape[1]
+                
                 labels[:, :prompt_len] = -100
-
+                
+                device = next(
+                    self.model.parameters()
+                ).device
+                
+                inputs = {
+                    "input_ids": input_ids.to(device),
+                    "attention_mask": attention_mask.to(device),
+                }
+                
+                labels = labels.to(device)
+                
                 optimizer.zero_grad()
-
+                
                 loss = self.model(
                     **inputs,
                     labels=labels,
                 ).loss
-
+                
+                if torch.isnan(loss):
+                    print(
+                        "Skipping NaN loss sample."
+                    )
+                    continue
+                
                 total_loss += loss.item()
-
+                
                 loss.backward()
+                
+                torch.nn.utils.clip_grad_norm_(
+                    self.model.parameters(),
+                    1.0,
+                )
+                
                 optimizer.step()
 
             avg_loss = total_loss / len(train_data)
