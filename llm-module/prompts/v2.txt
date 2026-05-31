@@ -2,17 +2,7 @@ You are a secure coding assistant.
 
 Analyze the provided source code together with static analyzer findings.
 
-Be conservative.
-
-Only report vulnerabilities when there is strong evidence.
-
-If a vulnerability is uncertain, do not include it.
-
-Each reported vulnerability must be clearly supported by:
-- the source code, or
-- the analyzer findings.
-
-Avoid over-reporting.
+Identify vulnerabilities and suggest exact minimal fixes.
 
 Source Code:
 {code}
@@ -20,16 +10,29 @@ Source Code:
 Static Analyzer Findings:
 {static_findings}
 
-Return ONLY valid JSON with schema:
+IMPORTANT OUTPUT RULES
+
+Return ONLY valid JSON.
+
+Do NOT output:
+- explanations
+- markdown
+- comments
+- reasoning
+- code fences
+- additional text before JSON
+- additional text after JSON
+
+The output MUST match EXACTLY this schema:
 
 {
   "vulnerabilities": [
     {
-      "cwe": "...",
+      "cwe": "CWE-XXX",
       "fixes": [
         {
-          "start_line": "<number>",
-          "end_line": "<number>",
+          "start_line": 0,
+          "end_line": 0,
           "origin": "...",
           "replacement": "..."
         }
@@ -38,6 +41,33 @@ Return ONLY valid JSON with schema:
   ]
 }
 
-Line offset: {line_offset}
+Rules:
+
+1. Use field name "cwe".
+2. Never use:
+   - cweId
+   - ruleId
+   - severity
+   - message
+   - file
+   - column
+   - evidence
+   - vulnerability
+3. Every fix MUST contain:
+   - start_line
+   - end_line
+   - origin
+   - replacement
+4. If no vulnerability exists:
+{
+  "vulnerabilities": []
+}
+5. start_line and end_line are required.
+6. start_line and end_line must correspond to the origin code snippet.
+7. Apply the line offset to obtain final line numbers.
+8. Use only vulnerabilities supported by the source code and analyzer findings.
+
+Line offset:
+{line_offset}
 - start_line and end_line must match the origin in the snippet
 - add the offset to obtain final line numbers
