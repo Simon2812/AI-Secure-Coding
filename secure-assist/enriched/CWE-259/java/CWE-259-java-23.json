@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-23",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-23.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\java\\CWE-259-java-23.java",
+      "line": 14,
+      "column": 21,
+      "evidence": "\"indirectUser\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.718Z"
+}

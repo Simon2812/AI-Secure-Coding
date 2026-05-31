@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-12",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-12.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "arr = (int *)malloc(120);",
+          "replacement": "arr = (int *)malloc(120*sizeof(int));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memcpy() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-12.c",
+      "line": 17,
+      "column": 25,
+      "evidence": "120 * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'arr' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-12.c",
+      "line": 21,
+      "column": 10,
+      "evidence": "arr"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.416Z"
+}

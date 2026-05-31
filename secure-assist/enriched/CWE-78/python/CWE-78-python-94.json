@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-94",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-94.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.Popen() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-94.py",
+      "line": 11,
+      "column": 41,
+      "evidence": "argv"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.327Z"
+}

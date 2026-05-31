@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-python-16",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-328/python/CWE-328-python-16.py",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T18:00:39.129Z"
+}

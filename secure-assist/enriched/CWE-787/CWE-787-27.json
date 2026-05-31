@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-27",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-27.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "numbers = (int *)malloc(count * sizeof(int));",
+          "replacement": "if (count <= 0 || count > SIZE_MAX / sizeof(int)) return; numbers = (int *)malloc(count * sizeof(int));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-27.c",
+      "line": 25,
+      "column": 15,
+      "evidence": "(int *)malloc(count * sizeof(int))"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-27.c",
+      "line": 25,
+      "column": 29,
+      "evidence": "count * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-27.c",
+      "line": 28,
+      "column": 17,
+      "evidence": "i < (size_t)count"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'numbers' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-27.c",
+      "line": 34,
+      "column": 10,
+      "evidence": "numbers"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.482Z"
+}

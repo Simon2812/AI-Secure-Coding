@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-40",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-40.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "int *cursor = logbuf + index;\n*cursor = 77;",
+          "replacement": "if (index >= 0 && index < 6)\n{\nint *cursor = logbuf + index;\n*cursor = 77;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-40.c",
+      "line": 19,
+      "column": 19,
+      "evidence": "logbuf + index"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.604Z"
+}

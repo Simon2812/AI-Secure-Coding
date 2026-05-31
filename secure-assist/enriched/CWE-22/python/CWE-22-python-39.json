@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-39",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-39.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "path = os.path.join(log_home, name)\nwith open(path, \"r\", encoding=\"utf-8\") as src:\n    return src.read()",
+          "replacement": "name = os.path.basename(name)\npath = os.path.join(log_home, name)\nwith open(path, \"r\", encoding=\"utf-8\") as src:\n    return src.read()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:43.202Z"
+}

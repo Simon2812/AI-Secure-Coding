@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "SAFE-NONCWE-java-04",
+  "language": "java",
+  "path": "/dataset/synthetic/SAFE-NONCWE/java/SAFE-NONCWE-java-04.java",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:52.674Z"
+}

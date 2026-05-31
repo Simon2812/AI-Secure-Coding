@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-22",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-22.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-22.c",
+      "line": 19,
+      "column": 17,
+      "evidence": "i < n"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.864Z"
+}

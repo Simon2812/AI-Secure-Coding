@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-03",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-03.py",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "target = base / selected",
+          "replacement": "target = (base / selected).resolve()\n        if base.resolve() not in target.parents:\n            raise ValueError(\"invalid path\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "pathlib path join with user-controlled input may allow path traversal.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-03.py",
+      "line": 38,
+      "column": 25,
+      "evidence": "selected"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.979Z"
+}

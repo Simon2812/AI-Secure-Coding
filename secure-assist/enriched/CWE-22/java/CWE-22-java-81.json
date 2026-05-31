@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-81",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-81.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-81.java",
+      "line": 15,
+      "column": 21,
+      "evidence": "repositoryRoot.resolve(templateKey + \".tpl\")"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readString() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-81.java",
+      "line": 21,
+      "column": 16,
+      "evidence": "Files.readString(file)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.849Z"
+}

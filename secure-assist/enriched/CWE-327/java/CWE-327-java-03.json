@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-java-03",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-327/java/CWE-327-java-03.java",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "DESede",
+          "replacement": "AES"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to SecretKeySpec.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-327\\java\\CWE-327-java-03.java",
+      "line": 23,
+      "column": 56,
+      "evidence": "encoded"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.450Z"
+}

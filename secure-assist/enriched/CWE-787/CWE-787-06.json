@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-06",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-06.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "buffer = (char *)alloca(50);",
+          "replacement": "buffer = (char *)alloca(100);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:48.395Z"
+}

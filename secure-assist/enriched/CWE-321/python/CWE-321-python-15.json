@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-15.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "if data.get(\"user\") == \"admin\":\n        key_material = derived\n    else:\n        key_material = b\"\\x01\\x23\\x45\\x67\\x89\\xab\\xcd\\xef\\x10\\x32\\x54\\x76\\x98\\xba\\xdc\\xfe\"",
+          "replacement": "key_material = derived"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'key_material'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-15.py",
+      "line": 26,
+      "column": 24,
+      "evidence": "b\"\\x01\\x23\\x45\\x67\\x89\\xab\\xcd\\xef\\x10\\x32\\x54\\x76\\x98\\xba\\xdc\\xfe\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.345Z"
+}

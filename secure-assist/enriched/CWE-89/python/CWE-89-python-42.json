@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-42",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-42.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "if min_total:\n    base_query += \"HAVING SUM(amount) >= \" + min_total\n\ncur.execute(base_query, (year,))",
+          "replacement": "if min_total:\n    base_query += \"HAVING SUM(amount) >= %s\"\n    cur.execute(base_query, (year, int(min_total)))\nelse:\n    cur.execute(base_query, (year,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-42.py",
+      "line": 47,
+      "column": 21,
+      "evidence": "base_query"
+    },
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-42.py",
+      "line": 10,
+      "column": 21,
+      "evidence": "\"fin_pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.112Z"
+}

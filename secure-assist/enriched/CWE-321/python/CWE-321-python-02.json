@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-02",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-02.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "passphrase = \"backup-passphrase-2024\"",
+          "replacement": "passphrase = os.environ[\"ARCHIVE_PASSPHRASE\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'passphrase'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-02.py",
+      "line": 12,
+      "column": 18,
+      "evidence": "\"backup-passphrase-2024\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.273Z"
+}

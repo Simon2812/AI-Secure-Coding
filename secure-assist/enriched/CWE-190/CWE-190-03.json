@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-03",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-03.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "unsigned int next = counter + 100;",
+          "replacement": "if (counter == UINT_MAX) {\n    puts(\"overflow\");\n    return;\n}\nunsigned int next = counter + 100;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on 'counter' (assigned a boundary constant) may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-190\\CWE-190-03.c",
+      "line": 8,
+      "column": 25,
+      "evidence": "counter + 100"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:41.896Z"
+}

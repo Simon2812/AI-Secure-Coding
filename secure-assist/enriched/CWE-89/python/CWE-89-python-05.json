@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-05",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-89/python/CWE-89-python-05.py",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "sql = f\"SELECT username FROM users WHERE password = '{bar}'\"\ncon = helpers.db_sqlite.get_connection()\ncur = con.cursor()\ncur.execute(sql)",
+          "replacement": "sql = \"SELECT username FROM users WHERE password = ?\"\ncon = helpers.db_sqlite.get_connection()\ncur = con.cursor()\ncur.execute(sql, (bar,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-05.py",
+      "line": 36,
+      "column": 21,
+      "evidence": "sql"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'data_map['keyA']'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-05.py",
+      "line": 26,
+      "column": 28,
+      "evidence": "'a-Value'"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'data_map['keyC']'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\python\\CWE-89-python-05.py",
+      "line": 28,
+      "column": 28,
+      "evidence": "'another-Value'"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.938Z"
+}

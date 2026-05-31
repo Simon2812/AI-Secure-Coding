@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-02",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-02.c",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcpy(buffer, input);",
+          "replacement": "snprintf(buffer, strlen(input) + 1, \"%s\", input);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-02.c",
+      "line": 47,
+      "column": 5,
+      "evidence": "strcpy(buffer, input)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buffer' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-02.c",
+      "line": 71,
+      "column": 10,
+      "evidence": "buffer"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.427Z"
+}

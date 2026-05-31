@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-01",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-01.py",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "f = codecs.open(f\"{helpers.utils.TESTFILES_DIR}/{name}\", \"r\", \"utf-8\")",
+          "replacement": "safe_name = os.path.basename(name)\n            f = codecs.open(f\"{helpers.utils.TESTFILES_DIR}/{safe_name}\", \"r\", \"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "codecs.open() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-01.py",
+      "line": 35,
+      "column": 29,
+      "evidence": "f\"{helpers.utils.TESTFILES_DIR}/{name}\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.963Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-58",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-22/python/CWE-22-python-58.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "location = os.path.join(root, template_id)",
+          "replacement": "template_id = os.path.basename(template_id)\nlocation = os.path.join(root, template_id)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:43.288Z"
+}

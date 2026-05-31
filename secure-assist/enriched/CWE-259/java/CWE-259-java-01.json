@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-01.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String authValue = \"SunsetKey#84\";",
+          "replacement": "String authValue = System.getenv(\"DB_PASSWORD\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded password passed to getConnection().",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-259\\java\\CWE-259-java-01.java",
+      "line": 18,
+      "column": 72,
+      "evidence": "authValue"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.638Z"
+}

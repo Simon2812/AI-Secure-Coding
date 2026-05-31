@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-11",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-11.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT report FROM user_reports WHERE username = '\" + u + \"'\";",
+          "replacement": "String query = \"SELECT report FROM user_reports WHERE username = ?\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File file = new File(BASE_DIR + f);",
+          "replacement": "File file = new File(BASE_DIR, f).getCanonicalFile();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
+      "line": 30,
+      "column": 49,
+      "evidence": "query"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
+      "line": 37,
+      "column": 30,
+      "evidence": "BASE_DIR + f"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllBytes() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-11.java",
+      "line": 43,
+      "column": 27,
+      "evidence": "Files.readAllBytes(file.toPath())"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.048Z"
+}

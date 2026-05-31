@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-03",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-03.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "command = f\"ping -c 1 {hostname} && echo MODE={mode}\"\nresult = subprocess.run(\n    command,\n    shell=True,\n    capture_output=True,\n    text=True,\n)",
+          "replacement": "result = subprocess.run(\n    [\"ping\", \"-c\", \"1\", hostname],\n    capture_output=True,\n    text=True,\n)\nresult.stdout += f\"\\nMODE={mode}\""
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "pathlib path join with user-controlled input may allow path traversal.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-03.py",
+      "line": 44,
+      "column": 33,
+      "evidence": "file_name"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-03.py",
+      "line": 52,
+      "column": 13,
+      "evidence": "command"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.498Z"
+}

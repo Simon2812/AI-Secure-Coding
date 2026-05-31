@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-09",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-09.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt.executeUpdate(\"update accounts set status='closed' where id='\" + accountId + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"update accounts set status='closed' where id=?\");\nps.setString(1, accountId);\nps.executeUpdate();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-09.java",
+      "line": 28,
+      "column": 32,
+      "evidence": "\"update accounts set status='closed' where id='\" + accountId + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.076Z"
+}

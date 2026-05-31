@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-36",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-36.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "String path = repositoryRoot + \"/\" + descriptorName + \".desc\";",
+          "replacement": "if (!descriptorName.matches(\"[A-Za-z0-9_-]+\")) {\n    throw new IOException(\"Invalid descriptor name\");\n}\nString path = repositoryRoot + \"/\" + descriptorName + \".desc\";"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-36.java",
+      "line": 13,
+      "column": 48,
+      "evidence": "path"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.513Z"
+}

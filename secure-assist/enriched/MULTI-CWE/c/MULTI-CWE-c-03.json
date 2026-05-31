@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-03",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-03.c",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "return item_count * (int)sizeof(int);",
+          "replacement": "if (item_count <= 0 || item_count > (int)(SIZE_MAX / sizeof(int)))\n{\n    return 0;\n}\nreturn item_count * (int)sizeof(int);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-03.c",
+      "line": 56,
+      "column": 17,
+      "evidence": "i < item_count"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'items' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-03.c",
+      "line": 90,
+      "column": 10,
+      "evidence": "items"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.436Z"
+}

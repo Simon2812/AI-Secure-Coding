@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-23",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-23.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "script = (\n    \"DELETE FROM sessions \"\n    \"WHERE last_seen < '\" + before_iso + \"' \"\n    \"AND status = '\" + status + \"';\"\n)\n\ncur.executescript(script)",
+          "replacement": "statement = (\n    \"DELETE FROM sessions \"\n    \"WHERE last_seen < ? \"\n    \"AND status = ?\"\n)\n\ncur.execute(statement, (before_iso, status))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:50.011Z"
+}

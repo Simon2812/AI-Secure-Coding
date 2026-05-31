@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-07",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-07.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = conn.createStatement();\n\n    rs = stmt.executeQuery(\"select * from users where name='\" + userKey + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"select * from users where name=?\");\nps.setString(1, userKey);\nrs = ps.executeQuery();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-07.java",
+      "line": 42,
+      "column": 36,
+      "evidence": "\"select * from users where name='\" + userKey + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.062Z"
+}

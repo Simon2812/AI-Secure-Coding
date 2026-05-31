@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-22",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-22.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, tenant, title, body, local_name \"\n    \"FROM content_items \"\n    \"WHERE tenant = '\" + tenant + \"' \"\n    \"AND category = '\" + category + \"' \"\n    \"ORDER BY created_at DESC \"\n    f\"LIMIT {limit}\"\n)\n\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, tenant, title, body, local_name \"\n    \"FROM content_items \"\n    \"WHERE tenant = ? \"\n    \"AND category = ? \"\n    \"ORDER BY created_at DESC \"\n    \"LIMIT ?\"\n)\n\ncursor.execute(statement, (tenant, category, limit))"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "return (ATTACHMENT_ROOT / local_name).resolve()",
+          "replacement": "return (ATTACHMENT_ROOT / Path(local_name).name).resolve()"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "cipher = ARC4.new(secret)",
+          "replacement": "cipher = AES.new(secret[:16], AES.MODE_CBC)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "ARC4.new() uses a broken or weak cipher.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-22.py",
+      "line": 175,
+      "column": 14,
+      "evidence": "ARC4.new(secret)"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'secret'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-22.py",
+      "line": 220,
+      "column": 14,
+      "evidence": "b\"package-export-key\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.928Z"
+}

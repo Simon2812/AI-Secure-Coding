@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-09",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-09.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File file = new File(BASE_DIR + normalized);",
+          "replacement": "File file = new File(BASE_DIR, normalized).getCanonicalFile();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "line": 14,
+      "column": 30,
+      "evidence": "BASE_DIR + normalized"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllBytes() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "line": 20,
+      "column": 26,
+      "evidence": "Files.readAllBytes(file.toPath())"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "line": 46,
+      "column": 32,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-09.java",
+      "line": 46,
+      "column": 32,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.031Z"
+}

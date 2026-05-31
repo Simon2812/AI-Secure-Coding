@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-java-23",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-328/java/CWE-328-java-23.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T18:00:39.011Z"
+}

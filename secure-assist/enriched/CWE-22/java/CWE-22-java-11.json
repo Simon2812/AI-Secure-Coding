@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-11",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-11.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File root = new File(\"/var/data/files/\");\n        File item = new File(root, name);",
+          "replacement": "if (name.contains(\"..\") || name.contains(\"/\") || name.contains(\"\\\\\")) {\n            throw new IOException();\n        }\n        File root = new File(\"/var/data/files/\");\n        File item = new File(root, name);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-11.java",
+      "line": 27,
+      "column": 23,
+      "evidence": "new Resolver().resolve(request, token)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-11.java",
+      "line": 30,
+      "column": 36,
+      "evidence": "name"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'token'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-11.java",
+      "line": 17,
+      "column": 24,
+      "evidence": "\"default\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.297Z"
+}

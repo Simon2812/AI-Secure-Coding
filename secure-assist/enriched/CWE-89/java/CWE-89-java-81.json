@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-81",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-81.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-81.java",
+      "line": 51,
+      "column": 50,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.722Z"
+}

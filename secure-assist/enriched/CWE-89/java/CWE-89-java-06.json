@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-06",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-06.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "for (int i = 0; i < tokens.length; i++) {\n    batchStmt.addBatch(\"update audit_log set reviewed=1 where actor='\" + tokens[i] + \"'\");\n}\n\nint[] results = batchStmt.executeBatch();",
+          "replacement": "PreparedStatement ps = dbConn.prepareStatement(\"update audit_log set reviewed=1 where actor=?\");\nfor (int i = 0; i < tokens.length; i++) {\n    ps.setString(1, tokens[i]);\n    ps.addBatch();\n}\nint[] results = ps.executeBatch();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-06.java",
+      "line": 45,
+      "column": 40,
+      "evidence": "\"update audit_log set reviewed=1 where actor='\" + tokens[i] + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.054Z"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-12",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-12.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"sh -c \" + a;",
+          "replacement": "String command = a.equals(\"status\") ? \"sh -c systemctl status\" : \"sh -c systemctl restart\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT message FROM logs WHERE level = '\" + l + \"'\";",
+          "replacement": "String safeLevel = l.matches(\"INFO|WARN|ERROR\") ? l : \"INFO\";\nString query = \"SELECT message FROM logs WHERE level = '\" + safeLevel + \"'\";"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-12.java",
+      "line": 21,
+      "column": 27,
+      "evidence": "Runtime.getRuntime().exec(command)"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-12.java",
+      "line": 48,
+      "column": 49,
+      "evidence": "query"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.055Z"
+}

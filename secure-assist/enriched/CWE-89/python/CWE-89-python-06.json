@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-06",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-06.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query_text = f\"SELECT sku, title FROM catalog_items ORDER BY created_at DESC LIMIT {limit} OFFSET {offset}\"\nrows = cur.execute(query_text).fetchall()",
+          "replacement": "query_text = \"SELECT sku, title FROM catalog_items ORDER BY created_at DESC LIMIT ? OFFSET ?\"\nrows = cur.execute(query_text, (int(limit), int(offset))).fetchall()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-06.py",
+      "line": 16,
+      "column": 24,
+      "evidence": "query_text"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.942Z"
+}

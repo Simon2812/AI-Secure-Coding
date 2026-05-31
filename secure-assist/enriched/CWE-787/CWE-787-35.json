@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-35",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-35.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "memcpy(dst, src, count * sizeof(int));",
+          "replacement": "if (count > (int)(sizeof(target) / sizeof(target[0])))\n{\ncount = (int)(sizeof(target) / sizeof(target[0]));\n}\nmemcpy(dst, src, count * sizeof(int));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memcpy() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-35.c",
+      "line": 16,
+      "column": 22,
+      "evidence": "count * sizeof(int)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.570Z"
+}

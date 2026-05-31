@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-36",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-36.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "safe = level.replace(\";\", \"\")\ncmd = f\"grep {safe} /var/log/syslog\"\n\nproc = subprocess.run(cmd, shell=True,\n    capture_output=True,\n    encoding=\"utf-8\")",
+          "replacement": "if not level.isalnum():\n    raise ValueError(\"Invalid log level\")\nproc = subprocess.run([\"grep\", level, \"/var/log/syslog\"],\n    shell=False,\n    capture_output=True,\n    encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-36.py",
+      "line": 15,
+      "column": 39,
+      "evidence": "cmd"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.035Z"
+}

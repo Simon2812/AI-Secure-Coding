@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-53",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-53.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String cmd = \"git clone \" + repoUrl;\n\n        Process process = Runtime.getRuntime().exec(cmd);",
+          "replacement": "if (!repoUrl.matches(\"[a-zA-Z0-9._:/-]+\")) {\n            throw new IllegalArgumentException(\"Invalid repository URL\");\n        }\n\n        String cmd = \"git clone \" + repoUrl;\n\n        Process process = Runtime.getRuntime().exec(cmd);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\java\\CWE-78-java-53.java",
+      "line": 16,
+      "column": 27,
+      "evidence": "Runtime.getRuntime().exec(cmd)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:47.194Z"
+}

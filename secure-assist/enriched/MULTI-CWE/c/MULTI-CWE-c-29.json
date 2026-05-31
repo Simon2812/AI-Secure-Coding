@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-29",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-29.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int base = count * 4;\n    return base + count;",
+          "replacement": "if (count <= 0 || count > INT_MAX / 4)\n    {\n        return 0;\n    }\n    int base = count * 4;\n    return base + count;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "dst[strlen(dst) + i] = src[i];",
+          "replacement": "if (strlen(dst) + i < 63)\n    {\n        dst[strlen(dst) + i] = src[i];\n    }"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "free(buf);",
+          "replacement": ""
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "strcat(cmd, j->input);\n    system(cmd);",
+          "replacement": "execl(\"/usr/bin/head\", \"head\", \"-n\", \"1\", j->input, (char *)NULL);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 50,
+      "column": 16,
+      "evidence": "count * 4"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 73,
+      "column": 5,
+      "evidence": "strcat(cmd, j->input)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 74,
+      "column": 5,
+      "evidence": "system(cmd)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 98,
+      "column": 9,
+      "evidence": "strcpy(buf, j.buffer)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'buf' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-29.c",
+      "line": 102,
+      "column": 10,
+      "evidence": "buf"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.695Z"
+}

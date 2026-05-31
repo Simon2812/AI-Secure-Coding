@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-30",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-30.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO users (username, password) VALUES ('foo','\" + extractedValue + \"')\";\ntry {\njava.sql.Statement statement = org.redfort.assessment.helpers.DatabaseHelper.getSqlStatement();\nint count = statement.executeUpdate(sql);",
+          "replacement": "String sql = \"INSERT INTO users (username, password) VALUES ('foo', ?)\";\ntry {\njava.sql.Connection connection = org.redfort.assessment.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql);\nstatement.setString(1, extractedValue);\nint count = statement.executeUpdate();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-30.java",
+      "line": 66,
+      "column": 49,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.271Z"
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-46",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-46.c",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "table[pos] = value;\ntable[pos + 1] = value + 1;",
+          "replacement": "if (pos >= 0 && pos + 1 < 10)\n{\ntable[pos] = value;\ntable[pos + 1] = value + 1;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-46.c",
+      "line": 19,
+      "column": 22,
+      "evidence": "value + 1"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-46.c",
+      "line": 18,
+      "column": 11,
+      "evidence": "pos"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-46.c",
+      "line": 19,
+      "column": 11,
+      "evidence": "pos + 1"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.639Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-14",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-14.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "st = conn.createStatement();\n\n    Boolean result = st.execute(\"insert into users (status) values ('updated') where name='\" + data + \"'\");",
+          "replacement": "java.sql.PreparedStatement ps = conn.prepareStatement(\"insert into users (status) values ('updated') where name=?\");\nps.setString(1, data);\nBoolean result = ps.execute();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-14.java",
+      "line": 48,
+      "column": 41,
+      "evidence": "\"insert into users (status) values ('updated') where name='\" + data + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.125Z"
+}

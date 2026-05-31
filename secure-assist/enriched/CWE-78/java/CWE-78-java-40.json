@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-40",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-40.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process p = runtime.exec(args);",
+          "replacement": "ProcessBuilder pb = new ProcessBuilder(args);\nProcess p = pb.start();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-40.java",
+      "line": 69,
+      "column": 25,
+      "evidence": "runtime.exec(args)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:47.089Z"
+}

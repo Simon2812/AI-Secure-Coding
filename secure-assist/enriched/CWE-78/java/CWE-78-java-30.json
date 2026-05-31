@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-30",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-30.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String[] env = { value };",
+          "replacement": "if (!value.matches(\"[A-Za-z0-9._-]{0,64}\")) {\n    throw new ServletException(\"invalid input\");\n}\nString[] env = { value };"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-30.java",
+      "line": 56,
+      "column": 25,
+      "evidence": "runtime.exec(args, env)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.856Z"
+}

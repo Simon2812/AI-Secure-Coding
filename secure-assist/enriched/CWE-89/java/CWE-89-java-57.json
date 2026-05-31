@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-57",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-57.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"UPDATE users SET locked=1, lock_reason='\" + reason + \"' WHERE id='\" + userId + \"'\";\n\ntry (java.sql.Statement st = c.createStatement()) {\n    return st.executeUpdate(sql);\n}",
+          "replacement": "String sql = \"UPDATE users SET locked=1, lock_reason=? WHERE id=?\";\n\ntry (java.sql.PreparedStatement st = c.prepareStatement(sql)) {\n    st.setString(1, reason);\n    st.setString(2, userId);\n    return st.executeUpdate();\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-57.java",
+      "line": 33,
+      "column": 65,
+      "evidence": "sql"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-57.java",
+      "line": 47,
+      "column": 37,
+      "evidence": "sql"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-57.java",
+      "line": 54,
+      "column": 65,
+      "evidence": "sql"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-57.java",
+      "line": 71,
+      "column": 65,
+      "evidence": "sql"
+    },
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-57.java",
+      "line": 97,
+      "column": 69,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.449Z"
+}

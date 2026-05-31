@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-python-09",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-328/python/CWE-328-python-09.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "hashlib.md5(payload)",
+          "replacement": "hashlib.sha256(payload)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.md5(payload).hexdigest() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-09.py",
+      "line": 21,
+      "column": 18,
+      "evidence": "hashlib.md5(payload).hexdigest()"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.md5(payload).hexdigest() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-09.py",
+      "line": 21,
+      "column": 18,
+      "evidence": "hashlib.md5(payload).hexdigest()"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.md5() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-09.py",
+      "line": 21,
+      "column": 18,
+      "evidence": "hashlib.md5(payload)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.md5() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-09.py",
+      "line": 21,
+      "column": 18,
+      "evidence": "hashlib.md5(payload)"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "helpers.utils.escape_for_html() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-09.py",
+      "line": 23,
+      "column": 31,
+      "evidence": "helpers.utils.escape_for_html(result)"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "helpers.utils.escape_for_html() uses a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\python\\CWE-328-python-09.py",
+      "line": 23,
+      "column": 31,
+      "evidence": "helpers.utils.escape_for_html(result)"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:39.096Z"
+}

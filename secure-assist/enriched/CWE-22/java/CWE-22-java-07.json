@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-07",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-07.java",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File baseDir = new File(\"/opt/service/files/\");\n        File target = new File(baseDir, name);",
+          "replacement": "if (!name.matches(\"[a-zA-Z0-9._-]+\")) {\n            throw new IOException();\n        }\n        File baseDir = new File(\"/opt/service/files/\");\n        File target = new File(baseDir, name);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-07.java",
+      "line": 33,
+      "column": 41,
+      "evidence": "name"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.261Z"
+}

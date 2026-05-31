@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-03",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-03.java",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String command = \"ping -c 1 \" + normalized;\n\nProcess process = Runtime.getRuntime().exec(command);",
+          "replacement": "Process process = new ProcessBuilder(\"ping\", \"-c\", \"1\", normalized).start();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-03.java",
+      "line": 16,
+      "column": 27,
+      "evidence": "Runtime.getRuntime().exec(command)"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-03.java",
+      "line": 55,
+      "column": 32,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-03.java",
+      "line": 55,
+      "column": 32,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.977Z"
+}

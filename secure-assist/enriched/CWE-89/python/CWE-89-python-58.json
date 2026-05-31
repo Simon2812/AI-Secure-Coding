@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-58",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-58.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT p.id, p.name, r.rating \"\n    \"FROM products p \"\n    \"JOIN LATERAL (\"\n    \"  SELECT rating FROM reviews \"\n    \"  WHERE reviewer_email = '\" + user_email + \"' AND product_id = p.id \"\n    \"  ORDER BY created_at DESC LIMIT 1\"\n    \") r ON TRUE\"\n)\n\ncur.execute(query)",
+          "replacement": "query = (\n    \"SELECT p.id, p.name, r.rating \"\n    \"FROM products p \"\n    \"JOIN LATERAL (\"\n    \"  SELECT rating FROM reviews \"\n    \"  WHERE reviewer_email = %s AND product_id = p.id \"\n    \"  ORDER BY created_at DESC LIMIT 1\"\n    \") r ON TRUE\"\n)\n\ncur.execute(query, (user_email,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-58.py",
+      "line": 10,
+      "column": 21,
+      "evidence": "\"cat_pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.192Z"
+}

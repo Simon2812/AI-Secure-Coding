@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-24",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-24.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"SELECT content FROM export_data WHERE category = '\" + category + \"'\";",
+          "replacement": "String safe = category.matches(\"[a-zA-Z0-9_]+\") ? category : \"default\";\nString query = \"SELECT content FROM export_data WHERE category = '\" + safe + \"'\";"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "File f = new File(exportRoot + \"/\" + name);",
+          "replacement": "java.util.Map<String,String> allowed = java.util.Map.of(\"daily\",\"daily.txt\",\"full\",\"full.txt\");\nFile f = new File(exportRoot + \"/\" + allowed.getOrDefault(name, \"daily.txt\"));"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "MD5",
+          "replacement": "SHA-256"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 35,
+      "column": 49,
+      "evidence": "query"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 46,
+      "column": 27,
+      "evidence": "exportRoot + \"/\" + name"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.write() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 52,
+      "column": 9,
+      "evidence": "Files.write(f.toPath(), content.getBytes())"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 58,
+      "column": 27,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "getInstance(\"MD5\") uses a weak hash algorithm (MD5/SHA-1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-24.java",
+      "line": 58,
+      "column": 27,
+      "evidence": "MessageDigest.getInstance(\"MD5\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.143Z"
+}

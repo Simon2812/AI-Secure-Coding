@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-15",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-15.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "CALG_MD5",
+          "replacement": "CALG_SHA_256"
+        },
+        {
+          "origin": "CALG_SHA1",
+          "replacement": "CALG_SHA_512"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_MD5, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-15.c",
+      "line": 24,
+      "column": 31,
+      "evidence": "CALG_MD5"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_MD5, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-15.c",
+      "line": 24,
+      "column": 31,
+      "evidence": "CALG_MD5"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_SHA1, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-15.c",
+      "line": 30,
+      "column": 31,
+      "evidence": "CALG_SHA1"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_SHA1, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-15.c",
+      "line": 30,
+      "column": 31,
+      "evidence": "CALG_SHA1"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.802Z"
+}

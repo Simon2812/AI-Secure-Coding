@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-20",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-20.c",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "strcat(cfg->tag, argv[2]);",
+          "replacement": "strncat(cfg->tag, argv[2], sizeof(cfg->tag) - strlen(cfg->tag) - 1);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "execvp(\"ls\", args);",
+          "replacement": "if (strpbrk(path, \";&|`$><\") != NULL)\n{\n    return;\n}\nexecvp(\"ls\", args);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-20.c",
+      "line": 33,
+      "column": 9,
+      "evidence": "strcat(cfg->tag, argv[2])"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.590Z"
+}

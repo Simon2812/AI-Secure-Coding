@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-88",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-88.c",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "posix_spawnp() receives user-controlled argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-88.c",
+      "line": 11,
+      "column": 9,
+      "evidence": "posix_spawnp(&pid, argv[0], NULL, NULL, argv, environ)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.365Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-13",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-13.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "ALG_ID alg = (strlen(text) < 8) ? CALG_MD5 : CALG_SHA1;",
+          "replacement": "ALG_ID alg = CALG_SHA_256;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-13.c",
+      "line": 20,
+      "column": 17,
+      "evidence": "i < n"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.784Z"
+}

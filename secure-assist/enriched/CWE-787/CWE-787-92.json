@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-92",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-92.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-92.c",
+      "line": 50,
+      "column": 16,
+      "evidence": "slot"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.948Z"
+}

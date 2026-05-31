@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-05",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-05.c",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "char storage[15];",
+          "replacement": "char storage[16];"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-05.c",
+      "line": 14,
+      "column": 5,
+      "evidence": "strcpy(ptr, text)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.391Z"
+}

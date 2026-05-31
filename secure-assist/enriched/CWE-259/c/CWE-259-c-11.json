@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-11",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-11.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "const char *hard = \"masterKey_01\";",
+          "replacement": "char fileBuf[80] = \"\"; FILE *f = fopen(\"config.txt\", \"r\"); if (f) { fgets(fileBuf, 80, f); fclose(f); size_t len = strlen(fileBuf); if (len > 0 && fileBuf[len-1] == '\\n') fileBuf[len-1] = '\\0'; } const char *hard = fileBuf;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memcpy() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-11.c",
+      "line": 33,
+      "column": 33,
+      "evidence": "strlen(hard) + 1"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.574Z"
+}

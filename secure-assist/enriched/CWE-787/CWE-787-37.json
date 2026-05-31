@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-37",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-37.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < count; i++)\n{\nif (fgets(input, sizeof(input), stdin) == NULL)\n{\nbreak;\n}\n\nm->samples[i] = atoi(input);\n}",
+          "replacement": "for (i = 0; i < count && i < 6; i++)\n{\nif (fgets(input, sizeof(input), stdin) == NULL)\n{\nbreak;\n}\n\nm->samples[i] = atoi(input);\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-37.c",
+      "line": 23,
+      "column": 17,
+      "evidence": "i < count"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.587Z"
+}

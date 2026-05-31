@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-03",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-03.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String tokenValue = \"OfficePass!9\";",
+          "replacement": "String tokenValue = System.console() != null ? new String(System.console().readPassword()) : null;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'tokenValue'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-259\\java\\CWE-259-java-03.java",
+      "line": 7,
+      "column": 29,
+      "evidence": "\"OfficePass!9\""
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to KerberosKey.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-259\\java\\CWE-259-java-03.java",
+      "line": 13,
+      "column": 21,
+      "evidence": "userPrincipal"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.647Z"
+}

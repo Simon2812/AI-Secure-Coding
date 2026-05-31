@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-41",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-41.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT id FROM users WHERE email = '\" + email + \"'\";\njava.sql.Statement st = conn.createStatement();\nst.executeQuery(sql);",
+          "replacement": "String sql = \"SELECT id FROM users WHERE email = ?\";\njava.sql.PreparedStatement st = conn.prepareStatement(sql);\nst.setString(1, email);\nst.executeQuery();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-41.java",
+      "line": 6,
+      "column": 25,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.369Z"
+}

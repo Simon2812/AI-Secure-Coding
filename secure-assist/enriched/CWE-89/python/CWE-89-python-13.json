@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-13",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-13.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "insert_stmt = (\n    \"INSERT INTO stock_items(sku, qty, source_tag, updated_at) \"\n    \"VALUES ('\" + sku + \"', \" + str(qty) + \", '\" + source_tag + \"', '\" + now + \"') \"\n    \"ON DUPLICATE KEY UPDATE \"\n    \"qty = VALUES(qty), source_tag = VALUES(source_tag), updated_at = VALUES(updated_at)\"\n)\n\ncur.execute(insert_stmt)",
+          "replacement": "insert_stmt = (\n    \"INSERT INTO stock_items(sku, qty, source_tag, updated_at) \"\n    \"VALUES (%s, %s, %s, %s) \"\n    \"ON DUPLICATE KEY UPDATE \"\n    \"qty = VALUES(qty), source_tag = VALUES(source_tag), updated_at = VALUES(updated_at)\"\n)\n\ncur.execute(insert_stmt, (sku, qty, source_tag, now))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-13.py",
+      "line": 18,
+      "column": 21,
+      "evidence": "\"warehouse_pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.965Z"
+}

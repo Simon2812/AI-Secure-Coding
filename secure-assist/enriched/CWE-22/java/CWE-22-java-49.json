@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-49",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-49.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveProjectDirectory(String key) {\n        return ROOT.resolve(key);\n    }",
+          "replacement": "private Path resolveProjectDirectory(String key) throws IOException {\n        if (key.contains(\"..\") || key.contains(\"/\") || key.contains(\"\\\\\")) {\n            throw new IOException(\"Invalid project key\");\n        }\n        return ROOT.resolve(key);\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-49.java",
+      "line": 37,
+      "column": 16,
+      "evidence": "ROOT.resolve(key)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.568Z"
+}

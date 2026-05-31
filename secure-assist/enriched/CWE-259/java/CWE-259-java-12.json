@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-12",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-12.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String secret = config.authData;",
+          "replacement": "java.util.Properties props = new java.util.Properties(); props.load(new java.io.FileInputStream(\"config.properties\")); String secret = props.getProperty(\"password\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\java\\CWE-259-java-12.java",
+      "line": 16,
+      "column": 21,
+      "evidence": "\"configUser\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.676Z"
+}

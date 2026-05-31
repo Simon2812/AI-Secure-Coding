@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "SAFE-NONCWE-python-23",
+  "language": "python",
+  "path": "/dataset/synthetic/SAFE-NONCWE/python/SAFE-NONCWE-python-23.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:52.792Z"
+}

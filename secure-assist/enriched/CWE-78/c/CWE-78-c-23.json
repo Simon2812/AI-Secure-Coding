@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-23",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-23.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "_wpopen(buf, L\"w\");",
+          "replacement": "{\n    const wchar_t *arg = buf + wcslen(prefix);\n    wchar_t *av[] = { L\"whoami\", (wchar_t *)arg, NULL };\n    _wspawnvp(_P_WAIT, L\"whoami\", av);\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential in macro 'ENV_KEY'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-23.c",
+      "line": 6,
+      "column": 17,
+      "evidence": "L\"ADD\"\r"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:45.852Z"
+}

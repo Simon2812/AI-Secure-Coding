@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-30",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-30.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "_wspawnvp(_P_WAIT, COMMAND_INT, args);",
+          "replacement": "const wchar_t *arg = data + wcslen(COMMAND_ARG2);\nwchar_t *safe_args[] = { L\"tasklist\", (wchar_t *)arg, NULL };\n_wspawnvp(_P_WAIT, L\"tasklist\", safe_args);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-30.c",
+      "line": 64,
+      "column": 14,
+      "evidence": "dataLen + recvResult / (int)sizeof(wchar_t)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:45.919Z"
+}

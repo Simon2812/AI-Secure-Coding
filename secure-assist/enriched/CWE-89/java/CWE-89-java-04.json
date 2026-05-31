@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-04",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-04.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String query = \"select * from profiles where username='\" + input + \"'\";",
+          "replacement": "String query = \"select * from profiles where username=?\";\nstatement = connection.prepareStatement(query);\nstatement.setString(1, input);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-04.java",
+      "line": 27,
+      "column": 57,
+      "evidence": "query"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.037Z"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-40",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-40.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:52.410Z"
+}

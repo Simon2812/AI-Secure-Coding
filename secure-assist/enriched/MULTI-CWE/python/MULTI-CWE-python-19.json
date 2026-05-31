@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-19",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-19.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "key = secret.encode(\"utf-8\")[:8]\ncipher = DES.new(key, DES.MODE_ECB)",
+          "replacement": "key = secret.encode(\"utf-8\")[:16]\ncipher = AES.new(key, AES.MODE_CBC)"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT rule_name FROM routing_rules \"\n    \"WHERE source = '\" + source + \"' \"\n    \"ORDER BY rule_name\"\n)\n\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT rule_name FROM routing_rules \"\n    \"WHERE source = ? \"\n    \"ORDER BY rule_name\"\n)\n\ncursor.execute(query, (source,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "DES.new() uses a broken or weak cipher.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-19.py",
+      "line": 86,
+      "column": 14,
+      "evidence": "DES.new(key, DES.MODE_ECB)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.867Z"
+}

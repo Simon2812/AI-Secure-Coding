@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-python-05",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-22/python/CWE-22-python-05.py",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "location = root / chosen",
+          "replacement": "import re\n        if not re.fullmatch(r\"[A-Za-z0-9._-]+\", chosen):\n            raise ValueError(\"invalid path\")\n        location = root / chosen"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "pathlib path join with user-controlled input may allow path traversal.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\python\\CWE-22-python-05.py",
+      "line": 29,
+      "column": 27,
+      "evidence": "chosen"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.991Z"
+}

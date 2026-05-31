@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-35",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-35.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = f\"echo '{name}'\"\nproc = subprocess.run(cmd, shell=True,\n    capture_output=True,\n    encoding=\"utf-8\")",
+          "replacement": "proc = subprocess.run([\"echo\", name],\n    shell=False,\n    capture_output=True,\n    encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-35.py",
+      "line": 13,
+      "column": 36,
+      "evidence": "cmd"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.032Z"
+}

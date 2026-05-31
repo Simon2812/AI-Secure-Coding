@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-54",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-54.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = (\n    \"INSERT INTO \" + table + \"(sku, name, qty) VALUES ('\" + sku + \"', '\" + name + \"', \" + qty + \") \"\n    \"ON CONFLICT (sku) DO UPDATE SET name = EXCLUDED.name, qty = EXCLUDED.qty\"\n)\ncur.execute(stmt)",
+          "replacement": "stmt = sql.SQL(\n    \"INSERT INTO {}(sku, name, qty) VALUES (%s, %s, %s) \"\n    \"ON CONFLICT (sku) DO UPDATE SET name = EXCLUDED.name, qty = EXCLUDED.qty\"\n).format(sql.Identifier(table))\ncur.execute(stmt, (sku, name, int(qty)))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-54.py",
+      "line": 14,
+      "column": 21,
+      "evidence": "\"wh_pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.169Z"
+}

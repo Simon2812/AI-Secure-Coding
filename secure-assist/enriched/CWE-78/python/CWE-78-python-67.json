@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-67",
+  "language": "python",
+  "path": "/dataset/normalized/CWE-78/python/CWE-78-python-67.py",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\python\\CWE-78-python-67.py",
+      "line": 34,
+      "column": 47,
+      "evidence": "command_line"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.198Z"
+}

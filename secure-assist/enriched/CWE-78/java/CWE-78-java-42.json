@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-42.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String scanCommand = \"clamscan \" + artifactName;\n\n        ProcessBuilder builder = new ProcessBuilder(\"sh\", \"-c\", scanCommand);\n        Process process = builder.start();",
+          "replacement": "ProcessBuilder builder = new ProcessBuilder(\"clamscan\", artifactName);\n        Process process = builder.start();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\java\\CWE-78-java-42.java",
+      "line": 13,
+      "column": 34,
+      "evidence": "args[0]"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:47.106Z"
+}

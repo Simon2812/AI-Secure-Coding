@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-09",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-09.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "\"blueNodeKey\".toCharArray()",
+          "replacement": "System.console() != null ? System.console().readPassword() : new char[0]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\java\\CWE-259-java-09.java",
+      "line": 7,
+      "column": 17,
+      "evidence": "\"directUser\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.667Z"
+}

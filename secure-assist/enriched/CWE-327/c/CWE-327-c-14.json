@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-c-14",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-327/c/CWE-327-c-14.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "CALG_RC2",
+          "replacement": "CALG_AES_256"
+        },
+        {
+          "origin": "CALG_3DES",
+          "replacement": "CALG_AES_256"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T18:00:38.312Z"
+}

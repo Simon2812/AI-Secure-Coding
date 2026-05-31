@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-27",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-27.c",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "Node *external = head->next;\n\n    drop(head->next);\n\n    int result = read_value(external);",
+          "replacement": "Node *external = head->next;\n\n    int result = read_value(external);\n\n    drop(head->next);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'n' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
+      "line": 32,
+      "column": 14,
+      "evidence": "n"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'head' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-27.c",
+      "line": 55,
+      "column": 10,
+      "evidence": "head"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:45.554Z"
+}

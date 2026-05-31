@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-50",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-50.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveAssetLocation(String collection, String name) {\n\n        Path collectionDir = BASE.resolve(collection);\n\n        return collectionDir.resolve(name);\n    }",
+          "replacement": "private Path resolveAssetLocation(String collection, String name) throws IOException {\n\n        Path base = BASE.toAbsolutePath().normalize();\n        Path target = base.resolve(collection).resolve(name).normalize();\n\n        if (!target.startsWith(base)) {\n            throw new IOException(\"Invalid asset path\");\n        }\n\n        return target;\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-50.java",
+      "line": 26,
+      "column": 30,
+      "evidence": "BASE.resolve(collection)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-50.java",
+      "line": 28,
+      "column": 16,
+      "evidence": "collectionDir.resolve(name)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.573Z"
+}

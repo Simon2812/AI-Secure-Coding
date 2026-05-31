@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-15",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-15.c",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "if (idx >= 0)",
+          "replacement": "if (idx >= 0 && idx < 100)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-15.c",
+      "line": 8,
+      "column": 30,
+      "evidence": "100 * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-15.c",
+      "line": 21,
+      "column": 13,
+      "evidence": "idx"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'arr' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-15.c",
+      "line": 33,
+      "column": 10,
+      "evidence": "arr"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.430Z"
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-416-43",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-416/CWE-416-43.c",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-43.c",
+      "line": 13,
+      "column": 30,
+      "evidence": "(size_t)s->size + 1"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memcpy() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-43.c",
+      "line": 17,
+      "column": 26,
+      "evidence": "(size_t)s->size + 1"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memcpy() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-416\\CWE-416-43.c",
+      "line": 38,
+      "column": 31,
+      "evidence": "(size_t)part.size + 1"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:45.647Z"
+}

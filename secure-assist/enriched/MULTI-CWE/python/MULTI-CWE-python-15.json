@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-15",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-15.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "return hashlib.sha1(seed.encode(\"utf-8\")).hexdigest()",
+          "replacement": "return hashlib.sha256(seed.encode(\"utf-8\")).hexdigest()"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "return (self.tokens_dir / token_name).resolve()",
+          "replacement": "return (self.tokens_dir / Path(token_name).name).resolve()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "hashlib.sha1() uses a weak hashing algorithm (MD5/SHA1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-15.py",
+      "line": 74,
+      "column": 16,
+      "evidence": "hashlib.sha1(seed.encode(\"utf-8\"))"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "hashlib.sha1() uses a weak hashing algorithm (MD5/SHA1).",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-15.py",
+      "line": 74,
+      "column": 16,
+      "evidence": "hashlib.sha1(seed.encode(\"utf-8\"))"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.770Z"
+}

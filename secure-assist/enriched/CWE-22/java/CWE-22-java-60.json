@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-60",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-60.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveReportFile(String name) {\n        return storagePath.resolve(name + \".report\");\n    }",
+          "replacement": "private Path resolveReportFile(String name) throws IOException {\n        if (!name.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid report identifier\");\n        }\n        return storagePath.resolve(name + \".report\");\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.newBufferedReader() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-60.java",
+      "line": 24,
+      "column": 38,
+      "evidence": "Files.newBufferedReader(reportFile)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-60.java",
+      "line": 39,
+      "column": 16,
+      "evidence": "storagePath.resolve(name + \".report\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.642Z"
+}

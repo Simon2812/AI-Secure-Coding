@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-03",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-03.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "dest = (int *)alloca(7);",
+          "replacement": "dest = (int *)alloca(7*sizeof(int));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memcpy() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-03.c",
+      "line": 14,
+      "column": 26,
+      "evidence": "7*sizeof(int)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.386Z"
+}

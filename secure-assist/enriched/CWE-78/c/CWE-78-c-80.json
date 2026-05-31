@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-80",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-80.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-80.c",
+      "line": 98,
+      "column": 14,
+      "evidence": "dataLen + recvResult / sizeof(wchar_t)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.287Z"
+}

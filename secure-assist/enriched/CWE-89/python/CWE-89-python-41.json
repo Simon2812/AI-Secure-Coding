@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-41",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-41.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = f\"SELECT id, email FROM users WHERE username = '{username}'\"\ncur.execute(query)",
+          "replacement": "query = \"SELECT id, email FROM users WHERE username = ?\"\ncur.execute(query, (username,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-41.py",
+      "line": 8,
+      "column": 17,
+      "evidence": "query"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.107Z"
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-56",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-56.java",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveExportLocation(String key) {\n\n        Path folder = resourceBase.resolve(key);\n\n        return folder.resolve(\"report.txt\");\n    }",
+          "replacement": "private Path resolveExportLocation(String key) throws IOException {\n\n        Path base = resourceBase.toAbsolutePath().normalize();\n        Path target = base.resolve(key).resolve(\"report.txt\").normalize();\n\n        if (!target.startsWith(base)) {\n            throw new IOException(\"Invalid report path\");\n        }\n\n        return target;\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.writeString() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-56.java",
+      "line": 19,
+      "column": 9,
+      "evidence": "Files.writeString(reportFile, formatted)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-56.java",
+      "line": 26,
+      "column": 23,
+      "evidence": "resourceBase.resolve(key)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.613Z"
+}

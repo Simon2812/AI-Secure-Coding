@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-15",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-15.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "char *base = \"xxbackupSecret9\";",
+          "replacement": "char *base = getenv(\"APP_SECRET\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-15.c",
+      "line": 14,
+      "column": 5,
+      "evidence": "strcpy(start, actual)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.588Z"
+}

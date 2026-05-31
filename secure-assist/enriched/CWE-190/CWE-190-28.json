@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-28",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-28.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int result = quota - usage;\nreturn result;",
+          "replacement": "long long temp = (long long)quota - usage;\nif (temp >= INT_MIN && temp <= INT_MAX)\n{\n    return (int)temp;\n}\nputs(\"value out of range\");\nreturn quota;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-190\\CWE-190-28.c",
+      "line": 8,
+      "column": 18,
+      "evidence": "quota - usage"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.072Z"
+}

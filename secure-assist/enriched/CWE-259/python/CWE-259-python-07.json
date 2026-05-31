@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-07",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-07.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected_key = \"BackupAccessNow!\"",
+          "replacement": "expected_key = __import__(\"os\").environ[\"BACKUP_ACCESS_KEY\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'expected_key'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-07.py",
+      "line": 17,
+      "column": 20,
+      "evidence": "\"BackupAccessNow!\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.752Z"
+}

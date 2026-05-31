@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-04",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-04.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "accountKey = \"LocalAuth42\";",
+          "replacement": "accountKey = System.getProperty(\"auth.key\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to KerberosKey.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-259\\java\\CWE-259-java-04.java",
+      "line": 19,
+      "column": 21,
+      "evidence": "principal"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.651Z"
+}

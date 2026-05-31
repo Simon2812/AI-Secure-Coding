@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-java-06",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-321/java/CWE-321-java-06.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "selectedValue = \"zX7pL2mQ9vT4sR8w\";",
+          "replacement": "selectedValue = System.getProperty(\"runtime.key\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to SecretKeySpec.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-321\\java\\CWE-321-java-06.java",
+      "line": 29,
+      "column": 51,
+      "evidence": "selectedValue.getBytes(\"UTF-8\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.163Z"
+}

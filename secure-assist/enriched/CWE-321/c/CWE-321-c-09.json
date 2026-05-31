@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-09",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-321/c/CWE-321-c-09.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "#define STATIC_KEY \"BackupSeedValue42\"",
+          "replacement": ""
+        },
+        {
+          "origin": "strcpy(material, STATIC_KEY);",
+          "replacement": "if (!read_runtime_value(material, sizeof(material)))\n        {\n            material[0] = '\\0';\n        }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential in macro 'STATIC_KEY'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-09.c",
+      "line": 1,
+      "column": 20,
+      "evidence": "\"BackupSeedValue42\"\r"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-09.c",
+      "line": 91,
+      "column": 9,
+      "evidence": "strcpy(material, STATIC_KEY)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.923Z"
+}

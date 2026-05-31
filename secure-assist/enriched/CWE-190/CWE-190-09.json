@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-09",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-190/CWE-190-09.c",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int next = amount + 1;",
+          "replacement": "int next = amount;\nif (amount < INT_MAX) {\n    next = amount + 1;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-190\\CWE-190-09.c",
+      "line": 49,
+      "column": 17,
+      "evidence": "n"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:41.954Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-59",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-59.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char *args[] = { \"sh\", \"-c\", cmd, NULL };\n        execle(\"/bin/sh\", \"sh\", \"-c\", cmd, NULL, envp);",
+          "replacement": "char *args[] = { \"which\", (char *)argv[1], NULL };\n        execvpe(\"which\", args, envp);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:46.106Z"
+}

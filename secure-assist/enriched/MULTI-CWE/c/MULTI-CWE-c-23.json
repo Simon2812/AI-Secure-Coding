@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-c-23",
+  "language": "c",
+  "path": "/dataset/synthetic/MULTI-CWE/c/MULTI-CWE-c-23.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "sscanf(argv[2], \"%s\", cfg->label);",
+          "replacement": "sscanf(argv[2], \"%23s\", cfg->label);"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-416",
+      "fixes": [
+        {
+          "origin": "release_entry(entry);\n    print_entry(entry);",
+          "replacement": "print_entry(entry);\n    release_entry(entry);"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "FILE *stream = popen(command_line, \"r\");",
+          "replacement": "if (strcmp(command_line, \"ls .\") != 0 && strcmp(command_line, \"pwd\") != 0)\n    {\n        return;\n    }\n    FILE *stream = popen(command_line, \"r\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "sscanf() with %s format specifier may write past buffer bounds.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
+      "line": 40,
+      "column": 9,
+      "evidence": "sscanf(argv[2], \"%s\", cfg->label)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'entry' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
+      "line": 76,
+      "column": 14,
+      "evidence": "entry"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "popen() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\c\\MULTI-CWE-c-23.c",
+      "line": 83,
+      "column": 20,
+      "evidence": "popen(command_line, \"r\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.631Z"
+}

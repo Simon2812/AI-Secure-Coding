@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-45",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-45.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "while (p < amount)\n{\ndst[p] = p + 1;\np++;\n}",
+          "replacement": "while (p < amount && p < size)\n{\ndst[p] = p + 1;\np++;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-45.c",
+      "line": 21,
+      "column": 11,
+      "evidence": "(p < amount)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.632Z"
+}

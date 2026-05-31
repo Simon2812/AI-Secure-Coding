@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-36",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-36.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = (\n    \"SELECT id, customer_email, total, status \"\n    \"FROM orders \"\n    \"WHERE id = \" + order_id\n)\n\ncur.execute(stmt)",
+          "replacement": "stmt = (\n    \"SELECT id, customer_email, total, status \"\n    \"FROM orders \"\n    \"WHERE id = %s\"\n)\n\ncur.execute(stmt, (order_id,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-36.py",
+      "line": 18,
+      "column": 21,
+      "evidence": "\"orders_pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.080Z"
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-25",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-25.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String value = token;",
+          "replacement": "if (!token.matches(\"[A-Za-z0-9.-]{1,64}\")) {\n    throw new ServletException(\"invalid host\");\n}\nString value = token;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-25.java",
+      "line": 59,
+      "column": 31,
+      "evidence": "runtime.exec(cmdArgs, envVars)"
+    },
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'token'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-25.java",
+      "line": 40,
+      "column": 24,
+      "evidence": "\"none\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.786Z"
+}

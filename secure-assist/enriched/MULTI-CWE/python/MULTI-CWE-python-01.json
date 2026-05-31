@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-01",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-01.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT invoice_id, customer_name, total_amount, pdf_name \"\n    \"FROM invoices WHERE customer_name = '\" + customer + \"' \"\n    \"ORDER BY invoice_id DESC\"\n)\ncursor.execute(query)",
+          "replacement": "query = (\n    \"SELECT invoice_id, customer_name, total_amount, pdf_name \"\n    \"FROM invoices WHERE customer_name = ? \"\n    \"ORDER BY invoice_id DESC\"\n)\ncursor.execute(query, (customer,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
+      "line": 27,
+      "column": 28,
+      "evidence": "query"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "pathlib path join with user-controlled input may allow path traversal.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
+      "line": 109,
+      "column": 31,
+      "evidence": "export_name"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "open() receives user-controlled path without validation.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-01.py",
+      "line": 113,
+      "column": 15,
+      "evidence": "output_path"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.466Z"
+}

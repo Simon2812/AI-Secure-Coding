@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-49",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-49.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * FROM orders LIMIT \" + limit;",
+          "replacement": "int safeLimit = Integer.parseInt(limit);\nString sql = \"SELECT * FROM orders LIMIT \" + safeLimit;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-49.java",
+      "line": 5,
+      "column": 45,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.391Z"
+}

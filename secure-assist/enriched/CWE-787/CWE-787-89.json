@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-89",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-89.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-89.c",
+      "line": 69,
+      "column": 20,
+      "evidence": "sizeof(p->frame) - head_len"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.927Z"
+}

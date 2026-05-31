@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-27",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-27.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int remaining = stock - shipped;\nreturn remaining;",
+          "replacement": "if (stock < INT_MIN + shipped)\n{\n    puts(\"value out of range\");\n    return stock;\n}\nint remaining = stock - shipped;\nreturn remaining;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-190\\CWE-190-27.c",
+      "line": 6,
+      "column": 21,
+      "evidence": "stock - shipped"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.067Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-11",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-11.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process execProcess = Runtime.getRuntime().exec(baseCmd + clientValue);\nexecProcess.waitFor();",
+          "replacement": "Process execProcess = Runtime.getRuntime().exec(new String[]{baseCmd.trim(), clientValue});\nexecProcess.waitFor();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-11.java",
+      "line": 54,
+      "column": 31,
+      "evidence": "Runtime.getRuntime().exec(baseCmd + clientValue)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.644Z"
+}

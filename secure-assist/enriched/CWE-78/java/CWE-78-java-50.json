@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-50",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-78/java/CWE-78-java-50.java",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process process = Runtime.getRuntime().exec(commandInput);",
+          "replacement": "java.util.Set<String> allowed = java.util.Set.of(\"status\", \"uptime\", \"df\");\n\n        if (!allowed.contains(commandInput)) {\n            throw new IllegalArgumentException(\"Command not permitted\");\n        }\n\n        Process process = Runtime.getRuntime().exec(commandInput);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\java\\CWE-78-java-50.java",
+      "line": 13,
+      "column": 27,
+      "evidence": "Runtime.getRuntime().exec(commandInput)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:47.172Z"
+}

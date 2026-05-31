@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-14",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-14.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "String authValue = \"serviceAuthX\";",
+          "replacement": "String authValue = new java.io.BufferedReader(new java.io.FileReader(\"secret.txt\")).readLine();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\java\\CWE-259-java-14.java",
+      "line": 9,
+      "column": 17,
+      "evidence": "\"apiUser\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.681Z"
+}

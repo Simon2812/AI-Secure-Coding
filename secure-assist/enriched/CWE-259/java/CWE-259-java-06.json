@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-06",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-259/java/CWE-259-java-06.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "authToken = \"north-admin\";",
+          "replacement": "authToken = System.console() != null ? new String(System.console().readPassword()) : null;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-259\\java\\CWE-259-java-06.java",
+      "line": 16,
+      "column": 21,
+      "evidence": "\"apiUser\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.657Z"
+}

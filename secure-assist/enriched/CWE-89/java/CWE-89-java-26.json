@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-26",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-26.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"INSERT INTO users (username, password) VALUES ('foo','\" + inputValue + \"')\";\ntry {\njava.sql.Statement statement = org.guardianlab.safecode.helpers.DatabaseHelper.getSqlStatement();\nint count = statement.executeUpdate(sql, new int[] {1, 2});",
+          "replacement": "String sql = \"INSERT INTO users (username, password) VALUES ('foo', ?)\";\ntry {\njava.sql.Connection connection = org.guardianlab.safecode.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql, new int[] {1, 2});\nstatement.setString(1, inputValue);\nint count = statement.executeUpdate();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-26.java",
+      "line": 36,
+      "column": 49,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.212Z"
+}

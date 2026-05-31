@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-40",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-40.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "static char *build_command(const char *user) {\n    char *cmd = NULL;\n    size_t len = strlen(user) + 32;\n\n    cmd = malloc(len);\n    if (!cmd) {\n        return NULL;\n    }\n\n    strcpy(cmd, \"id \");\n    strcat(cmd, user);\n\n    return cmd;\n}",
+          "replacement": "static char *build_command(const char *user) {\n    for (const unsigned char *p = (const unsigned char *)user; *p; ++p) {\n        if (!((*p >= 'a' && *p <= 'z') ||\n              (*p >= 'A' && *p <= 'Z') ||\n              (*p >= '0' && *p <= '9') ||\n              *p == '_' || *p == '-')) {\n            return NULL;\n        }\n    }\n\n    char *cmd = NULL;\n    size_t len = strlen(user) + 32;\n\n    cmd = malloc(len);\n    if (!cmd) {\n        return NULL;\n    }\n\n    strcpy(cmd, \"id \");\n    strcat(cmd, user);\n\n    return cmd;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-40.c",
+      "line": 14,
+      "column": 5,
+      "evidence": "strcpy(cmd, \"id \")"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcat() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-40.c",
+      "line": 15,
+      "column": 5,
+      "evidence": "strcat(cmd, user)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-40.c",
+      "line": 32,
+      "column": 14,
+      "evidence": "system(command)"
+    },
+    {
+      "cweId": "CWE-416",
+      "ruleId": "ast-use-after-free",
+      "vulnerability": "Use After Free",
+      "severity": "high",
+      "message": "Pointer 'command' is used after being freed.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-40.c",
+      "line": 33,
+      "column": 10,
+      "evidence": "command"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:45.995Z"
+}

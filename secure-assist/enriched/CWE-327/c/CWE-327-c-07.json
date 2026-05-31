@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-327-c-07",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-327/c/CWE-327-c-07.c",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-327",
+      "fixes": [
+        {
+          "origin": "CALG_3DES",
+          "replacement": "CALG_AES_128"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-cipher",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptDeriveKey() uses CALG_3DES, a weak or broken cipher.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-327\\c\\CWE-327-c-07.c",
+      "line": 65,
+      "column": 33,
+      "evidence": "CALG_3DES"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.227Z"
+}

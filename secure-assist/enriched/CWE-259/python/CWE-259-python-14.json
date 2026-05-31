@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-14.py",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "expected_token = \"FlushMetrics#2024\"",
+          "replacement": "import os\nexpected_token = os.environ[\"METRICS_FLUSH_TOKEN\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'expected_token'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-14.py",
+      "line": 26,
+      "column": 26,
+      "evidence": "\"FlushMetrics#2024\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.776Z"
+}

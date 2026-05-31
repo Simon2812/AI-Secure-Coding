@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-73",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-78/c/CWE-78-c-73.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "POPEN() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-73.c",
+      "line": 79,
+      "column": 20,
+      "evidence": "POPEN(x, L\"w\")"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "POPEN() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\c\\CWE-78-c-73.c",
+      "line": 81,
+      "column": 20,
+      "evidence": "POPEN((char *)\"id\", \"w\")"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.230Z"
+}

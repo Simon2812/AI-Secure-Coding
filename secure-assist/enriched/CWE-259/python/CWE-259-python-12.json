@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-12",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-12.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "auth_token = \"IngestAccess#55\"",
+          "replacement": "import os\nauth_token = os.environ[\"INGEST_AUTH_TOKEN\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'auth_token'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-12.py",
+      "line": 16,
+      "column": 18,
+      "evidence": "\"IngestAccess#55\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.767Z"
+}

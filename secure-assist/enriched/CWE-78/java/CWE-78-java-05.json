@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-05",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-05.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process execution = Runtime.getRuntime().exec(shellCommand + option);\nexecution.waitFor();",
+          "replacement": "Process execution = new ProcessBuilder(\"/bin/ls\", option).start();\nexecution.waitFor();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [],
+  "enriched_at": "2026-05-27T15:52:46.573Z"
+}

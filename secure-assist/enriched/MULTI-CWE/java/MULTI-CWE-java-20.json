@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-java-20",
+  "language": "java",
+  "path": "/dataset/synthetic/MULTI-CWE/java/MULTI-CWE-java-20.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String execCmd = \"sh -c \" + command;",
+          "replacement": "if (!(command.equals(\"uptime\") || command.equals(\"whoami\"))) throw new IllegalArgumentException();\nString execCmd = \"sh -c \" + command;"
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "String postCmd = \"sh -c \" + script;",
+          "replacement": "if (!(script.equals(\"uptime\") || script.equals(\"whoami\"))) throw new IllegalArgumentException();\nString postCmd = \"sh -c \" + script;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Paths.get() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 10,
+      "column": 24,
+      "evidence": "Paths.get(baseDir)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 17,
+      "column": 21,
+      "evidence": "Runtime.getRuntime().exec(execCmd)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 34,
+      "column": 23,
+      "evidence": "resolve(configFile)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readString() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 37,
+      "column": 19,
+      "evidence": "Files.readString(config)"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\java\\MULTI-CWE-java-20.java",
+      "line": 52,
+      "column": 21,
+      "evidence": "Runtime.getRuntime().exec(postCmd)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.108Z"
+}

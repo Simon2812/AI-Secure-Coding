@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-35",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-35.java",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD='\" + bar + \"'\";\ntry {\njava.sql.Connection connection = org.guardstack.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql, new int[] {1, 2});\nstatement.setString(1, \"foo\");",
+          "replacement": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD=?\";\ntry {\njava.sql.Connection connection = org.guardstack.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql, new int[] {1, 2});\nstatement.setString(1, \"foo\");\nstatement.setString(2, bar);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-35.java",
+      "line": 47,
+      "column": 49,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.322Z"
+}

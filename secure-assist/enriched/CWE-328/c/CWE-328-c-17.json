@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-17",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-328/c/CWE-328-c-17.c",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-328\\c\\CWE-328-c-17.c",
+      "line": 22,
+      "column": 17,
+      "evidence": "i < count"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.821Z"
+}

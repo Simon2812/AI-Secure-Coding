@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-25",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-25.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "chain = [\"cmd.exe\", \"/c\", f\"dir {p}\"]\nproc = subprocess.run(chain, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not os.path.isdir(p):\n    raise ValueError(\"Invalid directory\")\nentries = os.listdir(p)\noutput = \"\\n\".join(entries)\nreturn output"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-25.py",
+      "line": 16,
+      "column": 39,
+      "evidence": "chain"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:47.988Z"
+}

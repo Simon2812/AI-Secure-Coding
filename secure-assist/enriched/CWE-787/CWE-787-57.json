@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-57",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-57.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-787",
+      "fixes": [
+        {
+          "origin": "for (i = 0; i < count; i++)\n{\n*cursor = i * 11;\ncursor++;\n}",
+          "replacement": "for (i = 0; i < count && i < log->capacity; i++)\n{\n*cursor = i * 11;\ncursor++;\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "malloc() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-57.c",
+      "line": 26,
+      "column": 31,
+      "evidence": "log->capacity * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "memset() size argument contains arithmetic that may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-57.c",
+      "line": 30,
+      "column": 30,
+      "evidence": "log->capacity * sizeof(int)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-57.c",
+      "line": 39,
+      "column": 17,
+      "evidence": "i < count"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.740Z"
+}

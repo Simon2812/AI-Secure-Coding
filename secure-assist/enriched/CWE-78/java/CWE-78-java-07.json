@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-07",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-07.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "Process proc = Runtime.getRuntime().exec(tool + input);\nproc.waitFor();",
+          "replacement": "if (input != null) {\n    input = input.replaceAll(\"[;&|`$<>]\", \"\");\n}\nProcess proc = Runtime.getRuntime().exec(tool + input);\nproc.waitFor();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-07.java",
+      "line": 45,
+      "column": 24,
+      "evidence": "Runtime.getRuntime().exec(tool + input)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.592Z"
+}

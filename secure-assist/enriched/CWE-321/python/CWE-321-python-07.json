@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-07",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-07.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "key_material = b\"batch-static-key-7788\"",
+          "replacement": "import os\nkey_material = os.environ[\"BATCH_KEY\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'key_material'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-07.py",
+      "line": 30,
+      "column": 24,
+      "evidence": "b\"batch-static-key-7788\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.296Z"
+}

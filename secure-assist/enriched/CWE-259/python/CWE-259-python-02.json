@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-02",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-02.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "secret = \"daily-report-pass\"",
+          "replacement": "secret = getpass.getpass(\"Database password: \")"
+        },
+        {
+          "origin": "if conn is not None and entered == \"daily-report-pass\":",
+          "replacement": "if conn is not None and entered == secret:"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'secret'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-02.py",
+      "line": 12,
+      "column": 18,
+      "evidence": "\"daily-report-pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.734Z"
+}

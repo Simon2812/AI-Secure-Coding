@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-04",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-04.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "def __init__(self):\n        self.secret_key = b\"Z3Vlc3QtbW9kZS1rZXktZm9yLW5vdGVzLTAx\"\n        self.cipher = Fernet(self.secret_key)",
+          "replacement": "def __init__(self, secret_key: bytes):\n        self.secret_key = secret_key\n        self.cipher = Fernet(self.secret_key)"
+        },
+        {
+          "origin": "return NoteLocker()",
+          "replacement": "return NoteLocker(runtime_key)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'self.secret_key'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-04.py",
+      "line": 6,
+      "column": 27,
+      "evidence": "b\"Z3Vlc3QtbW9kZS1rZXktZm9yLW5vdGVzLTAx\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.279Z"
+}

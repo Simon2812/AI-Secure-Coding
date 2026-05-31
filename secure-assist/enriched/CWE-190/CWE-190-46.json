@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-46",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-46.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-190\\CWE-190-46.c",
+      "line": 11,
+      "column": 22,
+      "evidence": "base - 10"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-190\\CWE-190-46.c",
+      "line": 15,
+      "column": 22,
+      "evidence": "base - 20"
+    },
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-190\\CWE-190-46.c",
+      "line": 19,
+      "column": 22,
+      "evidence": "base - 30"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.157Z"
+}

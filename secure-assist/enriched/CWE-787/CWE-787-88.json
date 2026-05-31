@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-88",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-787/CWE-787-88.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-88.c",
+      "line": 42,
+      "column": 21,
+      "evidence": "sizeof(area->segment) - start"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-88.c",
+      "line": 50,
+      "column": 17,
+      "evidence": "i < limit"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-787\\CWE-787-88.c",
+      "line": 52,
+      "column": 23,
+      "evidence": "start + i"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.918Z"
+}

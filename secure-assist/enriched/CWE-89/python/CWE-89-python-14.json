@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-14",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-14.py",
+  "split": "val",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "base = (\n    \"SELECT \" + group_field + \", COUNT(*) \"\n    \"FROM audit_events \"\n    \"WHERE created_at >= %s AND created_at <= %s \"\n    \"GROUP BY \" + group_field + \" \"\n    \"ORDER BY COUNT(*) DESC\"\n)",
+          "replacement": "allowed = {\"event_type\", \"username\", \"status\"}\n\nif group_field not in allowed:\n    group_field = \"event_type\"\n\nbase = (\n    \"SELECT \" + group_field + \", COUNT(*) \"\n    \"FROM audit_events \"\n    \"WHERE created_at >= %s AND created_at <= %s \"\n    \"GROUP BY \" + group_field + \" \"\n    \"ORDER BY COUNT(*) DESC\"\n)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-14.py",
+      "line": 35,
+      "column": 29,
+      "evidence": "base"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.970Z"
+}

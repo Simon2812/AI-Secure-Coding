@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-55",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-55.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "query = (\n    \"SELECT id, created_at, value, \"\n    \"SUM(value) OVER (ORDER BY created_at ROWS BETWEEN \" + days + \" PRECEDING AND CURRENT ROW) AS s \"\n    \"FROM metric_points\"\n)\n\ncur.execute(query)",
+          "replacement": "n = int(days)\nquery = (\n    \"SELECT id, created_at, value, \"\n    f\"SUM(value) OVER (ORDER BY created_at ROWS BETWEEN {n} PRECEDING AND CURRENT ROW) AS s \"\n    \"FROM metric_points\"\n)\n\ncur.execute(query)"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-259",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Password",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'password'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-55.py",
+      "line": 10,
+      "column": 21,
+      "evidence": "\"m_pass\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:50.173Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-54",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-54.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (\" + ticketId + \", '\" + actor + \"', '\" + note + \"')\";\ntry (java.sql.Statement st = c.createStatement()) {\n    st.executeUpdate(insertSql);\n}",
+          "replacement": "String insertSql = \"INSERT INTO ticket_notes(ticket_id, author, body) VALUES (?, ?, ?)\";\ntry (java.sql.PreparedStatement st = c.prepareStatement(insertSql)) {\n    st.setLong(1, ticketId);\n    st.setString(2, actor);\n    st.setString(3, note);\n    st.executeUpdate();\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-54.java",
+      "line": 20,
+      "column": 34,
+      "evidence": "insertSql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.410Z"
+}

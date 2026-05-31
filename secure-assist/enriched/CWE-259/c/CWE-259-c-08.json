@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-c-08",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-259/c/CWE-259-c-08.c",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "char *value = \"rootAccess42\";",
+          "replacement": "char *value = getenv(\"ADMIN_PASSWORD\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strcpy() does not perform bounds checking and may write past a buffer.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\c\\CWE-259-c-08.c",
+      "line": 15,
+      "column": 9,
+      "evidence": "strcpy(auth, value)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.560Z"
+}

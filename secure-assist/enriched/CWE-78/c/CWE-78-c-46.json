@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-46",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-46.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char cmd[300];\nsnprintf(cmd, sizeof(cmd), \"ping -c 1 %s\", line);\n\nreturn system(cmd);",
+          "replacement": "pid_t pid = fork();\nif (pid < 0)\n    return 1;\nif (pid == 0) {\n    char *args[] = {\"ping\", \"-c\", \"1\", line, NULL};\n    execvp(\"ping\", args);\n    _exit(127);\n}\nint st = 0;\nif (waitpid(pid, &st, 0) < 0)\n    return 1;\nreturn (WIFEXITED(st) && WEXITSTATUS(st) == 0) ? 0 : 1;"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-46.c",
+      "line": 32,
+      "column": 12,
+      "evidence": "system(cmd)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.027Z"
+}

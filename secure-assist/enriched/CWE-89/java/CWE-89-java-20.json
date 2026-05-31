@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-20",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-20.java",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "updateStmt = connectionHandle.prepareStatement(\"update audit_events set processed=1 where actor='\" + identifier + \"'\");",
+          "replacement": "String sql = \"update audit_events set processed=1 where actor=?\";\nupdateStmt = connectionHandle.prepareStatement(sql);\nupdateStmt.setString(1, identifier);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareStatement() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-20.java",
+      "line": 45,
+      "column": 17,
+      "evidence": "\"update audit_events set processed=1 where actor='\" + identifier + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.173Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-python-11",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-259/python/CWE-259-python-11.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "master_token = \"ServiceAuth2023!\"",
+          "replacement": "master_token = os.environ[\"SERVICE_AUTH_TOKEN\"]"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'master_token'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\python\\CWE-259-python-11.py",
+      "line": 15,
+      "column": 24,
+      "evidence": "\"ServiceAuth2023!\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.764Z"
+}

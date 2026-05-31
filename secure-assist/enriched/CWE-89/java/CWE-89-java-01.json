@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-01.java",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement.addBatch(\"update users set hitcount=hitcount+1 where name='\" + entries[i] + \"'\");",
+          "replacement": "PreparedStatement statement = connection.prepareStatement(\"update users set hitcount=hitcount+1 where name=?\");\nstatement.setString(1, entries[i]);\nstatement.addBatch();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-01.java",
+      "line": 30,
+      "column": 40,
+      "evidence": "\"update users set hitcount=hitcount+1 where name='\" + entries[i] + \"'\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.012Z"
+}

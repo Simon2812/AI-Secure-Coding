@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-python-01",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-321/python/CWE-321-python-01.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "secret = b\"Zmlyc3QtdnVsbmVyYWJsZS1rZXktMDE=\"",
+          "replacement": "import os\nsecret = os.environ[\"LOCKER_KEY\"].encode(\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded credential assigned to 'secret'.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\python\\CWE-321-python-01.py",
+      "line": 20,
+      "column": 14,
+      "evidence": "b\"Zmlyc3QtdnVsbmVyYWJsZS1rZXktMDE=\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:44.269Z"
+}

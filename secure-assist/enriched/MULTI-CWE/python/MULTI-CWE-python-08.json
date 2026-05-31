@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "MULTI-CWE-python-08",
+  "language": "python",
+  "path": "/dataset/synthetic/MULTI-CWE/python/MULTI-CWE-python-08.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "statement = (\n    \"SELECT id, requester, subject, priority, status \"\n    \"FROM tickets WHERE requester = '\" + requester + \"' \"\n    \"ORDER BY created_at DESC LIMIT 25\"\n)\ncursor.execute(statement)",
+          "replacement": "statement = (\n    \"SELECT id, requester, subject, priority, status \"\n    \"FROM tickets WHERE requester = ? \"\n    \"ORDER BY created_at DESC LIMIT 25\"\n)\ncursor.execute(statement, (requester,))"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\MULTI-CWE\\python\\MULTI-CWE-python-08.py",
+      "line": 72,
+      "column": 17,
+      "evidence": "\"SELECT id, requester, subject, priority, status \"\r\n                \"FROM tickets WHERE status = ? \"\r\n                \"O"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:51.598Z"
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-42",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-42.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "Path target = exportBase.resolve(label + \".txt\");",
+          "replacement": "String id = Path.of(label).getFileName().toString();\nPath target = exportBase.resolve(id + \".txt\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-42.java",
+      "line": 11,
+      "column": 23,
+      "evidence": "exportBase.resolve(label + \".txt\")"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.writeString() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-42.java",
+      "line": 13,
+      "column": 9,
+      "evidence": "Files.writeString(target, data)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.533Z"
+}

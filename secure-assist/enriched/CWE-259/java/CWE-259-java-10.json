@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-259-java-10",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-259/java/CWE-259-java-10.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-259",
+      "fixes": [
+        {
+          "origin": "return \"AlphaGate#9\";",
+          "replacement": "return System.getenv(\"GATEWAY_SECRET\");"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-321",
+      "ruleId": "ast-hardcoded-cred",
+      "vulnerability": "Use of Hard-coded Cryptographic Key",
+      "severity": "high",
+      "message": "Hard-coded key material passed to PasswordAuthentication.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-259\\java\\CWE-259-java-10.java",
+      "line": 14,
+      "column": 21,
+      "evidence": "\"gatewayUser\""
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.670Z"
+}

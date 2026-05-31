@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-java-75",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-78/java/CWE-78-java-75.java",
+  "split": "train",
+  "source": {
+    "type": "normalized",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "Runtime.exec() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-78\\java\\CWE-78-java-75.java",
+      "line": 61,
+      "column": 26,
+      "evidence": "Runtime.getRuntime().exec(fullCommand)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:47.441Z"
+}

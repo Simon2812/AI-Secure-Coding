@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-37",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-37.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private String buildLocation(String key) {\n\n        return repositoryPath + \"/\" + key + \"/entry.txt\";\n    }",
+          "replacement": "private String buildLocation(String key) throws IOException {\n\n        if (!key.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid entry identifier\");\n        }\n\n        return repositoryPath + \"/\" + key + \"/entry.txt\";\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.of() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-37.java",
+      "line": 13,
+      "column": 26,
+      "evidence": "Path.of(location)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readString() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-37.java",
+      "line": 19,
+      "column": 16,
+      "evidence": "Files.readString(entryFile)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.517Z"
+}

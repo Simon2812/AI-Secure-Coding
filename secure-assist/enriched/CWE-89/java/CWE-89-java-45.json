@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-45",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-89/java/CWE-89-java-45.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String call = \"{call \" + proc + \"}\";",
+          "replacement": "if (!proc.equals(\"safe_procedure\")) {\nthrow new IllegalArgumentException();\n}\nString call = \"{call \" + proc + \"}\";"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "prepareCall() called with user-controlled SQL query.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\java\\CWE-89-java-45.java",
+      "line": 5,
+      "column": 58,
+      "evidence": "call"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.379Z"
+}

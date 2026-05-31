@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-python-19",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-89/python/CWE-89-python-19.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "stmt = f\"SELECT id, balance FROM accounts WHERE name = '{account_name}'\"\nrecords = db_cursor.execute(stmt).fetchall()",
+          "replacement": "stmt = \"SELECT id, balance FROM accounts WHERE name = ?\"\nrecords = db_cursor.execute(stmt, (account_name,)).fetchall()"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query is constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-89\\python\\CWE-89-python-19.py",
+      "line": 8,
+      "column": 33,
+      "evidence": "stmt"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.993Z"
+}

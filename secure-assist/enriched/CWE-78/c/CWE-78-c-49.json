@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-49",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-49.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "char *argv[] = { \"sh\", \"-c\", buf, NULL };",
+          "replacement": "char *argv[] = { \"hostname\", (char *)arg, NULL };"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "posix_spawn() receives user-controlled argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-49.c",
+      "line": 16,
+      "column": 9,
+      "evidence": "posix_spawn(&pid, \"/bin/sh\", NULL, NULL, argv, environ)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.047Z"
+}

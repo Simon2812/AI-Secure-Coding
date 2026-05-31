@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-python-31",
+  "language": "python",
+  "path": "/dataset/synthetic/CWE-78/python/CWE-78-python-31.py",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "cmd = \"du -sh {}\".format(target)\nproc = subprocess.run(cmd, shell=True, capture_output=True, encoding=\"utf-8\")",
+          "replacement": "if not target:\n    raise ValueError(\"Invalid path\")\nproc = subprocess.run([\"du\", \"-sh\", target], shell=False, capture_output=True, encoding=\"utf-8\")"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "subprocess.run() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\python\\CWE-78-python-31.py",
+      "line": 14,
+      "column": 39,
+      "evidence": "cmd"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.018Z"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-89-java-29",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-89/java/CWE-89-java-29.java",
+  "split": "val",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-89",
+      "fixes": [
+        {
+          "origin": "String sql = \"SELECT * from USERS where USERNAME='foo' and PASSWORD='\" + resolvedCredential + \"'\";\ntry {\njava.sql.Statement statement = org.cobaltgrid.verification.helpers.DatabaseHelper.getSqlStatement();\nstatement.execute(sql, new int[] {1, 2});",
+          "replacement": "String sql = \"SELECT * from USERS where USERNAME=? and PASSWORD=?\";\ntry {\njava.sql.Connection connection = org.cobaltgrid.verification.helpers.DatabaseHelper.getSqlConnection();\njava.sql.PreparedStatement statement = connection.prepareStatement(sql);\nstatement.setString(1, \"foo\");\nstatement.setString(2, resolvedCredential);\nstatement.execute();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-89",
+      "ruleId": "ast-sqli",
+      "vulnerability": "SQL Injection",
+      "severity": "high",
+      "message": "SQL query constructed with user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-89\\java\\CWE-89-java-29.java",
+      "line": 74,
+      "column": 31,
+      "evidence": "sql"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:49.252Z"
+}

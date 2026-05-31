@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-47",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-47.java",
+  "split": "test",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveConfigPath(String name) {\n        Path dir = ROOT.resolve(name);\n        return dir.resolve(\"settings.conf\");\n    }",
+          "replacement": "private Path resolveConfigPath(String name) throws IOException {\n        if (!name.matches(\"[A-Za-z0-9_-]+\")) {\n            throw new IOException(\"Invalid configuration name\");\n        }\n        Path dir = ROOT.resolve(name);\n        return dir.resolve(\"settings.conf\");\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.readAllLines() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-47.java",
+      "line": 20,
+      "column": 30,
+      "evidence": "Files.readAllLines(configFile)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-47.java",
+      "line": 30,
+      "column": 20,
+      "evidence": "ROOT.resolve(name)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.555Z"
+}

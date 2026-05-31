@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-321-c-11",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-321/c/CWE-321-c-11.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-321",
+      "fixes": [
+        {
+          "origin": "const char *value = \"LocalSeed\";",
+          "replacement": "const char *value = read_key_from_file();"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-321\\c\\CWE-321-c-11.c",
+      "line": 13,
+      "column": 9,
+      "evidence": "cap - 1"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:43.941Z"
+}

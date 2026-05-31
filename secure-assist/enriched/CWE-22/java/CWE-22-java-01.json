@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-01",
+  "language": "java",
+  "path": "/dataset/normalized/CWE-22/java/CWE-22-java-01.java",
+  "split": "test",
+  "source": {
+    "type": "benchmark",
+    "name": "OWASP Benchmark Project"
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "fullPath = \"/var/app/docs/\" + selectedName;\ninput = new FileInputStream(new File(fullPath));",
+          "replacement": "if (selectedName.contains(\"..\")) {\n    throw new IOException(\"Invalid file name\");\n}\nfullPath = \"/var/app/docs/\" + selectedName;\ninput = new FileInputStream(new File(fullPath));"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new FileInputStream() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-01.java",
+      "line": 34,
+      "column": 41,
+      "evidence": "new File(fullPath)"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "new File() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-22\\java\\CWE-22-java-01.java",
+      "line": 34,
+      "column": 50,
+      "evidence": "fullPath"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.203Z"
+}

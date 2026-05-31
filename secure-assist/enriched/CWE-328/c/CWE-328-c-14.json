@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-328-c-14",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-328/c/CWE-328-c-14.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-328",
+      "fixes": [
+        {
+          "origin": "if (!CryptCreateHash(ctx, CALG_MD5, 0, 0, &h))\n{\n    CryptReleaseContext(ctx, 0);\n    return 0;\n}",
+          "replacement": ""
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Loop with user-controlled bound writes to array without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-14.c",
+      "line": 20,
+      "column": 17,
+      "evidence": "i < n"
+    },
+    {
+      "cweId": "CWE-327",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Broken Cryptographic Algorithm",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_MD5, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-14.c",
+      "line": 47,
+      "column": 35,
+      "evidence": "CALG_MD5"
+    },
+    {
+      "cweId": "CWE-328",
+      "ruleId": "ast-weak-wincrypt-hash",
+      "vulnerability": "Use of Weak Hash",
+      "severity": "medium",
+      "message": "CryptCreateHash() uses CALG_MD5, a weak hashing algorithm.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-328\\c\\CWE-328-c-14.c",
+      "line": 47,
+      "column": 35,
+      "evidence": "CALG_MD5"
+    }
+  ],
+  "enriched_at": "2026-05-27T18:00:38.795Z"
+}

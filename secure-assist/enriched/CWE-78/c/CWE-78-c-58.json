@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-78-c-58",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-78/c/CWE-78-c-58.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-78",
+      "fixes": [
+        {
+          "origin": "int rc = system(cmd);",
+          "replacement": "for (const unsigned char *p = (const unsigned char *)to; *p; ++p) {\n    if (!(isalnum(*p) || *p == '@' || *p == '.' || *p == '_' || *p == '-' || *p == '+'))\n        return 1;\n}\nint rc = system(cmd);"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 10,
+      "column": 20,
+      "evidence": "fread(buf + used, 1, cap - 1 - used, in)"
+    },
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "Array write uses user-controlled index without bounds check.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 15,
+      "column": 9,
+      "evidence": "used"
+    },
+    {
+      "cweId": "CWE-78",
+      "ruleId": "ast-cmd-injection",
+      "vulnerability": "OS Command Injection",
+      "severity": "high",
+      "message": "system() receives a non-literal command argument.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-78\\c\\CWE-78-c-58.c",
+      "line": 43,
+      "column": 14,
+      "evidence": "system(cmd)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:46.100Z"
+}

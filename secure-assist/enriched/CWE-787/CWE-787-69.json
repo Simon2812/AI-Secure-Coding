@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-787-69",
+  "language": "c",
+  "path": "/dataset/normalized/CWE-787/CWE-787-69.c",
+  "split": "train",
+  "source": {
+    "type": "benchmark",
+    "name": "Juliet Test Suite"
+  },
+  "vulnerabilities": [],
+  "static_findings": [
+    {
+      "cweId": "CWE-787",
+      "ruleId": "ast-oob-write",
+      "vulnerability": "Out-of-bounds Write",
+      "severity": "high",
+      "message": "strncpy() with strlen() as size copies based on source length, not destination size.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\normalized\\CWE-787\\CWE-787-69.c",
+      "line": 17,
+      "column": 5,
+      "evidence": "strncpy(destination, buffer, strlen(buffer))"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:48.812Z"
+}

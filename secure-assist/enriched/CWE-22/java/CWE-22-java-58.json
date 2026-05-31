@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-22-java-58",
+  "language": "java",
+  "path": "/dataset/synthetic/CWE-22/java/CWE-22-java-58.java",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-22",
+      "fixes": [
+        {
+          "origin": "private Path resolveArtifactFile(String name) {\n        return dataLocation.resolve(name);\n    }",
+          "replacement": "private Path resolveArtifactFile(String name) {\n        String safeName = Path.of(name).getFileName().toString();\n        return dataLocation.resolve(safeName);\n    }"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Files.newOutputStream() receives user-controlled path.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-58.java",
+      "line": 22,
+      "column": 33,
+      "evidence": "Files.newOutputStream(\r\n                artifactFile,\r\n                StandardOpenOption.CREATE,\r\n                Stand"
+    },
+    {
+      "cweId": "CWE-22",
+      "ruleId": "ast-path-traversal",
+      "vulnerability": "Path Traversal",
+      "severity": "high",
+      "message": "Path.resolve() receives user-controlled input.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-22\\java\\CWE-22-java-58.java",
+      "line": 35,
+      "column": 16,
+      "evidence": "dataLocation.resolve(name)"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.627Z"
+}

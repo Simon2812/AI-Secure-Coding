@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "CWE-190-16",
+  "language": "c",
+  "path": "/dataset/synthetic/CWE-190/CWE-190-16.c",
+  "split": "train",
+  "source": {
+    "type": "synthetic",
+    "name": null
+  },
+  "vulnerabilities": [
+    {
+      "id": "v1",
+      "cwe": "CWE-190",
+      "fixes": [
+        {
+          "origin": "int bytes = pages * 4096;\nprintf(\"%d\\n\", bytes);",
+          "replacement": "if (pages <= INT_MAX / 4096)\n{\n    int bytes = pages * 4096;\n    printf(\"%d\\n\", bytes);\n}\nelse\n{\n    puts(\"value out of range\");\n}"
+        }
+      ]
+    }
+  ],
+  "static_findings": [
+    {
+      "cweId": "CWE-190",
+      "ruleId": "ast-integer-overflow",
+      "vulnerability": "Integer Overflow",
+      "severity": "medium",
+      "message": "Arithmetic on user-controlled integer may overflow.",
+      "file": "C:\\Users\\drozh\\asc-main-dataset\\dataset\\synthetic\\CWE-190\\CWE-190-16.c",
+      "line": 6,
+      "column": 17,
+      "evidence": "pages * 4096"
+    }
+  ],
+  "enriched_at": "2026-05-27T15:52:42.001Z"
+}
