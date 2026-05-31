@@ -320,6 +320,10 @@ class SecureCodingModel:
             skip_special_tokens=True,
         )
 
+        print("\n===== MODEL OUTPUT =====")
+        print(text)
+        print("========================\n")
+
         return self.extract_json(text)
 
 
