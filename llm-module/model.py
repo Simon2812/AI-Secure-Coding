@@ -397,7 +397,6 @@ class SecureCodingModel:
             sample = {
                 "code": code,
                 "line_offset": 0,  # Can be used for line number adjustments if needed.
-                "analysis": metadata["analysis"],
                 "target": metadata["vulnerabilities"],
                 "split": metadata["split"],
                 "language": metadata["language"],
