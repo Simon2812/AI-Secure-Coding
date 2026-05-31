@@ -46,7 +46,7 @@ class SecureCodingModel:
 
         # Experiment configuration (tunable between runs).
         self.training_config = {
-            "model_name": "Qwen/Qwen2.5-Coder-7B-Instruct",
+            "model_name": "deepseek-ai/deepseek-coder-6.7b-instruct",
             "prompt_version": "v2",
             "max_length": 2048,
             "epochs": 3,
